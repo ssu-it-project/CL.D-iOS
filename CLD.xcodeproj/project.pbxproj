@@ -15,28 +15,6 @@
 		5ACADD1B2A5D989300B92C07 /* CLDUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ACADD1A2A5D989300B92C07 /* CLDUITests.swift */; };
 		5ACADD1D2A5D989300B92C07 /* CLDUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ACADD1C2A5D989300B92C07 /* CLDUITestsLaunchTests.swift */; };
 		5ACADD5D2A65919400B92C07 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ACADD5C2A65919400B92C07 /* HomeViewController.swift */; };
-		5ACADD6B2A6592BE00B92C07 /* keep.txt in Resources */ = {isa = PBXBuildFile; fileRef = 5ACADD6A2A6592BE00B92C07 /* keep.txt */; };
-		5ACADD6D2A6592E200B92C07 /* keep.txt in Resources */ = {isa = PBXBuildFile; fileRef = 5ACADD6C2A6592E200B92C07 /* keep.txt */; };
-		5ACADD6F2A6592E900B92C07 /* keep.txt in Resources */ = {isa = PBXBuildFile; fileRef = 5ACADD6E2A6592E900B92C07 /* keep.txt */; };
-		5ACADD712A6592EE00B92C07 /* keep.txt in Resources */ = {isa = PBXBuildFile; fileRef = 5ACADD702A6592EE00B92C07 /* keep.txt */; };
-		5ACADD732A6592F600B92C07 /* keep.txt in Resources */ = {isa = PBXBuildFile; fileRef = 5ACADD722A6592F600B92C07 /* keep.txt */; };
-		5ACADD752A6592FA00B92C07 /* keep.txt in Resources */ = {isa = PBXBuildFile; fileRef = 5ACADD742A6592FA00B92C07 /* keep.txt */; };
-		5ACADD772A65930400B92C07 /* keep.txt in Resources */ = {isa = PBXBuildFile; fileRef = 5ACADD762A65930400B92C07 /* keep.txt */; };
-		5ACADD792A65930D00B92C07 /* keep.txt in Resources */ = {isa = PBXBuildFile; fileRef = 5ACADD782A65930D00B92C07 /* keep.txt */; };
-		5ACADD7B2A65931800B92C07 /* keep.txt in Resources */ = {isa = PBXBuildFile; fileRef = 5ACADD7A2A65931800B92C07 /* keep.txt */; };
-		5ACADD7D2A65931E00B92C07 /* keep.txt in Resources */ = {isa = PBXBuildFile; fileRef = 5ACADD7C2A65931E00B92C07 /* keep.txt */; };
-		5ACADD7F2A6593A000B92C07 /* keep.txt in Resources */ = {isa = PBXBuildFile; fileRef = 5ACADD7E2A6593A000B92C07 /* keep.txt */; };
-		5ACADD812A6593A500B92C07 /* keep.txt in Resources */ = {isa = PBXBuildFile; fileRef = 5ACADD802A6593A500B92C07 /* keep.txt */; };
-		5ACADD832A6593AA00B92C07 /* keep.txt in Resources */ = {isa = PBXBuildFile; fileRef = 5ACADD822A6593AA00B92C07 /* keep.txt */; };
-		5ACADD852A6593B400B92C07 /* keep.txt in Resources */ = {isa = PBXBuildFile; fileRef = 5ACADD842A6593B400B92C07 /* keep.txt */; };
-		5ACADD872A6593BA00B92C07 /* keep.txt in Resources */ = {isa = PBXBuildFile; fileRef = 5ACADD862A6593BA00B92C07 /* keep.txt */; };
-		5ACADD892A6593C000B92C07 /* keep.txt in Resources */ = {isa = PBXBuildFile; fileRef = 5ACADD882A6593C000B92C07 /* keep.txt */; };
-		5ACADD8B2A6593C600B92C07 /* keep.txt in Resources */ = {isa = PBXBuildFile; fileRef = 5ACADD8A2A6593C600B92C07 /* keep.txt */; };
-		5ACADD8D2A6593CB00B92C07 /* keep.txt in Resources */ = {isa = PBXBuildFile; fileRef = 5ACADD8C2A6593CB00B92C07 /* keep.txt */; };
-		5ACADD8F2A6593D100B92C07 /* keep.txt in Resources */ = {isa = PBXBuildFile; fileRef = 5ACADD8E2A6593D100B92C07 /* keep.txt */; };
-		5ACADD912A6593D600B92C07 /* keep.txt in Resources */ = {isa = PBXBuildFile; fileRef = 5ACADD902A6593D600B92C07 /* keep.txt */; };
-		5ACADD932A6593DC00B92C07 /* keep.txt in Resources */ = {isa = PBXBuildFile; fileRef = 5ACADD922A6593DC00B92C07 /* keep.txt */; };
-		5ACADD952A6593E000B92C07 /* keep.txt in Resources */ = {isa = PBXBuildFile; fileRef = 5ACADD942A6593E000B92C07 /* keep.txt */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -591,29 +569,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5ACADD062A5D989300B92C07 /* LaunchScreen.storyboard in Resources */,
-				5ACADD872A6593BA00B92C07 /* keep.txt in Resources */,
-				5ACADD7F2A6593A000B92C07 /* keep.txt in Resources */,
-				5ACADD712A6592EE00B92C07 /* keep.txt in Resources */,
-				5ACADD8F2A6593D100B92C07 /* keep.txt in Resources */,
-				5ACADD6B2A6592BE00B92C07 /* keep.txt in Resources */,
-				5ACADD832A6593AA00B92C07 /* keep.txt in Resources */,
-				5ACADD752A6592FA00B92C07 /* keep.txt in Resources */,
-				5ACADD892A6593C000B92C07 /* keep.txt in Resources */,
 				5ACADD032A5D989300B92C07 /* Assets.xcassets in Resources */,
-				5ACADD732A6592F600B92C07 /* keep.txt in Resources */,
-				5ACADD6D2A6592E200B92C07 /* keep.txt in Resources */,
-				5ACADD7D2A65931E00B92C07 /* keep.txt in Resources */,
-				5ACADD8B2A6593C600B92C07 /* keep.txt in Resources */,
-				5ACADD772A65930400B92C07 /* keep.txt in Resources */,
-				5ACADD852A6593B400B92C07 /* keep.txt in Resources */,
-				5ACADD7B2A65931800B92C07 /* keep.txt in Resources */,
-				5ACADD812A6593A500B92C07 /* keep.txt in Resources */,
-				5ACADD6F2A6592E900B92C07 /* keep.txt in Resources */,
-				5ACADD952A6593E000B92C07 /* keep.txt in Resources */,
-				5ACADD912A6593D600B92C07 /* keep.txt in Resources */,
-				5ACADD792A65930D00B92C07 /* keep.txt in Resources */,
-				5ACADD8D2A6593CB00B92C07 /* keep.txt in Resources */,
-				5ACADD932A6593DC00B92C07 /* keep.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -811,7 +767,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 8LJ2P85FNV;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = CLD/Info.plist;
+				INFOPLIST_FILE = CLD/App/Support/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = "";
@@ -840,7 +796,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 8LJ2P85FNV;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = CLD/Info.plist;
+				INFOPLIST_FILE = CLD/App/Support/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = "";
