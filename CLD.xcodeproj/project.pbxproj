@@ -20,6 +20,10 @@
 		5ACADD1B2A5D989300B92C07 /* CLDUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ACADD1A2A5D989300B92C07 /* CLDUITests.swift */; };
 		5ACADD1D2A5D989300B92C07 /* CLDUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ACADD1C2A5D989300B92C07 /* CLDUITestsLaunchTests.swift */; };
 		5ACADD5D2A65919400B92C07 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ACADD5C2A65919400B92C07 /* HomeViewController.swift */; };
+		5ADED1AB2A66ACC500C0CBF4 /* UITextField+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ADED1AA2A66ACC500C0CBF4 /* UITextField+Extension.swift */; };
+		5ADED1AD2A66ADA900C0CBF4 /* ReusableView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ADED1AC2A66ADA900C0CBF4 /* ReusableView+Extension.swift */; };
+		5ADED1AF2A66AEAD00C0CBF4 /* UICollectionView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ADED1AE2A66AEAD00C0CBF4 /* UICollectionView+Extension.swift */; };
+		5ADED1B12A66AFF700C0CBF4 /* UIStackView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ADED1B02A66AFF700C0CBF4 /* UIStackView+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,7 +58,6 @@
 		5ACADD5C2A65919400B92C07 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		5ACADD6A2A6592BE00B92C07 /* keep.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = keep.txt; sourceTree = "<group>"; };
 		5ACADD6C2A6592E200B92C07 /* keep.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = keep.txt; sourceTree = "<group>"; };
-		5ACADD6E2A6592E900B92C07 /* keep.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = keep.txt; sourceTree = "<group>"; };
 		5ACADD702A6592EE00B92C07 /* keep.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = keep.txt; sourceTree = "<group>"; };
 		5ACADD722A6592F600B92C07 /* keep.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = keep.txt; sourceTree = "<group>"; };
 		5ACADD742A6592FA00B92C07 /* keep.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = keep.txt; sourceTree = "<group>"; };
@@ -74,6 +77,10 @@
 		5ACADD902A6593D600B92C07 /* keep.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = keep.txt; sourceTree = "<group>"; };
 		5ACADD922A6593DC00B92C07 /* keep.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = keep.txt; sourceTree = "<group>"; };
 		5ACADD942A6593E000B92C07 /* keep.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = keep.txt; sourceTree = "<group>"; };
+		5ADED1AA2A66ACC500C0CBF4 /* UITextField+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Extension.swift"; sourceTree = "<group>"; };
+		5ADED1AC2A66ADA900C0CBF4 /* ReusableView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ReusableView+Extension.swift"; sourceTree = "<group>"; };
+		5ADED1AE2A66AEAD00C0CBF4 /* UICollectionView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Extension.swift"; sourceTree = "<group>"; };
+		5ADED1B02A66AFF700C0CBF4 /* UIStackView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -248,7 +255,10 @@
 		5ACADD482A6586B900B92C07 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				5ACADD6E2A6592E900B92C07 /* keep.txt */,
+				5ADED1AA2A66ACC500C0CBF4 /* UITextField+Extension.swift */,
+				5ADED1AC2A66ADA900C0CBF4 /* ReusableView+Extension.swift */,
+				5ADED1AE2A66AEAD00C0CBF4 /* UICollectionView+Extension.swift */,
+				5ADED1B02A66AFF700C0CBF4 /* UIStackView+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -616,8 +626,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5ADED1AF2A66AEAD00C0CBF4 /* UICollectionView+Extension.swift in Sources */,
+				5ADED1B12A66AFF700C0CBF4 /* UIStackView+Extension.swift in Sources */,
 				5ACADCFA2A5D988F00B92C07 /* AppDelegate.swift in Sources */,
+				5ADED1AB2A66ACC500C0CBF4 /* UITextField+Extension.swift in Sources */,
 				5ACADCFC2A5D988F00B92C07 /* SceneDelegate.swift in Sources */,
+				5ADED1AD2A66ADA900C0CBF4 /* ReusableView+Extension.swift in Sources */,
 				5ACADD5D2A65919400B92C07 /* HomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
