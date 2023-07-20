@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "인스타그램 로고.png",
+      "filename" : "instaLogo.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "인스타그램 로고@2x.png",
+      "filename" : "instaLogo@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "인스타그램 로고@3x.png",
+      "filename" : "instaLogo@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "애플 로고.png",
+      "filename" : "appleLogo.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "애플 로고@2x.png",
+      "filename" : "appleLogo@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "애플 로고@3x.png",
+      "filename" : "appleLogo@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }
