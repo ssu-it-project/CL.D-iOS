@@ -20,17 +20,13 @@ class SignView: UIView {
         button.titleLabel?.adjustsFontForContentSizeCategory = true
         button.backgroundColor = UIColor(red: 1, green: 1, blue: 1, alpha: 1)
         button.setImage(UIImage(named: "kakaoLogo"), for: .normal)
-        button.imageEdgeInsets = .init(top: 0, left: 0, bottom: 0, right: 7)
-        button.setTitle("카카오로 시작하기", for: .normal)
-        button.titleLabel?.font = UIFont(name: "Roboto-Bold", size: 11)
-        button.setTitleColor(.black, for: .normal)
         button.semanticContentAttribute = .forceLeftToRight
         button.contentVerticalAlignment = .center
         button.contentHorizontalAlignment = .center
         button.layer.cornerRadius = 10
         button.layer.borderWidth = 1
         button.layer.borderColor = UIColor(red: 0.683, green: 0.683, blue: 0.683, alpha: 1).cgColor
-
+        
         return button
     }()
     let appleBtn: UIButton = {
@@ -39,17 +35,13 @@ class SignView: UIView {
         button.titleLabel?.adjustsFontForContentSizeCategory = true
         button.backgroundColor = UIColor(red: 1, green: 1, blue: 1, alpha: 1)
         button.setImage(UIImage(named: "appleLogo"), for: .normal)
-        button.imageEdgeInsets = .init(top: 0, left: 0, bottom: 0, right: 7)
-        button.setTitle("APPLE로 시작하기", for: .normal)
-        button.titleLabel?.font = UIFont(name: "Roboto-Bold", size: 11)
-        button.setTitleColor(.black, for: .normal)
         button.semanticContentAttribute = .forceLeftToRight
         button.contentVerticalAlignment = .center
         button.contentHorizontalAlignment = .center
         button.layer.cornerRadius = 10
         button.layer.borderWidth = 1
         button.layer.borderColor = UIColor(red: 0.683, green: 0.683, blue: 0.683, alpha: 1).cgColor
-
+        
         return button
     }()
     let instaBtn: UIButton = {
@@ -58,17 +50,13 @@ class SignView: UIView {
         button.titleLabel?.adjustsFontForContentSizeCategory = true
         button.backgroundColor = UIColor(red: 1, green: 1, blue: 1, alpha: 1)
         button.setImage(UIImage(named: "instaLogo"), for: .normal)
-        button.imageEdgeInsets = .init(top: 0, left: 0, bottom: 0, right: 7)
-        button.setTitle("Instagram로 시작하기", for: .normal)
-        button.titleLabel?.font = UIFont(name: "Roboto-Bold", size: 11)
-        button.setTitleColor(.black, for: .normal)
         button.semanticContentAttribute = .forceLeftToRight
         button.contentVerticalAlignment = .center
         button.contentHorizontalAlignment = .center
         button.layer.cornerRadius = 10
         button.layer.borderWidth = 1
         button.layer.borderColor = UIColor(red: 0.683, green: 0.683, blue: 0.683, alpha: 1).cgColor
-
+        
         return button
     }()
     
@@ -77,6 +65,7 @@ class SignView: UIView {
         
         setHierarchy()
         setConstraints()
+        setButtonConfig()
     }
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -117,5 +106,26 @@ class SignView: UIView {
             // $0.centerX.equalToSuperview()
             $0.leading.equalToSuperview().inset(54)
         }
+    }
+    
+    private func setButtonConfig() {
+        var buttonConfiguration = UIButton.Configuration.plain()
+        buttonConfiguration.imagePadding = 7
+        buttonConfiguration.baseForegroundColor = .black
+        
+        var titleKakao = AttributedString.init("카카오로 시작하기")
+        titleKakao.font = UIFont(name: "Roboto-Bold", size: 11)
+        buttonConfiguration.attributedTitle = titleKakao
+        kakaoBtn.configuration = buttonConfiguration
+        
+        var titleApple = AttributedString.init("Apple로 시작하기")
+        titleApple.font = UIFont(name: "Roboto-Bold", size: 11)
+        buttonConfiguration.attributedTitle = titleApple
+        appleBtn.configuration = buttonConfiguration
+        
+        var titleInsta = AttributedString.init("Instagram로 시작하기")
+        titleInsta.font = UIFont(name: "Roboto-Bold", size: 11)
+        buttonConfiguration.attributedTitle = titleInsta
+        instaBtn.configuration = buttonConfiguration
     }
 }
