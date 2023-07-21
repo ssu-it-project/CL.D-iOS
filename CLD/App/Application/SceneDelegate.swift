@@ -13,18 +13,23 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
     
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
+        //        guard let windowScene = (scene as? UIWindowScene) else { return }
+        //        window = UIWindow(windowScene: windowScene)
+        //
+        //        let splashViewController = SplashViewController()
+        //        window?.rootViewController = splashViewController
+        //        window?.makeKeyAndVisible()
+        //
+        //        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1) {
+        //            let rootViewController = UINavigationController(rootViewController: AuthViewController())
+        //            self.window?.rootViewController = rootViewController
+        //        }
+        //
+        //        window?.makeKeyAndVisible()
         guard let windowScene = (scene as? UIWindowScene) else { return }
         window = UIWindow(windowScene: windowScene)
-        
-        let splashViewController = SplashViewController()
-        window?.rootViewController = splashViewController
-        window?.makeKeyAndVisible()
-        
-        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1) {
-            let rootViewController = UINavigationController(rootViewController: AuthViewController())
-            self.window?.rootViewController = rootViewController
-        }
-        
+        let rootViewController = UINavigationController(rootViewController: SplashViewController())
+        window?.rootViewController = rootViewController
         window?.makeKeyAndVisible()
     }
     

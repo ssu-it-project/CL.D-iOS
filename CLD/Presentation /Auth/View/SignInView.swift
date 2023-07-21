@@ -6,20 +6,20 @@
 //
 
 import UIKit
+
 import SnapKit
 
-class SignView: UIView {
-    let cldLogo: UIImageView = {
+final class SignView: UIView {
+    private let cldLogo: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = UIImage(named: "cldLogo")
+        imageView.image = ImageLiteral.cldLogo
         return imageView
     }()
-    let kakaoBtn: UIButton = {
+    private let kakaoButton: UIButton = {
         let button = UIButton()
-        button.translatesAutoresizingMaskIntoConstraints = false
         button.titleLabel?.adjustsFontForContentSizeCategory = true
         button.backgroundColor = UIColor(red: 1, green: 1, blue: 1, alpha: 1)
-        button.setImage(UIImage(named: "kakaoLogo"), for: .normal)
+        button.setImage(ImageLiteral.kakaoLogo, for: .normal)
         button.semanticContentAttribute = .forceLeftToRight
         button.contentVerticalAlignment = .center
         button.contentHorizontalAlignment = .center
@@ -29,12 +29,11 @@ class SignView: UIView {
         
         return button
     }()
-    let appleBtn: UIButton = {
+    private let appleButton: UIButton = {
         let button = UIButton()
-        button.translatesAutoresizingMaskIntoConstraints = false
         button.titleLabel?.adjustsFontForContentSizeCategory = true
         button.backgroundColor = UIColor(red: 1, green: 1, blue: 1, alpha: 1)
-        button.setImage(UIImage(named: "appleLogo"), for: .normal)
+        button.setImage(ImageLiteral.appleLogo, for: .normal)
         button.semanticContentAttribute = .forceLeftToRight
         button.contentVerticalAlignment = .center
         button.contentHorizontalAlignment = .center
@@ -44,12 +43,11 @@ class SignView: UIView {
         
         return button
     }()
-    let instaBtn: UIButton = {
+    private let instaButton: UIButton = {
         let button = UIButton()
-        button.translatesAutoresizingMaskIntoConstraints = false
         button.titleLabel?.adjustsFontForContentSizeCategory = true
         button.backgroundColor = UIColor(red: 1, green: 1, blue: 1, alpha: 1)
-        button.setImage(UIImage(named: "instaLogo"), for: .normal)
+        button.setImage(ImageLiteral.instaLogo, for: .normal)
         button.semanticContentAttribute = .forceLeftToRight
         button.contentVerticalAlignment = .center
         button.contentHorizontalAlignment = .center
@@ -72,43 +70,37 @@ class SignView: UIView {
     }
     
     private func setHierarchy() {
-        self.addSubview(cldLogo)
-        self.addSubview(kakaoBtn)
-        self.addSubview(appleBtn)
-        self.addSubview(instaBtn)
+        addSubviews(cldLogo, kakaoButton, appleButton, instaButton)
     }
     
-    private func setConstraints() {
+    internal func setConstraints() {
         cldLogo.snp.makeConstraints {
             $0.top.equalToSuperview().inset(211)
             $0.height.equalTo(95)
             $0.width.equalTo(78)
-            $0.leading.equalToSuperview().offset(156)
+            $0.centerX.equalToSuperview()
         }
-        kakaoBtn.snp.makeConstraints {
+        kakaoButton.snp.makeConstraints {
             $0.top.equalTo(cldLogo.snp.bottom).offset(298)
             $0.width.equalTo(282)
             $0.height.equalTo(40)
-            // $0.centerX.equalToSuperview()
             $0.leading.equalToSuperview().inset(54)
         }
-        appleBtn.snp.makeConstraints {
-            $0.top.equalTo(kakaoBtn.snp.bottom).offset(14)
+        appleButton.snp.makeConstraints {
+            $0.top.equalTo(kakaoButton.snp.bottom).offset(14)
             $0.width.equalTo(282)
             $0.height.equalTo(40)
-            // $0.centerX.equalToSuperview()
-            $0.leading.equalToSuperview().inset(54)
+            $0.centerX.equalToSuperview()
         }
-        instaBtn.snp.makeConstraints {
-            $0.top.equalTo(appleBtn.snp.bottom).offset(14)
+        instaButton.snp.makeConstraints {
+            $0.top.equalTo(appleButton.snp.bottom).offset(14)
             $0.width.equalTo(282)
             $0.height.equalTo(40)
-            // $0.centerX.equalToSuperview()
-            $0.leading.equalToSuperview().inset(54)
+            $0.centerX.equalToSuperview()
         }
     }
     
-    private func setButtonConfig() {
+    internal func setButtonConfig() {
         var buttonConfiguration = UIButton.Configuration.plain()
         buttonConfiguration.imagePadding = 7
         buttonConfiguration.baseForegroundColor = .black
@@ -116,16 +108,16 @@ class SignView: UIView {
         var titleKakao = AttributedString.init("카카오로 시작하기")
         titleKakao.font = UIFont(name: "Roboto-Bold", size: 11)
         buttonConfiguration.attributedTitle = titleKakao
-        kakaoBtn.configuration = buttonConfiguration
+        kakaoButton.configuration = buttonConfiguration
         
         var titleApple = AttributedString.init("Apple로 시작하기")
         titleApple.font = UIFont(name: "Roboto-Bold", size: 11)
         buttonConfiguration.attributedTitle = titleApple
-        appleBtn.configuration = buttonConfiguration
+        appleButton.configuration = buttonConfiguration
         
         var titleInsta = AttributedString.init("Instagram로 시작하기")
         titleInsta.font = UIFont(name: "Roboto-Bold", size: 11)
         buttonConfiguration.attributedTitle = titleInsta
-        instaBtn.configuration = buttonConfiguration
+        instaButton.configuration = buttonConfiguration
     }
 }
