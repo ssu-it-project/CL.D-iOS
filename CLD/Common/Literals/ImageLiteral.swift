@@ -14,6 +14,10 @@ enum ImageLiteral {
     // static var exIcon: UIImage { .load(name: "tabBarIcon") }
     
     //MARK: - logo icon
+    static var cldLogo: UIImage { .load(named: "cldLogo") }
+    static var kakaoLogo: UIImage { .load(named: "kakaoLogo") }
+    static var appleLogo: UIImage { .load(named: "appleLogo") }
+    static var instaLogo: UIImage { .load(named: "instaLogo") }
 
 }
 

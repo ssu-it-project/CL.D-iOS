@@ -6,49 +6,41 @@
 //
 
 import UIKit
+
 import SnapKit
 
-final class SplashViewController: UIViewController {
-
+final class SplashViewController: BaseViewController {
+    
     private let logoImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = UIImage(named: "cldLogo")
+        imageView.image = ImageLiteral.cldLogo
         imageView.contentMode = .scaleAspectFit
         return imageView
     }()
-
-    init() {
-        super.init(nibName: nil, bundle: nil)
-        setProperties()
-        setLayouts()
-    }
-
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        //makeAnitmation()
-    }
-
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-
-    private func makeAnitmation() {
-        UIView.animate(withDuration: 4) {
-            self.logoImageView.alpha = 0
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1) {
+            let navigationController = UINavigationController(rootViewController: AuthViewController())
+            let sceneDelegate = UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate
+            guard let delegate = sceneDelegate else {
+                print("sceneDelegate가 할당 Error")
+                return
+            }
+            delegate.window?.rootViewController = navigationController
         }
     }
-
-    private func setProperties() {
-        view.backgroundColor = .white
+    
+    override func setHierarchy() {
+        self.view.addSubview(logoImageView)
     }
-
-    private func setLayouts() {
-        view.addSubview(logoImageView)
+    
+    internal override func setConstraints() {
         logoImageView.snp.makeConstraints {
-            $0.leading.equalToSuperview().inset(148)
-            $0.height.equalTo(95)
-            $0.width.equalTo(78)
+            $0.size.equalTo(CGSize(width: 78, height: 95))
             $0.top.equalToSuperview().inset(323)
+            $0.centerX.equalToSuperview()
         }
     }
 }
