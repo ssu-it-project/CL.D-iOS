@@ -7,6 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		026BC4762A680FC000F49B87 /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 026BC4752A680FC000F49B87 /* AuthViewController.swift */; };
+		026BC4782A680FE900F49B87 /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 026BC4772A680FE900F49B87 /* SignInView.swift */; };
+		026BC4862A6847BF00F49B87 /* Roboto-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 026BC47A2A6847BE00F49B87 /* Roboto-Bold.ttf */; };
+		026BC4892A6847BF00F49B87 /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 026BC47D2A6847BF00F49B87 /* Roboto-Regular.ttf */; };
+		026BC48D2A6847BF00F49B87 /* Roboto-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 026BC4812A6847BF00F49B87 /* Roboto-Thin.ttf */; };
+		026BC48E2A6847BF00F49B87 /* Roboto-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 026BC4822A6847BF00F49B87 /* Roboto-Medium.ttf */; };
+		026BC48F2A6847BF00F49B87 /* Roboto-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 026BC4832A6847BF00F49B87 /* Roboto-Black.ttf */; };
+		026BC4912A6847BF00F49B87 /* Roboto-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 026BC4852A6847BF00F49B87 /* Roboto-Light.ttf */; };
+		026BC4942A69102F00F49B87 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 026BC4932A69102F00F49B87 /* SplashViewController.swift */; };
 		5A0871112A65A7DD00947794 /* Moya in Frameworks */ = {isa = PBXBuildFile; productRef = 5A0871102A65A7DD00947794 /* Moya */; };
 		5A0871132A65A7DD00947794 /* ReactiveMoya in Frameworks */ = {isa = PBXBuildFile; productRef = 5A0871122A65A7DD00947794 /* ReactiveMoya */; };
 		5A0871152A65A7DD00947794 /* RxMoya in Frameworks */ = {isa = PBXBuildFile; productRef = 5A0871142A65A7DD00947794 /* RxMoya */; };
@@ -57,6 +66,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		026BC4752A680FC000F49B87 /* AuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewController.swift; sourceTree = "<group>"; };
+		026BC4772A680FE900F49B87 /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
+		026BC47A2A6847BE00F49B87 /* Roboto-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Bold.ttf"; sourceTree = "<group>"; };
+		026BC47D2A6847BF00F49B87 /* Roboto-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Regular.ttf"; sourceTree = "<group>"; };
+		026BC4812A6847BF00F49B87 /* Roboto-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Thin.ttf"; sourceTree = "<group>"; };
+		026BC4822A6847BF00F49B87 /* Roboto-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Medium.ttf"; sourceTree = "<group>"; };
+		026BC4832A6847BF00F49B87 /* Roboto-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Black.ttf"; sourceTree = "<group>"; };
+		026BC4852A6847BF00F49B87 /* Roboto-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Light.ttf"; sourceTree = "<group>"; };
+		026BC4932A69102F00F49B87 /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
 		5ACADCF62A5D988F00B92C07 /* CLD.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CLD.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5ACADCF92A5D988F00B92C07 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5ACADCFB2A5D988F00B92C07 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -134,6 +152,60 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		026BC4712A680D9200F49B87 /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				026BC4722A680DC000F49B87 /* View */,
+				026BC4742A680EDC00F49B87 /* ViewController */,
+				026BC4732A680DC700F49B87 /* ViewModel */,
+			);
+			path = Auth;
+			sourceTree = "<group>";
+		};
+		026BC4722A680DC000F49B87 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				026BC4772A680FE900F49B87 /* SignInView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		026BC4732A680DC700F49B87 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		026BC4742A680EDC00F49B87 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				026BC4752A680FC000F49B87 /* AuthViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		026BC4792A68475900F49B87 /* Font */ = {
+			isa = PBXGroup;
+			children = (
+				026BC4832A6847BF00F49B87 /* Roboto-Black.ttf */,
+				026BC47A2A6847BE00F49B87 /* Roboto-Bold.ttf */,
+				026BC4852A6847BF00F49B87 /* Roboto-Light.ttf */,
+				026BC4822A6847BF00F49B87 /* Roboto-Medium.ttf */,
+				026BC47D2A6847BF00F49B87 /* Roboto-Regular.ttf */,
+				026BC4812A6847BF00F49B87 /* Roboto-Thin.ttf */,
+			);
+			path = Font;
+			sourceTree = "<group>";
+		};
+		026BC4922A69101700F49B87 /* Splash */ = {
+			isa = PBXGroup;
+			children = (
+				026BC4932A69102F00F49B87 /* SplashViewController.swift */,
+			);
+			path = Splash;
+			sourceTree = "<group>";
+		};
 		5ACADCED2A5D988F00B92C07 = {
 			isa = PBXGroup;
 			children = (
@@ -187,6 +259,8 @@
 			isa = PBXGroup;
 			children = (
 				5ADED1C82A6806DD00C0CBF4 /* TabBar */,
+				026BC4922A69101700F49B87 /* Splash */,
+				026BC4712A680D9200F49B87 /* Auth */,
 				5ACADD572A658F0D00B92C07 /* Home */,
 				5ACADD582A658F1300B92C07 /* CragSearch */,
 				5ACADD5B2A65909D00B92C07 /* Record */,
@@ -260,6 +334,7 @@
 		5ACADD462A6583D400B92C07 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				026BC4792A68475900F49B87 /* Font */,
 				5ACADD022A5D989300B92C07 /* Assets.xcassets */,
 				5ACADD042A5D989300B92C07 /* LaunchScreen.storyboard */,
 			);
@@ -637,8 +712,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				026BC4892A6847BF00F49B87 /* Roboto-Regular.ttf in Resources */,
 				5ACADD062A5D989300B92C07 /* LaunchScreen.storyboard in Resources */,
+				026BC4912A6847BF00F49B87 /* Roboto-Light.ttf in Resources */,
 				5ACADD032A5D989300B92C07 /* Assets.xcassets in Resources */,
+				026BC48E2A6847BF00F49B87 /* Roboto-Medium.ttf in Resources */,
+				026BC48D2A6847BF00F49B87 /* Roboto-Thin.ttf in Resources */,
+				026BC4862A6847BF00F49B87 /* Roboto-Bold.ttf in Resources */,
+				026BC48F2A6847BF00F49B87 /* Roboto-Black.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -672,8 +753,13 @@
 				5ADED1BF2A679FB100C0CBF4 /* UIImage+Extension.swift in Sources */,
 				5ADED1BD2A679B6A00C0CBF4 /* UIColor+Extension.swift in Sources */,
 				5ADED1CC2A682B6300C0CBF4 /* TabBarItem.swift in Sources */,
+				026BC4942A69102F00F49B87 /* SplashViewController.swift in Sources */,
+				5ADED1BF2A679FB100C0CBF4 /* UIImage+Extension.swift in Sources */,
+				5ADED1BD2A679B6A00C0CBF4 /* UIColor+Extension.swift in Sources */,
+				026BC4782A680FE900F49B87 /* SignInView.swift in Sources */,
 				5ACADCFA2A5D988F00B92C07 /* AppDelegate.swift in Sources */,
 				5ADED1C32A67A1B300C0CBF4 /* ViewModelType.swift in Sources */,
+				026BC4762A680FC000F49B87 /* AuthViewController.swift in Sources */,
 				5ADED1C12A67A06F00C0CBF4 /* ImageLiteral.swift in Sources */,
 				5ADED1AB2A66ACC500C0CBF4 /* UITextField+Extension.swift in Sources */,
 				5ADED1BB2A67929500C0CBF4 /* BaseViewController.swift in Sources */,
