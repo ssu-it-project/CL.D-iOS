@@ -11,7 +11,11 @@ enum ImageLiteral {
     
     // MARK: - tab bar icon
     
-    // static var exIcon: UIImage { .load(name: "tabBarIcon") }
+    static var homeIcon: UIImage { .load(named: "homeIcon") }
+    static var searchIcon: UIImage { .load(named: "searchIcon") }
+    static var recordIcon: UIImage { .load(named: "recordIcon") }
+    static var communityIcon: UIImage { .load(named: "communityIcon") }
+    static var myPageIcon: UIImage { .load(named: "myPageIcon") }
     
     //MARK: - logo icon
     static var cldLogo: UIImage { .load(named: "cldLogo") }
