@@ -20,7 +20,7 @@ final class AuthViewController: BaseViewController {
         self.view.addSubview(signView)
     }
     
-    internal override func setConstraints() {
+    override func setConstraints() {
         signView.snp.makeConstraints {
             $0.edges.equalToSuperview()
         }

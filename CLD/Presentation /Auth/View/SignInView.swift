@@ -69,11 +69,11 @@ final class SignView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    private func setHierarchy() {
+    func setHierarchy() {
         addSubviews(cldLogo, kakaoButton, appleButton, instaButton)
     }
     
-    internal func setConstraints() {
+    func setConstraints() {
         cldLogo.snp.makeConstraints {
             $0.top.equalToSuperview().inset(211)
             $0.height.equalTo(95)
@@ -100,7 +100,7 @@ final class SignView: UIView {
         }
     }
     
-    internal func setButtonConfig() {
+    func setButtonConfig() {
         var buttonConfiguration = UIButton.Configuration.plain()
         buttonConfiguration.imagePadding = 7
         buttonConfiguration.baseForegroundColor = .black
