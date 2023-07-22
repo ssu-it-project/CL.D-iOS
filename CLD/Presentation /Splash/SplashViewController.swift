@@ -36,7 +36,7 @@ final class SplashViewController: BaseViewController {
         self.view.addSubview(logoImageView)
     }
     
-    internal override func setConstraints() {
+    override func setConstraints() {
         logoImageView.snp.makeConstraints {
             $0.size.equalTo(CGSize(width: 78, height: 95))
             $0.top.equalToSuperview().inset(323)
