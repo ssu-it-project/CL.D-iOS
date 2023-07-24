@@ -8,12 +8,17 @@
 import UIKit
 
 import SnapKit
+import RxSwift
+import RxCocoa
+import KakaoSDKUser
 
 final class AuthViewController: BaseViewController {
     let signView = SignView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        buttonTap()
     }
     
     override func setHierarchy() {
@@ -25,4 +30,55 @@ final class AuthViewController: BaseViewController {
             $0.edges.equalToSuperview()
         }
     }
+    
+    private func buttonTap() {
+        signView.kakaoButton.rx.tap
+            .bind {
+                print("kakaoButton 클릭")
+                self.signInKakao()
+         }.disposed(by: disposeBag)
+        signView.appleButton.rx.tap
+            .bind {
+                print("appleButton 클릭")
+         }.disposed(by: disposeBag)
+        signView.instaButton.rx.tap
+            .bind {
+                print("instaButton 클릭")
+         }.disposed(by: disposeBag)
+    }
+    
+    private func signInKakao() {
+        // isKakaoTalkLoginAvailable() : 카톡 설치 되어있으면 true
+        if (UserApi.isKakaoTalkLoginAvailable()) {
+            //카톡 설치되어있으면 -> 카톡으로 로그인
+            UserApi.shared.loginWithKakaoTalk {(oauthToken, error) in
+                if let error = error {
+                    print(error)
+                } else {
+                    print("카카오 톡으로 로그인 성공")
+                    
+                    guard let authInfo = oauthToken else { return }
+                    let sceneDelegate = UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate
+                    sceneDelegate?.changeRootView()
+                    print("== Kakao Login \(authInfo)")
+                }
+            }
+        } else {
+            // 카톡 없으면 -> 계정으로 로그인
+            UserApi.shared.loginWithKakaoAccount { (oauthToken, error) in
+                if let error = error {
+                    print(error)
+                } else {
+                    print("카카오 계정으로 로그인 성공")
+                    
+                    guard let authInfo = oauthToken else { return }
+                    let sceneDelegate = UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate
+                    sceneDelegate?.changeRootView()
+                    print("== Kakao Login \(authInfo)")
+                    
+                }
+            }
+        }
+    }
+    
 }

@@ -15,7 +15,7 @@ final class SignView: UIView {
         imageView.image = ImageLiteral.cldLogo
         return imageView
     }()
-    private let kakaoButton: UIButton = {
+    let kakaoButton: UIButton = {
         let button = UIButton()
         button.titleLabel?.adjustsFontForContentSizeCategory = true
         button.backgroundColor = UIColor(red: 1, green: 1, blue: 1, alpha: 1)
@@ -29,7 +29,7 @@ final class SignView: UIView {
         
         return button
     }()
-    private let appleButton: UIButton = {
+    let appleButton: UIButton = {
         let button = UIButton()
         button.titleLabel?.adjustsFontForContentSizeCategory = true
         button.backgroundColor = UIColor(red: 1, green: 1, blue: 1, alpha: 1)
@@ -43,7 +43,7 @@ final class SignView: UIView {
         
         return button
     }()
-    private let instaButton: UIButton = {
+    let instaButton: UIButton = {
         let button = UIButton()
         button.titleLabel?.adjustsFontForContentSizeCategory = true
         button.backgroundColor = UIColor(red: 1, green: 1, blue: 1, alpha: 1)
