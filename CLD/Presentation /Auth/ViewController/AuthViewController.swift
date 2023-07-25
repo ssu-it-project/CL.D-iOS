@@ -11,6 +11,7 @@ import SnapKit
 import RxSwift
 import RxCocoa
 import KakaoSDKUser
+import FBSDKLoginKit
 
 final class AuthViewController: BaseViewController {
     let signView = SignView()
@@ -34,17 +35,18 @@ final class AuthViewController: BaseViewController {
     private func buttonTap() {
         signView.kakaoButton.rx.tap
             .bind {
-                print("kakaoButton 클릭")
                 self.signInKakao()
          }.disposed(by: disposeBag)
+        
         signView.appleButton.rx.tap
             .bind {
                 print("appleButton 클릭")
          }.disposed(by: disposeBag)
+        
         signView.instaButton.rx.tap
             .bind {
-                print("instaButton 클릭")
-         }.disposed(by: disposeBag)
+                self.loginButton()
+            }.disposed(by: disposeBag)
     }
     
     private func signInKakao() {
@@ -75,10 +77,27 @@ final class AuthViewController: BaseViewController {
                     let sceneDelegate = UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate
                     sceneDelegate?.changeRootView()
                     print("== Kakao Login \(authInfo)")
-                    
                 }
             }
         }
     }
     
+    func loginButton() {
+            let loginManager = LoginManager()
+            loginManager.logIn(permissions: ["public_profile"], from: self) { result, error in
+                if let error = error {
+                    print("Encountered Erorr: \(error)")
+                } else {
+                    if let result = result {
+                        print("페이스북 계정으로 로그인 성공")
+                        let tokenString = result.token?.tokenString
+                        let userID = result.token?.userID
+                        print("token: \(userID)")
+                        
+                        let sceneDelegate = UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate
+                        sceneDelegate?.changeRootView()
+                    }
+                }
+            }
+        }
 }
