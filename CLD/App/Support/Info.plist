@@ -9,19 +9,19 @@
 			<string>Editor</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>kakao99dea25ffa8a55618b54602a20b20e0b</string>
-                <string>fb2539854236193055</string>
+<!--				<string></string>-->
+<!--                <string></string>-->
 			</array>
         </dict>
         <dict>
             <key>CFBundleURLSchemes</key>
             <array>
-                <string>fb2539854236193055</string>
+<!--                <string></string>-->
             </array>
             <key>FacebookAppID</key>
-            <string>2539854236193055</string>
+<!--            <string></string>-->
             <key>FacebookClientToken</key>
-            <string>9da02a965c1aace18a73acbfc88bf505</string>
+<!--            <string></string>-->
             <key>FacebookDisplayName</key>
             <string>CLD</string>
 		</dict>
