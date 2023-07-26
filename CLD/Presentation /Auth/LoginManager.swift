@@ -1,5 +1,5 @@
 //
-//  AuthUseCase.swift
+//  LoginManager.swift
 //  CLD
 //
 //  Created by 이조은 on 2023/07/25.
@@ -8,7 +8,7 @@
 import KakaoSDKUser
 import FBSDKLoginKit
 
-class AuthUseCase {
+class SNSLoginManager {
     func KakaoSignin() {
         // isKakaoTalkLoginAvailable() : 카톡 설치 되어있으면 true
         if (UserApi.isKakaoTalkLoginAvailable()) {

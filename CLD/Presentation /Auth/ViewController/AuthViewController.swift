@@ -13,7 +13,7 @@ import RxCocoa
 
 final class AuthViewController: BaseViewController {
     let signView = SignView()
-    private var AuthUseCase: AuthUseCase = CLD.AuthUseCase()
+    private var loginManager: SNSLoginManager = CLD.SNSLoginManager()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,7 +34,7 @@ final class AuthViewController: BaseViewController {
     private func buttonTap() {
         signView.kakaoButton.rx.tap
             .bind {
-                self.AuthUseCase.KakaoSignin()
+                self.loginManager.KakaoSignin()
          }.disposed(by: disposeBag)
         
         signView.appleButton.rx.tap
@@ -44,7 +44,7 @@ final class AuthViewController: BaseViewController {
         
         signView.instaButton.rx.tap
             .bind {
-                self.AuthUseCase.FBSignin(AuthViewController())
+                self.loginManager.FBSignin(AuthViewController())
             }.disposed(by: disposeBag)
     }
 }

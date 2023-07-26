@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		023868C32A70009B0006C762 /* AuthUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 023868C22A70009B0006C762 /* AuthUseCase.swift */; };
+		023868C32A70009B0006C762 /* LoginManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 023868C22A70009B0006C762 /* LoginManager.swift */; };
 		0241775A2A6E5DA7006C3C4D /* KakaoSDKAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 024177592A6E5DA7006C3C4D /* KakaoSDKAuth */; };
 		0241775C2A6E5DA7006C3C4D /* KakaoSDKCommon in Frameworks */ = {isa = PBXBuildFile; productRef = 0241775B2A6E5DA7006C3C4D /* KakaoSDKCommon */; };
 		0241775E2A6E5DA7006C3C4D /* KakaoSDKUser in Frameworks */ = {isa = PBXBuildFile; productRef = 0241775D2A6E5DA7006C3C4D /* KakaoSDKUser */; };
@@ -75,7 +75,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		023868C22A70009B0006C762 /* AuthUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthUseCase.swift; sourceTree = "<group>"; };
+		023868C22A70009B0006C762 /* LoginManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginManager.swift; sourceTree = "<group>"; };
 		026BC4752A680FC000F49B87 /* AuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewController.swift; sourceTree = "<group>"; };
 		026BC4772A680FE900F49B87 /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
 		026BC47A2A6847BE00F49B87 /* Roboto-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Bold.ttf"; sourceTree = "<group>"; };
@@ -176,7 +176,7 @@
 				026BC4722A680DC000F49B87 /* View */,
 				026BC4742A680EDC00F49B87 /* ViewController */,
 				026BC4732A680DC700F49B87 /* ViewModel */,
-				023868C22A70009B0006C762 /* AuthUseCase.swift */,
+				023868C22A70009B0006C762 /* LoginManager.swift */,
 			);
 			path = Auth;
 			sourceTree = "<group>";
@@ -781,7 +781,7 @@
 				5ADED1CA2A68071E00C0CBF4 /* TabBarController.swift in Sources */,
 				5ADED1D22A6838C400C0CBF4 /* CommunityViewController.swift in Sources */,
 				5ADED1BF2A679FB100C0CBF4 /* UIImage+Extension.swift in Sources */,
-				023868C32A70009B0006C762 /* AuthUseCase.swift in Sources */,
+				023868C32A70009B0006C762 /* LoginManager.swift in Sources */,
 				5ADED1BD2A679B6A00C0CBF4 /* UIColor+Extension.swift in Sources */,
 				5ADED1CC2A682B6300C0CBF4 /* TabBarItem.swift in Sources */,
 				026BC4942A69102F00F49B87 /* SplashViewController.swift in Sources */,
