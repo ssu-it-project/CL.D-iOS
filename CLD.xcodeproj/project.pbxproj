@@ -30,6 +30,10 @@
 		5A0871152A65A7DD00947794 /* RxMoya in Frameworks */ = {isa = PBXBuildFile; productRef = 5A0871142A65A7DD00947794 /* RxMoya */; };
 		5A0871182A65A80100947794 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 5A0871172A65A80100947794 /* SnapKit */; };
 		5A08711B2A65A85700947794 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 5A08711A2A65A85700947794 /* Kingfisher */; };
+		5A1C48882A76813300CC345A /* HomeSectionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A1C48872A76813300CC345A /* HomeSectionType.swift */; };
+		5A1C488A2A7687FB00CC345A /* CGSize+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A1C48892A7687FB00CC345A /* CGSize+Extension.swift */; };
+		5A1C488D2A76C49200CC345A /* BadgeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A1C488C2A76C49200CC345A /* BadgeCollectionViewCell.swift */; };
+		5A1C488F2A76CC9C00CC345A /* VideoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A1C488E2A76CC9C00CC345A /* VideoCollectionViewCell.swift */; };
 		5ACADCFA2A5D988F00B92C07 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ACADCF92A5D988F00B92C07 /* AppDelegate.swift */; };
 		5ACADCFC2A5D988F00B92C07 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ACADCFB2A5D988F00B92C07 /* SceneDelegate.swift */; };
 		5ACADD032A5D989300B92C07 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5ACADD022A5D989300B92C07 /* Assets.xcassets */; };
@@ -85,6 +89,10 @@
 		026BC4832A6847BF00F49B87 /* Roboto-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Black.ttf"; sourceTree = "<group>"; };
 		026BC4852A6847BF00F49B87 /* Roboto-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Light.ttf"; sourceTree = "<group>"; };
 		026BC4932A69102F00F49B87 /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
+		5A1C48872A76813300CC345A /* HomeSectionType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeSectionType.swift; sourceTree = "<group>"; };
+		5A1C48892A7687FB00CC345A /* CGSize+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGSize+Extension.swift"; sourceTree = "<group>"; };
+		5A1C488C2A76C49200CC345A /* BadgeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BadgeCollectionViewCell.swift; sourceTree = "<group>"; };
+		5A1C488E2A76CC9C00CC345A /* VideoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoCollectionViewCell.swift; sourceTree = "<group>"; };
 		5ACADCF62A5D988F00B92C07 /* CLD.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CLD.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5ACADCF92A5D988F00B92C07 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5ACADCFB2A5D988F00B92C07 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -225,6 +233,23 @@
 			path = Splash;
 			sourceTree = "<group>";
 		};
+		5A1C48862A76811600CC345A /* Enum */ = {
+			isa = PBXGroup;
+			children = (
+				5A1C48872A76813300CC345A /* HomeSectionType.swift */,
+			);
+			path = Enum;
+			sourceTree = "<group>";
+		};
+		5A1C488B2A76C47700CC345A /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				5A1C488C2A76C49200CC345A /* BadgeCollectionViewCell.swift */,
+				5A1C488E2A76CC9C00CC345A /* VideoCollectionViewCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
 		5ACADCED2A5D988F00B92C07 = {
 			isa = PBXGroup;
 			children = (
@@ -322,6 +347,7 @@
 		5ACADD432A6581FD00B92C07 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				5A1C48862A76811600CC345A /* Enum */,
 				5ACADD4A2A65874900B92C07 /* Base */,
 				5ACADD482A6586B900B92C07 /* Extensions */,
 				5ACADD492A6586E000B92C07 /* Components */,
@@ -379,6 +405,7 @@
 				5ADED1B82A678E9C00C0CBF4 /* UILabel+Extension.swift */,
 				5ADED1BC2A679B6A00C0CBF4 /* UIColor+Extension.swift */,
 				5ADED1BE2A679FB100C0CBF4 /* UIImage+Extension.swift */,
+				5A1C48892A7687FB00CC345A /* CGSize+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -529,6 +556,7 @@
 		5ACADD5E2A65921300B92C07 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				5A1C488B2A76C47700CC345A /* Cell */,
 				5ACADD5C2A65919400B92C07 /* HomeViewController.swift */,
 			);
 			path = View;
@@ -777,20 +805,24 @@
 				5ADED1AF2A66AEAD00C0CBF4 /* UICollectionView+Extension.swift in Sources */,
 				5ADED1B12A66AFF700C0CBF4 /* UIStackView+Extension.swift in Sources */,
 				5ADED1B72A67793F00C0CBF4 /* UIView+Extension.swift in Sources */,
+				5A1C48882A76813300CC345A /* HomeSectionType.swift in Sources */,
 				5ADED1D02A6838AD00C0CBF4 /* RecordViewController.swift in Sources */,
 				5ADED1CA2A68071E00C0CBF4 /* TabBarController.swift in Sources */,
 				5ADED1D22A6838C400C0CBF4 /* CommunityViewController.swift in Sources */,
 				5ADED1BF2A679FB100C0CBF4 /* UIImage+Extension.swift in Sources */,
 				023868C32A70009B0006C762 /* LoginManager.swift in Sources */,
 				5ADED1BD2A679B6A00C0CBF4 /* UIColor+Extension.swift in Sources */,
+				5A1C488A2A7687FB00CC345A /* CGSize+Extension.swift in Sources */,
 				5ADED1CC2A682B6300C0CBF4 /* TabBarItem.swift in Sources */,
 				026BC4942A69102F00F49B87 /* SplashViewController.swift in Sources */,
 				026BC4782A680FE900F49B87 /* SignInView.swift in Sources */,
+				5A1C488F2A76CC9C00CC345A /* VideoCollectionViewCell.swift in Sources */,
 				5ACADCFA2A5D988F00B92C07 /* AppDelegate.swift in Sources */,
 				5ADED1C32A67A1B300C0CBF4 /* ViewModelType.swift in Sources */,
 				026BC4762A680FC000F49B87 /* AuthViewController.swift in Sources */,
 				5ADED1C12A67A06F00C0CBF4 /* ImageLiteral.swift in Sources */,
 				5ADED1AB2A66ACC500C0CBF4 /* UITextField+Extension.swift in Sources */,
+				5A1C488D2A76C49200CC345A /* BadgeCollectionViewCell.swift in Sources */,
 				5ADED1BB2A67929500C0CBF4 /* BaseViewController.swift in Sources */,
 				5ACADCFC2A5D988F00B92C07 /* SceneDelegate.swift in Sources */,
 				5ADED1D42A6838D300C0CBF4 /* MyPageViewController.swift in Sources */,
