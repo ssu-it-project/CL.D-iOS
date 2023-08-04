@@ -43,6 +43,50 @@ extension UIColor {
     static var CLDBlack: UIColor {
         return UIColor(hex: "#000000")
     }
+    
+    static var ChipWhite: UIColor {
+        return UIColor(hex: "#F5F5F5")
+    }
+    
+    static var ChipGray: UIColor {
+        return UIColor(hex: "#D9D9D9")
+    }
+    
+    static var ChipBlack: UIColor {
+        return UIColor(hex: "#474747")
+    }
+    
+    static var ChipBlue: UIColor {
+        return UIColor(hex: "#5CABF4")
+    }
+    
+    static var ChipRed: UIColor {
+        return UIColor(hex: "#C34F4F")
+    }
+    
+    static var ChipBrown: UIColor {
+        return UIColor(hex: "#A46C54")
+    }
+    
+    static var ChipPink: UIColor {
+        return UIColor(hex: "#FFA9C8")
+    }
+    
+    static var ChipGreen: UIColor {
+        return UIColor(hex: "#91BA5C")
+    }
+    
+    static var ChipPurple: UIColor {
+        return UIColor(hex: "#A877F7")
+    }
+    
+    static var ChipOrange: UIColor {
+        return UIColor(hex: "#E69255")
+    }
+    
+    static var ChipYellow: UIColor {
+        return UIColor(hex: "#F0D575")
+    }
 }
 
 extension UIColor {

@@ -55,8 +55,7 @@ final class SelectListView: UIView {
         }
         dotDivider.snp.makeConstraints {
             $0.top.equalTo(selectCollectionView.snp.bottom).offset(15)
-            $0.leading.equalToSuperview().inset(17)
-            $0.trailing.equalToSuperview().inset(22)
+            $0.leading.trailing.equalToSuperview().inset(17)
             $0.height.equalTo(1)
         }
     }

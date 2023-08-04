@@ -32,8 +32,6 @@ class RecordViewController: BaseViewController {
     }()
     
     @objc private func nextView () {
-        print(selectListViewIndex)
-        collectionView(selectListView.selectCollectionView, didSelectItemAt: IndexPath(item: selectListViewIndex+1, section: 0))
         collectionView(selectListView.selectCollectionView, didSelectItemAt: IndexPath(item: selectListViewIndex+1, section: 0))
     }
     @objc private func keyboardWillShow(_ notification: Notification) {
@@ -70,7 +68,7 @@ class RecordViewController: BaseViewController {
     }
     
     override func setHierarchy() {
-        self.view.addSubviews(selectListView,selectPlaceView,selectSectorView,nextButton)
+        self.view.addSubviews(selectListView,selectPlaceView,selectSectorView,selectColorView,nextButton)
     }
     
     override func setConstraints() {
@@ -89,13 +87,12 @@ class RecordViewController: BaseViewController {
             $0.leading.trailing.equalToSuperview()
             $0.height.equalTo(35)
         }
-        //        selectColorView.snp.makeConstraints {
-        //            $0.top.equalTo(selectListView.snp.bottom).offset(8)
-        //            $0.leading.trailing.equalToSuperview()
-        //            $0.bottom.equalToSuperview().inset(5)
-        //        }
+        selectColorView.snp.makeConstraints {
+            $0.top.equalTo(selectListView.snp.bottom).offset(8)
+            $0.bottom.leading.trailing.equalToSuperview()
+        }
         nextButton.snp.makeConstraints {
-            $0.bottom.equalToSuperview().inset(72)
+            $0.bottom.equalToSuperview().inset(52)
             $0.height.equalTo(20)
             $0.centerX.equalToSuperview()
         }
@@ -136,6 +133,7 @@ extension RecordViewController : UICollectionViewDelegate, UICollectionViewDeleg
         if (indexPath.row == 0) {
             selectPlaceView.isHidden = false
             selectSectorView.isHidden = true
+            selectColorView.isHidden = true
         } else if (indexPath.row == 1) {
             selectPlaceView.isHidden = true
             selectSectorView.isHidden = false
@@ -146,6 +144,8 @@ extension RecordViewController : UICollectionViewDelegate, UICollectionViewDeleg
             selectColorView.isHidden = false
         } else if (indexPath.row == 3) {
             selectPlaceView.isHidden = true
+            selectSectorView.isHidden = true
+            selectColorView.isHidden = true
         }
     }
 }
