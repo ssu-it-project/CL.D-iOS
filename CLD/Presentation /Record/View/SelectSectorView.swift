@@ -20,7 +20,7 @@ final class SelectSectorView: UIView {
     }()
     private let underLine: CALayer = {
         let border = CALayer()
-        border.frame = CGRect(x: 0, y: 30, width: 337, height: 1)
+        border.frame = CGRect(x: 0, y: 30, width: 312, height: 1)
         border.backgroundColor = UIColor.CLDGold.cgColor
         return border
     }()
@@ -46,7 +46,7 @@ final class SelectSectorView: UIView {
         sectorTextField.snp.makeConstraints {
             $0.top.equalToSuperview()
             $0.leading.equalToSuperview().inset(25)
-            $0.trailing.equalToSuperview().inset(39)
+            $0.width.equalTo(312)
             $0.height.equalTo(31)
         }
     }

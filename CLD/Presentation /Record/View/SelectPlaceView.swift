@@ -29,7 +29,7 @@ final class SelectPlaceView: UIView {
     }()
     private let underLine: CALayer = {
         let border = CALayer()
-        border.frame = CGRect(x: 0, y: 30, width: 337, height: 1)
+        border.frame = CGRect(x: 0, y: 30, width: 312, height: 1)
         border.backgroundColor = UIColor.CLDGold.cgColor
         return border
     }()
@@ -57,7 +57,7 @@ final class SelectPlaceView: UIView {
         searchTextField.snp.makeConstraints {
             $0.top.equalToSuperview()
             $0.leading.equalToSuperview().inset(25)
-            $0.width.equalTo(337)
+            $0.width.equalTo(312)
             $0.height.equalTo(31)
         }
     }
