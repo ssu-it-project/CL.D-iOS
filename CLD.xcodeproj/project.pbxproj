@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		020F65492A7B72050036CFB1 /* SelectListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020F65482A7B72050036CFB1 /* SelectListView.swift */; };
+		020F65512A7D045B0036CFB1 /* SelectVideoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020F65502A7D045B0036CFB1 /* SelectVideoCell.swift */; };
+		020F65532A7D09450036CFB1 /* SelectVideoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020F65522A7D09450036CFB1 /* SelectVideoView.swift */; };
 		023868C32A70009B0006C762 /* LoginManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 023868C22A70009B0006C762 /* LoginManager.swift */; };
 		023F37822A783C1F007B0511 /* SelectSectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 023F37812A783C1F007B0511 /* SelectSectorView.swift */; };
 		0241775A2A6E5DA7006C3C4D /* KakaoSDKAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 024177592A6E5DA7006C3C4D /* KakaoSDKAuth */; };
@@ -82,6 +84,8 @@
 
 /* Begin PBXFileReference section */
 		020F65482A7B72050036CFB1 /* SelectListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectListView.swift; sourceTree = "<group>"; };
+		020F65502A7D045B0036CFB1 /* SelectVideoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectVideoCell.swift; sourceTree = "<group>"; };
+		020F65522A7D09450036CFB1 /* SelectVideoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectVideoView.swift; sourceTree = "<group>"; };
 		023868C22A70009B0006C762 /* LoginManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginManager.swift; sourceTree = "<group>"; };
 		023F37812A783C1F007B0511 /* SelectSectorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectSectorView.swift; sourceTree = "<group>"; };
 		026BC4752A680FC000F49B87 /* AuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewController.swift; sourceTree = "<group>"; };
@@ -588,6 +592,8 @@
 				0281723B2A793A670089FD51 /* SelectColorView.swift */,
 				0281723D2A793B900089FD51 /* SelectColorCell.swift */,
 				020F65482A7B72050036CFB1 /* SelectListView.swift */,
+				020F65502A7D045B0036CFB1 /* SelectVideoCell.swift */,
+				020F65522A7D09450036CFB1 /* SelectVideoView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -794,6 +800,7 @@
 			files = (
 				02DC9AC52A75789800F8989E /* SelectListCell.swift in Sources */,
 				5ADED1AF2A66AEAD00C0CBF4 /* UICollectionView+Extension.swift in Sources */,
+				020F65532A7D09450036CFB1 /* SelectVideoView.swift in Sources */,
 				0281723E2A793B900089FD51 /* SelectColorCell.swift in Sources */,
 				020F65492A7B72050036CFB1 /* SelectListView.swift in Sources */,
 				5ADED1B12A66AFF700C0CBF4 /* UIStackView+Extension.swift in Sources */,
@@ -814,6 +821,7 @@
 				026BC4762A680FC000F49B87 /* AuthViewController.swift in Sources */,
 				5ADED1C12A67A06F00C0CBF4 /* ImageLiteral.swift in Sources */,
 				5ADED1AB2A66ACC500C0CBF4 /* UITextField+Extension.swift in Sources */,
+				020F65512A7D045B0036CFB1 /* SelectVideoCell.swift in Sources */,
 				5ADED1BB2A67929500C0CBF4 /* BaseViewController.swift in Sources */,
 				5ACADCFC2A5D988F00B92C07 /* SceneDelegate.swift in Sources */,
 				5ADED1D42A6838D300C0CBF4 /* MyPageViewController.swift in Sources */,
