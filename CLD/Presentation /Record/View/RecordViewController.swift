@@ -16,6 +16,7 @@ class RecordViewController: BaseViewController {
     private let selectPlaceView = SelectPlaceView()
     private let selectSectorView = SelectSectorView()
     private let selectColorView = SelectColorView()
+    private let selectVideoView = SelectVideoView()
     
     private var selectListViewIndex = 0
     
@@ -68,7 +69,7 @@ class RecordViewController: BaseViewController {
     }
     
     override func setHierarchy() {
-        self.view.addSubviews(selectListView,selectPlaceView,selectSectorView,selectColorView,nextButton)
+        self.view.addSubviews(selectListView,selectPlaceView,selectSectorView,selectColorView,selectVideoView,nextButton)
     }
     
     override func setConstraints() {
@@ -88,6 +89,10 @@ class RecordViewController: BaseViewController {
             $0.height.equalTo(35)
         }
         selectColorView.snp.makeConstraints {
+            $0.top.equalTo(selectListView.snp.bottom).offset(8)
+            $0.bottom.leading.trailing.equalToSuperview()
+        }
+        selectVideoView.snp.makeConstraints {
             $0.top.equalTo(selectListView.snp.bottom).offset(8)
             $0.bottom.leading.trailing.equalToSuperview()
         }
@@ -112,6 +117,7 @@ extension RecordViewController : UICollectionViewDelegate, UICollectionViewDeleg
         cell.cellLabel.text = selectList[indexPath.row]
         selectSectorView.isHidden = true
         selectColorView.isHidden = true
+        selectVideoView.isHidden = true
         if (indexPath.row == 3) { cell.dividerLabel.text = "" }
         return cell
     }
@@ -134,18 +140,22 @@ extension RecordViewController : UICollectionViewDelegate, UICollectionViewDeleg
             selectPlaceView.isHidden = false
             selectSectorView.isHidden = true
             selectColorView.isHidden = true
+            selectVideoView.isHidden = true
         } else if (indexPath.row == 1) {
             selectPlaceView.isHidden = true
             selectSectorView.isHidden = false
             selectColorView.isHidden = true
+            selectVideoView.isHidden = true
         } else if (indexPath.row == 2) {
             selectPlaceView.isHidden = true
             selectSectorView.isHidden = true
             selectColorView.isHidden = false
+            selectVideoView.isHidden = true
         } else if (indexPath.row == 3) {
             selectPlaceView.isHidden = true
             selectSectorView.isHidden = true
             selectColorView.isHidden = true
+            selectVideoView.isHidden = false
         }
     }
 }

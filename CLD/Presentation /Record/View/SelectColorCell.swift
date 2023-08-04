@@ -42,9 +42,9 @@ final class SelectColorCell: UICollectionViewCell {
     override var isSelected: Bool {
         didSet {
             if isSelected {
-                backgroundRect.layer.backgroundColor = UIColor.CLDLightGray.cgColor
-            } else {
                 backgroundRect.layer.backgroundColor = UIColor.CLDLightYellow.cgColor
+            } else {
+                backgroundRect.layer.backgroundColor = UIColor.CLDLightGray.cgColor
             }
         }
     }
