@@ -12,6 +12,10 @@ extension UIColor {
         return UIColor(hex: "#E3B55F")
     }
     
+    static var CLDLightYellow: UIColor {
+        return UIColor(hex: "#F4E7B9")
+    }
+    
     static var CLDYellow: UIColor {
         return UIColor(hex: "#D9D9D9")
     }
@@ -24,8 +28,20 @@ extension UIColor {
         return UIColor(hex: "#D2D4D7")
     }
     
+    static var CLDLightGray: UIColor {
+        return UIColor(hex: "#F5F5F5")
+    }
+    
+    static var CLDMediumGray: UIColor {
+        return UIColor(hex: "#5C5C5C")
+    }
+    
     static var CLDDarkGray: UIColor {
         return UIColor(hex: "#8F9194")
+    }
+    
+    static var CLDBlack: UIColor {
+        return UIColor(hex: "#000000")
     }
 }
 

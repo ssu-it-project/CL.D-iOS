@@ -22,6 +22,7 @@ enum ImageLiteral {
     static var kakaoLogo: UIImage { .load(named: "kakaoLogo") }
     static var appleLogo: UIImage { .load(named: "appleLogo") }
     static var instaLogo: UIImage { .load(named: "instaLogo") }
+    static var dotDivider: UIImage { .load(named: "dotDivider") }
 
 }
 
