@@ -22,7 +22,6 @@ enum ImageLiteral {
     static var kakaoLogo: UIImage { .load(named: "kakaoLogo") }
     static var appleLogo: UIImage { .load(named: "appleLogo") }
     static var instaLogo: UIImage { .load(named: "instaLogo") }
-<<<<<<< HEAD
     
     //MARK: - Home
     static var commentIcon: UIImage { .load(named: "commentIcon") }
@@ -30,7 +29,6 @@ enum ImageLiteral {
     static var likeIcon: UIImage { .load(named: "likeIcon") }
     static var videoCellMenuIcon: UIImage { .load(named: "videoCellMenuIcon") }
     static var badgeInfoIcon: UIImage { .load(named: "badgeInfoIcon") }
-=======
     static var dotDivider: UIImage { .load(named: "dotDivider") }
     
     static var placeIcon: UIImage { .load(named: "placeIcon") }
@@ -40,8 +38,6 @@ enum ImageLiteral {
     //MARK: - test image
     static var videoThumbnail: UIImage { .load(named: "videoThumbnail") }
     static var thumbnailImage: UIImage { .load(named: "thumbnailImage")}
-
->>>>>>> #15
 }
 
 extension UIImage {
