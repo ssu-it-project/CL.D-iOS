@@ -42,9 +42,9 @@ class SNSLoginManager {
         }
     }
     
-    func FBSignin(_ AuthViewController: AuthViewController) {
+    func FBSignin(_ TabBarController: TabBarController) {
         let loginManager = LoginManager()
-        loginManager.logIn(permissions: ["public_profile"], from: AuthViewController) { result, error in
+        loginManager.logIn(permissions: ["public_profile"], from: TabBarController) { result, error in
             if let error = error {
                 print("Encountered Erorr: \(error)")
             } else {
