@@ -24,8 +24,13 @@ enum ImageLiteral {
     static var instaLogo: UIImage { .load(named: "instaLogo") }
     static var dotDivider: UIImage { .load(named: "dotDivider") }
     
+    static var placeIcon: UIImage { .load(named: "placeIcon") }
+    static var STIcon: UIImage { .load(named: "STIcon") }
+    static var VIcon: UIImage { .load(named: "VIcon") }
+    
     //MARK: - test image
     static var videoThumbnail: UIImage { .load(named: "videoThumbnail") }
+    static var thumbnailImage: UIImage { .load(named: "thumbnailImage")}
 
 }
 

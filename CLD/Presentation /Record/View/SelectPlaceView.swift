@@ -41,7 +41,7 @@ final class SelectPlaceView: UIView {
         setConstraints()
         
         searchTextField.addLeftPadding()
-        searchTextField.addLeftImage(image: ImageLiteral.searchIcon)
+        searchTextField.addLeftImageGray(image: ImageLiteral.searchIcon)
         
         searchTextField.layer.addSublayer((underLine))
     }
@@ -60,24 +60,5 @@ final class SelectPlaceView: UIView {
             $0.width.equalTo(312)
             $0.height.equalTo(31)
         }
-    }
-}
-
-extension UITextField {
-    func addLeftPadding() {
-        let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: 5, height: 31))
-        self.leftView = paddingView
-        self.leftViewMode = ViewMode.always
-    }
-    func addLeftImage(image: UIImage) {
-        let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: 25, height: 31))
-        let letfImage = UIImageView(frame:CGRect(x: 8, y: 9, width: 13, height: 13))
-        letfImage.image = image.resize(newWidth: CGFloat(13))
-        letfImage.image = letfImage.image?.withRenderingMode(.alwaysTemplate)
-        letfImage.tintColor = .CLDGray
-        letfImage.backgroundColor = nil
-        paddingView.addSubview(letfImage)
-        self.leftView = paddingView
-        self.leftViewMode = .always
     }
 }

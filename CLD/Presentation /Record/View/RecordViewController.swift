@@ -33,7 +33,12 @@ class RecordViewController: BaseViewController {
     }()
     
     @objc private func nextView () {
-        collectionView(selectListView.selectCollectionView, didSelectItemAt: IndexPath(item: selectListViewIndex+1, section: 0))
+        print(3)
+        if(selectListViewIndex == 3){
+            presentModalBtnTap()
+        } else {
+            collectionView(selectListView.selectCollectionView, didSelectItemAt: IndexPath(item: selectListViewIndex+1, section: 0))
+        }
     }
     @objc private func keyboardWillShow(_ notification: Notification) {
         // 키보드가 생성될 때
@@ -123,6 +128,7 @@ extension RecordViewController : UICollectionViewDelegate, UICollectionViewDeleg
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        print(2)
         let cellLabel: UILabel = {
             let label = UILabel()
             label.text = selectList[indexPath.item]
@@ -135,6 +141,7 @@ extension RecordViewController : UICollectionViewDelegate, UICollectionViewDeleg
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        print("===\(indexPath.row)")
         selectListViewIndex = indexPath.row
         if (indexPath.row == 0) {
             selectPlaceView.isHidden = false
@@ -157,6 +164,25 @@ extension RecordViewController : UICollectionViewDelegate, UICollectionViewDeleg
             selectColorView.isHidden = true
             selectVideoView.isHidden = false
         }
+    }
+}
+
+extension RecordViewController: UISheetPresentationControllerDelegate {
+    func presentModalBtnTap() {
+        let vc = PostRecordViewController()
+        vc.modalPresentationStyle = .pageSheet
+        
+        if let sheet = vc.sheetPresentationController {
+            //지원할 크기 지정
+            if #available(iOS 16.0, *) {
+                sheet.detents = [.custom { context in
+                    return context.maximumDetentValue * 0.9
+                }]
+            } else { sheet.detents = [.medium(), .large()] }
+            sheet.delegate = self
+            sheet.prefersGrabberVisible = true
+        }
+        present(vc, animated: true, completion: nil)
     }
 }
 

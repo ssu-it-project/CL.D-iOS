@@ -40,6 +40,10 @@ extension UIColor {
         return UIColor(hex: "#8F9194")
     }
     
+    static var CLDDarkDarkGray: UIColor {
+        return UIColor(hex: "#515151")
+    }
+    
     static var CLDBlack: UIColor {
         return UIColor(hex: "#000000")
     }
