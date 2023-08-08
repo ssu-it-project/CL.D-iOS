@@ -19,7 +19,7 @@ final class VideoCollectionViewCell: UICollectionViewCell {
     private let profileImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFit
-        imageView.image = UIImage(systemName: "star")
+        imageView.image = UIImage(named: "videoCellProfleImage")
         return imageView
     }()
     private let titleLabel: UILabel = {
@@ -32,8 +32,8 @@ final class VideoCollectionViewCell: UICollectionViewCell {
     }()
     private lazy var menuButton: UIButton = {
         let button = UIButton()
-        button.setImage(ImageLiteral.appleLogo, for: .normal)
-        button.imageView?.contentMode = .scaleAspectFit
+        button.setImage(ImageLiteral.videoCellMenuIcon, for: .normal)
+        button.imageView?.contentMode = .scaleAspectFill
         return button
     }()
     private let videoView = UIView()
@@ -70,19 +70,20 @@ final class VideoCollectionViewCell: UICollectionViewCell {
     }()
     private let likeButton: UIButton = {
         let button = UIButton()
-        button.setImage(ImageLiteral.appleLogo, for: .normal)
+        button.setImage(ImageLiteral.likeIcon, for: .normal)
+        button.imageView?.tintColor = .black
         button.imageView?.contentMode = .scaleAspectFit
         return button
     }()
     private let commentButton: UIButton = {
         let button = UIButton()
-        button.setImage(ImageLiteral.appleLogo, for: .normal)
+        button.setImage(ImageLiteral.commentIcon, for: .normal)
         button.imageView?.contentMode = .scaleAspectFit
         return button
     }()
     private let shareButton: UIButton = {
         let button = UIButton()
-        button.setImage(ImageLiteral.appleLogo, for: .normal)
+        button.setImage(ImageLiteral.shareIcon, for: .normal)
         button.imageView?.contentMode = .scaleAspectFit
         return button
     }()
@@ -159,7 +160,7 @@ final class VideoCollectionViewCell: UICollectionViewCell {
     }
     
     private func setViewProperty() {
-        self.backgroundColor = .CLDGray
+        self.backgroundColor = .white
         videoView.backgroundColor = .CLDOrange
     }
     

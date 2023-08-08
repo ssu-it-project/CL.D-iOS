@@ -22,7 +22,7 @@ final class BadgeCollectionViewCell: UICollectionViewCell {
     private let badgeImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFit
-        imageView.image = UIImage(systemName: "star")
+        imageView.image = UIImage(named: "badge")
         return imageView
     }()
     private let badgeTitleLabel: UILabel = {
@@ -72,8 +72,8 @@ final class BadgeCollectionViewCell: UICollectionViewCell {
         var configuration = UIButton.Configuration.plain()
         configuration.buttonSize = .mini
         configuration.title = "12"
-        configuration.image = UIImage(systemName: "pencil")?.withRenderingMode(.alwaysTemplate)
-        configuration.baseForegroundColor = .black
+        configuration.image = ImageLiteral.badgeInfoIcon.withRenderingMode(.alwaysTemplate)
+        configuration.baseForegroundColor = .CLDGold
         configuration.imagePadding = 3
         configuration.imagePlacement = .leading
         let button = UIButton()
