@@ -53,17 +53,10 @@ final class HomeViewController: BaseViewController {
     }
     
     private func getLayoutBadgeSection() -> NSCollectionLayoutSection {
-        
-//        let height: CGFloat = 812
-//        let ratio: CGFloat = 173
-//        let ratioHeight = height * ratio / UIScreen.main.bounds.height
-//        let fractionalHeight = ratioHeight / height
-//        let fractionalHeighttDimension = NSCollectionLayoutDimension.fractionalHeight(fractionalHeight)
-        
         let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(1.0))
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
         
-        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(0.25))
+        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(0.3))
         let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
         
         let section = NSCollectionLayoutSection(group: group)
@@ -74,17 +67,10 @@ final class HomeViewController: BaseViewController {
     }
     
     private func getLayoutVideoSection() -> NSCollectionLayoutSection {
-        
-//        let height: CGFloat = 812
-//        let ratio: CGFloat = 512
-//        let ratioHeight = height * ratio / UIScreen.main.bounds.height
-//        let fractionalHeight = ratioHeight / height
-//        let fractionalHeighttDimension = NSCollectionLayoutDimension.fractionalHeight(fractionalHeight)
-        
         let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(1.0))
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
         
-        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(0.75))
+        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(0.7))
         let group = NSCollectionLayoutGroup.vertical(layoutSize: groupSize, subitems: [item])
         
         let section = NSCollectionLayoutSection(group: group)
