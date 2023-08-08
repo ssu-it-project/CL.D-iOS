@@ -44,7 +44,7 @@ final class AuthViewController: BaseViewController {
         
         signView.instaButton.rx.tap
             .bind {
-                self.loginManager.FBSignin(AuthViewController())
+                self.loginManager.FBSignin(TabBarController())
             }.disposed(by: disposeBag)
     }
 }

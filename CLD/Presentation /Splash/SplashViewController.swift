@@ -22,13 +22,13 @@ final class SplashViewController: BaseViewController {
         super.viewDidLoad()
         
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1) {
-            let navigationController = UINavigationController(rootViewController: AuthViewController())
+            let rootViewController = TabBarController()
             let sceneDelegate = UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate
             guard let delegate = sceneDelegate else {
                 print("sceneDelegate가 할당 Error")
                 return
             }
-            delegate.window?.rootViewController = navigationController
+            delegate.window?.rootViewController = rootViewController
         }
     }
     

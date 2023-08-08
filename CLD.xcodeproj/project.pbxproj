@@ -7,7 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		020F65492A7B72050036CFB1 /* SelectListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020F65482A7B72050036CFB1 /* SelectListView.swift */; };
+		020F65512A7D045B0036CFB1 /* SelectVideoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020F65502A7D045B0036CFB1 /* SelectVideoCell.swift */; };
+		020F65532A7D09450036CFB1 /* SelectVideoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020F65522A7D09450036CFB1 /* SelectVideoView.swift */; };
 		023868C32A70009B0006C762 /* LoginManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 023868C22A70009B0006C762 /* LoginManager.swift */; };
+		023F37822A783C1F007B0511 /* SelectSectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 023F37812A783C1F007B0511 /* SelectSectorView.swift */; };
 		0241775A2A6E5DA7006C3C4D /* KakaoSDKAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 024177592A6E5DA7006C3C4D /* KakaoSDKAuth */; };
 		0241775C2A6E5DA7006C3C4D /* KakaoSDKCommon in Frameworks */ = {isa = PBXBuildFile; productRef = 0241775B2A6E5DA7006C3C4D /* KakaoSDKCommon */; };
 		0241775E2A6E5DA7006C3C4D /* KakaoSDKUser in Frameworks */ = {isa = PBXBuildFile; productRef = 0241775D2A6E5DA7006C3C4D /* KakaoSDKUser */; };
@@ -25,6 +29,10 @@
 		026BC4942A69102F00F49B87 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 026BC4932A69102F00F49B87 /* SplashViewController.swift */; };
 		0279DA922A6EC9A1002C2272 /* FacebookCore in Frameworks */ = {isa = PBXBuildFile; productRef = 0279DA912A6EC9A1002C2272 /* FacebookCore */; };
 		0279DA942A6EC9A1002C2272 /* FacebookLogin in Frameworks */ = {isa = PBXBuildFile; productRef = 0279DA932A6EC9A1002C2272 /* FacebookLogin */; };
+		0281723C2A793A670089FD51 /* SelectColorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0281723B2A793A670089FD51 /* SelectColorView.swift */; };
+		0281723E2A793B900089FD51 /* SelectColorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0281723D2A793B900089FD51 /* SelectColorCell.swift */; };
+		02DC9AC32A74A82E00F8989E /* SelectPlaceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02DC9AC22A74A82E00F8989E /* SelectPlaceView.swift */; };
+		02DC9AC52A75789800F8989E /* SelectListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02DC9AC42A75789800F8989E /* SelectListCell.swift */; };
 		5A0871112A65A7DD00947794 /* Moya in Frameworks */ = {isa = PBXBuildFile; productRef = 5A0871102A65A7DD00947794 /* Moya */; };
 		5A0871132A65A7DD00947794 /* ReactiveMoya in Frameworks */ = {isa = PBXBuildFile; productRef = 5A0871122A65A7DD00947794 /* ReactiveMoya */; };
 		5A0871152A65A7DD00947794 /* RxMoya in Frameworks */ = {isa = PBXBuildFile; productRef = 5A0871142A65A7DD00947794 /* RxMoya */; };
@@ -79,7 +87,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		020F65482A7B72050036CFB1 /* SelectListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectListView.swift; sourceTree = "<group>"; };
+		020F65502A7D045B0036CFB1 /* SelectVideoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectVideoCell.swift; sourceTree = "<group>"; };
+		020F65522A7D09450036CFB1 /* SelectVideoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectVideoView.swift; sourceTree = "<group>"; };
 		023868C22A70009B0006C762 /* LoginManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginManager.swift; sourceTree = "<group>"; };
+		023F37812A783C1F007B0511 /* SelectSectorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectSectorView.swift; sourceTree = "<group>"; };
 		026BC4752A680FC000F49B87 /* AuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewController.swift; sourceTree = "<group>"; };
 		026BC4772A680FE900F49B87 /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
 		026BC47A2A6847BE00F49B87 /* Roboto-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Bold.ttf"; sourceTree = "<group>"; };
@@ -89,10 +101,17 @@
 		026BC4832A6847BF00F49B87 /* Roboto-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Black.ttf"; sourceTree = "<group>"; };
 		026BC4852A6847BF00F49B87 /* Roboto-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Light.ttf"; sourceTree = "<group>"; };
 		026BC4932A69102F00F49B87 /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
+<<<<<<< HEAD
 		5A1C48872A76813300CC345A /* HomeSectionType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeSectionType.swift; sourceTree = "<group>"; };
 		5A1C48892A7687FB00CC345A /* CGSize+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGSize+Extension.swift"; sourceTree = "<group>"; };
 		5A1C488C2A76C49200CC345A /* BadgeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BadgeCollectionViewCell.swift; sourceTree = "<group>"; };
 		5A1C488E2A76CC9C00CC345A /* VideoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoCollectionViewCell.swift; sourceTree = "<group>"; };
+=======
+		0281723B2A793A670089FD51 /* SelectColorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectColorView.swift; sourceTree = "<group>"; };
+		0281723D2A793B900089FD51 /* SelectColorCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectColorCell.swift; sourceTree = "<group>"; };
+		02DC9AC22A74A82E00F8989E /* SelectPlaceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectPlaceView.swift; sourceTree = "<group>"; };
+		02DC9AC42A75789800F8989E /* SelectListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectListCell.swift; sourceTree = "<group>"; };
+>>>>>>> #15
 		5ACADCF62A5D988F00B92C07 /* CLD.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CLD.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5ACADCF92A5D988F00B92C07 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5ACADCFB2A5D988F00B92C07 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -598,6 +617,14 @@
 			isa = PBXGroup;
 			children = (
 				5ADED1CF2A6838AD00C0CBF4 /* RecordViewController.swift */,
+				02DC9AC22A74A82E00F8989E /* SelectPlaceView.swift */,
+				02DC9AC42A75789800F8989E /* SelectListCell.swift */,
+				023F37812A783C1F007B0511 /* SelectSectorView.swift */,
+				0281723B2A793A670089FD51 /* SelectColorView.swift */,
+				0281723D2A793B900089FD51 /* SelectColorCell.swift */,
+				020F65482A7B72050036CFB1 /* SelectListView.swift */,
+				020F65502A7D045B0036CFB1 /* SelectVideoCell.swift */,
+				020F65522A7D09450036CFB1 /* SelectVideoView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -802,12 +829,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				02DC9AC52A75789800F8989E /* SelectListCell.swift in Sources */,
 				5ADED1AF2A66AEAD00C0CBF4 /* UICollectionView+Extension.swift in Sources */,
+				020F65532A7D09450036CFB1 /* SelectVideoView.swift in Sources */,
+				0281723E2A793B900089FD51 /* SelectColorCell.swift in Sources */,
+				020F65492A7B72050036CFB1 /* SelectListView.swift in Sources */,
 				5ADED1B12A66AFF700C0CBF4 /* UIStackView+Extension.swift in Sources */,
 				5ADED1B72A67793F00C0CBF4 /* UIView+Extension.swift in Sources */,
 				5A1C48882A76813300CC345A /* HomeSectionType.swift in Sources */,
 				5ADED1D02A6838AD00C0CBF4 /* RecordViewController.swift in Sources */,
 				5ADED1CA2A68071E00C0CBF4 /* TabBarController.swift in Sources */,
+				0281723C2A793A670089FD51 /* SelectColorView.swift in Sources */,
+				02DC9AC32A74A82E00F8989E /* SelectPlaceView.swift in Sources */,
 				5ADED1D22A6838C400C0CBF4 /* CommunityViewController.swift in Sources */,
 				5ADED1BF2A679FB100C0CBF4 /* UIImage+Extension.swift in Sources */,
 				023868C32A70009B0006C762 /* LoginManager.swift in Sources */,
@@ -822,13 +855,18 @@
 				026BC4762A680FC000F49B87 /* AuthViewController.swift in Sources */,
 				5ADED1C12A67A06F00C0CBF4 /* ImageLiteral.swift in Sources */,
 				5ADED1AB2A66ACC500C0CBF4 /* UITextField+Extension.swift in Sources */,
+<<<<<<< HEAD
 				5A1C488D2A76C49200CC345A /* BadgeCollectionViewCell.swift in Sources */,
+=======
+				020F65512A7D045B0036CFB1 /* SelectVideoCell.swift in Sources */,
+>>>>>>> #15
 				5ADED1BB2A67929500C0CBF4 /* BaseViewController.swift in Sources */,
 				5ACADCFC2A5D988F00B92C07 /* SceneDelegate.swift in Sources */,
 				5ADED1D42A6838D300C0CBF4 /* MyPageViewController.swift in Sources */,
 				5ADED1AD2A66ADA900C0CBF4 /* ReusableView+Extension.swift in Sources */,
 				5ADED1CE2A68388A00C0CBF4 /* CragSearchViewController.swift in Sources */,
 				5ACADD5D2A65919400B92C07 /* HomeViewController.swift in Sources */,
+				023F37822A783C1F007B0511 /* SelectSectorView.swift in Sources */,
 				5ADED1B92A678E9C00C0CBF4 /* UILabel+Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
