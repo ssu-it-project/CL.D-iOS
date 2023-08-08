@@ -22,7 +22,13 @@ enum ImageLiteral {
     static var kakaoLogo: UIImage { .load(named: "kakaoLogo") }
     static var appleLogo: UIImage { .load(named: "appleLogo") }
     static var instaLogo: UIImage { .load(named: "instaLogo") }
-
+    
+    //MARK: - Home
+    static var commentIcon: UIImage { .load(named: "commentIcon") }
+    static var shareIcon: UIImage { .load(named: "shareIcon") }
+    static var likeIcon: UIImage { .load(named: "likeIcon") }
+    static var videoCellMenuIcon: UIImage { .load(named: "videoCellMenuIcon") }
+    static var badgeInfoIcon: UIImage { .load(named: "badgeInfoIcon") }
 }
 
 extension UIImage {
