@@ -81,7 +81,14 @@ final class BadgeCollectionViewCell: UICollectionViewCell {
         button.titleLabel?.font = .systemFont(ofSize: 13)
         return button
     }()
-    
+    private let videoSectionTitleLabel: UILabel = {
+        let UILabel = UILabel()
+        UILabel.sizeToFit()
+        UILabel.font = .boldSystemFont(ofSize: 16)
+        UILabel.textColor = .black
+        UILabel.text = "문제 풀이"
+        return UILabel
+    }()
     
     override init(frame: CGRect) {
         super.init(frame: .zero)
@@ -99,7 +106,7 @@ final class BadgeCollectionViewCell: UICollectionViewCell {
         subTitleStackView.addArrangedSubviews(badgeSubLabel, badgeRateLabel)
         allTitleStackView.addArrangedSubviews(titleStackView, subTitleStackView)
         
-        addSubview(backView)
+        addSubviews(backView, videoSectionTitleLabel)
         backView.addSubviews(badgeImageView, allTitleStackView, badgeInfoButton)
     }
     
@@ -107,7 +114,12 @@ final class BadgeCollectionViewCell: UICollectionViewCell {
         backView.snp.makeConstraints { make in
             make.top.equalToSuperview().inset(21)
             make.leading.trailing.equalToSuperview().inset(23.5)
-            make.bottom.equalToSuperview().inset(24)
+        }
+        
+        videoSectionTitleLabel.snp.makeConstraints { make in
+            make.top.equalTo(backView.snp.bottom).offset(24)
+            make.leading.equalToSuperview().inset(9)
+            make.bottom.trailing.equalToSuperview().inset(10)
         }
         
         badgeImageView.snp.makeConstraints { make in
