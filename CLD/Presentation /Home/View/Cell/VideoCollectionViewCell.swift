@@ -8,9 +8,11 @@
 import UIKit
 
 import SnapKit
+import AVFoundation
+
 
 final class VideoCollectionViewCell: UICollectionViewCell {
-    
+        
     private let topLineView: UIView = {
         let view = UIView()
         view.backgroundColor = .black
@@ -36,7 +38,7 @@ final class VideoCollectionViewCell: UICollectionViewCell {
         button.imageView?.contentMode = .scaleAspectFill
         return button
     }()
-    private let videoView = UIView()
+    var playerView = PlayerView()
     private let viedoTitleLabel: UILabel = {
         let UILabel = UILabel()
         UILabel.sizeToFit()
@@ -111,7 +113,7 @@ final class VideoCollectionViewCell: UICollectionViewCell {
     }
     
     private func setHierarchy() {
-        addSubviews(topLineView, profileImageView, titleLabel, menuButton, videoView, viedoTitleLabel, videoSubTitleStackView, buttonStackView)
+        addSubviews(topLineView, profileImageView, titleLabel, menuButton, playerView, viedoTitleLabel, videoSubTitleStackView, buttonStackView)
     }
     
     private func setConstraints() {
@@ -137,14 +139,14 @@ final class VideoCollectionViewCell: UICollectionViewCell {
             make.centerY.equalTo(profileImageView.snp.centerY)
         }
         
-        videoView.snp.makeConstraints { make in
+        playerView.snp.makeConstraints { make in
             make.top.equalTo(profileImageView.snp.bottom).offset(6)
             make.leading.trailing.equalToSuperview()
             make.height.equalTo(self.contentView.snp.height).multipliedBy(0.7)
         }
         
         viedoTitleLabel.snp.makeConstraints { make in
-            make.top.equalTo(videoView.snp.bottom).offset(4)
+            make.top.equalTo(playerView.snp.bottom).offset(4)
             make.leading.equalToSuperview().inset(6)
         }
         
@@ -154,15 +156,18 @@ final class VideoCollectionViewCell: UICollectionViewCell {
         }
         
         buttonStackView.snp.makeConstraints { make in
-            make.top.equalTo(videoView.snp.bottom).offset(8)
+            make.top.equalTo(playerView.snp.bottom).offset(8)
             make.trailing.equalToSuperview().inset(10)
         }
     }
     
     private func setViewProperty() {
         self.backgroundColor = .white
-        videoView.backgroundColor = .CLDOrange
     }
-    
-    
+}
+
+extension VideoCollectionViewCell {
+    func configure(with videoURLString: String) {
+        playerView.setupPlayerItem(with: videoURLString)
+    }
 }
