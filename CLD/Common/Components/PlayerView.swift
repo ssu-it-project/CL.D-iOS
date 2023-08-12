@@ -38,8 +38,22 @@ final class PlayerView: UIView {
 }
 
 extension PlayerView {
-    func setupPlayerItem(with assetURL: URL) {
-        let playerItem = AVPlayerItem(url: assetURL)
-        player?.replaceCurrentItem(with: playerItem)
+    func setupPlayerItem(with assetURL: String) {
+        if let videoURL = URL(string: assetURL) {
+            // 에셋이 재생 상태일 때 해당 에셋의 타이밍과 프레젠테이션 상태를 모델링하는 객체
+            // AVPlayer 객체가 AVPlayerItem을 사용하고, AVPlayerItem이 AVAsset을 사용하는 구조
+            let playerItem = AVPlayerItem(url: videoURL)
+            player?.replaceCurrentItem(with: playerItem)
+        } else {
+            print("Invalid URL: \(assetURL)")
+        }
+    }
+    
+    func play() {
+        player?.play()
+    }
+    
+    func pause() {
+        player?.pause()
     }
 }
