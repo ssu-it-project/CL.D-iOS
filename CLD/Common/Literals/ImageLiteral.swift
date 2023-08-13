@@ -10,7 +10,6 @@ import UIKit
 enum ImageLiteral {
     
     // MARK: - tab bar icon
-    
     static var homeIcon: UIImage { .load(named: "homeIcon") }
     static var searchIcon: UIImage { .load(named: "searchIcon") }
     static var recordIcon: UIImage { .load(named: "recordIcon") }
@@ -29,15 +28,18 @@ enum ImageLiteral {
     static var likeIcon: UIImage { .load(named: "likeIcon") }
     static var videoCellMenuIcon: UIImage { .load(named: "videoCellMenuIcon") }
     static var badgeInfoIcon: UIImage { .load(named: "badgeInfoIcon") }
-    static var dotDivider: UIImage { .load(named: "dotDivider") }
     
+    //MARK: - Record
+    static var dotDivider: UIImage { .load(named: "dotDivider") }
     static var placeIcon: UIImage { .load(named: "placeIcon") }
     static var STIcon: UIImage { .load(named: "STIcon") }
     static var VIcon: UIImage { .load(named: "VIcon") }
+    static var backButton: UIImage { .load(named: "backButton") }
     
     //MARK: - test image
     static var videoThumbnail: UIImage { .load(named: "videoThumbnail") }
     static var thumbnailImage: UIImage { .load(named: "thumbnailImage")}
+    
 }
 
 extension UIImage {
