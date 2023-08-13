@@ -1,5 +1,5 @@
 //
-//  SelectColorView.swift
+//  SelectColorViewController.swift
 //  CLD
 //
 //  Created by 이조은 on 2023/08/01.
@@ -9,7 +9,7 @@ import UIKit
 
 import SnapKit
 
-final class SelectColorView: UIView {
+final class SelectColorViewController: BaseViewController {
     let colorData = ["흰색","회색","검정","파랑","빨강","갈색","핑크","초록","보라","주황","노랑","추가"]
     
     var selectCollectionView: UICollectionView = {
@@ -25,35 +25,53 @@ final class SelectColorView: UIView {
                                 forCellWithReuseIdentifier: SelectColorCell.identifier)
         return collectionView
     }()
+    let nextButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("다음", for: .normal)
+        button.setTitleColor(.CLDBlack, for: .normal)
+        button.titleLabel?.font = UIFont(name: "Roboto-Medium", size: 15)
+        button.semanticContentAttribute = .forceLeftToRight
+        button.contentVerticalAlignment = .center
+        button.contentHorizontalAlignment = .center
+        button.addTarget(self, action: #selector(nextView), for: .touchUpInside)
+        return button
+    }()
+    @objc private func nextView () {
+        print("다음")
+        // self.present(SelectSectorViewController(), animated: true)
+    }
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
+    override func viewDidLoad() {
+        self.view.backgroundColor = .white
+
+        selectCollectionView.delegate = self
+        selectCollectionView.dataSource = self
         
         setHierarchy()
         setConstraints()
-        
-        selectCollectionView.delegate = self
-        selectCollectionView.dataSource = self
-    }
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
     }
     
-    func setHierarchy() {
-        addSubview(selectCollectionView)
+    override func setHierarchy() {
+        self.view.addSubviews(selectCollectionView,nextButton)
     }
     
-    func setConstraints() {
+    override func setConstraints() {
         selectCollectionView.snp.makeConstraints {
-            $0.top.equalToSuperview().inset(18)
+            $0.top.equalToSuperview().inset(76)
             $0.centerX.equalToSuperview()
             $0.width.equalTo(347)
             $0.bottom.equalToSuperview()
         }
+        nextButton.snp.makeConstraints {
+            $0.bottom.equalToSuperview().inset(72)
+            $0.centerX.equalToSuperview()
+            $0.width.equalTo(28)
+            $0.height.equalTo(18)
+        }
     }
 }
 
-extension SelectColorView : UICollectionViewDelegate, UICollectionViewDelegateFlowLayout,
+extension SelectColorViewController : UICollectionViewDelegate, UICollectionViewDelegateFlowLayout,
                             UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
