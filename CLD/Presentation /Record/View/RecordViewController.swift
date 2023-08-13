@@ -12,8 +12,9 @@ import Tabman
 import Pageboy
 
 class RecordViewController: TabmanViewController {
-    private var viewControllers: Array<BaseViewController> = []
+    var recordDic: [String: String] = ["place":"", "sector":"", "color":"", "video":""]
     
+    private var viewControllers: Array<BaseViewController> = []
     var tabBarView: UIView!
     
     private let dotDivider: UIImageView = {

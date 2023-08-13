@@ -36,6 +36,8 @@
 		02DC9AC52A75789800F8989E /* SelectListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02DC9AC42A75789800F8989E /* SelectListCell.swift */; };
 		02EB6E782A874D4D00C749A6 /* SelectPlaceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02EB6E772A874D4D00C749A6 /* SelectPlaceViewController.swift */; };
 		02EB6E7B2A874E5100C749A6 /* Tabman in Frameworks */ = {isa = PBXBuildFile; productRef = 02EB6E7A2A874E5100C749A6 /* Tabman */; };
+		02EB6E7D2A88BC9B00C749A6 /* SuccessRecordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02EB6E7C2A88BC9B00C749A6 /* SuccessRecordView.swift */; };
+		02EB6E862A88C45A00C749A6 /* CALayer+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02EB6E852A88C45A00C749A6 /* CALayer+Extension.swift */; };
 		5A0871112A65A7DD00947794 /* Moya in Frameworks */ = {isa = PBXBuildFile; productRef = 5A0871102A65A7DD00947794 /* Moya */; };
 		5A0871132A65A7DD00947794 /* ReactiveMoya in Frameworks */ = {isa = PBXBuildFile; productRef = 5A0871122A65A7DD00947794 /* ReactiveMoya */; };
 		5A0871152A65A7DD00947794 /* RxMoya in Frameworks */ = {isa = PBXBuildFile; productRef = 5A0871142A65A7DD00947794 /* RxMoya */; };
@@ -110,6 +112,8 @@
 		0281723D2A793B900089FD51 /* SelectColorCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectColorCell.swift; sourceTree = "<group>"; };
 		02DC9AC42A75789800F8989E /* SelectListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectListCell.swift; sourceTree = "<group>"; };
 		02EB6E772A874D4D00C749A6 /* SelectPlaceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectPlaceViewController.swift; sourceTree = "<group>"; };
+		02EB6E7C2A88BC9B00C749A6 /* SuccessRecordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuccessRecordView.swift; sourceTree = "<group>"; };
+		02EB6E852A88C45A00C749A6 /* CALayer+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CALayer+Extension.swift"; sourceTree = "<group>"; };
 		5A1C48872A76813300CC345A /* HomeSectionType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeSectionType.swift; sourceTree = "<group>"; };
 		5A1C48892A7687FB00CC345A /* CGSize+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGSize+Extension.swift"; sourceTree = "<group>"; };
 		5A1C488C2A76C49200CC345A /* BadgeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BadgeCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -205,7 +209,6 @@
 			children = (
 				026BC4722A680DC000F49B87 /* View */,
 				026BC4742A680EDC00F49B87 /* ViewController */,
-				026BC4732A680DC700F49B87 /* ViewModel */,
 				023868C22A70009B0006C762 /* LoginManager.swift */,
 			);
 			path = Auth;
@@ -217,13 +220,6 @@
 				026BC4772A680FE900F49B87 /* SignInView.swift */,
 			);
 			path = View;
-			sourceTree = "<group>";
-		};
-		026BC4732A680DC700F49B87 /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		026BC4742A680EDC00F49B87 /* ViewController */ = {
@@ -253,6 +249,40 @@
 				026BC4932A69102F00F49B87 /* SplashViewController.swift */,
 			);
 			path = Splash;
+			sourceTree = "<group>";
+		};
+		02EB6E7E2A88C04C00C749A6 /* step1 */ = {
+			isa = PBXGroup;
+			children = (
+				02EB6E772A874D4D00C749A6 /* SelectPlaceViewController.swift */,
+			);
+			path = step1;
+			sourceTree = "<group>";
+		};
+		02EB6E7F2A88C07600C749A6 /* step2 */ = {
+			isa = PBXGroup;
+			children = (
+				023F37812A783C1F007B0511 /* SelectSectorViewController.swift */,
+			);
+			path = step2;
+			sourceTree = "<group>";
+		};
+		02EB6E802A88C0AA00C749A6 /* step3 */ = {
+			isa = PBXGroup;
+			children = (
+				0281723D2A793B900089FD51 /* SelectColorCell.swift */,
+				0281723B2A793A670089FD51 /* SelectColorViewController.swift */,
+			);
+			path = step3;
+			sourceTree = "<group>";
+		};
+		02EB6E812A88C10200C749A6 /* step4 */ = {
+			isa = PBXGroup;
+			children = (
+				020F65502A7D045B0036CFB1 /* SelectVideoCell.swift */,
+				020F65522A7D09450036CFB1 /* SelectVideoViewController.swift */,
+			);
+			path = step4;
 			sourceTree = "<group>";
 		};
 		5A1C48862A76811600CC345A /* Enum */ = {
@@ -428,6 +458,7 @@
 				5ADED1BC2A679B6A00C0CBF4 /* UIColor+Extension.swift */,
 				5ADED1BE2A679FB100C0CBF4 /* UIImage+Extension.swift */,
 				5A1C48892A7687FB00CC345A /* CGSize+Extension.swift */,
+				02EB6E852A88C45A00C749A6 /* CALayer+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -619,17 +650,16 @@
 		5ACADD632A65924D00B92C07 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				02DC9AC42A75789800F8989E /* SelectListCell.swift */,
+				020F65482A7B72050036CFB1 /* SelectListView.swift */,
+				5ADED1CF2A6838AD00C0CBF4 /* RecordViewController.swift */,
+				02EB6E7E2A88C04C00C749A6 /* step1 */,
+				02EB6E7F2A88C07600C749A6 /* step2 */,
+				02EB6E802A88C0AA00C749A6 /* step3 */,
+				02EB6E812A88C10200C749A6 /* step4 */,
 				0260B2EE2A8285850038E52B /* PostRecordVIew.swift */,
 				0260B2F02A82858D0038E52B /* PostRecordViewController.swift */,
-				5ADED1CF2A6838AD00C0CBF4 /* RecordViewController.swift */,
-				02DC9AC42A75789800F8989E /* SelectListCell.swift */,
-				023F37812A783C1F007B0511 /* SelectSectorViewController.swift */,
-				0281723B2A793A670089FD51 /* SelectColorViewController.swift */,
-				0281723D2A793B900089FD51 /* SelectColorCell.swift */,
-				020F65482A7B72050036CFB1 /* SelectListView.swift */,
-				020F65502A7D045B0036CFB1 /* SelectVideoCell.swift */,
-				020F65522A7D09450036CFB1 /* SelectVideoViewController.swift */,
-				02EB6E772A874D4D00C749A6 /* SelectPlaceViewController.swift */,
+				02EB6E7C2A88BC9B00C749A6 /* SuccessRecordView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -839,6 +869,7 @@
 				02DC9AC52A75789800F8989E /* SelectListCell.swift in Sources */,
 				5ADED1AF2A66AEAD00C0CBF4 /* UICollectionView+Extension.swift in Sources */,
 				020F65532A7D09450036CFB1 /* SelectVideoViewController.swift in Sources */,
+				02EB6E862A88C45A00C749A6 /* CALayer+Extension.swift in Sources */,
 				0281723E2A793B900089FD51 /* SelectColorCell.swift in Sources */,
 				020F65492A7B72050036CFB1 /* SelectListView.swift in Sources */,
 				5ADED1B12A66AFF700C0CBF4 /* UIStackView+Extension.swift in Sources */,
@@ -861,6 +892,7 @@
 				5ACADCFA2A5D988F00B92C07 /* AppDelegate.swift in Sources */,
 				5ADED1C32A67A1B300C0CBF4 /* ViewModelType.swift in Sources */,
 				026BC4762A680FC000F49B87 /* AuthViewController.swift in Sources */,
+				02EB6E7D2A88BC9B00C749A6 /* SuccessRecordView.swift in Sources */,
 				0260B2F12A82858D0038E52B /* PostRecordViewController.swift in Sources */,
 				5ADED1C12A67A06F00C0CBF4 /* ImageLiteral.swift in Sources */,
 				5ADED1AB2A66ACC500C0CBF4 /* UITextField+Extension.swift in Sources */,
