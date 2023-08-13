@@ -47,11 +47,24 @@ extension UITextField {
         self.leftView = paddingView
         self.leftViewMode = .always
     }
-    /// 왼쪽 이미지 넣기 (CLDDarkGray)
+    /// 왼쪽 이미지 넣기 (CLDDarkGray) w:14, h:18
     func addLeftImageDarkGray(image: UIImage) {
         let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: 30, height: 31))
-        let letfImage = UIImageView(frame:CGRect(x: 8, y: 9, width: 18, height: 16))
-        letfImage.image = image.resize(newWidth: CGFloat(18))
+        let letfImage = UIImageView(frame:CGRect(x: 8, y: 9, width: 14, height: 18))
+        letfImage.image = image.resize(newWidth: CGFloat(16))
+        letfImage.image = letfImage.image?.withRenderingMode(.alwaysTemplate)
+        letfImage.tintColor = .CLDDarkDarkGray
+        letfImage.backgroundColor = nil
+        paddingView.addSubview(letfImage)
+        self.leftView = paddingView
+        self.leftViewMode = .always
+    }
+    
+    /// 왼쪽 이미지 넣기 (CLDDarkGray) w:23, h:18
+    func addLeftImageDarkGray2(image: UIImage) {
+        let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: 30, height: 31))
+        let letfImage = UIImageView(frame:CGRect(x: 8, y: 9, width: 23, height: 18))
+        letfImage.image = image.resize(newWidth: CGFloat(23))
         letfImage.image = letfImage.image?.withRenderingMode(.alwaysTemplate)
         letfImage.tintColor = .CLDDarkDarkGray
         letfImage.backgroundColor = nil

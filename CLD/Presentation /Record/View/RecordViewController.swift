@@ -8,17 +8,20 @@
 import UIKit
 
 import SnapKit
+import Tabman
+import Pageboy
 
-class RecordViewController: BaseViewController {
-    private let selectList = ["클라이밍장","섹터","난이도 색상","영상"]
+class RecordViewController: TabmanViewController {
+    private var viewControllers: Array<BaseViewController> = []
     
-    private let selectListView = SelectListView()
-    private let selectPlaceView = SelectPlaceView()
-    private let selectSectorView = SelectSectorView()
-    private let selectColorView = SelectColorView()
-    private let selectVideoView = SelectVideoView()
+    var tabBarView: UIView!
     
-    private var selectListViewIndex = 0
+    private let dotDivider: UIImageView = {
+        let view = UIImageView()
+        view.image = ImageLiteral.dotDivider
+        view.backgroundColor = nil
+        return view
+    }()
     
     let nextButton: UIButton = {
         let button = UIButton()
@@ -32,157 +35,105 @@ class RecordViewController: BaseViewController {
         return button
     }()
     
-    @objc private func nextView () {
-        print(3)
-        if(selectListViewIndex == 3){
-            presentModalBtnTap()
-        } else {
-            collectionView(selectListView.selectCollectionView, didSelectItemAt: IndexPath(item: selectListViewIndex+1, section: 0))
-        }
+    private func setUpVC() {
+        let firstVC = SelectPlaceViewController()
+        let secondVC = SelectSectorViewController()
+        let thirdVC = SelectColorViewController()
+        let fourthVC = SelectVideoViewController()
+        
+        viewControllers.append(firstVC)
+        viewControllers.append(secondVC)
+        viewControllers.append(thirdVC)
+        viewControllers.append(fourthVC)
     }
-    @objc private func keyboardWillShow(_ notification: Notification) {
-        // 키보드가 생성될 때
-        if let keyboardFrame: NSValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
-            let keyboardHeight = keyboardFrame.cgRectValue.height
-            if self.view.frame.origin.y == 0 {
-                self.nextButton.frame.origin.y -= keyboardHeight
+    private func settingTabBar (ctBar : TMBar.ButtonBar) {
+            ctBar.layout.transitionStyle = .snap
+            // 왼쪽 여백주기
+            ctBar.layout.contentInset = UIEdgeInsets(top: 37.0, left: 21.0, bottom: 0.0, right: 0.0)
+            // 간격
+            ctBar.layout.interButtonSpacing = 18
+            ctBar.backgroundView.style = .flat(color: .white)
+            
+            // 선택 / 안선택 색 + font size
+            ctBar.buttons.customize { (button) in
+                button.tintColor = .CLDMediumGray
+                button.selectedTintColor = .CLDGold
+                button.font = UIFont(name: "Roboto-Bold", size: 15)!
             }
-        }
+            
+            // 인디케이터 (영상에서 주황색 아래 바 부분)
+            ctBar.indicator.weight = .custom(value: 0)
     }
     
-    @objc private func keyboardWillHide(_ notification: Notification) {
-        // 키보드가 사라질 때
-        if let keyboardFrame: NSValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
-            let keyboardHeight = keyboardFrame.cgRectValue.height
-            self.nextButton.frame.origin.y += keyboardHeight
-        }
-    }
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?){
-        self.view.endEditing(true)
+    @objc private func nextView () {
+        // viewController(for : ., at: 2)
+        
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        selectListView.selectCollectionView.delegate = self
-        selectListView.selectCollectionView.dataSource = self
+        setUpVC()
+        self.dataSource = self
         
-        selectListView.selectCollectionView.selectItem(at: [0,0], animated: false, scrollPosition: .init())
-        
-        NotificationCenter.default.addObserver(self, selector:#selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector:#selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+        // Create bar
+        let bar = TMBar.ButtonBar()
+        settingTabBar(ctBar: bar) //함수 추후 구현
+        addBar(bar, dataSource: self, at: .top)
     }
     
-    override func setHierarchy() {
-        self.view.addSubviews(selectListView,selectPlaceView,selectSectorView,selectColorView,selectVideoView,nextButton)
+    func setHierarchy() {
+        self.view.addSubviews(tabBarView,dotDivider,nextButton)
     }
     
-    override func setConstraints() {
-        selectListView.snp.makeConstraints {
-            $0.top.equalToSuperview().inset(37)
-            $0.leading.trailing.equalToSuperview()
-            $0.height.equalTo(20)
-        }
-        selectPlaceView.snp.makeConstraints {
-            $0.top.equalToSuperview().inset(94)
-            $0.leading.trailing.equalToSuperview()
-            $0.height.equalTo(55)
-        }
-        selectSectorView.snp.makeConstraints {
-            $0.top.equalToSuperview().inset(94)
-            $0.leading.trailing.equalToSuperview()
-            $0.height.equalTo(35)
-        }
-        selectColorView.snp.makeConstraints {
-            $0.top.equalTo(selectListView.snp.bottom).offset(8)
-            $0.bottom.leading.trailing.equalToSuperview()
-        }
-        selectVideoView.snp.makeConstraints {
-            $0.top.equalTo(selectListView.snp.bottom).offset(8)
-            $0.bottom.leading.trailing.equalToSuperview()
+    func setConstraints() {
+        tabBarView.snp.makeConstraints {
+            $0.top.equalToSuperview()
+            $0.leading.equalToSuperview().inset(21)
+            $0.width.equalTo(225)
+            $0.height.equalTo(16)
         }
         nextButton.snp.makeConstraints {
-            $0.bottom.equalToSuperview().inset(52)
-            $0.height.equalTo(20)
+            $0.bottom.equalToSuperview()
             $0.centerX.equalToSuperview()
+            $0.width.equalTo(28)
+            $0.height.equalTo(18)
         }
     }
 }
 
-extension RecordViewController : UICollectionViewDelegate, UICollectionViewDelegateFlowLayout,
-                                 UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 4
-    }
+extension RecordViewController: PageboyViewControllerDataSource, TMBarDataSource {
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SelectListCell.identifier, for: indexPath) as? SelectListCell else {
-            return UICollectionViewCell()
+    func barItem(for bar: TMBar, at index: Int) -> TMBarItemable {
+        switch index {
+        case 0:
+            return TMBarItem(title: "클라이밍장")
+        case 1:
+            return TMBarItem(title: "섹터")
+        case 2:
+            return TMBarItem(title: "난이도 색상")
+        case 3:
+            return TMBarItem(title: "영상")
+        default:
+            return TMBarItem(title: "클라이밍장")
         }
-        cell.cellLabel.text = selectList[indexPath.row]
-        selectSectorView.isHidden = true
-        selectColorView.isHidden = true
-        selectVideoView.isHidden = true
-        if (indexPath.row == 3) { cell.dividerLabel.text = "" }
-        return cell
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        print(2)
-        let cellLabel: UILabel = {
-            let label = UILabel()
-            label.text = selectList[indexPath.item]
-            label.font = UIFont(name: "Roboto-Bold", size: 15)
-            label.sizeToFit()
-            return label
-        }()
-        let size = cellLabel.frame.size
-        return CGSize(width: size.width + 3, height: size.height + 2)
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print("===\(indexPath.row)")
-        selectListViewIndex = indexPath.row
-        if (indexPath.row == 0) {
-            selectPlaceView.isHidden = false
-            selectSectorView.isHidden = true
-            selectColorView.isHidden = true
-            selectVideoView.isHidden = true
-        } else if (indexPath.row == 1) {
-            selectPlaceView.isHidden = true
-            selectSectorView.isHidden = false
-            selectColorView.isHidden = true
-            selectVideoView.isHidden = true
-        } else if (indexPath.row == 2) {
-            selectPlaceView.isHidden = true
-            selectSectorView.isHidden = true
-            selectColorView.isHidden = false
-            selectVideoView.isHidden = true
-        } else if (indexPath.row == 3) {
-            selectPlaceView.isHidden = true
-            selectSectorView.isHidden = true
-            selectColorView.isHidden = true
-            selectVideoView.isHidden = false
-        }
-    }
-}
-
-extension RecordViewController: UISheetPresentationControllerDelegate {
-    func presentModalBtnTap() {
-        let vc = PostRecordViewController()
-        vc.modalPresentationStyle = .pageSheet
         
-        if let sheet = vc.sheetPresentationController {
-            //지원할 크기 지정
-            if #available(iOS 16.0, *) {
-                sheet.detents = [.custom { context in
-                    return context.maximumDetentValue * 0.9
-                }]
-            } else { sheet.detents = [.medium(), .large()] }
-            sheet.delegate = self
-            sheet.prefersGrabberVisible = true
-        }
-        present(vc, animated: true, completion: nil)
     }
+    
+    func numberOfViewControllers(in pageboyViewController: PageboyViewController) -> Int {
+        return viewControllers.count
+    }
+    
+    func viewController(for pageboyViewController: PageboyViewController, at index: PageboyViewController.PageIndex) -> UIViewController? {
+        print("index===\(index)")
+        print(pageboyViewController)
+        return viewControllers[index]
+    }
+    
+    func defaultPage(for pageboyViewController: PageboyViewController) -> PageboyViewController.Page? {
+        return .at(index: 0)
+    }
+    
+    
 }
 
