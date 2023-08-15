@@ -55,6 +55,8 @@
             <string>Roboto-Regular.ttf</string>
             <string>Roboto-Thin.ttf</string>
         </array>
+    <key>NSPhotoLibraryUsageDescription</key>
+    <string>동영상 업로드를 위해 사진첩 접근이 필요합니다. 허용해주세요.</string>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>
