@@ -35,6 +35,7 @@ enum ImageLiteral {
     static var STIcon: UIImage { .load(named: "STIcon") }
     static var VIcon: UIImage { .load(named: "VIcon") }
     static var backButton: UIImage { .load(named: "backButton") }
+    static var addIcon: UIImage { .load(named: "addIcon") }
     
     //MARK: - test image
     static var videoThumbnail: UIImage { .load(named: "videoThumbnail") }
