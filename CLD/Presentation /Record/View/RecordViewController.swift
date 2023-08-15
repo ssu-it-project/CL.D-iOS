@@ -12,29 +12,11 @@ import Tabman
 import Pageboy
 
 class RecordViewController: TabmanViewController {
-    var recordDic: [String: String] = ["place":"", "sector":"", "color":"", "video":""]
+    // var recordDic: [String: String] = ["place":"", "sector":"", "color":"", "video":""]
     
     private var viewControllers: Array<BaseViewController> = []
     var tabBarView: UIView!
-    
-    private let dotDivider: UIImageView = {
-        let view = UIImageView()
-        view.image = ImageLiteral.dotDivider
-        view.backgroundColor = nil
-        return view
-    }()
-    
-    let nextButton: UIButton = {
-        let button = UIButton()
-        button.setTitle("다음", for: .normal)
-        button.setTitleColor(.CLDBlack, for: .normal)
-        button.titleLabel?.font = UIFont(name: "Roboto-Medium", size: 15)
-        button.semanticContentAttribute = .forceLeftToRight
-        button.contentVerticalAlignment = .center
-        button.contentHorizontalAlignment = .center
-        button.addTarget(self, action: #selector(nextView), for: .touchUpInside)
-        return button
-    }()
+    var tabIndex: Int = 0
     
     private func setUpVC() {
         let firstVC = SelectPlaceViewController()
@@ -50,7 +32,7 @@ class RecordViewController: TabmanViewController {
     private func settingTabBar (ctBar : TMBar.ButtonBar) {
             ctBar.layout.transitionStyle = .snap
             // 왼쪽 여백주기
-            ctBar.layout.contentInset = UIEdgeInsets(top: 37.0, left: 21.0, bottom: 0.0, right: 0.0)
+            ctBar.layout.contentInset = UIEdgeInsets(top: 34.0, left: 21.0, bottom: 0.0, right: 0.0)
             // 간격
             ctBar.layout.interButtonSpacing = 18
             ctBar.backgroundView.style = .flat(color: .white)
@@ -84,7 +66,7 @@ class RecordViewController: TabmanViewController {
     }
     
     func setHierarchy() {
-        self.view.addSubviews(tabBarView,dotDivider,nextButton)
+        self.view.addSubviews(tabBarView)
     }
     
     func setConstraints() {
@@ -93,12 +75,6 @@ class RecordViewController: TabmanViewController {
             $0.leading.equalToSuperview().inset(21)
             $0.width.equalTo(225)
             $0.height.equalTo(16)
-        }
-        nextButton.snp.makeConstraints {
-            $0.bottom.equalToSuperview()
-            $0.centerX.equalToSuperview()
-            $0.width.equalTo(28)
-            $0.height.equalTo(18)
         }
     }
 }
@@ -126,8 +102,7 @@ extension RecordViewController: PageboyViewControllerDataSource, TMBarDataSource
     }
     
     func viewController(for pageboyViewController: PageboyViewController, at index: PageboyViewController.PageIndex) -> UIViewController? {
-        print("index===\(index)")
-        print(pageboyViewController)
+        tabIndex = index
         return viewControllers[index]
     }
     

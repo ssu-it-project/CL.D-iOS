@@ -11,6 +11,13 @@ import SnapKit
 import Photos
 
 final class SelectVideoViewController: BaseViewController {
+    private let dotDivider: UIImageView = {
+        let view = UIImageView()
+        view.image = ImageLiteral.dotDivider
+        view.tintColor = .CLDDarkDarkGray
+        view.backgroundColor = nil
+        return view
+    }()
     
     var fetchResult: PHFetchResult<PHAsset>!
     //이미지를 로드해올 친구
@@ -19,7 +26,7 @@ final class SelectVideoViewController: BaseViewController {
     
     func photoLibraryDidChange(_ changeInstance: PHChange) {
         guard let changes = changeInstance.changeDetails(for: fetchResult)
-            else { return }
+        else { return }
         
         fetchResult = changes.fetchResultAfterChanges
         
@@ -73,7 +80,7 @@ final class SelectVideoViewController: BaseViewController {
     
     override func viewDidLoad() {
         self.view.backgroundColor = .white
-
+        
         selectCollectionView.delegate = self
         selectCollectionView.dataSource = self
         
@@ -82,7 +89,7 @@ final class SelectVideoViewController: BaseViewController {
         
         //사용자가 사진첩에 접근을 허가 했는지 확인
         let photoAurhorizationStatus = PHPhotoLibrary.authorizationStatus()
-
+        
         switch photoAurhorizationStatus {
         case .notDetermined:
             print("아직 응답하지 않음")
@@ -120,12 +127,17 @@ final class SelectVideoViewController: BaseViewController {
     }
     
     override func setHierarchy() {
-        self.view.addSubviews(selectCollectionView,nextButton)
+        self.view.addSubviews(dotDivider,selectCollectionView,nextButton)
     }
     
     override func setConstraints() {
+        dotDivider.snp.makeConstraints {
+            $0.top.equalToSuperview().inset(77)
+            $0.height.equalTo(1)
+            $0.leading.trailing.equalToSuperview().inset(19)
+        }
         selectCollectionView.snp.makeConstraints {
-            $0.top.equalToSuperview().inset(76)
+            $0.top.equalToSuperview().inset(85)
             $0.centerX.equalToSuperview()
             $0.width.equalTo(347)
             $0.bottom.equalToSuperview()
@@ -140,7 +152,7 @@ final class SelectVideoViewController: BaseViewController {
 }
 
 extension SelectVideoViewController : UICollectionViewDelegate, UICollectionViewDelegateFlowLayout,
-                            UICollectionViewDataSource {
+                                      UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return self.fetchResult?.count ?? 0
@@ -151,7 +163,7 @@ extension SelectVideoViewController : UICollectionViewDelegate, UICollectionView
             return UICollectionViewCell()
         }
         let asset: PHAsset = fetchResult.object(at: indexPath.row)
-
+        
         //실질적인 이미지 요청
         imageManager.requestImage(for: asset, targetSize: CGSize(width: 83, height: 81), contentMode: .aspectFill, options: nil, resultHandler: { image, _ in
             cell.backgroundVideo.image = image
@@ -179,7 +191,7 @@ extension SelectVideoViewController : UICollectionViewDelegate, UICollectionView
 extension SelectVideoViewController: PHPhotoLibraryChangeObserver {
     func setPhoto() {
         PHPhotoLibrary.shared().register(self)
-
+        
     }
 }
 

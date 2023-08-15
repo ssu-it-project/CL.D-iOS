@@ -10,6 +10,14 @@ import UIKit
 import SnapKit
 
 final class SelectSectorViewController: BaseViewController {
+    private let dotDivider: UIImageView = {
+        let view = UIImageView()
+        view.image = ImageLiteral.dotDivider
+        view.tintColor = .CLDDarkDarkGray
+        view.backgroundColor = nil
+        return view
+    }()
+    
     private let sectorTextField: UITextField = {
         let textField = UITextField()
         textField.placeholder = "섹터를 입력해주세요."
@@ -39,22 +47,7 @@ final class SelectSectorViewController: BaseViewController {
         print("다음")
         // self.present(SelectSectorViewController(), animated: true)
     }
-    @objc private func keyboardWillShow(_ notification: Notification) {
-        // 키보드가 생성될 때
-        if let keyboardFrame: NSValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
-            let keyboardHeight = keyboardFrame.cgRectValue.height
-            if self.view.frame.origin.y == 0 {
-                // self.nextButton.frame.origin.y -= keyboardHeight
-            }
-        }
-    }
-    @objc private func keyboardWillHide(_ notification: Notification) {
-        // 키보드가 사라질 때
-        if let keyboardFrame: NSValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
-            let keyboardHeight = keyboardFrame.cgRectValue.height
-            // self.nextButton.frame.origin.y += keyboardHeight
-        }
-    }
+
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?){
         self.view.endEditing(true)
     }
@@ -67,16 +60,18 @@ final class SelectSectorViewController: BaseViewController {
         
         setHierarchy()
         setConstraints()
-        
-        NotificationCenter.default.addObserver(self, selector:#selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector:#selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
 
     override func setHierarchy() {
-        self.view.addSubviews(sectorTextField, nextButton)
+        self.view.addSubviews(dotDivider, sectorTextField, nextButton)
     }
     
     override func setConstraints() {
+        dotDivider.snp.makeConstraints {
+            $0.top.equalToSuperview().inset(77)
+            $0.height.equalTo(1)
+            $0.leading.trailing.equalToSuperview().inset(19)
+        }
         sectorTextField.snp.makeConstraints {
             $0.top.equalToSuperview().inset(92)
             $0.leading.equalToSuperview().inset(25)

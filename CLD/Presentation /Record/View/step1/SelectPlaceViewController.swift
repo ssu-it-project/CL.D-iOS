@@ -14,7 +14,7 @@ final class SelectPlaceViewController: BaseViewController {
         let view = UIImageView()
         view.image = ImageLiteral.dotDivider
         view.tintColor = .CLDDarkDarkGray
-        view.backgroundColor = .clear
+        view.backgroundColor = nil
         return view
     }()
     private let searchIconView: UIImageView = {
@@ -56,26 +56,10 @@ final class SelectPlaceViewController: BaseViewController {
         print("다음")
         // self.present(SelectSectorViewController(), animated: true)
     }
-    @objc private func keyboardWillShow(_ notification: Notification) {
-        // 키보드가 생성될 때
-        if let keyboardFrame: NSValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
-            let keyboardHeight = keyboardFrame.cgRectValue.height
-            if self.view.frame.origin.y == 0 {
-                // self.nextButton.frame.origin.y -= keyboardHeight
-            }
-        }
-    }
-    @objc private func keyboardWillHide(_ notification: Notification) {
-        // 키보드가 사라질 때
-        if let keyboardFrame: NSValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
-            let keyboardHeight = keyboardFrame.cgRectValue.height
-            // self.nextButton.frame.origin.y += keyboardHeight
-        }
-    }
+    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?){
         self.view.endEditing(true)
     }
-    
     
     override func viewDidLoad() {
         self.view.backgroundColor = .white
@@ -85,9 +69,6 @@ final class SelectPlaceViewController: BaseViewController {
         searchTextField.layer.addSublayer((underLine))
         setHierarchy()
         setConstraints()
-        
-        NotificationCenter.default.addObserver(self, selector:#selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector:#selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     
     override func setHierarchy() {
@@ -96,12 +77,12 @@ final class SelectPlaceViewController: BaseViewController {
     
     override func setConstraints() {
         dotDivider.snp.makeConstraints {
-            $0.top.equalToSuperview().inset(88)
+            $0.top.equalToSuperview().inset(77)
             $0.height.equalTo(1)
             $0.leading.trailing.equalToSuperview().inset(19)
         }
         searchTextField.snp.makeConstraints {
-            $0.top.equalToSuperview().inset(92)
+            $0.top.equalToSuperview().inset(101)
             $0.leading.equalToSuperview().inset(25)
             $0.width.equalTo(312)
             $0.height.equalTo(31)
