@@ -26,15 +26,35 @@ final class HomeViewController: BaseViewController {
         collectionView.register(cell: VideoCollectionViewCell.self)
         return collectionView
     }()
-
+    
+    var url: [String] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionView.backgroundColor = .clear
+        setUpDataSource()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.navigationBar.isHidden = true
+        setUpDataSource()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        pauseAllVideoCells()
+    }
+    
+    private func setUpDataSource() {
+        url = [
+            "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4",
+            "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4",
+            "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4",
+            "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4",
+            "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4",
+            "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
+        ]
     }
     
     private func createLayout() -> UICollectionViewCompositionalLayout {
@@ -81,7 +101,7 @@ final class HomeViewController: BaseViewController {
         
         return section
     }
-
+    
     override func setHierarchy() {
         view.addSubview(collectionView)
     }
@@ -102,9 +122,9 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
         let section = HomeSectionType.allCases[section]
         switch section {
         case .badgeSection:
-            return 2
+            return 1
         case .videoBanner:
-            return 10
+            return url.count
         }
     }
     
@@ -113,11 +133,45 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
         
         switch section {
         case .badgeSection:
-               let cell: BadgeCollectionViewCell = collectionView.dequeueReusableCell(forIndexPath: indexPath)
-               return cell
+            let cell: BadgeCollectionViewCell = collectionView.dequeueReusableCell(forIndexPath: indexPath)
+            return cell
         case .videoBanner:
             let cell: VideoCollectionViewCell = collectionView.dequeueReusableCell(forIndexPath: indexPath)
+            let videoURL = url[indexPath.item]
+            cell.configure(with: videoURL)
+            cell.playerView.play()
             return cell
+        }
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let cells = collectionView.visibleCells
+         let videoCells = cells.compactMap({ $0 as? VideoCollectionViewCell })
+         
+         let contentHeight = scrollView.contentSize.height
+         let yOffset = scrollView.contentOffset.y
+         let frameHeight = scrollView.frame.size.height
+         
+         for videoCell in videoCells {
+             if let indexPath = collectionView.indexPath(for: videoCell) {
+                 let cellRect = collectionView.layoutAttributesForItem(at: indexPath)?.frame
+                 if let rect = cellRect, rect.origin.y < yOffset + frameHeight * 0.6 {
+                     videoCell.playerView.play()
+                 } else {
+                     videoCell.playerView.pause()
+                 }
+             }
+         }
+     }
+}
+
+extension HomeViewController {
+    private func pauseAllVideoCells() {
+        let cells = collectionView.visibleCells
+        let videoCells = cells.compactMap({ $0 as? VideoCollectionViewCell })
+        
+        for videoCell in videoCells {
+            videoCell.playerView.pause()
         }
     }
 }
