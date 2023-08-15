@@ -10,8 +10,15 @@ import UIKit
 import SnapKit
 
 final class SelectColorViewController: BaseViewController {
-    let colorData = ["흰색","회색","검정","파랑","빨강","갈색","핑크","초록","보라","주황","노랑","추가"]
+    private let dotDivider: UIImageView = {
+        let view = UIImageView()
+        view.image = ImageLiteral.dotDivider
+        view.tintColor = .CLDDarkDarkGray
+        view.backgroundColor = nil
+        return view
+    }()
     
+    let colorData = ["흰색","회색","검정","파랑","빨강","갈색","핑크","초록","보라","주황","노랑","추가"]
     var selectCollectionView: UICollectionView = {
         var layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
@@ -43,7 +50,7 @@ final class SelectColorViewController: BaseViewController {
     
     override func viewDidLoad() {
         self.view.backgroundColor = .white
-
+        
         selectCollectionView.delegate = self
         selectCollectionView.dataSource = self
         
@@ -52,12 +59,17 @@ final class SelectColorViewController: BaseViewController {
     }
     
     override func setHierarchy() {
-        self.view.addSubviews(selectCollectionView,nextButton)
+        self.view.addSubviews(dotDivider,selectCollectionView,nextButton)
     }
     
     override func setConstraints() {
+        dotDivider.snp.makeConstraints {
+            $0.top.equalToSuperview().inset(77)
+            $0.height.equalTo(1)
+            $0.leading.trailing.equalToSuperview().inset(19)
+        }
         selectCollectionView.snp.makeConstraints {
-            $0.top.equalToSuperview().inset(76)
+            $0.top.equalToSuperview().inset(85)
             $0.centerX.equalToSuperview()
             $0.width.equalTo(347)
             $0.bottom.equalToSuperview()
@@ -72,7 +84,7 @@ final class SelectColorViewController: BaseViewController {
 }
 
 extension SelectColorViewController : UICollectionViewDelegate, UICollectionViewDelegateFlowLayout,
-                            UICollectionViewDataSource {
+                                      UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return colorData.count

@@ -30,7 +30,7 @@ enum ImageLiteral {
     static var badgeInfoIcon: UIImage { .load(named: "badgeInfoIcon") }
     
     //MARK: - Record
-    static var dotDivider: UIImage { .load(named: "dotDivider") }
+    static var dotDivider: UIImage { .load(named: "DotDivider") }
     static var placeIcon: UIImage { .load(named: "placeIcon") }
     static var STIcon: UIImage { .load(named: "STIcon") }
     static var VIcon: UIImage { .load(named: "VIcon") }
