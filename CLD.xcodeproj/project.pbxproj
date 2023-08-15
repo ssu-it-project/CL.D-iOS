@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		020F65492A7B72050036CFB1 /* SelectListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020F65482A7B72050036CFB1 /* SelectListView.swift */; };
-		020F65512A7D045B0036CFB1 /* SelectVideoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020F65502A7D045B0036CFB1 /* SelectVideoCell.swift */; };
 		020F65532A7D09450036CFB1 /* SelectVideoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020F65522A7D09450036CFB1 /* SelectVideoViewController.swift */; };
 		023868C32A70009B0006C762 /* LoginManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 023868C22A70009B0006C762 /* LoginManager.swift */; };
 		023F37822A783C1F007B0511 /* SelectSectorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 023F37812A783C1F007B0511 /* SelectSectorViewController.swift */; };
@@ -34,6 +33,7 @@
 		0281723C2A793A670089FD51 /* SelectColorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0281723B2A793A670089FD51 /* SelectColorViewController.swift */; };
 		0281723E2A793B900089FD51 /* SelectColorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0281723D2A793B900089FD51 /* SelectColorCell.swift */; };
 		02DC9AC52A75789800F8989E /* SelectListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02DC9AC42A75789800F8989E /* SelectListCell.swift */; };
+		02E2532F2A8A17DB00D3E9E1 /* PhotoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E2532E2A8A17DB00D3E9E1 /* PhotoCollectionViewCell.swift */; };
 		02EB6E782A874D4D00C749A6 /* SelectPlaceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02EB6E772A874D4D00C749A6 /* SelectPlaceViewController.swift */; };
 		02EB6E7B2A874E5100C749A6 /* Tabman in Frameworks */ = {isa = PBXBuildFile; productRef = 02EB6E7A2A874E5100C749A6 /* Tabman */; };
 		02EB6E7D2A88BC9B00C749A6 /* SuccessRecordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02EB6E7C2A88BC9B00C749A6 /* SuccessRecordView.swift */; };
@@ -93,7 +93,6 @@
 
 /* Begin PBXFileReference section */
 		020F65482A7B72050036CFB1 /* SelectListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectListView.swift; sourceTree = "<group>"; };
-		020F65502A7D045B0036CFB1 /* SelectVideoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectVideoCell.swift; sourceTree = "<group>"; };
 		020F65522A7D09450036CFB1 /* SelectVideoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectVideoViewController.swift; sourceTree = "<group>"; };
 		023868C22A70009B0006C762 /* LoginManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginManager.swift; sourceTree = "<group>"; };
 		023F37812A783C1F007B0511 /* SelectSectorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectSectorViewController.swift; sourceTree = "<group>"; };
@@ -111,6 +110,7 @@
 		0281723B2A793A670089FD51 /* SelectColorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectColorViewController.swift; sourceTree = "<group>"; };
 		0281723D2A793B900089FD51 /* SelectColorCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectColorCell.swift; sourceTree = "<group>"; };
 		02DC9AC42A75789800F8989E /* SelectListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectListCell.swift; sourceTree = "<group>"; };
+		02E2532E2A8A17DB00D3E9E1 /* PhotoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCollectionViewCell.swift; sourceTree = "<group>"; };
 		02EB6E772A874D4D00C749A6 /* SelectPlaceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectPlaceViewController.swift; sourceTree = "<group>"; };
 		02EB6E7C2A88BC9B00C749A6 /* SuccessRecordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuccessRecordView.swift; sourceTree = "<group>"; };
 		02EB6E852A88C45A00C749A6 /* CALayer+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CALayer+Extension.swift"; sourceTree = "<group>"; };
@@ -279,8 +279,8 @@
 		02EB6E812A88C10200C749A6 /* step4 */ = {
 			isa = PBXGroup;
 			children = (
-				020F65502A7D045B0036CFB1 /* SelectVideoCell.swift */,
 				020F65522A7D09450036CFB1 /* SelectVideoViewController.swift */,
+				02E2532E2A8A17DB00D3E9E1 /* PhotoCollectionViewCell.swift */,
 			);
 			path = step4;
 			sourceTree = "<group>";
@@ -897,10 +897,10 @@
 				5ADED1C12A67A06F00C0CBF4 /* ImageLiteral.swift in Sources */,
 				5ADED1AB2A66ACC500C0CBF4 /* UITextField+Extension.swift in Sources */,
 				5A1C488D2A76C49200CC345A /* BadgeCollectionViewCell.swift in Sources */,
-				020F65512A7D045B0036CFB1 /* SelectVideoCell.swift in Sources */,
 				5ADED1BB2A67929500C0CBF4 /* BaseViewController.swift in Sources */,
 				5ACADCFC2A5D988F00B92C07 /* SceneDelegate.swift in Sources */,
 				5ADED1D42A6838D300C0CBF4 /* MyPageViewController.swift in Sources */,
+				02E2532F2A8A17DB00D3E9E1 /* PhotoCollectionViewCell.swift in Sources */,
 				5ADED1AD2A66ADA900C0CBF4 /* ReusableView+Extension.swift in Sources */,
 				5ADED1CE2A68388A00C0CBF4 /* CragSearchViewController.swift in Sources */,
 				5ACADD5D2A65919400B92C07 /* HomeViewController.swift in Sources */,
