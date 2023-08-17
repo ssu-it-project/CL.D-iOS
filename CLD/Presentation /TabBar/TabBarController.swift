@@ -71,7 +71,7 @@ extension TabBarController: UISheetPresentationControllerDelegate {
             //처음 크기 지정 (기본 값은 가장 작은 크기)
             sheet.selectedDetentIdentifier = .medium
             //뒤 배경 흐리게 제거 (기본 값은 모든 크기에서 배경 흐리게 됨)
-            sheet.largestUndimmedDetentIdentifier = .medium
+            // sheet.largestUndimmedDetentIdentifier = .large
         }
         present(vc, animated: true, completion: nil)
     }

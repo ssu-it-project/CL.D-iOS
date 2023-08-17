@@ -9,7 +9,16 @@ import UIKit
 
 import SnapKit
 
+protocol selectVCDelegate: AnyObject {
+    // ⭐️ 델리게이트 만들 때 규칙 (안 써도 무방하지만 애플이 만든 모든 델리게이트에 이와같이 적용돼 있어요.)
+    // 보통 파라미터의 첫번째 항목은 이 대리자(delegate)를 발생시킨 개체를 사용한다.
+    // 여기선 SecondViewController
+    func nextVC(_ viewController: SelectPlaceViewController, index: Int)
+}
+
 final class SelectPlaceViewController: BaseViewController {
+    weak var delegate: selectVCDelegate?
+    
     private let dotDivider: UIImageView = {
         let view = UIImageView()
         view.image = ImageLiteral.dotDivider
@@ -54,6 +63,7 @@ final class SelectPlaceViewController: BaseViewController {
     }()
     @objc private func nextView () {
         print("다음")
+        self.delegate?.nextVC(self, index: 1)
         // self.present(SelectSectorViewController(), animated: true)
     }
     

@@ -18,6 +18,18 @@ class RecordViewController: TabmanViewController {
     var tabBarView: UIView!
     var tabIndex: Int = 0
     
+    let nextButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("다음", for: .normal)
+        button.setTitleColor(.CLDBlack, for: .normal)
+        button.titleLabel?.font = UIFont(name: "Roboto-Medium", size: 15)
+        button.semanticContentAttribute = .forceLeftToRight
+        button.contentVerticalAlignment = .center
+        button.contentHorizontalAlignment = .center
+        button.addTarget(self, action: #selector(nextView), for: .touchUpInside)
+        return button
+    }()
+    
     private func setUpVC() {
         let firstVC = SelectPlaceViewController()
         let secondVC = SelectSectorViewController()
@@ -66,7 +78,7 @@ class RecordViewController: TabmanViewController {
     }
     
     func setHierarchy() {
-        self.view.addSubviews(tabBarView)
+        self.view.addSubviews(tabBarView, nextButton)
     }
     
     func setConstraints() {
@@ -76,10 +88,14 @@ class RecordViewController: TabmanViewController {
             $0.width.equalTo(225)
             $0.height.equalTo(16)
         }
+        nextButton.snp.makeConstraints {
+            $0.top.equalToSuperview()
+            $0.trailing.equalToSuperview().inset(21)
+        }
     }
 }
 
-extension RecordViewController: PageboyViewControllerDataSource, TMBarDataSource {
+extension RecordViewController: PageboyViewControllerDataSource, TMBarDataSource, selectVCDelegate {
     
     func barItem(for bar: TMBar, at index: Int) -> TMBarItemable {
         switch index {
@@ -109,7 +125,15 @@ extension RecordViewController: PageboyViewControllerDataSource, TMBarDataSource
     func defaultPage(for pageboyViewController: PageboyViewController) -> PageboyViewController.Page? {
         return .at(index: 0)
     }
+
+    func nextVC(_ viewController: SelectPlaceViewController, index: Int) {
+        print("nextVC")
+//        func bar(_ bar: TMBar, didRequestScrollTo index: Int) {
+//            print("delegate bar")
+//        }
+    }
     
     
 }
+
 

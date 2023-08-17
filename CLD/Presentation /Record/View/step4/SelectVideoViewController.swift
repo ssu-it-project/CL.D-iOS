@@ -143,7 +143,7 @@ final class SelectVideoViewController: BaseViewController {
             $0.bottom.equalToSuperview()
         }
         nextButton.snp.makeConstraints {
-            $0.bottom.equalToSuperview().inset(72)
+            $0.bottom.equalToSuperview().inset(62)
             $0.centerX.equalToSuperview()
             $0.width.equalTo(28)
             $0.height.equalTo(18)
@@ -155,7 +155,8 @@ extension SelectVideoViewController : UICollectionViewDelegate, UICollectionView
                                       UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.fetchResult?.count ?? 0
+        //return self.fetchResult?.count ?? 0
+        return 12
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {

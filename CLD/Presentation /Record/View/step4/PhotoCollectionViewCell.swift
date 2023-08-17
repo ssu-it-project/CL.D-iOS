@@ -20,7 +20,7 @@ final class PhotoCollectionViewCell: UICollectionViewCell {
         imageView.clipsToBounds = true
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.layer.cornerRadius = 10
-        imageView.layer.borderWidth = 2
+        imageView.layer.borderWidth = 3
         imageView.layer.borderColor = UIColor.white.cgColor
         return imageView
     }()
