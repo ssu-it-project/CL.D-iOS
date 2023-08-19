@@ -44,6 +44,7 @@
 		5A1C488A2A7687FB00CC345A /* CGSize+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A1C48892A7687FB00CC345A /* CGSize+Extension.swift */; };
 		5A1C488D2A76C49200CC345A /* BadgeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A1C488C2A76C49200CC345A /* BadgeCollectionViewCell.swift */; };
 		5A1C488F2A76CC9C00CC345A /* VideoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A1C488E2A76CC9C00CC345A /* VideoCollectionViewCell.swift */; };
+		5A97A1232A91229F00264AB5 /* RxGesture in Frameworks */ = {isa = PBXBuildFile; productRef = 5A97A1222A91229F00264AB5 /* RxGesture */; };
 		5AC80C782A838B5400FE9D6C /* PlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AC80C772A838B5400FE9D6C /* PlayerView.swift */; };
 		5ACADCFA2A5D988F00B92C07 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ACADCF92A5D988F00B92C07 /* AppDelegate.swift */; };
 		5ACADCFC2A5D988F00B92C07 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ACADCFB2A5D988F00B92C07 /* SceneDelegate.swift */; };
@@ -184,6 +185,7 @@
 				5A0871182A65A80100947794 /* SnapKit in Frameworks */,
 				5A0871112A65A7DD00947794 /* Moya in Frameworks */,
 				024509F72A6E6D7600F0DC76 /* RxSwift in Frameworks */,
+				5A97A1232A91229F00264AB5 /* RxGesture in Frameworks */,
 				0241775E2A6E5DA7006C3C4D /* KakaoSDKUser in Frameworks */,
 				0279DA942A6EC9A1002C2272 /* FacebookLogin in Frameworks */,
 				0279DA922A6EC9A1002C2272 /* FacebookCore in Frameworks */,
@@ -730,6 +732,7 @@
 				024509F62A6E6D7600F0DC76 /* RxSwift */,
 				0279DA912A6EC9A1002C2272 /* FacebookCore */,
 				0279DA932A6EC9A1002C2272 /* FacebookLogin */,
+				5A97A1222A91229F00264AB5 /* RxGesture */,
 			);
 			productName = CLD;
 			productReference = 5ACADCF62A5D988F00B92C07 /* CLD.app */;
@@ -810,6 +813,7 @@
 				024177582A6E5DA7006C3C4D /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */,
 				024509EF2A6E6D7600F0DC76 /* XCRemoteSwiftPackageReference "RxSwift" */,
 				0279DA902A6EC9A1002C2272 /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */,
+				5A97A1212A91229F00264AB5 /* XCRemoteSwiftPackageReference "RxGesture" */,
 			);
 			productRefGroup = 5ACADCF72A5D988F00B92C07 /* Products */;
 			projectDirPath = "";
@@ -1294,6 +1298,14 @@
 				minimumVersion = 7.0.0;
 			};
 		};
+		5A97A1212A91229F00264AB5 /* XCRemoteSwiftPackageReference "RxGesture" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/RxSwiftCommunity/RxGesture";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1361,6 +1373,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 5A0871192A65A85700947794 /* XCRemoteSwiftPackageReference "Kingfisher" */;
 			productName = Kingfisher;
+		};
+		5A97A1222A91229F00264AB5 /* RxGesture */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5A97A1212A91229F00264AB5 /* XCRemoteSwiftPackageReference "RxGesture" */;
+			productName = RxGesture;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
