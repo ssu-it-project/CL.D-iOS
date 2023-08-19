@@ -10,13 +10,14 @@ import AVKit
 
 final class PlayerView: UIView {
     
-    private var player: AVPlayer?
+    var player: AVPlayer?
     private var playerLayer: AVPlayerLayer?
     
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         initialSetup()
+        player?.isMuted = true
     }
     
     required init?(coder: NSCoder) {
