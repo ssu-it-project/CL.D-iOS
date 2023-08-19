@@ -10,7 +10,6 @@ import UIKit
 enum ImageLiteral {
     
     // MARK: - tab bar icon
-    
     static var homeIcon: UIImage { .load(named: "homeIcon") }
     static var searchIcon: UIImage { .load(named: "searchIcon") }
     static var recordIcon: UIImage { .load(named: "recordIcon") }
@@ -37,7 +36,10 @@ enum ImageLiteral {
     
     //MARK: - test image
     static var videoThumbnail: UIImage { .load(named: "videoThumbnail") }
-    static var thumbnailImage: UIImage { .load(named: "thumbnailImage")}
+    static var thumbnailImage: UIImage { .load(named: "thumbnailImage") }
+    
+    //MARK: - System image
+    static var checkIcon: UIImage { .load(systemName: "checkmark")}
 }
 
 extension UIImage {
