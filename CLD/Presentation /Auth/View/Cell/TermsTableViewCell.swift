@@ -12,13 +12,6 @@ import RxSwift
 import RxCocoa
 
 final class TermsTableViewCell: UITableViewCell {
-    
-    override var isSelected: Bool {
-        didSet {
-            setSelected(isSelected)
-        }
-    }
-    
 
     private let checkButton: UIButton = {
         let button = UIButton()
@@ -49,7 +42,6 @@ final class TermsTableViewCell: UITableViewCell {
         
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
         setSelected(selected)
     }
     
