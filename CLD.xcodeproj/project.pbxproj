@@ -70,6 +70,12 @@
 		5ADED1D02A6838AD00C0CBF4 /* RecordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ADED1CF2A6838AD00C0CBF4 /* RecordViewController.swift */; };
 		5ADED1D22A6838C400C0CBF4 /* CommunityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ADED1D12A6838C400C0CBF4 /* CommunityViewController.swift */; };
 		5ADED1D42A6838D300C0CBF4 /* MyPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ADED1D32A6838D300C0CBF4 /* MyPageViewController.swift */; };
+		5AEFAAA02A8B966900A67C43 /* TermsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AEFAA9F2A8B966900A67C43 /* TermsViewController.swift */; };
+		5AEFAAA82A8BD07500A67C43 /* TermsType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AEFAAA72A8BD07500A67C43 /* TermsType.swift */; };
+		5AEFAAC02A8CBB2300A67C43 /* TermsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AEFAABF2A8CBB2200A67C43 /* TermsTableViewCell.swift */; };
+		5AEFAAC32A8D178600A67C43 /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AEFAAC22A8D178600A67C43 /* SignUpViewModel.swift */; };
+		5AEFAAE72A8E2D6800A67C43 /* TermsCheckBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AEFAAE62A8E2D6800A67C43 /* TermsCheckBox.swift */; };
+		5AEFAAE92A8E3E5E00A67C43 /* CLDButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AEFAAE82A8E3E5E00A67C43 /* CLDButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -159,6 +165,12 @@
 		5ADED1CF2A6838AD00C0CBF4 /* RecordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordViewController.swift; sourceTree = "<group>"; };
 		5ADED1D12A6838C400C0CBF4 /* CommunityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityViewController.swift; sourceTree = "<group>"; };
 		5ADED1D32A6838D300C0CBF4 /* MyPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageViewController.swift; sourceTree = "<group>"; };
+		5AEFAA9F2A8B966900A67C43 /* TermsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsViewController.swift; sourceTree = "<group>"; };
+		5AEFAAA72A8BD07500A67C43 /* TermsType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsType.swift; sourceTree = "<group>"; };
+		5AEFAABF2A8CBB2200A67C43 /* TermsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsTableViewCell.swift; sourceTree = "<group>"; };
+		5AEFAAC22A8D178600A67C43 /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
+		5AEFAAE62A8E2D6800A67C43 /* TermsCheckBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsCheckBox.swift; sourceTree = "<group>"; };
+		5AEFAAE82A8E3E5E00A67C43 /* CLDButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CLDButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -202,9 +214,9 @@
 		026BC4712A680D9200F49B87 /* Auth */ = {
 			isa = PBXGroup;
 			children = (
+				5AEFAAC12A8D177000A67C43 /* ViewModel */,
 				026BC4722A680DC000F49B87 /* View */,
 				026BC4742A680EDC00F49B87 /* ViewController */,
-				026BC4732A680DC700F49B87 /* ViewModel */,
 				023868C22A70009B0006C762 /* LoginManager.swift */,
 			);
 			path = Auth;
@@ -213,22 +225,18 @@
 		026BC4722A680DC000F49B87 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				5AEFAAA92A8BD1F100A67C43 /* Cell */,
 				026BC4772A680FE900F49B87 /* SignInView.swift */,
+				5AEFAAE62A8E2D6800A67C43 /* TermsCheckBox.swift */,
 			);
 			path = View;
-			sourceTree = "<group>";
-		};
-		026BC4732A680DC700F49B87 /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		026BC4742A680EDC00F49B87 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
 				026BC4752A680FC000F49B87 /* AuthViewController.swift */,
+				5AEFAA9F2A8B966900A67C43 /* TermsViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -258,6 +266,7 @@
 			isa = PBXGroup;
 			children = (
 				5A1C48872A76813300CC345A /* HomeSectionType.swift */,
+				5AEFAAA72A8BD07500A67C43 /* TermsType.swift */,
 			);
 			path = Enum;
 			sourceTree = "<group>";
@@ -435,6 +444,7 @@
 			isa = PBXGroup;
 			children = (
 				5AC80C772A838B5400FE9D6C /* PlayerView.swift */,
+				5AEFAAE82A8E3E5E00A67C43 /* CLDButton.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -674,6 +684,22 @@
 			path = TabBar;
 			sourceTree = "<group>";
 		};
+		5AEFAAA92A8BD1F100A67C43 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				5AEFAABF2A8CBB2200A67C43 /* TermsTableViewCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		5AEFAAC12A8D177000A67C43 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				5AEFAAC22A8D178600A67C43 /* SignUpViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -838,6 +864,7 @@
 				020F65532A7D09450036CFB1 /* SelectVideoView.swift in Sources */,
 				0281723E2A793B900089FD51 /* SelectColorCell.swift in Sources */,
 				020F65492A7B72050036CFB1 /* SelectListView.swift in Sources */,
+				5AEFAAA82A8BD07500A67C43 /* TermsType.swift in Sources */,
 				5ADED1B12A66AFF700C0CBF4 /* UIStackView+Extension.swift in Sources */,
 				5ADED1B72A67793F00C0CBF4 /* UIView+Extension.swift in Sources */,
 				5A1C48882A76813300CC345A /* HomeSectionType.swift in Sources */,
@@ -846,7 +873,9 @@
 				0281723C2A793A670089FD51 /* SelectColorView.swift in Sources */,
 				02DC9AC32A74A82E00F8989E /* SelectPlaceView.swift in Sources */,
 				5ADED1D22A6838C400C0CBF4 /* CommunityViewController.swift in Sources */,
+				5AEFAAE92A8E3E5E00A67C43 /* CLDButton.swift in Sources */,
 				5ADED1BF2A679FB100C0CBF4 /* UIImage+Extension.swift in Sources */,
+				5AEFAAA02A8B966900A67C43 /* TermsViewController.swift in Sources */,
 				023868C32A70009B0006C762 /* LoginManager.swift in Sources */,
 				5ADED1BD2A679B6A00C0CBF4 /* UIColor+Extension.swift in Sources */,
 				5A1C488A2A7687FB00CC345A /* CGSize+Extension.swift in Sources */,
@@ -868,10 +897,12 @@
 				5ADED1D42A6838D300C0CBF4 /* MyPageViewController.swift in Sources */,
 				5AC80C782A838B5400FE9D6C /* PlayerView.swift in Sources */,
 				5ADED1AD2A66ADA900C0CBF4 /* ReusableView+Extension.swift in Sources */,
+				5AEFAAE72A8E2D6800A67C43 /* TermsCheckBox.swift in Sources */,
 				5ADED1CE2A68388A00C0CBF4 /* CragSearchViewController.swift in Sources */,
 				5ACADD5D2A65919400B92C07 /* HomeViewController.swift in Sources */,
 				023F37822A783C1F007B0511 /* SelectSectorView.swift in Sources */,
 				5ADED1B92A678E9C00C0CBF4 /* UILabel+Extension.swift in Sources */,
+				5AEFAAC32A8D178600A67C43 /* SignUpViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
