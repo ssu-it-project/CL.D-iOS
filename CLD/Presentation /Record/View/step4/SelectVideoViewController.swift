@@ -143,7 +143,7 @@ final class SelectVideoViewController: BaseViewController {
             $0.bottom.equalToSuperview()
         }
         nextButton.snp.makeConstraints {
-            $0.bottom.equalToSuperview().inset(62)
+            $0.bottom.equalToSuperview().inset(56)
             $0.centerX.equalToSuperview()
             $0.width.equalTo(28)
             $0.height.equalTo(18)

@@ -16,7 +16,6 @@ class RecordViewController: TabmanViewController {
     
     private var viewControllers: Array<BaseViewController> = []
     var tabBarView: UIView!
-    var tabIndex: Int = 0
     
     let nextButton: UIButton = {
         let button = UIButton()
@@ -26,7 +25,7 @@ class RecordViewController: TabmanViewController {
         button.semanticContentAttribute = .forceLeftToRight
         button.contentVerticalAlignment = .center
         button.contentHorizontalAlignment = .center
-        button.addTarget(self, action: #selector(nextView), for: .touchUpInside)
+        button.addTarget(self, action: #selector(nextPageButtonTapped), for: .touchUpInside)
         return button
     }()
     
@@ -42,27 +41,29 @@ class RecordViewController: TabmanViewController {
         viewControllers.append(fourthVC)
     }
     private func settingTabBar (ctBar : TMBar.ButtonBar) {
-            ctBar.layout.transitionStyle = .snap
-            // 왼쪽 여백주기
-            ctBar.layout.contentInset = UIEdgeInsets(top: 34.0, left: 21.0, bottom: 0.0, right: 0.0)
-            // 간격
-            ctBar.layout.interButtonSpacing = 18
-            ctBar.backgroundView.style = .flat(color: .white)
-            
-            // 선택 / 안선택 색 + font size
-            ctBar.buttons.customize { (button) in
-                button.tintColor = .CLDMediumGray
-                button.selectedTintColor = .CLDGold
-                button.font = UIFont(name: "Roboto-Bold", size: 15)!
-            }
-            
-            // 인디케이터 (영상에서 주황색 아래 바 부분)
-            ctBar.indicator.weight = .custom(value: 0)
+        ctBar.layout.transitionStyle = .snap
+        // 왼쪽 여백주기
+        ctBar.layout.contentInset = UIEdgeInsets(top: 34.0, left: 21.0, bottom: 0.0, right: 0.0)
+        // 간격
+        ctBar.layout.interButtonSpacing = 18
+        ctBar.backgroundView.style = .flat(color: .white)
+        
+        // 선택 / 안선택 색 + font size
+        ctBar.buttons.customize { (button) in
+            button.tintColor = .CLDMediumGray
+            button.selectedTintColor = .CLDGold
+            button.font = UIFont(name: "Roboto-Bold", size: 15)!
+        }
+        
+        // 인디케이터 (영상에서 주황색 아래 바 부분)
+        ctBar.indicator.weight = .custom(value: 0)
     }
     
-    @objc private func nextView () {
-        // viewController(for : ., at: 2)
-        
+    @objc func nextPageButtonTapped() {
+        if let currentPage = self.currentIndex, currentPage < viewControllers.count - 1 {
+            // 현재 페이지의 인덱스를 가져와서 페이지를 1 증가시켜 다음 페이지로 전환
+            self.scrollToPage(.next, animated: true)
+        }
     }
     
     override func viewDidLoad() {
@@ -71,31 +72,31 @@ class RecordViewController: TabmanViewController {
         setUpVC()
         self.dataSource = self
         
+        
         // Create bar
         let bar = TMBar.ButtonBar()
-        settingTabBar(ctBar: bar) //함수 추후 구현
+        settingTabBar(ctBar: bar)
         addBar(bar, dataSource: self, at: .top)
+        
+        setHierarchy()
+        setConstraints()
     }
     
     func setHierarchy() {
-        self.view.addSubviews(tabBarView, nextButton)
+        self.view.addSubview(nextButton)
     }
     
     func setConstraints() {
-        tabBarView.snp.makeConstraints {
-            $0.top.equalToSuperview()
-            $0.leading.equalToSuperview().inset(21)
-            $0.width.equalTo(225)
-            $0.height.equalTo(16)
-        }
         nextButton.snp.makeConstraints {
-            $0.top.equalToSuperview()
-            $0.trailing.equalToSuperview().inset(21)
+            $0.bottom.equalToSuperview().inset(56)
+            $0.centerX.equalToSuperview()
+            $0.width.equalTo(28)
+            $0.height.equalTo(18)
         }
     }
 }
 
-extension RecordViewController: PageboyViewControllerDataSource, TMBarDataSource, selectVCDelegate {
+extension RecordViewController: PageboyViewControllerDataSource, TMBarDataSource {
     
     func barItem(for bar: TMBar, at index: Int) -> TMBarItemable {
         switch index {
@@ -118,22 +119,17 @@ extension RecordViewController: PageboyViewControllerDataSource, TMBarDataSource
     }
     
     func viewController(for pageboyViewController: PageboyViewController, at index: PageboyViewController.PageIndex) -> UIViewController? {
-        tabIndex = index
+        if index == 3 {
+            nextButton.isHidden = true
+        } else {
+            nextButton.isHidden = false
+        }
         return viewControllers[index]
     }
     
     func defaultPage(for pageboyViewController: PageboyViewController) -> PageboyViewController.Page? {
         return .at(index: 0)
     }
-
-    func nextVC(_ viewController: SelectPlaceViewController, index: Int) {
-        print("nextVC")
-//        func bar(_ bar: TMBar, didRequestScrollTo index: Int) {
-//            print("delegate bar")
-//        }
-    }
-    
-    
 }
 
 

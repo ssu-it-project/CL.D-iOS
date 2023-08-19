@@ -57,19 +57,7 @@ final class SelectColorViewController: BaseViewController {
         label.font = UIFont(name: "Roboto-Regular", size: 11)
         return label
     }()
-    
-    let nextButton: UIButton = {
-        let button = UIButton()
-        button.setTitle("다음", for: .normal)
-        button.setTitleColor(.CLDBlack, for: .normal)
-        button.titleLabel?.font = UIFont(name: "Roboto-Medium", size: 15)
-        button.semanticContentAttribute = .forceLeftToRight
-        button.contentVerticalAlignment = .center
-        button.contentHorizontalAlignment = .center
-        button.addTarget(self, action: #selector(nextView), for: .touchUpInside)
-        return button
-    }()
-    
+
     @objc private func addColor () {
         print("색상 추가하기")
         
@@ -91,10 +79,6 @@ final class SelectColorViewController: BaseViewController {
         alert.addAction(okAction)
         present(alert, animated: true)
     }
-    @objc private func nextView () {
-        print("다음")
-        // self.present(SelectSectorViewController(), animated: true)
-    }
     
     override func viewDidLoad() {
         self.view.backgroundColor = .white
@@ -107,7 +91,7 @@ final class SelectColorViewController: BaseViewController {
     }
     
     override func setHierarchy() {
-        self.view.addSubviews(dotDivider,selectCollectionView,nextButton)
+        self.view.addSubviews(dotDivider,selectCollectionView)
         selectCollectionView.addSubview(addButton)
         addButton.addSubview(addIcon)
         addButton.addSubview(addLabel)
@@ -140,12 +124,6 @@ final class SelectColorViewController: BaseViewController {
             $0.top.equalTo(addIcon.snp.bottom).offset(18)
             $0.bottom.equalToSuperview().inset(6)
             $0.centerX.equalToSuperview()
-        }
-        nextButton.snp.makeConstraints {
-            $0.bottom.equalToSuperview().inset(72)
-            $0.centerX.equalToSuperview()
-            $0.width.equalTo(28)
-            $0.height.equalTo(18)
         }
     }
 }
