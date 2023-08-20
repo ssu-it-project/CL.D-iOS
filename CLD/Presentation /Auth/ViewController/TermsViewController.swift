@@ -48,7 +48,8 @@ final class TermsViewController: BaseViewController {
             .drive(termsTableView.rx.items) { tableView, index, menu in
                 guard let cell = tableView.dequeueReusableCell(withIdentifier: "TermsTableViewCell", for: IndexPath(row: index, section: 0)) as? TermsTableViewCell else { return UITableViewCell() }
                 cell.configCell(title: menu.description)
-                cell.selectionStyle = .none
+                cell.rightImageView.tag = index
+                cell.delegate = self
                 return cell
             }
             .disposed(by: disposeBag)
@@ -68,6 +69,8 @@ final class TermsViewController: BaseViewController {
                 }
             }
             .disposed(by: disposeBag)
+        
+        
     }
     
     override func setHierarchy() {
@@ -98,5 +101,14 @@ final class TermsViewController: BaseViewController {
         }
         
     }
-    
 }
+
+extension TermsViewController: PushTermsViewDelegate {
+    func cellButtonTapped(index: Int) {
+        let vc = TermsWebViewController()
+        vc.termsUrl = "\(index)"
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+}
+        
+

@@ -10,8 +10,16 @@ import UIKit
 import SnapKit
 import RxSwift
 import RxCocoa
+import RxGesture
+
+protocol PushTermsViewDelegate: AnyObject {
+    func cellButtonTapped(index: Int)
+}
 
 final class TermsTableViewCell: UITableViewCell {
+    
+    private var bag = DisposeBag()
+    weak var delegate: PushTermsViewDelegate?
 
     private let checkButton: UIButton = {
         let button = UIButton()
@@ -26,14 +34,14 @@ final class TermsTableViewCell: UITableViewCell {
         button.tintColor = UIColor.CLDLightGray
         return button
     }()
-    
-    private let rightImageView = UIImageView(image: UIImage(systemName: "chevron.right"))
+    let rightImageView = UIImageView(image: UIImage(systemName: "chevron.right"))
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: .value1, reuseIdentifier: reuseIdentifier)
         setHierarchy()
         setConstraints()
         setLayout()
+        setGesture()
     }
     
     required init?(coder: NSCoder) {
@@ -42,10 +50,34 @@ final class TermsTableViewCell: UITableViewCell {
         
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-        setSelected(selected)
+        setSelectedCell(selected)
+    }
+    
+    private func setGesture() {
+        rightImageView.rx.tapGesture()
+            .when(.recognized)
+            .subscribe(onNext: { [weak self] _ in
+                self?.delegate?.cellButtonTapped(index: self?.rightImageView.tag ?? 0)
+            })
+            .disposed(by: bag)
+    }
+    
+    private func setSelectedCell(_ bool: Bool) {
+        switch bool {
+        case true:
+            imageView?.tintColor = .CLDBlack
+            textLabel?.textColor = .CLDBlack
+            rightImageView.tintColor = .CLDBlack
+        case false:
+            imageView?.tintColor = .CLDDarkGray
+            textLabel?.textColor = .CLDDarkGray
+            rightImageView.tintColor = .CLDDarkGray
+        }
     }
     
     func setLayout() {
+        self.selectionStyle = .none
+        
         imageView?.image = UIImage(systemName: "checkmark")
         imageView?.tintColor = .CLDDarkGray
         textLabel?.textColor = .CLDDarkGray
@@ -64,21 +96,7 @@ final class TermsTableViewCell: UITableViewCell {
             make.trailing.equalToSuperview().inset(15)
         }
     }
-    
-    private func setSelected(_ bool: Bool) {
-        switch bool {
-        case true:
-            imageView?.tintColor = .CLDBlack
-            textLabel?.textColor = .CLDBlack
-            rightImageView.tintColor = .CLDBlack
-        case false:
-            imageView?.tintColor = .CLDDarkGray
-            textLabel?.textColor = .CLDDarkGray
-            rightImageView.tintColor = .CLDDarkGray
-        }
-    }
-    
-    
+
     func configCell(title: String) {
         textLabel?.text = title
     }
