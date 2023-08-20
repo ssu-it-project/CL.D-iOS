@@ -12,7 +12,7 @@ import Tabman
 import Pageboy
 
 class RecordViewController: TabmanViewController {
-    // var recordDic: [String: String] = ["place":"", "sector":"", "color":"", "video":""]
+    var recordDic: Dictionary<String, Any> = [:]
     
     private var viewControllers: Array<BaseViewController> = []
     var tabBarView: UIView!
@@ -121,6 +121,18 @@ extension RecordViewController: PageboyViewControllerDataSource, TMBarDataSource
     func viewController(for pageboyViewController: PageboyViewController, at index: PageboyViewController.PageIndex) -> UIViewController? {
         if index == 3 {
             nextButton.isHidden = true
+            if let nextViewController = viewControllers[index-3] as? SelectPlaceViewController {
+                recordDic["place"] = nextViewController.placeText
+            }
+            if let nextViewController = viewControllers[index-2] as? SelectSectorViewController {
+                recordDic["sector"] = nextViewController.sectorText
+            }
+            if let nextViewController = viewControllers[index-1] as? SelectColorViewController {
+                recordDic["color"] = nextViewController.colorText
+            }
+            if let currentViewController = viewControllers[index] as? SelectVideoViewController {
+                currentViewController.finalRecordDic = recordDic
+            }
         } else {
             nextButton.isHidden = false
         }

@@ -10,6 +10,8 @@ import UIKit
 import SnapKit
 
 final class SelectSectorViewController: BaseViewController {
+    var sectorText: String = ""
+    
     private let dotDivider: UIImageView = {
         let view = UIImageView()
         view.image = ImageLiteral.dotDivider
@@ -45,6 +47,10 @@ final class SelectSectorViewController: BaseViewController {
         
         setHierarchy()
         setConstraints()
+    }
+    
+    override func viewWillLayoutSubviews() {
+        sectorText = sectorTextField.text ?? ""
     }
 
     override func setHierarchy() {

@@ -10,6 +10,8 @@ import UIKit
 import SnapKit
 
 final class SelectColorViewController: BaseViewController {
+    var colorText: String = ""
+    
     private let dotDivider: UIImageView = {
         let view = UIImageView()
         view.image = ImageLiteral.dotDivider
@@ -57,10 +59,8 @@ final class SelectColorViewController: BaseViewController {
         label.font = UIFont(name: "Roboto-Regular", size: 11)
         return label
     }()
-
+    
     @objc private func addColor () {
-        print("색상 추가하기")
-        
         let alert = UIAlertController(title: "색상 추가", message: "추가할 색상을 입력해주세요.", preferredStyle: .alert)
         alert.addTextField(){ (text) in
             text.placeholder = "예시) 민트"
@@ -184,5 +184,11 @@ extension SelectColorViewController : UICollectionViewDelegate, UICollectionView
     // 같은 행에 있는 항목 사이에 사용할 최소 간격
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
         return 5
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if let cell = collectionView.cellForItem(at: indexPath) as? SelectColorCell {
+            colorText = cell.colorLabel.text ?? ""
+        }
     }
 }

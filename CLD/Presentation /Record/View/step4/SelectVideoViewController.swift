@@ -11,6 +11,9 @@ import SnapKit
 import Photos
 
 final class SelectVideoViewController: BaseViewController {
+    var finalRecordDic: Dictionary<String, Any> = [:]
+    var asset: PHAsset!
+    
     private let dotDivider: UIImageView = {
         let view = UIImageView()
         view.image = ImageLiteral.dotDivider
@@ -74,8 +77,21 @@ final class SelectVideoViewController: BaseViewController {
         return button
     }()
     @objc private func nextView () {
-        print("다음")
-        presentModalBtnTap()
+        finalRecordDic["video"] = asset
+        print("finalRecordDic: \(finalRecordDic)")
+        if ( finalRecordDic["place"] as! String != "" && finalRecordDic["sector"] as! String != "" && finalRecordDic["color"] as! String != "" && finalRecordDic["video"] != nil) {
+            presentModalBtnTap()
+        } else {
+            let alert = UIAlertController(title: "확인", message: """
+                                          클라이밍장, 섹터, 난이도 색상, 영상 중에
+                                          입력되지 않은 값이 없는지 확인해주세요.
+                                          """, preferredStyle: .alert)
+            let okAction = UIAlertAction(title: "확인", style: .default) { _ in
+                return
+            }
+            alert.addAction(okAction)
+            present(alert, animated: true)
+        }
     }
     
     override func viewDidLoad() {
@@ -187,12 +203,16 @@ extension SelectVideoViewController : UICollectionViewDelegate, UICollectionView
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
         return 5
     }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let index: IndexPath = indexPath
+        asset = self.fetchResult[index.row]
+    }
 }
 
 extension SelectVideoViewController: PHPhotoLibraryChangeObserver {
     func setPhoto() {
         PHPhotoLibrary.shared().register(self)
-        
     }
 }
 
@@ -211,6 +231,7 @@ extension SelectVideoViewController: UISheetPresentationControllerDelegate {
             sheet.delegate = self
             sheet.prefersGrabberVisible = true
         }
+        vc.postRecordDic = finalRecordDic
         present(vc, animated: true, completion: nil)
     }
 }

@@ -9,7 +9,9 @@ import UIKit
 
 import SnapKit
 
-final class SelectPlaceViewController: BaseViewController {    
+final class SelectPlaceViewController: BaseViewController {
+    var placeText: String = ""
+    
     private let dotDivider: UIImageView = {
         let view = UIImageView()
         view.image = ImageLiteral.dotDivider
@@ -53,6 +55,10 @@ final class SelectPlaceViewController: BaseViewController {
         searchTextField.layer.addSublayer((underLine))
         setHierarchy()
         setConstraints()
+    }
+    
+    override func viewWillLayoutSubviews() {
+        placeText = searchTextField.text ?? ""
     }
     
     override func setHierarchy() {
