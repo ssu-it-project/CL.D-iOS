@@ -73,7 +73,7 @@ final class SelectVideoViewController: BaseViewController {
         button.semanticContentAttribute = .forceLeftToRight
         button.contentVerticalAlignment = .center
         button.contentHorizontalAlignment = .center
-        button.addTarget(self, action: #selector(nextView), for: .touchUpInside)
+        button.addTarget(SelectVideoViewController.self, action: #selector(nextView), for: .touchUpInside)
         return button
     }()
     @objc private func nextView () {
