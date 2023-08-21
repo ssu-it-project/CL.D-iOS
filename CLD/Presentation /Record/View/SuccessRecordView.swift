@@ -17,9 +17,10 @@ final class SuccessRecordView: UIView {
         label.font = UIFont(name: "Roboto-Regular", size: 15)
         return label
     }()
-    private let thumbnailView: UIImageView = {
+    let thumbnailView: UIImageView = {
         let view = UIImageView()
         view.image = ImageLiteral.thumbnailImage
+        view.contentMode = .scaleAspectFill
         view.backgroundColor = nil
         view.layer.cornerRadius = 10
         view.clipsToBounds = true
@@ -121,15 +122,15 @@ final class SuccessRecordView: UIView {
             $0.width.equalTo(35)
             $0.height.equalTo(45)
         }
-        labelBackground.snp.makeConstraints {
-            $0.width.equalTo(27)
-            $0.height.equalTo(12)
-            $0.trailing.equalToSuperview().inset(12)
-            $0.bottom.equalToSuperview().inset(8)
-        }
-        timeLabel.snp.makeConstraints {
-            $0.center.equalToSuperview()
-        }
+//        labelBackground.snp.makeConstraints {
+//            $0.width.equalTo(27)
+//            $0.height.equalTo(12)
+//            $0.trailing.equalToSuperview().inset(12)
+//            $0.bottom.equalToSuperview().inset(8)
+//        }
+//        timeLabel.snp.makeConstraints {
+//            $0.center.equalToSuperview()
+//        }
         successLabel.snp.makeConstraints {
             $0.top.equalToSuperview().inset(309)
             $0.width.equalTo(136)
