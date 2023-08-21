@@ -70,7 +70,11 @@ final class TermsViewController: BaseViewController {
             }
             .disposed(by: disposeBag)
         
-        
+        allTermsCheckBox.termsCheckBoxDidTapGesture()
+            .emit(onNext: { [weak self] in
+                print("CheckBox tapped")
+            })
+            .disposed(by: disposeBag)
     }
     
     override func setHierarchy() {

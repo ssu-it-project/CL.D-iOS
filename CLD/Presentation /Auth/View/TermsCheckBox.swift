@@ -8,11 +8,16 @@
 import UIKit
 
 import SnapKit
+import RxSwift
+import RxCocoa
+import RxGesture
 
 final class TermsCheckBox: UIView {
+        
+    private var isSelected = false
+    
     private let checkButton: UIButton = {
         let button = UIButton()
-        button.setImage(ImageLiteral.checkIcon, for: .normal)
         button.tintColor = UIColor.black
         button.layer.borderWidth = 0.8
         button.layer.borderColor = UIColor.CLDBlack.cgColor
@@ -28,6 +33,7 @@ final class TermsCheckBox: UIView {
         return label
     }()
     
+    private var bag = DisposeBag()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -63,5 +69,27 @@ final class TermsCheckBox: UIView {
             make.centerY.equalToSuperview()
             make.trailing.equalToSuperview().inset(10)
         }
+    }
+    
+    private func setDidTapUI() {
+        if isSelected {
+            layer.borderColor = UIColor.CLDBlack.cgColor
+            checkButton.setImage(ImageLiteral.checkIcon, for: .normal)
+        } else {
+            self.layer.borderColor = UIColor.CLDDarkGray.cgColor
+            checkButton.setImage(nil, for: .normal)
+        }
+    }
+}
+
+
+extension TermsCheckBox {
+    func termsCheckBoxDidTapGesture() -> Signal<Void> {
+        return self.rx.tapGesture().when(.recognized)
+            .map {  [weak self] _ in
+                self?.isSelected.toggle()
+                self?.setDidTapUI()
+            }
+            .asSignal(onErrorSignalWith: Signal.empty())
     }
 }
