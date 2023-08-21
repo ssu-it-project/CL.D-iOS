@@ -17,8 +17,6 @@
 		024509F32A6E6D7600F0DC76 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 024509F22A6E6D7600F0DC76 /* RxCocoa */; };
 		024509F52A6E6D7600F0DC76 /* RxRelay in Frameworks */ = {isa = PBXBuildFile; productRef = 024509F42A6E6D7600F0DC76 /* RxRelay */; };
 		024509F72A6E6D7600F0DC76 /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 024509F62A6E6D7600F0DC76 /* RxSwift */; };
-		0260B2EF2A8285850038E52B /* PostRecordVIew.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0260B2EE2A8285850038E52B /* PostRecordVIew.swift */; };
-		0260B2F12A82858D0038E52B /* PostRecordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0260B2F02A82858D0038E52B /* PostRecordViewController.swift */; };
 		026BC4762A680FC000F49B87 /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 026BC4752A680FC000F49B87 /* AuthViewController.swift */; };
 		026BC4782A680FE900F49B87 /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 026BC4772A680FE900F49B87 /* SignInView.swift */; };
 		026BC4862A6847BF00F49B87 /* Roboto-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 026BC47A2A6847BE00F49B87 /* Roboto-Bold.ttf */; };
@@ -32,6 +30,8 @@
 		0279DA942A6EC9A1002C2272 /* FacebookLogin in Frameworks */ = {isa = PBXBuildFile; productRef = 0279DA932A6EC9A1002C2272 /* FacebookLogin */; };
 		0281723C2A793A670089FD51 /* SelectColorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0281723B2A793A670089FD51 /* SelectColorViewController.swift */; };
 		0281723E2A793B900089FD51 /* SelectColorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0281723D2A793B900089FD51 /* SelectColorCell.swift */; };
+		028981642A93176000B928E5 /* PostRecordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 028981632A93175F00B928E5 /* PostRecordViewController.swift */; };
+		02D56F4A2A9317FB00FF41EA /* PostRecordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D56F492A9317FB00FF41EA /* PostRecordView.swift */; };
 		02DC9AC52A75789800F8989E /* SelectListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02DC9AC42A75789800F8989E /* SelectListCell.swift */; };
 		02E2532F2A8A17DB00D3E9E1 /* PhotoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E2532E2A8A17DB00D3E9E1 /* PhotoCollectionViewCell.swift */; };
 		02EB6E782A874D4D00C749A6 /* SelectPlaceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02EB6E772A874D4D00C749A6 /* SelectPlaceViewController.swift */; };
@@ -97,8 +97,6 @@
 		020F65522A7D09450036CFB1 /* SelectVideoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectVideoViewController.swift; sourceTree = "<group>"; };
 		023868C22A70009B0006C762 /* LoginManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginManager.swift; sourceTree = "<group>"; };
 		023F37812A783C1F007B0511 /* SelectSectorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectSectorViewController.swift; sourceTree = "<group>"; };
-		0260B2EE2A8285850038E52B /* PostRecordVIew.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PostRecordVIew.swift; path = "../../../../../../backup/cl-d-iOS/CLD/Presentation /Record/View/PostRecordVIew.swift"; sourceTree = "<group>"; };
-		0260B2F02A82858D0038E52B /* PostRecordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PostRecordViewController.swift; path = "../../../../../../backup/cl-d-iOS/CLD/Presentation /Record/View/PostRecordViewController.swift"; sourceTree = "<group>"; };
 		026BC4752A680FC000F49B87 /* AuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewController.swift; sourceTree = "<group>"; };
 		026BC4772A680FE900F49B87 /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
 		026BC47A2A6847BE00F49B87 /* Roboto-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Bold.ttf"; sourceTree = "<group>"; };
@@ -110,6 +108,8 @@
 		026BC4932A69102F00F49B87 /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
 		0281723B2A793A670089FD51 /* SelectColorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectColorViewController.swift; sourceTree = "<group>"; };
 		0281723D2A793B900089FD51 /* SelectColorCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectColorCell.swift; sourceTree = "<group>"; };
+		028981632A93175F00B928E5 /* PostRecordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostRecordViewController.swift; sourceTree = "<group>"; };
+		02D56F492A9317FB00FF41EA /* PostRecordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostRecordView.swift; sourceTree = "<group>"; };
 		02DC9AC42A75789800F8989E /* SelectListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectListCell.swift; sourceTree = "<group>"; };
 		02E2532E2A8A17DB00D3E9E1 /* PhotoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCollectionViewCell.swift; sourceTree = "<group>"; };
 		02EB6E772A874D4D00C749A6 /* SelectPlaceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectPlaceViewController.swift; sourceTree = "<group>"; };
@@ -250,6 +250,16 @@
 				026BC4932A69102F00F49B87 /* SplashViewController.swift */,
 			);
 			path = Splash;
+			sourceTree = "<group>";
+		};
+		0289815F2A93174800B928E5 /* final */ = {
+			isa = PBXGroup;
+			children = (
+				028981632A93175F00B928E5 /* PostRecordViewController.swift */,
+				02EB6E7C2A88BC9B00C749A6 /* SuccessRecordView.swift */,
+				02D56F492A9317FB00FF41EA /* PostRecordView.swift */,
+			);
+			path = final;
 			sourceTree = "<group>";
 		};
 		02EB6E7E2A88C04C00C749A6 /* step1 */ = {
@@ -658,9 +668,7 @@
 				02EB6E7F2A88C07600C749A6 /* step2 */,
 				02EB6E802A88C0AA00C749A6 /* step3 */,
 				02EB6E812A88C10200C749A6 /* step4 */,
-				0260B2EE2A8285850038E52B /* PostRecordVIew.swift */,
-				0260B2F02A82858D0038E52B /* PostRecordViewController.swift */,
-				02EB6E7C2A88BC9B00C749A6 /* SuccessRecordView.swift */,
+				0289815F2A93174800B928E5 /* final */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -886,7 +894,6 @@
 				5ADED1BD2A679B6A00C0CBF4 /* UIColor+Extension.swift in Sources */,
 				5A1C488A2A7687FB00CC345A /* CGSize+Extension.swift in Sources */,
 				5ADED1CC2A682B6300C0CBF4 /* TabBarItem.swift in Sources */,
-				0260B2EF2A8285850038E52B /* PostRecordVIew.swift in Sources */,
 				026BC4942A69102F00F49B87 /* SplashViewController.swift in Sources */,
 				026BC4782A680FE900F49B87 /* SignInView.swift in Sources */,
 				5A1C488F2A76CC9C00CC345A /* VideoCollectionViewCell.swift in Sources */,
@@ -894,9 +901,10 @@
 				5ADED1C32A67A1B300C0CBF4 /* ViewModelType.swift in Sources */,
 				026BC4762A680FC000F49B87 /* AuthViewController.swift in Sources */,
 				02EB6E7D2A88BC9B00C749A6 /* SuccessRecordView.swift in Sources */,
-				0260B2F12A82858D0038E52B /* PostRecordViewController.swift in Sources */,
 				5ADED1C12A67A06F00C0CBF4 /* ImageLiteral.swift in Sources */,
+				028981642A93176000B928E5 /* PostRecordViewController.swift in Sources */,
 				5ADED1AB2A66ACC500C0CBF4 /* UITextField+Extension.swift in Sources */,
+				02D56F4A2A9317FB00FF41EA /* PostRecordView.swift in Sources */,
 				5A1C488D2A76C49200CC345A /* BadgeCollectionViewCell.swift in Sources */,
 				5ADED1BB2A67929500C0CBF4 /* BaseViewController.swift in Sources */,
 				5ACADCFC2A5D988F00B92C07 /* SceneDelegate.swift in Sources */,

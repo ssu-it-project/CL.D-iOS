@@ -25,7 +25,7 @@ class RecordViewController: TabmanViewController {
         button.semanticContentAttribute = .forceLeftToRight
         button.contentVerticalAlignment = .center
         button.contentHorizontalAlignment = .center
-        button.addTarget(RecordViewController.self, action: #selector(nextPageButtonTapped), for: .touchUpInside)
+        button.addTarget(self, action: #selector(nextPageButtonTapped), for: .touchUpInside)
         return button
     }()
     

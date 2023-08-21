@@ -40,7 +40,7 @@ final class SelectColorViewController: BaseViewController {
         button.frame = CGRect(x: 0, y: 0, width: 83, height: 81)
         button.layer.backgroundColor = UIColor.CLDLightGray.cgColor
         button.layer.cornerRadius = 10
-        button.addTarget(SelectColorViewController.self, action: #selector(addColor), for: .touchUpInside)
+        button.addTarget(self, action: #selector(addColor), for: .touchUpInside)
         return button
     }()
     
