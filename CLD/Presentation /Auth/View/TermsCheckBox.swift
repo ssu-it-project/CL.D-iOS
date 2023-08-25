@@ -14,7 +14,13 @@ import RxGesture
 
 final class TermsCheckBox: UIView {
         
-    private var isSelected = false
+    var isSelected = false {
+        didSet {
+            setDidTapUI()
+        }
+    }
+    
+    private var termsCheckBoxTapped = false
     
     private let checkButton: UIButton = {
         let button = UIButton()
@@ -22,6 +28,7 @@ final class TermsCheckBox: UIView {
         button.layer.borderWidth = 0.8
         button.layer.borderColor = UIColor.CLDBlack.cgColor
         button.layer.cornerRadius = 5
+        button.isUserInteractionEnabled = false
         return button
     }()
     private let checkLabel: UILabel = {
@@ -76,7 +83,7 @@ final class TermsCheckBox: UIView {
             layer.borderColor = UIColor.CLDBlack.cgColor
             checkButton.setImage(ImageLiteral.checkIcon, for: .normal)
         } else {
-            self.layer.borderColor = UIColor.CLDDarkGray.cgColor
+            layer.borderColor = UIColor.CLDDarkGray.cgColor
             checkButton.setImage(nil, for: .normal)
         }
     }
@@ -84,12 +91,24 @@ final class TermsCheckBox: UIView {
 
 
 extension TermsCheckBox {
-    func termsCheckBoxDidTapGesture() -> Signal<Void> {
+    func termsCheckBoxToggleisSeleted() -> Signal<Bool> {
         return self.rx.tapGesture().when(.recognized)
-            .map {  [weak self] _ in
-                self?.isSelected.toggle()
-                self?.setDidTapUI()
+            .withUnretained(self)
+            .map {  onwer, _ in
+                onwer.isSelected.toggle()
+                return onwer.isSelected
+            }
+            .asSignal(onErrorSignalWith: Signal.empty())
+    }
+    
+    func termsCheckBoxDidTapGesture() -> Signal<Bool> {
+        return self.rx.tapGesture().when(.recognized)
+            .withUnretained(self)
+            .map {  onwer, _ in
+                onwer.termsCheckBoxTapped.toggle()
+                return onwer.termsCheckBoxTapped
             }
             .asSignal(onErrorSignalWith: Signal.empty())
     }
 }
+

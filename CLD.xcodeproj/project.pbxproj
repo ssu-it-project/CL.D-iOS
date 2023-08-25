@@ -46,6 +46,7 @@
 		5A1C488F2A76CC9C00CC345A /* VideoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A1C488E2A76CC9C00CC345A /* VideoCollectionViewCell.swift */; };
 		5A97A1232A91229F00264AB5 /* RxGesture in Frameworks */ = {isa = PBXBuildFile; productRef = 5A97A1222A91229F00264AB5 /* RxGesture */; };
 		5A97A1252A922F7A00264AB5 /* TermsWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A97A1242A922F7A00264AB5 /* TermsWebViewController.swift */; };
+		5A97A1652A93848F00264AB5 /* TermsCheckListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A97A1642A93848E00264AB5 /* TermsCheckListView.swift */; };
 		5AC80C782A838B5400FE9D6C /* PlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AC80C772A838B5400FE9D6C /* PlayerView.swift */; };
 		5ACADCFA2A5D988F00B92C07 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ACADCF92A5D988F00B92C07 /* AppDelegate.swift */; };
 		5ACADCFC2A5D988F00B92C07 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ACADCFB2A5D988F00B92C07 /* SceneDelegate.swift */; };
@@ -74,7 +75,6 @@
 		5ADED1D42A6838D300C0CBF4 /* MyPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ADED1D32A6838D300C0CBF4 /* MyPageViewController.swift */; };
 		5AEFAAA02A8B966900A67C43 /* TermsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AEFAA9F2A8B966900A67C43 /* TermsViewController.swift */; };
 		5AEFAAA82A8BD07500A67C43 /* TermsType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AEFAAA72A8BD07500A67C43 /* TermsType.swift */; };
-		5AEFAAC02A8CBB2300A67C43 /* TermsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AEFAABF2A8CBB2200A67C43 /* TermsTableViewCell.swift */; };
 		5AEFAAC32A8D178600A67C43 /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AEFAAC22A8D178600A67C43 /* SignUpViewModel.swift */; };
 		5AEFAAE72A8E2D6800A67C43 /* TermsCheckBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AEFAAE62A8E2D6800A67C43 /* TermsCheckBox.swift */; };
 		5AEFAAE92A8E3E5E00A67C43 /* CLDButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AEFAAE82A8E3E5E00A67C43 /* CLDButton.swift */; };
@@ -123,6 +123,7 @@
 		5A1C488C2A76C49200CC345A /* BadgeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BadgeCollectionViewCell.swift; sourceTree = "<group>"; };
 		5A1C488E2A76CC9C00CC345A /* VideoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoCollectionViewCell.swift; sourceTree = "<group>"; };
 		5A97A1242A922F7A00264AB5 /* TermsWebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsWebViewController.swift; sourceTree = "<group>"; };
+		5A97A1642A93848E00264AB5 /* TermsCheckListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsCheckListView.swift; sourceTree = "<group>"; };
 		5AC80C772A838B5400FE9D6C /* PlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerView.swift; sourceTree = "<group>"; };
 		5ACADCF62A5D988F00B92C07 /* CLD.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CLD.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5ACADCF92A5D988F00B92C07 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -170,7 +171,6 @@
 		5ADED1D32A6838D300C0CBF4 /* MyPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageViewController.swift; sourceTree = "<group>"; };
 		5AEFAA9F2A8B966900A67C43 /* TermsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsViewController.swift; sourceTree = "<group>"; };
 		5AEFAAA72A8BD07500A67C43 /* TermsType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsType.swift; sourceTree = "<group>"; };
-		5AEFAABF2A8CBB2200A67C43 /* TermsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsTableViewCell.swift; sourceTree = "<group>"; };
 		5AEFAAC22A8D178600A67C43 /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
 		5AEFAAE62A8E2D6800A67C43 /* TermsCheckBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsCheckBox.swift; sourceTree = "<group>"; };
 		5AEFAAE82A8E3E5E00A67C43 /* CLDButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CLDButton.swift; sourceTree = "<group>"; };
@@ -229,9 +229,9 @@
 		026BC4722A680DC000F49B87 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				5AEFAAA92A8BD1F100A67C43 /* Cell */,
 				026BC4772A680FE900F49B87 /* SignInView.swift */,
 				5AEFAAE62A8E2D6800A67C43 /* TermsCheckBox.swift */,
+				5A97A1642A93848E00264AB5 /* TermsCheckListView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -689,14 +689,6 @@
 			path = TabBar;
 			sourceTree = "<group>";
 		};
-		5AEFAAA92A8BD1F100A67C43 /* Cell */ = {
-			isa = PBXGroup;
-			children = (
-				5AEFAABF2A8CBB2200A67C43 /* TermsTableViewCell.swift */,
-			);
-			path = Cell;
-			sourceTree = "<group>";
-		};
 		5AEFAAC12A8D177000A67C43 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
@@ -894,10 +886,10 @@
 				5ACADCFA2A5D988F00B92C07 /* AppDelegate.swift in Sources */,
 				5ADED1C32A67A1B300C0CBF4 /* ViewModelType.swift in Sources */,
 				026BC4762A680FC000F49B87 /* AuthViewController.swift in Sources */,
-				5AEFAAC02A8CBB2300A67C43 /* TermsTableViewCell.swift in Sources */,
 				5ADED1C12A67A06F00C0CBF4 /* ImageLiteral.swift in Sources */,
 				5ADED1AB2A66ACC500C0CBF4 /* UITextField+Extension.swift in Sources */,
 				5A1C488D2A76C49200CC345A /* BadgeCollectionViewCell.swift in Sources */,
+				5A97A1652A93848F00264AB5 /* TermsCheckListView.swift in Sources */,
 				020F65512A7D045B0036CFB1 /* SelectVideoCell.swift in Sources */,
 				5ADED1BB2A67929500C0CBF4 /* BaseViewController.swift in Sources */,
 				5ACADCFC2A5D988F00B92C07 /* SceneDelegate.swift in Sources */,
