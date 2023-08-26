@@ -71,6 +71,28 @@ class RecordViewController: TabmanViewController {
         setHierarchy()
         setConstraints()
     }
+
+    override func viewDidLayoutSubviews() {
+        let currentPage = self.currentIndex ?? 0
+        if currentPage == 3 {
+            if let nextViewController = viewControllers[currentPage-3] as? SelectPlaceViewController {
+                recordDic["place"] = nextViewController.placeText
+            }
+            if let nextViewController = viewControllers[currentPage-2] as? SelectSectorViewController {
+                recordDic["sector"] = nextViewController.sectorText
+            }
+            if let nextViewController = viewControllers[currentPage-1] as? SelectColorViewController {
+                recordDic["color"] = nextViewController.colorInfo
+            }
+            if let currentViewController = viewControllers[currentPage] as? SelectVideoViewController {
+                currentViewController.finalRecordDic = recordDic
+            }
+            nextButton.isHidden = true
+        } else {
+            nextButton.isHidden = false
+        }
+
+    }
     
     func setHierarchy() {
         self.view.addSubview(nextButton)
@@ -105,23 +127,6 @@ extension RecordViewController: PageboyViewControllerDataSource, TMBarDataSource
     }
     
     func viewController(for pageboyViewController: PageboyViewController, at index: PageboyViewController.PageIndex) -> UIViewController? {
-        if index == 3 {
-            if let nextViewController = viewControllers[index-3] as? SelectPlaceViewController {
-                recordDic["place"] = nextViewController.placeText
-            }
-            if let nextViewController = viewControllers[index-2] as? SelectSectorViewController {
-                recordDic["sector"] = nextViewController.sectorText
-            }
-            if let nextViewController = viewControllers[index-1] as? SelectColorViewController {
-                recordDic["color"] = nextViewController.colorInfo
-            }
-            if let currentViewController = viewControllers[index] as? SelectVideoViewController {
-                currentViewController.finalRecordDic = recordDic
-            }
-            nextButton.isHidden = true
-        } else {
-            nextButton.isHidden = false
-        }
         return viewControllers[index]
     }
     
