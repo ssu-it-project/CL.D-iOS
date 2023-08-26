@@ -35,7 +35,7 @@ extension UITextField {
         self.leftViewMode = ViewMode.always
     }
     
-    /// 왼쪽 이미지 넣기 (CLDGray)
+    /// 왼쪽 이미지 설정
     func addLeftImageGray(image: UIImage) {
         let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: 25, height: 31))
         let letfImage = UIImageView(frame:CGRect(x: 8, y: 9, width: 13, height: 13))
@@ -47,16 +47,4 @@ extension UITextField {
         self.leftView = paddingView
         self.leftViewMode = .always
     }
-    /// 왼쪽 이미지 넣기 (CLDDarkGray) w:14, h:18
-    func addLeftImageDarkGray(image: UIImage) {
-        let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: 30, height: 31))
-        let letfImage = UIImageView(frame:CGRect(x: 8, y: 9, width: 14, height: 18))
-        letfImage.image = image.resize(newWidth: CGFloat(16))
-        letfImage.image = letfImage.image?.withRenderingMode(.alwaysTemplate)
-        letfImage.tintColor = .CLDDarkDarkGray
-        letfImage.backgroundColor = nil
-        paddingView.addSubview(letfImage)
-        self.leftView = paddingView
-        self.leftViewMode = .always
-    }    
 }

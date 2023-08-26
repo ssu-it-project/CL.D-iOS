@@ -10,7 +10,9 @@ import UIKit
 import SnapKit
 
 final class SelectColorViewController: BaseViewController {
-    var colorText: String = ""
+    private var colorData = [ColorChipName.white,ColorChipName.gray,ColorChipName.black,ColorChipName.blue,ColorChipName.red,ColorChipName.brown,ColorChipName.pink,ColorChipName.green,ColorChipName.purple,ColorChipName.orange,ColorChipName.yellow]
+    var colorInfo: ColorChipName? = nil
+    private var addColorName: String = ""
     
     private let dotDivider: UIImageView = {
         let view = UIImageView()
@@ -19,8 +21,6 @@ final class SelectColorViewController: BaseViewController {
         view.backgroundColor = nil
         return view
     }()
-    
-    var colorData = ["흰색","회색","검정","파랑","빨강","갈색","핑크","초록","보라","주황","노랑"]
     var selectCollectionView: UICollectionView = {
         var layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
@@ -34,7 +34,6 @@ final class SelectColorViewController: BaseViewController {
                                 forCellWithReuseIdentifier: SelectColorCell.identifier)
         return collectionView
     }()
-    
     private let addButton: UIButton = {
         let button = UIButton()
         button.frame = CGRect(x: 0, y: 0, width: 83, height: 81)
@@ -43,7 +42,6 @@ final class SelectColorViewController: BaseViewController {
         button.addTarget(self, action: #selector(addColor), for: .touchUpInside)
         return button
     }()
-    
     private let addIcon: UIImageView = {
         let view = UIImageView()
         view.image = ImageLiteral.addIcon
@@ -51,7 +49,6 @@ final class SelectColorViewController: BaseViewController {
         view.backgroundColor = nil
         return view
     }()
-    
     private let addLabel: UILabel = {
         let label = UILabel()
         label.text = "추가"
@@ -67,8 +64,8 @@ final class SelectColorViewController: BaseViewController {
         }
         let okAction = UIAlertAction(title: "추가하기", style: .default) { _ in
             if let txt = alert.textFields?[0].text {
-                print("\(txt)")
-                self.colorData.append(txt)
+                self.addColorName = txt
+                self.colorData.append(ColorChipName.addColor)
                 self.addButton.isHidden = true
                 self.selectCollectionView.reloadData()
             }
@@ -139,56 +136,30 @@ extension SelectColorViewController : UICollectionViewDelegate, UICollectionView
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SelectColorCell.identifier, for: indexPath) as? SelectColorCell else {
             return UICollectionViewCell()
         }
-        let colorName = colorData[indexPath.row]
-        cell.colorLabel.text = colorName
-        
-        switch colorName {
-        case "흰색":
-            cell.colorCircle.layer.backgroundColor = UIColor.white.cgColor
-        case "회색":
-            cell.colorCircle.layer.backgroundColor = UIColor.ChipGray.cgColor
-        case "검정":
-            cell.colorCircle.layer.backgroundColor = UIColor.ChipBlack.cgColor
-        case "파랑":
-            cell.colorCircle.layer.backgroundColor = UIColor.ChipBlue.cgColor
-        case "빨강":
-            cell.colorCircle.layer.backgroundColor = UIColor.ChipRed.cgColor
-        case "갈색":
-            cell.colorCircle.layer.backgroundColor = UIColor.ChipBrown.cgColor
-        case "핑크":
-            cell.colorCircle.layer.backgroundColor = UIColor.ChipPink.cgColor
-        case "초록":
-            cell.colorCircle.layer.backgroundColor = UIColor.ChipGreen.cgColor
-        case "보라":
-            cell.colorCircle.layer.backgroundColor = UIColor.ChipPurple.cgColor
-        case "주황":
-            cell.colorCircle.layer.backgroundColor = UIColor.ChipOrange.cgColor
-        case "노랑":
-            cell.colorCircle.layer.backgroundColor = UIColor.ChipYellow.cgColor
-        default :
-            cell.colorCircle.layer.backgroundColor = UIColor.CLDLightGray.cgColor
+        let color = colorData[indexPath.row]
+        if (color == ColorChipName.addColor) {
+            cell.colorLabel.text = addColorName
         }
+        else { cell.colorLabel.text = color.colorName() }
+        cell.colorCircle.layer.backgroundColor = color.colorChip()
         return cell
     }
     
-    // cell 항목 크기
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: 83, height: 81)
     }
     
-    // 그리드의 항목 줄 사이에 사용할 최소 간격
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 5
     }
     
-    // 같은 행에 있는 항목 사이에 사용할 최소 간격
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
         return 5
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if let cell = collectionView.cellForItem(at: indexPath) as? SelectColorCell {
-            colorText = cell.colorLabel.text ?? ""
+        if collectionView.cellForItem(at: indexPath) is SelectColorCell {
+            colorInfo = colorData[indexPath.row]
         }
     }
 }

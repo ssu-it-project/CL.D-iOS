@@ -18,7 +18,6 @@ final class PhotoCollectionViewCell: UICollectionViewCell {
         imageView.image = ImageLiteral.videoThumbnail
         imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
-        imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.layer.cornerRadius = 10
         imageView.layer.borderWidth = 3
         imageView.layer.borderColor = UIColor.white.cgColor

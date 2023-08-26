@@ -12,12 +12,11 @@ import Tabman
 import Pageboy
 
 class RecordViewController: TabmanViewController {
-    var recordDic: Dictionary<String, Any> = [:]
-    
     private var viewControllers: Array<BaseViewController> = []
     var tabBarView: UIView!
+    var recordDic: Dictionary<String, Any> = [:]
     
-    let nextButton: UIButton = {
+    private let nextButton: UIButton = {
         let button = UIButton()
         button.setTitle("다음", for: .normal)
         button.setTitleColor(.CLDBlack, for: .normal)
@@ -28,7 +27,11 @@ class RecordViewController: TabmanViewController {
         button.addTarget(self, action: #selector(nextPageButtonTapped), for: .touchUpInside)
         return button
     }()
-    
+    @objc func nextPageButtonTapped() {
+        if let currentPage = self.currentIndex, currentPage < viewControllers.count - 1 {
+            self.scrollToPage(.next, animated: true)
+        }
+    }
     private func setUpVC() {
         let firstVC = SelectPlaceViewController()
         let secondVC = SelectSectorViewController()
@@ -42,28 +45,16 @@ class RecordViewController: TabmanViewController {
     }
     private func settingTabBar (ctBar : TMBar.ButtonBar) {
         ctBar.layout.transitionStyle = .snap
-        // 왼쪽 여백주기
         ctBar.layout.contentInset = UIEdgeInsets(top: 34.0, left: 21.0, bottom: 0.0, right: 0.0)
-        // 간격
         ctBar.layout.interButtonSpacing = 18
         ctBar.backgroundView.style = .flat(color: .white)
-        
-        // 선택 / 안선택 색 + font size
+
         ctBar.buttons.customize { (button) in
             button.tintColor = .CLDMediumGray
             button.selectedTintColor = .CLDGold
             button.font = UIFont(name: "Roboto-Bold", size: 15)!
         }
-        
-        // 인디케이터 (영상에서 주황색 아래 바 부분)
         ctBar.indicator.weight = .custom(value: 0)
-    }
-    
-    @objc func nextPageButtonTapped() {
-        if let currentPage = self.currentIndex, currentPage < viewControllers.count - 1 {
-            // 현재 페이지의 인덱스를 가져와서 페이지를 1 증가시켜 다음 페이지로 전환
-            self.scrollToPage(.next, animated: true)
-        }
     }
     
     override func viewDidLoad() {
@@ -71,13 +62,12 @@ class RecordViewController: TabmanViewController {
         
         setUpVC()
         self.dataSource = self
-        
-        
-        // Create bar
+
         let bar = TMBar.ButtonBar()
         settingTabBar(ctBar: bar)
         addBar(bar, dataSource: self, at: .top)
-        
+        bar.dataSource = self
+
         setHierarchy()
         setConstraints()
     }
@@ -90,28 +80,24 @@ class RecordViewController: TabmanViewController {
         nextButton.snp.makeConstraints {
             $0.bottom.equalToSuperview().inset(56)
             $0.centerX.equalToSuperview()
-            $0.width.equalTo(28)
-            $0.height.equalTo(18)
         }
     }
 }
 
 extension RecordViewController: PageboyViewControllerDataSource, TMBarDataSource {
-    
     func barItem(for bar: TMBar, at index: Int) -> TMBarItemable {
         switch index {
         case 0:
-            return TMBarItem(title: "클라이밍장")
+            return RecordTabItem.place.changeTabItem()
         case 1:
-            return TMBarItem(title: "섹터")
+            return RecordTabItem.sector.changeTabItem()
         case 2:
-            return TMBarItem(title: "난이도 색상")
+            return RecordTabItem.color.changeTabItem()
         case 3:
-            return TMBarItem(title: "영상")
+            return RecordTabItem.video.changeTabItem()
         default:
-            return TMBarItem(title: "클라이밍장")
+            return RecordTabItem.place.changeTabItem()
         }
-        
     }
     
     func numberOfViewControllers(in pageboyViewController: PageboyViewController) -> Int {
@@ -120,7 +106,6 @@ extension RecordViewController: PageboyViewControllerDataSource, TMBarDataSource
     
     func viewController(for pageboyViewController: PageboyViewController, at index: PageboyViewController.PageIndex) -> UIViewController? {
         if index == 3 {
-            nextButton.isHidden = true
             if let nextViewController = viewControllers[index-3] as? SelectPlaceViewController {
                 recordDic["place"] = nextViewController.placeText
             }
@@ -128,11 +113,12 @@ extension RecordViewController: PageboyViewControllerDataSource, TMBarDataSource
                 recordDic["sector"] = nextViewController.sectorText
             }
             if let nextViewController = viewControllers[index-1] as? SelectColorViewController {
-                recordDic["color"] = nextViewController.colorText
+                recordDic["color"] = nextViewController.colorInfo
             }
             if let currentViewController = viewControllers[index] as? SelectVideoViewController {
                 currentViewController.finalRecordDic = recordDic
             }
+            nextButton.isHidden = true
         } else {
             nextButton.isHidden = false
         }
@@ -143,5 +129,3 @@ extension RecordViewController: PageboyViewControllerDataSource, TMBarDataSource
         return .at(index: 0)
     }
 }
-
-

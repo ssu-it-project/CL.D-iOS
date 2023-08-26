@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		020F65492A7B72050036CFB1 /* SelectListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020F65482A7B72050036CFB1 /* SelectListView.swift */; };
 		020F65532A7D09450036CFB1 /* SelectVideoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020F65522A7D09450036CFB1 /* SelectVideoViewController.swift */; };
+		02177C8C2A99126100A4EF2C /* ColorChipName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02177C8B2A99126100A4EF2C /* ColorChipName.swift */; };
+		02177C8E2A99ABDB00A4EF2C /* RecordTabItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02177C8D2A99ABDB00A4EF2C /* RecordTabItem.swift */; };
 		023868C32A70009B0006C762 /* LoginManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 023868C22A70009B0006C762 /* LoginManager.swift */; };
 		023F37822A783C1F007B0511 /* SelectSectorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 023F37812A783C1F007B0511 /* SelectSectorViewController.swift */; };
 		0241775A2A6E5DA7006C3C4D /* KakaoSDKAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 024177592A6E5DA7006C3C4D /* KakaoSDKAuth */; };
@@ -95,6 +97,8 @@
 /* Begin PBXFileReference section */
 		020F65482A7B72050036CFB1 /* SelectListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectListView.swift; sourceTree = "<group>"; };
 		020F65522A7D09450036CFB1 /* SelectVideoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectVideoViewController.swift; sourceTree = "<group>"; };
+		02177C8B2A99126100A4EF2C /* ColorChipName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorChipName.swift; sourceTree = "<group>"; };
+		02177C8D2A99ABDB00A4EF2C /* RecordTabItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordTabItem.swift; sourceTree = "<group>"; };
 		023868C22A70009B0006C762 /* LoginManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginManager.swift; sourceTree = "<group>"; };
 		023F37812A783C1F007B0511 /* SelectSectorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectSectorViewController.swift; sourceTree = "<group>"; };
 		026BC4752A680FC000F49B87 /* AuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewController.swift; sourceTree = "<group>"; };
@@ -300,6 +304,8 @@
 			isa = PBXGroup;
 			children = (
 				5A1C48872A76813300CC345A /* HomeSectionType.swift */,
+				02177C8B2A99126100A4EF2C /* ColorChipName.swift */,
+				02177C8D2A99ABDB00A4EF2C /* RecordTabItem.swift */,
 			);
 			path = Enum;
 			sourceTree = "<group>";
@@ -882,8 +888,10 @@
 				0281723E2A793B900089FD51 /* SelectColorCell.swift in Sources */,
 				020F65492A7B72050036CFB1 /* SelectListView.swift in Sources */,
 				5ADED1B12A66AFF700C0CBF4 /* UIStackView+Extension.swift in Sources */,
+				02177C8E2A99ABDB00A4EF2C /* RecordTabItem.swift in Sources */,
 				5ADED1B72A67793F00C0CBF4 /* UIView+Extension.swift in Sources */,
 				02EB6E782A874D4D00C749A6 /* SelectPlaceViewController.swift in Sources */,
+				02177C8C2A99126100A4EF2C /* ColorChipName.swift in Sources */,
 				5A1C48882A76813300CC345A /* HomeSectionType.swift in Sources */,
 				5ADED1D02A6838AD00C0CBF4 /* RecordViewController.swift in Sources */,
 				5ADED1CA2A68071E00C0CBF4 /* TabBarController.swift in Sources */,

@@ -10,7 +10,7 @@ import UIKit
 import SnapKit
 
 final class PostRecordView: UIView {
-    let backButton: UIButton = {
+    private let backButton: UIButton = {
         let button = UIButton()
         button.setImage(ImageLiteral.backButton, for: .normal)
         button.tintColor = .CLDBlack
@@ -24,7 +24,7 @@ final class PostRecordView: UIView {
         label.font = UIFont(name: "Roboto-Regular", size: 15)
         return label
     }()
-    let thumbnailView: UIImageView = {
+    private let thumbnailView: UIImageView = {
         let view = UIImageView()
         view.image = ImageLiteral.thumbnailImage
         view.contentMode = .scaleAspectFill
@@ -49,7 +49,7 @@ final class PostRecordView: UIView {
         view.layer.cornerRadius = 2
         return view
     }()
-    let timeLabel: UILabel = {
+    private let timeLabel: UILabel = {
         let label = UILabel()
         label.text = "2:10"
         label.textColor = .white
@@ -57,7 +57,7 @@ final class PostRecordView: UIView {
         return label
     }()
     
-    let textView: UITextView = {
+    private let textView: UITextView = {
         let textView = UITextView()
         textView.text = "클라이밍을 기록해주세요."
         textView.font = UIFont(name: "Roboto-Light", size: 11)
@@ -86,7 +86,7 @@ final class PostRecordView: UIView {
         iconView.image = ImageLiteral.placeIcon
         return iconView
     }()
-    let placeLabel: UILabel = {
+    private let placeLabel: UILabel = {
         let label = UILabel()
         label.text = "더클라임 강남점"
         label.textColor = .CLDDarkDarkGray
@@ -105,14 +105,13 @@ final class PostRecordView: UIView {
         iconView.image = ImageLiteral.STIcon
         return iconView
     }()
-    let sectorLabel: UILabel = {
+    private let sectorLabel: UILabel = {
         let label = UILabel()
         label.text = "7"
         label.textColor = .CLDDarkDarkGray
         label.font = UIFont(name: "Roboto-Regular", size: 15)
         return label
     }()
-    //색상
     private let colorRectView: UIView = {
         let view = UIView()
         view.frame = CGRect(x: 0, y: 0, width: 338, height: 31)
@@ -124,7 +123,7 @@ final class PostRecordView: UIView {
         iconView.image = ImageLiteral.VIcon
         return iconView
     }()
-    var colorCircle: UIView = {
+    private lazy var colorCircle: UIView = {
         let view = UIView()
         view.frame = CGRect(x: 0, y: 0, width: 18, height: 18)
         view.layer.backgroundColor = UIColor.ChipGreen.cgColor
@@ -134,13 +133,21 @@ final class PostRecordView: UIView {
         view.layer.shadowRadius = 2
         return view
     }()
-    let colorLabel: UILabel = {
+    private let colorLabel: UILabel = {
         let label = UILabel()
         label.text = "초록색"
         label.textColor = .CLDDarkDarkGray
         label.font = UIFont(name: "Roboto-Regular", size: 15)
         return label
     }()
+
+    func setPostRecord(_ thumbnailImage: UIImage, _ place: String, _ sector: String, _ color: ColorChipName) {
+        thumbnailView.image = thumbnailImage
+        placeLabel.text = place
+        sectorLabel.text = sector
+        colorLabel.text = color.colorName()
+        colorCircle.layer.backgroundColor = color.colorChip()
+    }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -173,8 +180,6 @@ final class PostRecordView: UIView {
         }
         titleLabel.snp.makeConstraints {
             $0.top.equalToSuperview().inset(18)
-            $0.width.equalTo(57)
-            $0.height.equalTo(18)
             $0.centerX.equalToSuperview()
         }
         thumbnailView.snp.makeConstraints {
@@ -188,15 +193,15 @@ final class PostRecordView: UIView {
             $0.width.equalTo(35)
             $0.height.equalTo(45)
         }
-        //        labelBackground.snp.makeConstraints {
-        //            $0.width.equalTo(27)
-        //            $0.height.equalTo(12)
-        //            $0.trailing.equalToSuperview().inset(12)
-        //            $0.bottom.equalToSuperview().inset(8)
-        //        }
-        //        timeLabel.snp.makeConstraints {
-        //            $0.center.equalToSuperview()
-        //        }
+//        labelBackground.snp.makeConstraints {
+//            $0.width.equalTo(27)
+//            $0.height.equalTo(12)
+//            $0.trailing.equalToSuperview().inset(12)
+//            $0.bottom.equalToSuperview().inset(8)
+//        }
+//        timeLabel.snp.makeConstraints {
+//            $0.center.equalToSuperview()
+//        }
         textView.snp.makeConstraints {
             $0.top.equalTo(thumbnailView.snp.bottom).offset(15)
             $0.width.equalTo(338)

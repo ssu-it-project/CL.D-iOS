@@ -40,6 +40,22 @@ final class PostRecordViewController: BaseViewController {
     @objc func backPage() {
         viewWillDisappear(false)
     }
+
+    func postRecordData(_ postRecordDic: Dictionary<String, Any> ) {
+        let place = postRecordDic["place"] as! String
+        let sector = postRecordDic["sector"] as! String
+        let color = postRecordDic["color"] as! ColorChipName
+
+        let asset: PHAsset! = postRecordDic["video"] as? PHAsset
+        imageManager.requestImage(for: asset, targetSize: CGSize(width: 217, height: 212),
+                                  contentMode: .aspectFill,
+                                  options: nil,
+                                  resultHandler: { image, _ in
+            let thumbnailImage: UIImage = image!
+            self.successRecordView.setSuccessRecord(thumbnailImage)
+            self.postRecordView.setPostRecord(thumbnailImage, place, sector, color)
+        })
+    }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?){
         self.view.endEditing(true)
@@ -50,47 +66,6 @@ final class PostRecordViewController: BaseViewController {
         successRecordView.isHidden = true
         
         postRecordData(postRecordDic)
-    }
-    
-    func postRecordData(_ postRecordDic: Dictionary<String, Any> ) {
-        postRecordView.placeLabel.text = postRecordDic["place"] as? String
-        postRecordView.sectorLabel.text = postRecordDic["sector"] as? String
-        postRecordView.colorLabel.text = postRecordDic["color"] as? String
-        switch postRecordView.colorLabel.text {
-        case "흰색":
-            postRecordView.colorCircle.layer.backgroundColor = UIColor.white.cgColor
-        case "회색":
-            postRecordView.colorCircle.layer.backgroundColor = UIColor.ChipGray.cgColor
-        case "검정":
-            postRecordView.colorCircle.layer.backgroundColor = UIColor.ChipBlack.cgColor
-        case "파랑":
-            postRecordView.colorCircle.layer.backgroundColor = UIColor.ChipBlue.cgColor
-        case "빨강":
-            postRecordView.colorCircle.layer.backgroundColor = UIColor.ChipRed.cgColor
-        case "갈색":
-            postRecordView.colorCircle.layer.backgroundColor = UIColor.ChipBrown.cgColor
-        case "핑크":
-            postRecordView.colorCircle.layer.backgroundColor = UIColor.ChipPink.cgColor
-        case "초록":
-            postRecordView.colorCircle.layer.backgroundColor = UIColor.ChipGreen.cgColor
-        case "보라":
-            postRecordView.colorCircle.layer.backgroundColor = UIColor.ChipPurple.cgColor
-        case "주황":
-            postRecordView.colorCircle.layer.backgroundColor = UIColor.ChipOrange.cgColor
-        case "노랑":
-            postRecordView.colorCircle.layer.backgroundColor = UIColor.ChipYellow.cgColor
-        default :
-            postRecordView.colorCircle.layer.backgroundColor = UIColor.CLDLightGray.cgColor
-        }
-        
-        let asset: PHAsset! = postRecordDic["video"] as? PHAsset
-        imageManager.requestImage(for: asset, targetSize: CGSize(width: 217, height: 212),
-                                  contentMode: .aspectFill,
-                                  options: nil,
-                                  resultHandler: { image, _ in
-            self.postRecordView.thumbnailView.image = image
-            self.successRecordView.thumbnailView.image = image
-        })
     }
     
     override func viewWillDisappear(_ animated: Bool) {

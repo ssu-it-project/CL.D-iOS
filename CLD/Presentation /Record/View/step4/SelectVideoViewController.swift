@@ -12,7 +12,7 @@ import Photos
 
 final class SelectVideoViewController: BaseViewController {
     var finalRecordDic: Dictionary<String, Any> = [:]
-    var asset: PHAsset!
+    var assetInfo: PHAsset!
     
     private let dotDivider: UIImageView = {
         let view = UIImageView()
@@ -23,7 +23,6 @@ final class SelectVideoViewController: BaseViewController {
     }()
     
     var fetchResult: PHFetchResult<PHAsset>!
-    //이미지를 로드해올 친구
     let imageManager: PHCachingImageManager = PHCachingImageManager()
     let cellIdentifier: String = "PhotoCollectionViewCell"
     
@@ -33,21 +32,18 @@ final class SelectVideoViewController: BaseViewController {
         
         fetchResult = changes.fetchResultAfterChanges
         
-        //변화된것이 있으면 이미지를 다시 불러온다.
         OperationQueue.main.addOperation {
             self.selectCollectionView.reloadData()
         }
     }
     
     func requestCollection() {
-        // 카메라로 찍으면 저장되는
         let cameraRoll: PHFetchResult<PHAssetCollection> = PHAssetCollection.fetchAssetCollections(with: .smartAlbum, subtype: .smartAlbumUserLibrary, options: nil)
         guard let cameraRollCollection = cameraRoll.firstObject else {
             return
         }
         
         let fetchOptions = PHFetchOptions()
-        //최신순으로 sort
         fetchOptions.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: false)]
         self.fetchResult = PHAsset.fetchAssets(in: cameraRollCollection, options: fetchOptions)
     }
@@ -77,9 +73,9 @@ final class SelectVideoViewController: BaseViewController {
         return button
     }()
     @objc private func nextView () {
-        finalRecordDic["video"] = asset
+        finalRecordDic["video"] = assetInfo
         print("finalRecordDic: \(finalRecordDic)")
-        if ( finalRecordDic["place"] as! String != "" && finalRecordDic["sector"] as! String != "" && finalRecordDic["color"] as! String != "" && finalRecordDic["video"] != nil) {
+        if ( finalRecordDic["place"] as? String != "" && finalRecordDic["sector"] as? String != "" && finalRecordDic["color"] as? ColorChipName != nil && finalRecordDic["video"] != nil) {
             presentModalBtnTap()
         } else {
             let alert = UIAlertController(title: "확인", message: """
@@ -109,7 +105,6 @@ final class SelectVideoViewController: BaseViewController {
         switch photoAurhorizationStatus {
         case .notDetermined:
             print("아직 응답하지 않음")
-            //다시 응답
             PHPhotoLibrary.requestAuthorization({ (status) in
                 switch status {
                 case .authorized:
@@ -127,6 +122,21 @@ final class SelectVideoViewController: BaseViewController {
             print("접근 제한")
         case .denied:
             print("접근 불허")
+            let alert = UIAlertController(title: "권한 없음", message: """
+                                          비디오 접근 권한이 없습니다.
+                                          설정 > 개인 정보 보호 > 사진에서
+                                          권한을 추가하세요.
+                                          """, preferredStyle: .alert)
+            let okAction = UIAlertAction(title: "설정", style: .default) { _ in
+                UIApplication.shared.open(URL(string: UIApplication.openSettingsURLString)!)
+                return
+            }
+            let cancelAction = UIAlertAction(title: "취소", style: .default) { _ in
+                return
+            }
+            alert.addAction(cancelAction)
+            alert.addAction(okAction)
+            present(alert, animated: true)
         case .authorized:
             print("접근 허가됨")
             self.requestCollection()
@@ -138,7 +148,8 @@ final class SelectVideoViewController: BaseViewController {
         @unknown default:
             print("unknown default")
         }
-        
+
+        PHPhotoLibrary.shared().register(self)
         setPhoto()
     }
     
@@ -161,8 +172,6 @@ final class SelectVideoViewController: BaseViewController {
         nextButton.snp.makeConstraints {
             $0.bottom.equalToSuperview().inset(56)
             $0.centerX.equalToSuperview()
-            $0.width.equalTo(28)
-            $0.height.equalTo(18)
         }
     }
 }
@@ -171,7 +180,9 @@ extension SelectVideoViewController : UICollectionViewDelegate, UICollectionView
                                       UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        //return self.fetchResult?.count ?? 0
+        if (self.fetchResult?.count == nil) {
+            return 0
+        }
         return 12
     }
     
@@ -181,7 +192,6 @@ extension SelectVideoViewController : UICollectionViewDelegate, UICollectionView
         }
         let asset: PHAsset = fetchResult.object(at: indexPath.row)
         
-        //실질적인 이미지 요청
         imageManager.requestImage(for: asset, targetSize: CGSize(width: 83, height: 81), contentMode: .aspectFill, options: nil, resultHandler: { image, _ in
             cell.backgroundVideo.image = image
         })
@@ -189,24 +199,21 @@ extension SelectVideoViewController : UICollectionViewDelegate, UICollectionView
         return cell
     }
     
-    // cell 항목 크기
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: 83, height: 81)
     }
     
-    // 그리드의 항목 줄 사이에 사용할 최소 간격
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 5
     }
     
-    // 같은 행에 있는 항목 사이에 사용할 최소 간격
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
         return 5
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let index: IndexPath = indexPath
-        asset = self.fetchResult[index.row]
+        assetInfo = self.fetchResult[index.row]
     }
 }
 
@@ -222,7 +229,6 @@ extension SelectVideoViewController: UISheetPresentationControllerDelegate {
         vc.modalPresentationStyle = .pageSheet
         
         if let sheet = vc.sheetPresentationController {
-            //지원할 크기 지정
             if #available(iOS 16.0, *) {
                 sheet.detents = [.custom { context in
                     return context.maximumDetentValue * 0.9

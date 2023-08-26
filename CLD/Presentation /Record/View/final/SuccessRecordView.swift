@@ -17,7 +17,7 @@ final class SuccessRecordView: UIView {
         label.font = UIFont(name: "Roboto-Regular", size: 15)
         return label
     }()
-    let thumbnailView: UIImageView = {
+    private let thumbnailView: UIImageView = {
         let view = UIImageView()
         view.image = ImageLiteral.thumbnailImage
         view.contentMode = .scaleAspectFill
@@ -42,23 +42,21 @@ final class SuccessRecordView: UIView {
         view.layer.cornerRadius = 2
         return view
     }()
-    let timeLabel: UILabel = {
+    private let timeLabel: UILabel = {
         let label = UILabel()
         label.text = "2:10"
         label.textColor = .white
         label.font = UIFont(name: "Roboto-Regular", size: 11)
         return label
     }()
-    
-    let successLabel: UILabel = {
+    private let successLabel: UILabel = {
         let label = UILabel()
         label.text = "기록이 완료되었어요"
         label.textColor = .CLDBlack
         label.font = UIFont(name: "Roboto-Bold", size: 16)
         return label
     }()
-    
-    let shareButton: UIButton = {
+    private let shareButton: UIButton = {
         let button = UIButton()
         button.setTitle("공유하기", for: .normal)
         button.setTitleColor(.CLDBlack, for: .normal)
@@ -75,7 +73,7 @@ final class SuccessRecordView: UIView {
         button.layer.cornerRadius = 6
         return button
     }()
-    let gotoButton: UIButton = {
+    private let gotoButton: UIButton = {
         let button = UIButton()
         button.setTitle("보러가기", for: .normal)
         button.setTitleColor(.CLDBlack, for: .normal)
@@ -88,6 +86,10 @@ final class SuccessRecordView: UIView {
         // button.addTarget(self, action: #selector(), for: .touchUpInside)
         return button
     }()
+
+    func setSuccessRecord(_ thumbnailImage: UIImage) {
+        thumbnailView.image = thumbnailImage
+    }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -107,8 +109,6 @@ final class SuccessRecordView: UIView {
     func setConstraints() {
         titleLabel.snp.makeConstraints {
             $0.top.equalToSuperview().inset(18)
-            $0.width.equalTo(57)
-            $0.height.equalTo(18)
             $0.centerX.equalToSuperview()
         }
         thumbnailView.snp.makeConstraints {
@@ -132,9 +132,7 @@ final class SuccessRecordView: UIView {
 //            $0.center.equalToSuperview()
 //        }
         successLabel.snp.makeConstraints {
-            $0.top.equalToSuperview().inset(309)
-            $0.width.equalTo(136)
-            $0.height.equalTo(19)
+            $0.top.equalTo(thumbnailView.snp.bottom).offset(25)
             $0.centerX.equalToSuperview()
         }
         shareButton.snp.makeConstraints {
