@@ -1,5 +1,5 @@
 //
-//  SelectPlaceView.swift
+//  SelectPlaceViewController.swift
 //  CLD
 //
 //  Created by 이조은 on 2023/07/29.
@@ -9,7 +9,16 @@ import UIKit
 
 import SnapKit
 
-final class SelectPlaceView: UIView {
+final class SelectPlaceViewController: BaseViewController {
+    var placeText: String = ""
+    
+    private let dotDivider: UIImageView = {
+        let view = UIImageView()
+        view.image = ImageLiteral.dotDivider
+        view.tintColor = .CLDDarkDarkGray
+        view.backgroundColor = nil
+        return view
+    }()
     private let searchIconView: UIImageView = {
         let view = UIImageView()
         view.image = ImageLiteral.searchIcon
@@ -34,28 +43,36 @@ final class SelectPlaceView: UIView {
         return border
     }()
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        
-        setHierarchy()
-        setConstraints()
-        
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?){
+        self.view.endEditing(true)
+    }
+    
+    override func viewDidLoad() {
+        self.view.backgroundColor = .white
         searchTextField.addLeftPadding()
         searchTextField.addLeftImageGray(image: ImageLiteral.searchIcon)
         
         searchTextField.layer.addSublayer((underLine))
-    }
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    func setHierarchy() {
-        addSubviews(searchTextField)
+        setHierarchy()
+        setConstraints()
     }
     
-    func setConstraints() {
+    override func viewWillLayoutSubviews() {
+        placeText = searchTextField.text ?? ""
+    }
+    
+    override func setHierarchy() {
+        self.view.addSubviews(searchTextField,dotDivider)
+    }
+    
+    override func setConstraints() {
+        dotDivider.snp.makeConstraints {
+            $0.top.equalToSuperview().inset(77)
+            $0.height.equalTo(1)
+            $0.leading.trailing.equalToSuperview().inset(19)
+        }
         searchTextField.snp.makeConstraints {
-            $0.top.equalToSuperview()
+            $0.top.equalToSuperview().inset(101)
             $0.leading.equalToSuperview().inset(25)
             $0.width.equalTo(312)
             $0.height.equalTo(31)
