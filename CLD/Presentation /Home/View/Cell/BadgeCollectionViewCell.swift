@@ -15,7 +15,7 @@ final class BadgeCollectionViewCell: UICollectionViewCell {
     
     private let backView: UIView = {
         let view = UIView()
-        view.backgroundColor = .CLDGray
+        view.backgroundColor = .CLDLightGray
         view.layer.cornerRadius = 10
         return view
     }()

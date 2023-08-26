@@ -39,8 +39,11 @@ enum ImageLiteral {
     
     //MARK: - test image
     static var videoThumbnail: UIImage { .load(named: "videoThumbnail") }
-    static var thumbnailImage: UIImage { .load(named: "thumbnailImage")}
+    static var thumbnailImage: UIImage { .load(named: "thumbnailImage") }
     
+    //MARK: - System image
+    static var checkIcon: UIImage { .load(systemName: "checkmark")}
+    static var thumbnailImage: UIImage { .load(named: "thumbnailImage")}
 }
 
 extension UIImage {

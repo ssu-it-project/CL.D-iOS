@@ -48,12 +48,12 @@ final class HomeViewController: BaseViewController {
     
     private func setUpDataSource() {
         url = [
-            "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4",
-            "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4",
-            "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4",
-            "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4",
-            "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4",
-            "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
+            "https://cl-d.s3.ap-northeast-2.amazonaws.com/clime_record/64db8009654538cfc659aa31/%E1%84%8B%E1%85%A3%E1%86%BC%E1%84%8C%E1%85%A2_%E1%84%83%E1%85%A5%E1%84%8F%E1%85%B3%E1%86%AF%E1%84%85%E1%85%A1%E1%84%8B%E1%85%B5%E1%86%B7_%E1%84%80%E1%85%A1%E1%86%BC%E1%84%87%E1%85%A5%E1%86%B7%E1%84%8C%E1%85%AE%E1%86%AB.mov",
+            "https://cl-d.s3.ap-northeast-2.amazonaws.com/clime_record/64db8009654538cfc659aa31/%E1%84%8B%E1%85%A3%E1%86%BC%E1%84%8C%E1%85%A2_%E1%84%83%E1%85%A5%E1%84%8F%E1%85%B3%E1%86%AF%E1%84%85%E1%85%A1%E1%84%8B%E1%85%B5%E1%86%B7_%E1%84%80%E1%85%A1%E1%86%BC%E1%84%87%E1%85%A5%E1%86%B7%E1%84%8C%E1%85%AE%E1%86%AB.mov",
+            "https://cl-d.s3.ap-northeast-2.amazonaws.com/clime_record/64db8009654538cfc659aa31/%E1%84%8B%E1%85%A3%E1%86%BC%E1%84%8C%E1%85%A2_%E1%84%83%E1%85%A5%E1%84%8F%E1%85%B3%E1%86%AF%E1%84%85%E1%85%A1%E1%84%8B%E1%85%B5%E1%86%B7_%E1%84%80%E1%85%A1%E1%86%BC%E1%84%87%E1%85%A5%E1%86%B7%E1%84%8C%E1%85%AE%E1%86%AB.mov",
+            "https://cl-d.s3.ap-northeast-2.amazonaws.com/clime_record/64db8009654538cfc659aa31/%E1%84%8B%E1%85%A3%E1%86%BC%E1%84%8C%E1%85%A2_%E1%84%83%E1%85%A5%E1%84%8F%E1%85%B3%E1%86%AF%E1%84%85%E1%85%A1%E1%84%8B%E1%85%B5%E1%86%B7_%E1%84%80%E1%85%A1%E1%86%BC%E1%84%87%E1%85%A5%E1%86%B7%E1%84%8C%E1%85%AE%E1%86%AB.mov",
+            "https://cl-d.s3.ap-northeast-2.amazonaws.com/clime_record/64db8009654538cfc659aa31/%E1%84%8B%E1%85%A3%E1%86%BC%E1%84%8C%E1%85%A2_%E1%84%83%E1%85%A5%E1%84%8F%E1%85%B3%E1%86%AF%E1%84%85%E1%85%A1%E1%84%8B%E1%85%B5%E1%86%B7_%E1%84%80%E1%85%A1%E1%86%BC%E1%84%87%E1%85%A5%E1%86%B7%E1%84%8C%E1%85%AE%E1%86%AB.mov",
+            "https://cl-d.s3.ap-northeast-2.amazonaws.com/clime_record/64db8009654538cfc659aa31/%E1%84%8B%E1%85%A3%E1%86%BC%E1%84%8C%E1%85%A2_%E1%84%83%E1%85%A5%E1%84%8F%E1%85%B3%E1%86%AF%E1%84%85%E1%85%A1%E1%84%8B%E1%85%B5%E1%86%B7_%E1%84%80%E1%85%A1%E1%86%BC%E1%84%87%E1%85%A5%E1%86%B7%E1%84%8C%E1%85%AE%E1%86%AB.mov"
         ]
     }
     
