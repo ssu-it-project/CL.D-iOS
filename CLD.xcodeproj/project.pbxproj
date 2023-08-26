@@ -46,6 +46,8 @@
 		5A1C488F2A76CC9C00CC345A /* VideoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A1C488E2A76CC9C00CC345A /* VideoCollectionViewCell.swift */; };
 		5A21C6552A98F7B900E7CC95 /* UserDefault.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A21C6542A98F7B900E7CC95 /* UserDefault.swift */; };
 		5A21C6572A98F7DE00E7CC95 /* UserDefaultHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A21C6562A98F7DE00E7CC95 /* UserDefaultHandler.swift */; };
+		5A21C65A2A98FAEC00E7CC95 /* BaseTargetType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A21C6592A98FAEC00E7CC95 /* BaseTargetType.swift */; };
+		5A21C65C2A98FC4800E7CC95 /* URLConst.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A21C65B2A98FC4800E7CC95 /* URLConst.swift */; };
 		5A97A1232A91229F00264AB5 /* RxGesture in Frameworks */ = {isa = PBXBuildFile; productRef = 5A97A1222A91229F00264AB5 /* RxGesture */; };
 		5A97A1252A922F7A00264AB5 /* TermsWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A97A1242A922F7A00264AB5 /* TermsWebViewController.swift */; };
 		5A97A1652A93848F00264AB5 /* TermsCheckListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A97A1642A93848E00264AB5 /* TermsCheckListView.swift */; };
@@ -126,6 +128,8 @@
 		5A1C488E2A76CC9C00CC345A /* VideoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoCollectionViewCell.swift; sourceTree = "<group>"; };
 		5A21C6542A98F7B900E7CC95 /* UserDefault.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefault.swift; sourceTree = "<group>"; };
 		5A21C6562A98F7DE00E7CC95 /* UserDefaultHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultHandler.swift; sourceTree = "<group>"; };
+		5A21C6592A98FAEC00E7CC95 /* BaseTargetType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTargetType.swift; sourceTree = "<group>"; };
+		5A21C65B2A98FC4800E7CC95 /* URLConst.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLConst.swift; sourceTree = "<group>"; };
 		5A97A1242A922F7A00264AB5 /* TermsWebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsWebViewController.swift; sourceTree = "<group>"; };
 		5A97A1642A93848E00264AB5 /* TermsCheckListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsCheckListView.swift; sourceTree = "<group>"; };
 		5AC80C772A838B5400FE9D6C /* PlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerView.swift; sourceTree = "<group>"; };
@@ -288,6 +292,15 @@
 			path = Cell;
 			sourceTree = "<group>";
 		};
+		5A21C6582A98FA2700E7CC95 /* _Foundation */ = {
+			isa = PBXGroup;
+			children = (
+				5A21C6592A98FAEC00E7CC95 /* BaseTargetType.swift */,
+				5A21C65B2A98FC4800E7CC95 /* URLConst.swift */,
+			);
+			path = _Foundation;
+			sourceTree = "<group>";
+		};
 		5ACADCED2A5D988F00B92C07 = {
 			isa = PBXGroup;
 			children = (
@@ -357,7 +370,6 @@
 			children = (
 				5ACADD522A658AF400B92C07 /* Repository */,
 				5ACADD512A658AEB00B92C07 /* Network */,
-				5ACADD502A658AE000B92C07 /* DTO+Mapping */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -501,7 +513,9 @@
 		5ACADD512A658AEB00B92C07 /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				5A21C6582A98FA2700E7CC95 /* _Foundation */,
 				5ACADD532A658B3A00B92C07 /* API */,
+				5ACADD502A658AE000B92C07 /* DTO+Mapping */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -879,6 +893,7 @@
 				5AEFAAE92A8E3E5E00A67C43 /* CLDButton.swift in Sources */,
 				5ADED1BF2A679FB100C0CBF4 /* UIImage+Extension.swift in Sources */,
 				5AEFAAA02A8B966900A67C43 /* TermsViewController.swift in Sources */,
+				5A21C65A2A98FAEC00E7CC95 /* BaseTargetType.swift in Sources */,
 				023868C32A70009B0006C762 /* LoginManager.swift in Sources */,
 				5ADED1BD2A679B6A00C0CBF4 /* UIColor+Extension.swift in Sources */,
 				5A1C488A2A7687FB00CC345A /* CGSize+Extension.swift in Sources */,
@@ -903,6 +918,7 @@
 				5AEFAAE72A8E2D6800A67C43 /* TermsCheckBox.swift in Sources */,
 				5ADED1CE2A68388A00C0CBF4 /* CragSearchViewController.swift in Sources */,
 				5A21C6552A98F7B900E7CC95 /* UserDefault.swift in Sources */,
+				5A21C65C2A98FC4800E7CC95 /* URLConst.swift in Sources */,
 				5ACADD5D2A65919400B92C07 /* HomeViewController.swift in Sources */,
 				023F37822A783C1F007B0511 /* SelectSectorView.swift in Sources */,
 				5ADED1B92A678E9C00C0CBF4 /* UILabel+Extension.swift in Sources */,
