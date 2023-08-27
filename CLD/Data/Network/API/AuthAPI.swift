@@ -11,28 +11,31 @@ import Moya
 
 enum AuthAPI {
     case postSignUp(_ requestDTO: SignUpRequest)
+    case postSignIn(_ requestDTO: SignInRequest)
 }
 
 extension AuthAPI: BaseTargetType {
     
     var headers: [String : String]? {
         switch self {
-        case .postSignUp:
+        case .postSignUp, .postSignIn:
             return ["Content-Type": "application/json"]
         }
     }
     
     var path: String {
-        let baseRoutePath: String = "/auth"
+        let baseUserRoutePath: String = "/user"
+        let baseAuthRoutePath: String = "/auth"
         
         switch self {
-        case .postSignUp: return baseRoutePath
+        case .postSignUp: return baseUserRoutePath
+        case .postSignIn: return baseAuthRoutePath + "/token"
         }
     }
     
     var method: Moya.Method {
         switch self {
-        case .postSignUp: return .post
+        case .postSignUp, .postSignIn: return .post
         }
     }
     
@@ -43,6 +46,8 @@ extension AuthAPI: BaseTargetType {
     var task: Task {
         switch self {
         case .postSignUp(let requestDTO):
+            return .requestJSONEncodable(requestDTO)
+        case .postSignIn(let requestDTO):
             return .requestJSONEncodable(requestDTO)
         }
     }
