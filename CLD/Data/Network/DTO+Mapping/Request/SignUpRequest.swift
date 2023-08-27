@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct SignUpRequest: Encodable {
+public struct SignUpRequest: Encodable {
     let agreements: [Agreement]
     let auth: Auth
     let profile: ProfileData
@@ -17,7 +17,7 @@ struct SignUpRequest: Encodable {
 struct Agreement: Encodable {
     let agreed: Bool
     let id: String
-    let timestamp: Date
+    let timestamp: String
 }
 
 // MARK: - Auth
@@ -46,7 +46,7 @@ struct DeviceData: Encodable {
 
 // MARK: - Profile
 struct ProfileData: Encodable {
-    let birthday: Date
+    let birthday: String
     let gender: Int
     let image, name, nickname: String
     let physical: Physical
