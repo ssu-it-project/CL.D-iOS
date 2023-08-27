@@ -13,7 +13,7 @@ final class TermsWebViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        print(termsUrl)
+        print(termsUrl ?? "")
 
     }
 

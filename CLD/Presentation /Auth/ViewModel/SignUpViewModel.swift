@@ -13,42 +13,72 @@ import RxSwift
 class SignUpViewModel: ViewModelType {
     var disposeBag = DisposeBag()
     
+    private let useCase: SignUpUseCase
+
+    // MARK: - Initializer
+    init(
+      useCase: SignUpUseCase
+    ) {
+      self.useCase = useCase
+    }
+    
     struct Input {
         let totalTerms: Observable<Bool>
         let useRequiredTerms: Observable<Bool>
         let personalInfoTerms: Observable<Bool>
         let eventInfoTerms: Observable<Bool>
-//        let nextButtonTapped: Observable<Void>
-//        let backButtonTapped: Observable<Void>
+        let signUpButtonTapped: Observable<Void>
     }
     
     struct Output {
-        let totalTermsChecked: PublishRelay<Bool>
-        let nextButtonEnabled: Signal<Bool>
-        let eventInfoTermsAgreed: Signal<Bool>
+        let totalTermsChecked = PublishRelay<Bool>()
+        let nextButtonEnabled = PublishRelay<Bool>()
+        let eventInfoTermsAgreed = BehaviorRelay<Bool>(value: false)
+        let didSuccessSignUp = PublishRelay<Bool>()
     }
     
     func transform(input: Input) -> Output {
-        let nextButtonEnabled = PublishSubject<Bool>()
-        let eventInfoTermsAgreed = PublishSubject<Bool>()
-        let totalTermsChecked = PublishRelay<Bool>()
+        let output = Output()
         
         Observable.combineLatest(input.useRequiredTerms, input.personalInfoTerms, input.eventInfoTerms, resultSelector: { $0 && $1 && $2 })
-            .bind(to: totalTermsChecked)
+            .bind(to: output.totalTermsChecked)
             .disposed(by: disposeBag)
         
         Observable.combineLatest(input.useRequiredTerms, input.personalInfoTerms, resultSelector: { $0 && $1 })
-            .bind(to: nextButtonEnabled)
+            .bind(to: output.nextButtonEnabled)
             .disposed(by: disposeBag)
         
         input.totalTerms
-            .bind(to: nextButtonEnabled)
+            .bind(to: output.nextButtonEnabled)
             .disposed(by: disposeBag)
         
         input.eventInfoTerms
-            .bind(to: eventInfoTermsAgreed)
+            .bind(to: output.eventInfoTermsAgreed)
             .disposed(by: disposeBag)
         
-        return Output(totalTermsChecked: totalTermsChecked, nextButtonEnabled: nextButtonEnabled.asSignal(onErrorJustReturn: false), eventInfoTermsAgreed: eventInfoTermsAgreed.asSignal(onErrorJustReturn: false))
+        input.signUpButtonTapped
+            .withUnretained(self)
+            .subscribe(onNext: { onwer, _ in
+                let requestDTO = SignUpRequest(agreements: [Agreement(agreed: true, id: "64dcf036ce81c3226358cfc8", timestamp: Date().ISO8601Format())], auth: Auth(accessToken: UserDefaultHandler.snsAccessToken , device: DeviceData(deviceID: UUID.getDeviceUUID()), loginType: UserDefaultHandler.snsLoginType ), profile: ProfileData(birthday: UserDefaultHandler.birthday , gender: UserDefaultHandler.gender , image: UserDefaultHandler.image , name: UserDefaultHandler.name , nickname: UserDefaultHandler.nickname , physical: Physical(height: 180, reach: 65)))
+                
+                dump(requestDTO)
+                dump(UserDefaultHandler.snsAccessToken)
+                onwer.tryKakaoSignUp(output: output, requestDTO: requestDTO)
+            })
+            .disposed(by: disposeBag)
+        
+        return output
+    }
+    
+    private func tryKakaoSignUp(output: Output, requestDTO: SignUpRequest) {
+        useCase.trySignUp(requestDTO: requestDTO)
+            .subscribe(onNext: { userToken in
+                UserDefaultHandler.accessToken = userToken.accessToken
+                UserDefaultHandler.refreshToken = userToken.refreshToken
+                output.didSuccessSignUp.accept(true)
+            }, onError: { error in
+                print(error.localizedDescription)
+            })
+            .disposed(by: disposeBag)
     }
 }
