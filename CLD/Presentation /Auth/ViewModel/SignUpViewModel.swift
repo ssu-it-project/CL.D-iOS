@@ -14,12 +14,12 @@ class SignUpViewModel: ViewModelType {
     var disposeBag = DisposeBag()
     
     private let useCase: SignUpUseCase
-
+    
     // MARK: - Initializer
     init(
-      useCase: SignUpUseCase
+        useCase: SignUpUseCase
     ) {
-      self.useCase = useCase
+        self.useCase = useCase
     }
     
     struct Input {
@@ -53,32 +53,34 @@ class SignUpViewModel: ViewModelType {
             .disposed(by: disposeBag)
         
         input.eventInfoTerms
+            .map { $0 }
             .bind(to: output.eventInfoTermsAgreed)
             .disposed(by: disposeBag)
         
         input.signUpButtonTapped
             .withUnretained(self)
             .subscribe(onNext: { onwer, _ in
-                let requestDTO = SignUpRequest(agreements: [Agreement(agreed: true, id: "64dcf036ce81c3226358cfc8", timestamp: Date().ISO8601Format())], auth: Auth(accessToken: UserDefaultHandler.snsAccessToken , device: DeviceData(deviceID: UUID.getDeviceUUID()), loginType: UserDefaultHandler.snsLoginType ), profile: ProfileData(birthday: UserDefaultHandler.birthday , gender: UserDefaultHandler.gender , image: UserDefaultHandler.image , name: UserDefaultHandler.name , nickname: UserDefaultHandler.nickname , physical: Physical(height: 180, reach: 65)))
-                
+                let requestDTO = SignUpRequest(agreements: [Agreement(agree: output.eventInfoTermsAgreed.value, id: "64dcf036ce81c3226358cfc8")], auth: Auth(accessToken: UserDefaultHandler.snsAccessToken, device: DeviceData(deviceID: UUID.getDeviceUUID()), loginType: UserDefaultHandler.snsLoginType))
                 dump(requestDTO)
-                dump(UserDefaultHandler.snsAccessToken)
-                onwer.tryKakaoSignUp(output: output, requestDTO: requestDTO)
+                onwer.trySignUp(output: output, requestDTO: requestDTO)
             })
             .disposed(by: disposeBag)
         
         return output
     }
     
-    private func tryKakaoSignUp(output: Output, requestDTO: SignUpRequest) {
+    private func trySignUp(output: Output, requestDTO: SignUpRequest) {
         useCase.trySignUp(requestDTO: requestDTO)
-            .subscribe(onNext: { userToken in
-                UserDefaultHandler.accessToken = userToken.accessToken
-                UserDefaultHandler.refreshToken = userToken.refreshToken
-                output.didSuccessSignUp.accept(true)
-            }, onError: { error in
-                print(error.localizedDescription)
-            })
+            .subscribe { response in
+                switch response {
+                case .success(let userToken):
+                    UserDefaultHandler.accessToken = userToken.accessToken
+                    UserDefaultHandler.refreshToken = userToken.refreshToken
+                    output.didSuccessSignUp.accept(true)
+                case .failure(let error):
+                    print(error.localizedDescription)
+                }
+            }
             .disposed(by: disposeBag)
     }
 }
