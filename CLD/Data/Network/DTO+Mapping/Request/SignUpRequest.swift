@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct SignUpRequest: Encodable {
+public struct SignUpRequest: Encodable {
     let agreements: [Agreement]
     let auth: Auth
 }

@@ -47,7 +47,7 @@ class SignInViewModel: ViewModelType {
             .withUnretained(self)
             .subscribe(onNext: { onwer, token in
                 let signInRequest = SignInRequest(accessToken: token, device: Device(deviceID: UUID.getDeviceUUID()), loginType: SNSLoginType.apple.rawValue)
-                
+                dump(signInRequest)
                 onwer.tryAppleSignIn(requestDTO: signInRequest, output: output)
             })
             .disposed(by: disposeBag)

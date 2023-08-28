@@ -10,6 +10,7 @@ import UIKit
 import SnapKit
 import RxSwift
 import RxCocoa
+import AuthenticationServices
 
 final class AuthViewController: BaseViewController {
     let signView = SignView()
@@ -31,6 +32,7 @@ final class AuthViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         bind()
+        bindAction()
 //        buttonTap()
 
     }
@@ -42,7 +44,7 @@ final class AuthViewController: BaseViewController {
         
         output.didSuccessSignIn
             .withUnretained(self)
-            .bind { onwer, Success in
+            .bind { owner, Success in
                 print("로그인 성공 ====", UserDefaultHandler.accessToken)
                 RootHandler.shard.update(.Main)
             }
@@ -56,6 +58,15 @@ final class AuthViewController: BaseViewController {
             .disposed(by: disposeBag)
     }
     
+    private func bindAction() {
+        signView.appleButton.rx.tap
+            .withUnretained(self)
+            .bind { owner, _ in
+                owner.signInWithApple()
+            }
+            .disposed(by: disposeBag)
+    }
+    
     override func setHierarchy() {
         self.view.addSubview(signView)
     }
@@ -65,21 +76,45 @@ final class AuthViewController: BaseViewController {
             $0.edges.equalToSuperview()
         }
     }
+}
+extension AuthViewController: ASAuthorizationControllerDelegate {
+    func authorizationController(
+        controller: ASAuthorizationController,
+        didCompleteWithAuthorization authorization: ASAuthorization
+      ) {
+        // Apple ID 연동 성공
+        switch authorization.credential {
+        case let appleIDCredential as ASAuthorizationAppleIDCredential:
+          let token: String = String(data: appleIDCredential.identityToken!, encoding: .utf8)!
+          appleSignInSubject.onNext(token)
+
+        default: break
+        }
+      }
     
-//    private func buttonTap() {
-//        signView.kakaoButton.rx.tap
-//            .bind {
-//                self.loginManager.KakaoSignin()
-//         }.disposed(by: disposeBag)
-//
-//        signView.appleButton.rx.tap
-//            .bind {
-//                print("appleButton 클릭")
-//         }.disposed(by: disposeBag)
-//
-//        signView.instaButton.rx.tap
-//            .bind {
-//                self.loginManager.FBSignin(TabBarController())
-//            }.disposed(by: disposeBag)
-//    }
+    func authorizationController(
+      controller: ASAuthorizationController,
+      didCompleteWithError error: Error
+    ) {
+      // Apple ID 연동 실패
+    }
+}
+
+extension AuthViewController: ASAuthorizationControllerPresentationContextProviding {
+  func presentationAnchor(for controller: ASAuthorizationController) -> ASPresentationAnchor {
+    return self.view.window!
+  }
+}
+
+private extension AuthViewController {
+    func signInWithApple() {
+        let appleIDProvider: ASAuthorizationAppleIDProvider = .init()
+        let request: ASAuthorizationAppleIDRequest = appleIDProvider.createRequest()
+        request.requestedScopes = [.fullName, .email]
+
+        let authorizationController: ASAuthorizationController = .init(authorizationRequests: [request])
+        authorizationController.delegate = self
+        authorizationController.presentationContextProvider = self
+        authorizationController.performRequests()
+      }
 }
