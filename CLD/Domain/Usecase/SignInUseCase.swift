@@ -11,6 +11,7 @@ import RxSwift
 
 public protocol SignInUseCase {
   func tryKakaoSignIn() -> Observable<UserToken>
+  func tryAppleSignIn(requestDTO: SignInRequest) -> Single<UserToken>
 }
 
 final class DefaultSignInUseCase: SignInUseCase {
@@ -23,6 +24,10 @@ final class DefaultSignInUseCase: SignInUseCase {
   }
 
   // MARK: - Methods
+  public func tryAppleSignIn(requestDTO: SignInRequest) -> Single<UserToken> {
+      signInRepository.tryAppleLogin(requestDTO: requestDTO)
+    }
+    
   public func tryKakaoSignIn() -> Observable<UserToken> {
       signInRepository.tryKakaoLogin()
   }

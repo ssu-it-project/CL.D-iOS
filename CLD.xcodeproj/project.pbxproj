@@ -74,6 +74,7 @@
 		5A21C6A22A9B9F7000E7CC95 /* SignUpUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A21C6A12A9B9F7000E7CC95 /* SignUpUseCase.swift */; };
 		5A21C6A42A9BAC6000E7CC95 /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A21C6A32A9BAC6000E7CC95 /* Date+Extension.swift */; };
 		5A21C6A62A9BAD5B00E7CC95 /* SNSLoginType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A21C6A52A9BAD5B00E7CC95 /* SNSLoginType.swift */; };
+		5A21C7052A9CF2CF00E7CC95 /* SignInRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A21C7042A9CF2CF00E7CC95 /* SignInRepository.swift */; };
 		5A97A1232A91229F00264AB5 /* RxGesture in Frameworks */ = {isa = PBXBuildFile; productRef = 5A97A1222A91229F00264AB5 /* RxGesture */; };
 		5A97A1252A922F7A00264AB5 /* TermsWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A97A1242A922F7A00264AB5 /* TermsWebViewController.swift */; };
 		5A97A1652A93848F00264AB5 /* TermsCheckListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A97A1642A93848E00264AB5 /* TermsCheckListView.swift */; };
@@ -178,6 +179,7 @@
 		5A21C6A12A9B9F7000E7CC95 /* SignUpUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpUseCase.swift; sourceTree = "<group>"; };
 		5A21C6A32A9BAC6000E7CC95 /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
 		5A21C6A52A9BAD5B00E7CC95 /* SNSLoginType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SNSLoginType.swift; sourceTree = "<group>"; };
+		5A21C7042A9CF2CF00E7CC95 /* SignInRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInRepository.swift; sourceTree = "<group>"; };
 		5A97A1242A922F7A00264AB5 /* TermsWebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsWebViewController.swift; sourceTree = "<group>"; };
 		5A97A1642A93848E00264AB5 /* TermsCheckListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsCheckListView.swift; sourceTree = "<group>"; };
 		5AC80C772A838B5400FE9D6C /* PlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerView.swift; sourceTree = "<group>"; };
@@ -195,7 +197,6 @@
 		5ACADD5C2A65919400B92C07 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		5ACADD6A2A6592BE00B92C07 /* keep.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = keep.txt; sourceTree = "<group>"; };
 		5ACADD7C2A65931E00B92C07 /* keep.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = keep.txt; sourceTree = "<group>"; };
-		5ACADD822A6593AA00B92C07 /* keep.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = keep.txt; sourceTree = "<group>"; };
 		5ACADD842A6593B400B92C07 /* keep.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = keep.txt; sourceTree = "<group>"; };
 		5ACADD882A6593C000B92C07 /* keep.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = keep.txt; sourceTree = "<group>"; };
 		5ACADD8C2A6593CB00B92C07 /* keep.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = keep.txt; sourceTree = "<group>"; };
@@ -662,7 +663,7 @@
 		5ACADD542A658DE400B92C07 /* RepositoryInterface */ = {
 			isa = PBXGroup;
 			children = (
-				5ACADD822A6593AA00B92C07 /* keep.txt */,
+				5A21C7042A9CF2CF00E7CC95 /* SignInRepository.swift */,
 			);
 			path = RepositoryInterface;
 			sourceTree = "<group>";
@@ -1011,6 +1012,7 @@
 				5A21C6812A9A3C9800E7CC95 /* UserTokenDTO.swift in Sources */,
 				5A21C68B2A9A76D200E7CC95 /* DefaultSignInRepository.swift in Sources */,
 				5A21C69E2A9B8ED700E7CC95 /* UUID.swift in Sources */,
+				5A21C7052A9CF2CF00E7CC95 /* SignInRepository.swift in Sources */,
 				5A21C6852A9A410400E7CC95 /* BaseErrorDTO.swift in Sources */,
 				0281723E2A793B900089FD51 /* SelectColorCell.swift in Sources */,
 				020F65492A7B72050036CFB1 /* SelectListView.swift in Sources */,
