@@ -180,6 +180,7 @@
 		5A21C6A32A9BAC6000E7CC95 /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
 		5A21C6A52A9BAD5B00E7CC95 /* SNSLoginType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SNSLoginType.swift; sourceTree = "<group>"; };
 		5A21C7042A9CF2CF00E7CC95 /* SignInRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInRepository.swift; sourceTree = "<group>"; };
+		5A21C7062A9D056F00E7CC95 /* CLD.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CLD.entitlements; sourceTree = "<group>"; };
 		5A97A1242A922F7A00264AB5 /* TermsWebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsWebViewController.swift; sourceTree = "<group>"; };
 		5A97A1642A93848E00264AB5 /* TermsCheckListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsCheckListView.swift; sourceTree = "<group>"; };
 		5AC80C772A838B5400FE9D6C /* PlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerView.swift; sourceTree = "<group>"; };
@@ -441,6 +442,7 @@
 		5ACADCF82A5D988F00B92C07 /* CLD */ = {
 			isa = PBXGroup;
 			children = (
+				5A21C7062A9D056F00E7CC95 /* CLD.entitlements */,
 				5ACADD402A64075700B92C07 /* App */,
 				5ACADD432A6581FD00B92C07 /* Common */,
 				5ACADD3F2A64073300B92C07 /* Data */,
@@ -1247,6 +1249,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = CLD/CLD.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 8LJ2P85FNV;
@@ -1278,6 +1281,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = CLD/CLD.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 8LJ2P85FNV;
