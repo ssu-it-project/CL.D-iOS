@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct SignInRequest: Encodable {
+public struct SignInRequest: Encodable {
     let accessToken: String
     let device: Device
     let loginType: String
