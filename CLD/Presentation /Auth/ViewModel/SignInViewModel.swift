@@ -15,16 +15,17 @@ class SignInViewModel: ViewModelType {
     var disposeBag = DisposeBag()
     
     private let useCase: SignInUseCase
-
+    
     // MARK: - Initializer
     init(
-      useCase: SignInUseCase
+        useCase: SignInUseCase
     ) {
-      self.useCase = useCase
+        self.useCase = useCase
     }
     
     struct Input {
         let kakaoButtonTapped: Observable<Void>
+        let appleSignInSubject: PublishSubject<String>
     }
     
     struct Output {
@@ -39,6 +40,15 @@ class SignInViewModel: ViewModelType {
             .withUnretained(self)
             .subscribe(onNext: { onwer, _ in
                 onwer.tryKakaoSignIn(output: output)
+            })
+            .disposed(by: disposeBag)
+        
+        input.appleSignInSubject
+            .withUnretained(self)
+            .subscribe(onNext: { onwer, token in
+                let signInRequest = SignInRequest(accessToken: token, device: Device(deviceID: UUID.getDeviceUUID()), loginType: SNSLoginType.apple.rawValue)
+                
+                onwer.tryAppleSignIn(requestDTO: signInRequest, output: output)
             })
             .disposed(by: disposeBag)
         
@@ -57,6 +67,24 @@ class SignInViewModel: ViewModelType {
                     output.isFirstUserRelay.accept(true)
                 }
             })
+            .disposed(by: disposeBag)
+    }
+    
+    private func tryAppleSignIn(requestDTO: SignInRequest, output: Output) {
+        useCase.tryAppleSignIn(requestDTO: requestDTO)
+            .subscribe { response in
+                switch response {
+                case .success(let userToken):
+                    UserDefaultHandler.accessToken = userToken.accessToken
+                    UserDefaultHandler.refreshToken = userToken.refreshToken
+                    output.didSuccessSignIn.accept(true)
+                case .failure(let error):
+                    guard let error = error as? MoyaError else { return }
+                    if error.response?.statusCode == 404 {
+                        output.isFirstUserRelay.accept(true)
+                    }
+                }
+            }
             .disposed(by: disposeBag)
     }
 }

@@ -15,6 +15,7 @@ final class AuthViewController: BaseViewController {
     let signView = SignView()
     private var loginManager: SNSLoginManager = CLD.SNSLoginManager()
     private let viewModel: SignInViewModel
+    private let appleSignInSubject: PublishSubject<String> = .init()
     
     // MARK: - Inits
     
@@ -35,7 +36,7 @@ final class AuthViewController: BaseViewController {
     }
     
     private func bind() {
-        let input = SignInViewModel.Input(kakaoButtonTapped: signView.kakaoButton.rx.tap.asObservable())
+        let input = SignInViewModel.Input(kakaoButtonTapped: signView.kakaoButton.rx.tap.asObservable(), appleSignInSubject: appleSignInSubject.asObserver())
         
         let output = viewModel.transform(input: input)
         
