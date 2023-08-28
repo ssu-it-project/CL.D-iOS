@@ -14,7 +14,7 @@ public enum SignUpError: Error {
 }
 
 public protocol SignUpUseCase {
-  func trySignUp(requestDTO: SignUpRequest) -> Observable<UserToken>
+  func trySignUp(requestDTO: SignUpRequest) -> Single<UserToken>
 }
 
 final class DefaultSignUpUseCase: SignUpUseCase {
@@ -27,7 +27,7 @@ final class DefaultSignUpUseCase: SignUpUseCase {
   }
 
   // MARK: - Methods
-    func trySignUp(requestDTO: SignUpRequest) -> Observable<UserToken> {
-        signUpRepository.trySignUp(requestDTO: requestDTO).asObservable()
+    func trySignUp(requestDTO: SignUpRequest) -> Single<UserToken> {
+        signUpRepository.trySignUp(requestDTO: requestDTO)
     }
 }
