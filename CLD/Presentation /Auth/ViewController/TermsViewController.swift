@@ -25,11 +25,11 @@ final class TermsViewController: BaseViewController {
         return UILabel
     }()
     private let allTermsCheckBox = TermsCheckBox()
-    private let useRequiredTermsCheckView = TermsCheckListView(tag: 0)
-    private let personalInfoTermsCheckView = TermsCheckListView(tag: 1)
-    private let eventInfoTermsCheckView = TermsCheckListView(tag: 2)
+    private let useRequiredTermsCheckView = TermsCheckListView(tag: 0, title: TermsType.termsOfUseRequired.description)
+    private let personalInfoTermsCheckView = TermsCheckListView(tag: 1, title: TermsType.personalInfoCollectionRequired.description)
+    private let eventInfoTermsCheckView = TermsCheckListView(tag: 2, title: TermsType.eventInfoConsent.description)
     private lazy var termsStackView = createTotalStackView()
-    private var loginButton = CLDButton(title: "확인", isEnabled: false)
+    private var signUpButton = CLDButton(title: "확인", isEnabled: false)
     
     private let viewModel: SignUpViewModel
     let servicePolicytoggleRelay = BehaviorRelay<Bool>(value: false)
@@ -58,12 +58,13 @@ final class TermsViewController: BaseViewController {
     }
     
     private func bind() {
-        let input = SignUpViewModel.Input(totalTerms: allTermsCheckBox.termsCheckBoxDidTapGesture().asObservable(), useRequiredTerms: useRequiredTermsCheckView.termsCheckButton.rx.isSelected.asObservable(), personalInfoTerms: personalInfoTermsCheckView.termsCheckButton.rx.isSelected.asObservable(), eventInfoTerms: eventInfoTermsCheckView.termsCheckButton.rx.isSelected.asObservable())
+        let input = SignUpViewModel.Input(totalTerms: allTermsCheckBox.termsCheckBoxDidTapGesture().asObservable(), useRequiredTerms: useRequiredTermsCheckView.termsCheckButton.rx.isSelected.asObservable(), personalInfoTerms: personalInfoTermsCheckView.termsCheckButton.rx.isSelected.asObservable(), eventInfoTerms: eventInfoTermsCheckView.termsCheckButton.rx.isSelected.asObservable(), signUpButtonTapped: signUpButton.rx.tap.asObservable())
 
         let output = viewModel.transform(input: input)
 
         output.nextButtonEnabled
-            .emit(to: loginButton.rx.isEnabled)
+            .asSignal(onErrorJustReturn: false)
+            .emit(to: signUpButton.rx.isEnabled)
             .disposed(by: disposeBag)
         
         output.totalTermsChecked
@@ -71,6 +72,13 @@ final class TermsViewController: BaseViewController {
             .bind(onNext: { owner, toggle in
                 owner.allTermsCheckBox.isSelected = toggle
             })
+            .disposed(by: disposeBag)
+        
+        output.didSuccessSignUp
+            .bind { _ in
+                print("회원가입 성공 ==== ", UserDefaultHandler.accessToken)
+                RootHandler.shard.update(.Main)
+            }
             .disposed(by: disposeBag)
                     
         allTermsCheckBox.termsCheckBoxToggleisSeleted()
@@ -87,7 +95,7 @@ final class TermsViewController: BaseViewController {
     }
  
     override func setHierarchy() {
-        view.addSubviews(badgeTitleLabel, allTermsCheckBox, termsStackView, loginButton)
+        view.addSubviews(badgeTitleLabel, allTermsCheckBox, termsStackView, signUpButton)
     }
     
     override func setConstraints() {
@@ -108,7 +116,7 @@ final class TermsViewController: BaseViewController {
             make.leading.trailing.equalToSuperview().inset(12)
         }
                 
-        loginButton.snp.makeConstraints { make in
+        signUpButton.snp.makeConstraints { make in
             make.top.equalTo(termsStackView.snp.bottom).offset(15).priority(.low)
             make.leading.trailing.equalToSuperview().inset(10)
             make.bottom.equalTo(view.keyboardLayoutGuide.snp.top).offset(-15)
@@ -126,8 +134,9 @@ final class TermsViewController: BaseViewController {
 
 extension TermsViewController: PushTermsViewDelegate {
     func detailButtonTapped(index: Int) {
+        print("aa")
         let vc = TermsWebViewController()
-        vc.termsUrl = "\(index)"
+        vc.termsUrl = TermsType.allCases[index].url
         self.navigationController?.pushViewController(vc, animated: true)
     }
 }

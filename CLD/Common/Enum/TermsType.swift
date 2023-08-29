@@ -22,6 +22,28 @@ enum TermsType: CaseIterable {
                 return "[선택] 이벤트 알림 서비스 동의"
         }
     }
+    
+    var url: String {
+        switch self {
+        case .termsOfUseRequired:
+            return "https://cl-d.s3.ap-northeast-2.amazonaws.com/terms/64dceb920530156f20c6cb99.html"
+        case .personalInfoCollectionRequired:
+            return ""
+        case .eventInfoConsent:
+            return ""
+        }
+    }
+    
+    var id: String {
+        switch self {
+        case .termsOfUseRequired:
+            return "64dceb920530156f20c6cb99"
+        case .personalInfoCollectionRequired:
+            return "64dcf036ce81c3226358cfc7"
+        case .eventInfoConsent:
+            return "64dcf036ce81c3226358cfc8" 
+        }
+    }
 }
 
 
