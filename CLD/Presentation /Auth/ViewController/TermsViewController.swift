@@ -25,9 +25,9 @@ final class TermsViewController: BaseViewController {
         return UILabel
     }()
     private let allTermsCheckBox = TermsCheckBox()
-    private let useRequiredTermsCheckView = TermsCheckListView(tag: 0)
-    private let personalInfoTermsCheckView = TermsCheckListView(tag: 1)
-    private let eventInfoTermsCheckView = TermsCheckListView(tag: 2)
+    private let useRequiredTermsCheckView = TermsCheckListView(tag: 0, title: TermsType.termsOfUseRequired.description)
+    private let personalInfoTermsCheckView = TermsCheckListView(tag: 1, title: TermsType.personalInfoCollectionRequired.description)
+    private let eventInfoTermsCheckView = TermsCheckListView(tag: 2, title: TermsType.eventInfoConsent.description)
     private lazy var termsStackView = createTotalStackView()
     private var signUpButton = CLDButton(title: "확인", isEnabled: false)
     
@@ -134,8 +134,9 @@ final class TermsViewController: BaseViewController {
 
 extension TermsViewController: PushTermsViewDelegate {
     func detailButtonTapped(index: Int) {
+        print("aa")
         let vc = TermsWebViewController()
-        vc.termsUrl = "\(index)"
+        vc.termsUrl = TermsType.allCases[index].url
         self.navigationController?.pushViewController(vc, animated: true)
     }
 }

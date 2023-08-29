@@ -57,9 +57,10 @@ final class TermsCheckListView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    convenience init(tag: Int) {
+    convenience init(tag: Int, title: String) {
         self.init()
         self.termsDetailButton.tag = tag
+        self.termsCheckButton.configuration?.title = title
     }
     
     private func bind() {
@@ -77,7 +78,7 @@ final class TermsCheckListView: UIView {
             .disposed(by: bag)
             
     }
-    
+        
     private func buttonConfigurationUpdateHandler() {
         termsCheckButton.configurationUpdateHandler = { [weak self] btn in
             switch btn.state {
@@ -112,7 +113,7 @@ final class TermsCheckListView: UIView {
 }
 
 extension Reactive where Base: UIButton {
-    public var isSelected: ControlProperty<Bool> {
+    var isSelected: ControlProperty<Bool> {
         return base.rx.controlProperty(
             editingEvents: [.touchUpInside],
             getter: { $0.isSelected },
