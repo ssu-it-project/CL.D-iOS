@@ -24,30 +24,9 @@ final class SelectVideoViewController: BaseViewController {
     
     var fetchResult: PHFetchResult<PHAsset>!
     let imageManager: PHCachingImageManager = PHCachingImageManager()
+    var videos: [PHAsset] = []
     let cellIdentifier: String = "PhotoCollectionViewCell"
-    
-    func photoLibraryDidChange(_ changeInstance: PHChange) {
-        guard let changes = changeInstance.changeDetails(for: fetchResult)
-        else { return }
-        
-        fetchResult = changes.fetchResultAfterChanges
-        
-        OperationQueue.main.addOperation {
-            self.selectCollectionView.reloadData()
-        }
-    }
-    
-    func requestCollection() {
-        let cameraRoll: PHFetchResult<PHAssetCollection> = PHAssetCollection.fetchAssetCollections(with: .smartAlbum, subtype: .smartAlbumUserLibrary, options: nil)
-        guard let cameraRollCollection = cameraRoll.firstObject else {
-            return
-        }
-        
-        let fetchOptions = PHFetchOptions()
-        fetchOptions.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: false)]
-        self.fetchResult = PHAsset.fetchAssets(in: cameraRollCollection, options: fetchOptions)
-    }
-    
+
     var selectCollectionView: UICollectionView = {
         var layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
@@ -59,8 +38,10 @@ final class SelectVideoViewController: BaseViewController {
         collectionView.showsHorizontalScrollIndicator = false
         collectionView.register(PhotoCollectionViewCell.self,
                                 forCellWithReuseIdentifier: PhotoCollectionViewCell.identifier)
+
         return collectionView
     }()
+
     let nextButton: UIButton = {
         let button = UIButton()
         button.setTitle("다음", for: .normal)
@@ -70,8 +51,10 @@ final class SelectVideoViewController: BaseViewController {
         button.contentVerticalAlignment = .center
         button.contentHorizontalAlignment = .center
         button.addTarget(self, action: #selector(nextView), for: .touchUpInside)
+
         return button
     }()
+
     @objc private func nextView () {
         finalRecordDic["video"] = assetInfo
         print("finalRecordDic: \(finalRecordDic)")
@@ -89,7 +72,34 @@ final class SelectVideoViewController: BaseViewController {
             present(alert, animated: true)
         }
     }
-    
+
+    func photoLibraryDidChange(_ changeInstance: PHChange) {
+        guard let changes = changeInstance.changeDetails(for: fetchResult)
+        else { return }
+
+        fetchResult = changes.fetchResultAfterChanges
+
+        OperationQueue.main.addOperation {
+            self.selectCollectionView.reloadData()
+        }
+    }
+
+    func fetchVideos() {
+        let fetchOptions = PHFetchOptions()
+        fetchOptions.predicate = NSPredicate(format: "mediaType = %d", PHAssetMediaType.video.rawValue)
+        fetchOptions.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: false)]
+
+        fetchResult = PHAsset.fetchAssets(with: fetchOptions)
+
+        for index in 0..<fetchResult.count {
+            videos.append(fetchResult.object(at: index))
+        }
+
+        OperationQueue.main.addOperation {
+            self.selectCollectionView.reloadData()
+        }
+    }
+
     override func viewDidLoad() {
         self.view.backgroundColor = .white
         
@@ -109,10 +119,7 @@ final class SelectVideoViewController: BaseViewController {
                 switch status {
                 case .authorized:
                     print("사용자가 허용함")
-                    self.requestCollection()
-                    OperationQueue.main.addOperation {
-                        self.selectCollectionView.reloadData()
-                    }
+                    self.fetchVideos()
                 case .denied:
                     print("사용자가 불허함")
                 default: break
@@ -139,10 +146,7 @@ final class SelectVideoViewController: BaseViewController {
             present(alert, animated: true)
         case .authorized:
             print("접근 허가됨")
-            self.requestCollection()
-            OperationQueue.main.addOperation {
-                self.selectCollectionView.reloadData()
-            }
+            self.fetchVideos()
         case .limited:
             print("limited")
         @unknown default:
@@ -182,38 +186,65 @@ extension SelectVideoViewController : UICollectionViewDelegate, UICollectionView
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if (self.fetchResult?.count == nil) {
             return 0
+        } else {
+            if (videos.count >= 12) {
+                return 12
+            }
         }
-        return 12
+        return videos.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PhotoCollectionViewCell.identifier, for: indexPath) as? PhotoCollectionViewCell else {
             return UICollectionViewCell()
         }
-        let asset: PHAsset = fetchResult.object(at: indexPath.row)
-        
-        imageManager.requestImage(for: asset, targetSize: CGSize(width: 83, height: 81), contentMode: .aspectFill, options: nil, resultHandler: { image, _ in
-            cell.backgroundVideo.image = image
-        })
-        
+        let videoAsset = videos[indexPath.row]
+
+        DispatchQueue.global().async {
+            PHImageManager.default().requestAVAsset(forVideo: videoAsset, options: nil) { (avAsset, _, _) in
+                if let urlAsset = avAsset as? AVURLAsset {
+                    let url = urlAsset.url
+
+                    let assetDuration = urlAsset.duration
+                    let seconds = CMTimeGetSeconds(assetDuration)
+
+                    let imageGenerator = AVAssetImageGenerator(asset: urlAsset)
+                    imageGenerator.appliesPreferredTrackTransform = true
+                    let time = CMTime(seconds: 2.0, preferredTimescale: 60)
+                    DispatchQueue.main.async {
+                        do {
+                            let cgImage = try imageGenerator.copyCGImage(at: time, actualTime: nil)
+                            let thumbnailImage = UIImage(cgImage: cgImage)
+
+                            cell.backgroundVideo.image = thumbnailImage
+                            cell.timeLabel.text = String(round(seconds)/100)
+                        } catch {
+                            print("Error generating thumbnail: \(error)")
+                        }
+                    }
+
+                }
+            }
+        }
+
         return cell
     }
-    
+
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: 83, height: 81)
     }
-    
+
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 5
     }
-    
+
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
         return 5
     }
-    
+
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let index: IndexPath = indexPath
-        assetInfo = self.fetchResult[index.row]
+        assetInfo = self.videos[index.row]
     }
 }
 

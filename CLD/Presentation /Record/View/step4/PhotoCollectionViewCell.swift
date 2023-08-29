@@ -54,8 +54,8 @@ final class PhotoCollectionViewCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         contentView.addSubview(backgroundVideo)
-//        backgroundVideo.addSubview(labelBackground)
-//        labelBackground.addSubview(timeLabel)
+        backgroundVideo.addSubview(labelBackground)
+        labelBackground.addSubview(timeLabel)
         
         setUpLayouts()
     }
@@ -64,15 +64,15 @@ final class PhotoCollectionViewCell: UICollectionViewCell {
             $0.width.equalTo(83)
             $0.height.equalTo(81)
         }
-//        labelBackground.snp.makeConstraints {
-//            $0.leading.equalToSuperview().inset(8)
-//            $0.bottom.equalToSuperview().inset(6)
-//            $0.width.equalTo(19)
-//            $0.height.equalTo(9)
-//        }
-//        timeLabel.snp.makeConstraints {
-//            $0.center.equalToSuperview()
-//        }
+        labelBackground.snp.makeConstraints {
+            $0.leading.equalToSuperview().inset(8)
+            $0.bottom.equalToSuperview().inset(6)
+            $0.width.equalTo(19)
+            $0.height.equalTo(9)
+        }
+        timeLabel.snp.makeConstraints {
+            $0.center.equalToSuperview()
+        }
     }
     
     required init?(coder: NSCoder) {
