@@ -53,7 +53,6 @@ class SignUpViewModel: ViewModelType {
             .disposed(by: disposeBag)
         
         input.eventInfoTerms
-            .map { $0 }
             .bind(to: output.eventInfoTermsAgreed)
             .disposed(by: disposeBag)
         
