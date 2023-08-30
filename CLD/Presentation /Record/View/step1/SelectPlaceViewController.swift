@@ -42,6 +42,15 @@ final class SelectPlaceViewController: BaseViewController {
         border.backgroundColor = UIColor.CLDGold.cgColor
         return border
     }()
+    private let tableView: UITableView = {
+       let tableView = UITableView(frame: .zero, style: .grouped)
+       tableView.register(PlaceTableViewCell.self, forCellReuseIdentifier: PlaceTableViewCell.identifier)
+       tableView.translatesAutoresizingMaskIntoConstraints = false
+       tableView.separatorStyle = .none
+       tableView.rowHeight = UITableView.automaticDimension
+       tableView.estimatedRowHeight = 150
+       return tableView
+    }()
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?){
         self.view.endEditing(true)
@@ -49,6 +58,9 @@ final class SelectPlaceViewController: BaseViewController {
     
     override func viewDidLoad() {
         self.view.backgroundColor = .white
+        tableView.delegate = self
+        tableView.dataSource = self
+
         searchTextField.addLeftPadding()
         searchTextField.addLeftImageGray(image: ImageLiteral.searchIcon)
         
@@ -62,7 +74,7 @@ final class SelectPlaceViewController: BaseViewController {
     }
     
     override func setHierarchy() {
-        self.view.addSubviews(searchTextField,dotDivider)
+        self.view.addSubviews(searchTextField, dotDivider, tableView)
     }
     
     override func setConstraints() {
@@ -77,5 +89,22 @@ final class SelectPlaceViewController: BaseViewController {
             $0.width.equalTo(312)
             $0.height.equalTo(31)
         }
+        tableView.snp.makeConstraints {
+            $0.top.equalTo(searchTextField.snp.bottom).offset(101)
+            $0.leading.equalToSuperview().inset(25)
+            $0.height.equalTo(150)
+            // $0.bottom.equalToSuperview().inset(150)
+        }
+    }
+}
+
+extension SelectPlaceViewController: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 5
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: PlaceTableViewCell.identifier, for: indexPath)
+        return cell
     }
 }
