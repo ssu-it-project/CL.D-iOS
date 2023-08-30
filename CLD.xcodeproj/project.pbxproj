@@ -33,6 +33,7 @@
 		0281723C2A793A670089FD51 /* SelectColorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0281723B2A793A670089FD51 /* SelectColorViewController.swift */; };
 		0281723E2A793B900089FD51 /* SelectColorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0281723D2A793B900089FD51 /* SelectColorCell.swift */; };
 		028981642A93176000B928E5 /* PostRecordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 028981632A93175F00B928E5 /* PostRecordViewController.swift */; };
+		029E36242A9E36EB0069A773 /* PlaceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 029E36232A9E36EB0069A773 /* PlaceTableViewCell.swift */; };
 		02D56F4A2A9317FB00FF41EA /* PostRecordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D56F492A9317FB00FF41EA /* PostRecordView.swift */; };
 		02DC9AC52A75789800F8989E /* SelectListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02DC9AC42A75789800F8989E /* SelectListCell.swift */; };
 		02E2532F2A8A17DB00D3E9E1 /* PhotoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E2532E2A8A17DB00D3E9E1 /* PhotoCollectionViewCell.swift */; };
@@ -147,6 +148,7 @@
 		0281723B2A793A670089FD51 /* SelectColorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectColorViewController.swift; sourceTree = "<group>"; };
 		0281723D2A793B900089FD51 /* SelectColorCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectColorCell.swift; sourceTree = "<group>"; };
 		028981632A93175F00B928E5 /* PostRecordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostRecordViewController.swift; sourceTree = "<group>"; };
+		029E36232A9E36EB0069A773 /* PlaceTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceTableViewCell.swift; sourceTree = "<group>"; };
 		02D56F492A9317FB00FF41EA /* PostRecordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostRecordView.swift; sourceTree = "<group>"; };
 		02DC9AC42A75789800F8989E /* SelectListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectListCell.swift; sourceTree = "<group>"; };
 		02E2532E2A8A17DB00D3E9E1 /* PhotoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -338,6 +340,7 @@
 			isa = PBXGroup;
 			children = (
 				02EB6E772A874D4D00C749A6 /* SelectPlaceViewController.swift */,
+				029E36232A9E36EB0069A773 /* PlaceTableViewCell.swift */,
 			);
 			path = step1;
 			sourceTree = "<group>";
@@ -1010,6 +1013,7 @@
 				02DC9AC52A75789800F8989E /* SelectListCell.swift in Sources */,
 				5ADED1AF2A66AEAD00C0CBF4 /* UICollectionView+Extension.swift in Sources */,
 				020F65532A7D09450036CFB1 /* SelectVideoViewController.swift in Sources */,
+				029E36242A9E36EB0069A773 /* PlaceTableViewCell.swift in Sources */,
 				02EB6E862A88C45A00C749A6 /* CALayer+Extension.swift in Sources */,
 				5A21C6812A9A3C9800E7CC95 /* UserTokenDTO.swift in Sources */,
 				5A21C68B2A9A76D200E7CC95 /* DefaultSignInRepository.swift in Sources */,
