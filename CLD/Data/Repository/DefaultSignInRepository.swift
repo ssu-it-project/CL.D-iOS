@@ -36,6 +36,8 @@ final class DefaultSignInRepository: SignInRepository {
             return UserApi.shared.rx.loginWithKakaoTalk()
                 .withUnretained(self)
                 .flatMapLatest { owner, oAuthToken in
+                    owner.saveSNSAccessToken(oAuthToken.accessToken)
+                    owner.saveSNSAccessToken(SNSLoginType.kakao.rawValue)
                     let dto = SignInRequest(accessToken: oAuthToken.accessToken, device: Device(deviceID: UUID.getDeviceUUID()), loginType: SNSLoginType.kakao.rawValue)
                     return owner.requestKakaoSignIn(requestDTO: dto)
                 }
@@ -43,6 +45,8 @@ final class DefaultSignInRepository: SignInRepository {
             return UserApi.shared.rx.loginWithKakaoAccount()
                 .withUnretained(self)
                 .flatMapLatest { owner, oAuthToken in
+                    owner.saveSNSAccessToken(oAuthToken.accessToken)
+                    owner.saveSNSAccessToken(SNSLoginType.kakao.rawValue)
                     let dto = SignInRequest(accessToken: oAuthToken.accessToken, device: Device(deviceID: UUID.getDeviceUUID()), loginType: SNSLoginType.kakao.rawValue)
                     return owner.requestKakaoSignIn(requestDTO: dto)
                 }
