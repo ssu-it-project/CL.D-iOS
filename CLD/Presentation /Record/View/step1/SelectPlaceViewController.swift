@@ -89,12 +89,12 @@ final class SelectPlaceViewController: BaseViewController {
             $0.width.equalTo(312)
             $0.height.equalTo(31)
         }
-        tableView.snp.makeConstraints {
-            $0.top.equalTo(searchTextField.snp.bottom).offset(101)
-            $0.leading.equalToSuperview().inset(25)
-            $0.height.equalTo(150)
-            // $0.bottom.equalToSuperview().inset(150)
-        }
+//        tableView.snp.makeConstraints {
+//            $0.top.equalTo(searchTextField.snp.bottom).offset(101)
+//            $0.leading.equalToSuperview().inset(25)
+//            $0.height.equalTo(150)
+//            // $0.bottom.equalToSuperview().inset(150)
+//        }
     }
 }
 

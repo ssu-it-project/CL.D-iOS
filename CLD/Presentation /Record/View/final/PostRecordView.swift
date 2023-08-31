@@ -148,6 +148,10 @@ final class PostRecordView: UIView {
         colorLabel.text = color.colorName()
         colorCircle.layer.backgroundColor = color.colorChip()
     }
+    func getTextView() -> String {
+        let text: String = textView.text
+        return text
+    }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
