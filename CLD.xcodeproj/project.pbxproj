@@ -75,6 +75,8 @@
 		5A21C6A42A9BAC6000E7CC95 /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A21C6A32A9BAC6000E7CC95 /* Date+Extension.swift */; };
 		5A21C6A62A9BAD5B00E7CC95 /* SNSLoginType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A21C6A52A9BAD5B00E7CC95 /* SNSLoginType.swift */; };
 		5A21C7052A9CF2CF00E7CC95 /* SignInRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A21C7042A9CF2CF00E7CC95 /* SignInRepository.swift */; };
+		5A320FFA2AA5DC87003A40BD /* ClimbingGymTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A320FF92AA5DC87003A40BD /* ClimbingGymTableViewCell.swift */; };
+		5A320FFE2AA5FC5E003A40BD /* ClimeGymsDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A320FFD2AA5FC5E003A40BD /* ClimeGymsDTO.swift */; };
 		5A97A1232A91229F00264AB5 /* RxGesture in Frameworks */ = {isa = PBXBuildFile; productRef = 5A97A1222A91229F00264AB5 /* RxGesture */; };
 		5A97A1252A922F7A00264AB5 /* TermsWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A97A1242A922F7A00264AB5 /* TermsWebViewController.swift */; };
 		5A97A1652A93848F00264AB5 /* TermsCheckListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A97A1642A93848E00264AB5 /* TermsCheckListView.swift */; };
@@ -100,7 +102,7 @@
 		5ADED1C32A67A1B300C0CBF4 /* ViewModelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ADED1C22A67A1B300C0CBF4 /* ViewModelType.swift */; };
 		5ADED1CA2A68071E00C0CBF4 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ADED1C92A68071E00C0CBF4 /* TabBarController.swift */; };
 		5ADED1CC2A682B6300C0CBF4 /* TabBarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ADED1CB2A682B6300C0CBF4 /* TabBarItem.swift */; };
-		5ADED1CE2A68388A00C0CBF4 /* CragSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ADED1CD2A68388A00C0CBF4 /* CragSearchViewController.swift */; };
+		5ADED1CE2A68388A00C0CBF4 /* ClimbingGymSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ADED1CD2A68388A00C0CBF4 /* ClimbingGymSearchViewController.swift */; };
 		5ADED1D02A6838AD00C0CBF4 /* RecordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ADED1CF2A6838AD00C0CBF4 /* RecordViewController.swift */; };
 		5ADED1D22A6838C400C0CBF4 /* CommunityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ADED1D12A6838C400C0CBF4 /* CommunityViewController.swift */; };
 		5ADED1D42A6838D300C0CBF4 /* MyPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ADED1D32A6838D300C0CBF4 /* MyPageViewController.swift */; };
@@ -181,6 +183,8 @@
 		5A21C6A52A9BAD5B00E7CC95 /* SNSLoginType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SNSLoginType.swift; sourceTree = "<group>"; };
 		5A21C7042A9CF2CF00E7CC95 /* SignInRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInRepository.swift; sourceTree = "<group>"; };
 		5A21C7062A9D056F00E7CC95 /* CLD.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CLD.entitlements; sourceTree = "<group>"; };
+		5A320FF92AA5DC87003A40BD /* ClimbingGymTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClimbingGymTableViewCell.swift; sourceTree = "<group>"; };
+		5A320FFD2AA5FC5E003A40BD /* ClimeGymsDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClimeGymsDTO.swift; sourceTree = "<group>"; };
 		5A97A1242A922F7A00264AB5 /* TermsWebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsWebViewController.swift; sourceTree = "<group>"; };
 		5A97A1642A93848E00264AB5 /* TermsCheckListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsCheckListView.swift; sourceTree = "<group>"; };
 		5AC80C772A838B5400FE9D6C /* PlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerView.swift; sourceTree = "<group>"; };
@@ -218,7 +222,7 @@
 		5ADED1C22A67A1B300C0CBF4 /* ViewModelType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelType.swift; sourceTree = "<group>"; };
 		5ADED1C92A68071E00C0CBF4 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		5ADED1CB2A682B6300C0CBF4 /* TabBarItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarItem.swift; sourceTree = "<group>"; };
-		5ADED1CD2A68388A00C0CBF4 /* CragSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CragSearchViewController.swift; sourceTree = "<group>"; };
+		5ADED1CD2A68388A00C0CBF4 /* ClimbingGymSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClimbingGymSearchViewController.swift; sourceTree = "<group>"; };
 		5ADED1CF2A6838AD00C0CBF4 /* RecordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordViewController.swift; sourceTree = "<group>"; };
 		5ADED1D12A6838C400C0CBF4 /* CommunityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityViewController.swift; sourceTree = "<group>"; };
 		5ADED1D32A6838D300C0CBF4 /* MyPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageViewController.swift; sourceTree = "<group>"; };
@@ -413,10 +417,35 @@
 		5A21C67F2A9A3C8200E7CC95 /* Response */ = {
 			isa = PBXGroup;
 			children = (
-				5A21C6802A9A3C9800E7CC95 /* UserTokenDTO.swift */,
+				5A320FFC2AA5FBEF003A40BD /* Gym */,
+				5A320FFB2AA5FBE2003A40BD /* User */,
 				5A21C6842A9A410400E7CC95 /* BaseErrorDTO.swift */,
 			);
 			path = Response;
+			sourceTree = "<group>";
+		};
+		5A320FF82AA5DC41003A40BD /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				5A320FF92AA5DC87003A40BD /* ClimbingGymTableViewCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		5A320FFB2AA5FBE2003A40BD /* User */ = {
+			isa = PBXGroup;
+			children = (
+				5A21C6802A9A3C9800E7CC95 /* UserTokenDTO.swift */,
+			);
+			path = User;
+			sourceTree = "<group>";
+		};
+		5A320FFC2AA5FBEF003A40BD /* Gym */ = {
+			isa = PBXGroup;
+			children = (
+				5A320FFD2AA5FC5E003A40BD /* ClimeGymsDTO.swift */,
+			);
+			path = Gym;
 			sourceTree = "<group>";
 		};
 		5ACADCED2A5D988F00B92C07 = {
@@ -754,7 +783,8 @@
 		5ACADD602A65923A00B92C07 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				5ADED1CD2A68388A00C0CBF4 /* CragSearchViewController.swift */,
+				5A320FF82AA5DC41003A40BD /* Cell */,
+				5ADED1CD2A68388A00C0CBF4 /* ClimbingGymSearchViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1037,6 +1067,7 @@
 				5A21C6792A9A009000E7CC95 /* AuthAPI.swift in Sources */,
 				5A21C65A2A98FAEC00E7CC95 /* BaseTargetType.swift in Sources */,
 				023868C32A70009B0006C762 /* LoginManager.swift in Sources */,
+				5A320FFE2AA5FC5E003A40BD /* ClimeGymsDTO.swift in Sources */,
 				5ADED1BD2A679B6A00C0CBF4 /* UIColor+Extension.swift in Sources */,
 				5A1C488A2A7687FB00CC345A /* CGSize+Extension.swift in Sources */,
 				5ADED1CC2A682B6300C0CBF4 /* TabBarItem.swift in Sources */,
@@ -1062,6 +1093,7 @@
 				5ADED1BB2A67929500C0CBF4 /* BaseViewController.swift in Sources */,
 				5ACADCFC2A5D988F00B92C07 /* SceneDelegate.swift in Sources */,
 				5A21C6A22A9B9F7000E7CC95 /* SignUpUseCase.swift in Sources */,
+				5A320FFA2AA5DC87003A40BD /* ClimbingGymTableViewCell.swift in Sources */,
 				5ADED1D42A6838D300C0CBF4 /* MyPageViewController.swift in Sources */,
 				5A21C6962A9B721E00E7CC95 /* UserToken.swift in Sources */,
 				02E2532F2A8A17DB00D3E9E1 /* PhotoCollectionViewCell.swift in Sources */,
@@ -1070,7 +1102,7 @@
 				5A21C6A42A9BAC6000E7CC95 /* Date+Extension.swift in Sources */,
 				5ADED1AD2A66ADA900C0CBF4 /* ReusableView+Extension.swift in Sources */,
 				5AEFAAE72A8E2D6800A67C43 /* TermsCheckBox.swift in Sources */,
-				5ADED1CE2A68388A00C0CBF4 /* CragSearchViewController.swift in Sources */,
+				5ADED1CE2A68388A00C0CBF4 /* ClimbingGymSearchViewController.swift in Sources */,
 				5A21C6552A98F7B900E7CC95 /* UserDefault.swift in Sources */,
 				5A21C69C2A9B8C2200E7CC95 /* RootHandler.swift in Sources */,
 				5A21C69A2A9B758700E7CC95 /* SignInViewModel.swift in Sources */,
