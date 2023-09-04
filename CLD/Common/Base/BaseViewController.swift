@@ -50,7 +50,9 @@ protocol BaseViewControllerProtocol: AnyObject, BaseViewItemProtocol {
         Bind()
     }
 
-     func setViewProperty() { }
+     func setViewProperty() {
+         self.view.backgroundColor = .white
+     }
      func setDelegate() { }
      func setHierarchy() { }
      func setConstraints() { }
