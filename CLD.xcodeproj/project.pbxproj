@@ -77,6 +77,10 @@
 		5A21C7052A9CF2CF00E7CC95 /* SignInRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A21C7042A9CF2CF00E7CC95 /* SignInRepository.swift */; };
 		5A320FFA2AA5DC87003A40BD /* ClimbingGymTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A320FF92AA5DC87003A40BD /* ClimbingGymTableViewCell.swift */; };
 		5A320FFE2AA5FC5E003A40BD /* ClimeGymsDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A320FFD2AA5FC5E003A40BD /* ClimeGymsDTO.swift */; };
+		5A3210002AA60C41003A40BD /* ClimbingGymDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A320FFF2AA60C41003A40BD /* ClimbingGymDetailViewController.swift */; };
+		5A3210022AA6336E003A40BD /* moreVideosView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A3210012AA6336E003A40BD /* moreVideosView.swift */; };
+		5A3210042AA63D04003A40BD /* kakaoMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A3210032AA63D04003A40BD /* kakaoMapView.swift */; };
+		5A3210072AA649D6003A40BD /* LevelBadge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A3210062AA649D6003A40BD /* LevelBadge.swift */; };
 		5A97A1232A91229F00264AB5 /* RxGesture in Frameworks */ = {isa = PBXBuildFile; productRef = 5A97A1222A91229F00264AB5 /* RxGesture */; };
 		5A97A1252A922F7A00264AB5 /* TermsWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A97A1242A922F7A00264AB5 /* TermsWebViewController.swift */; };
 		5A97A1652A93848F00264AB5 /* TermsCheckListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A97A1642A93848E00264AB5 /* TermsCheckListView.swift */; };
@@ -185,6 +189,10 @@
 		5A21C7062A9D056F00E7CC95 /* CLD.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CLD.entitlements; sourceTree = "<group>"; };
 		5A320FF92AA5DC87003A40BD /* ClimbingGymTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClimbingGymTableViewCell.swift; sourceTree = "<group>"; };
 		5A320FFD2AA5FC5E003A40BD /* ClimeGymsDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClimeGymsDTO.swift; sourceTree = "<group>"; };
+		5A320FFF2AA60C41003A40BD /* ClimbingGymDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClimbingGymDetailViewController.swift; sourceTree = "<group>"; };
+		5A3210012AA6336E003A40BD /* moreVideosView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = moreVideosView.swift; sourceTree = "<group>"; };
+		5A3210032AA63D04003A40BD /* kakaoMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = kakaoMapView.swift; sourceTree = "<group>"; };
+		5A3210062AA649D6003A40BD /* LevelBadge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelBadge.swift; sourceTree = "<group>"; };
 		5A97A1242A922F7A00264AB5 /* TermsWebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsWebViewController.swift; sourceTree = "<group>"; };
 		5A97A1642A93848E00264AB5 /* TermsCheckListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsCheckListView.swift; sourceTree = "<group>"; };
 		5AC80C772A838B5400FE9D6C /* PlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerView.swift; sourceTree = "<group>"; };
@@ -448,6 +456,15 @@
 			path = Gym;
 			sourceTree = "<group>";
 		};
+		5A3210052AA64642003A40BD /* Component */ = {
+			isa = PBXGroup;
+			children = (
+				5A3210012AA6336E003A40BD /* moreVideosView.swift */,
+				5A3210032AA63D04003A40BD /* kakaoMapView.swift */,
+			);
+			path = Component;
+			sourceTree = "<group>";
+		};
 		5ACADCED2A5D988F00B92C07 = {
 			isa = PBXGroup;
 			children = (
@@ -615,6 +632,7 @@
 			children = (
 				5AC80C772A838B5400FE9D6C /* PlayerView.swift */,
 				5AEFAAE82A8E3E5E00A67C43 /* CLDButton.swift */,
+				5A3210062AA649D6003A40BD /* LevelBadge.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -784,7 +802,9 @@
 			isa = PBXGroup;
 			children = (
 				5A320FF82AA5DC41003A40BD /* Cell */,
+				5A3210052AA64642003A40BD /* Component */,
 				5ADED1CD2A68388A00C0CBF4 /* ClimbingGymSearchViewController.swift */,
+				5A320FFF2AA60C41003A40BD /* ClimbingGymDetailViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1057,6 +1077,7 @@
 				5A1C48882A76813300CC345A /* HomeSectionType.swift in Sources */,
 				5A21C6892A9A46B400E7CC95 /* NetworkError.swift in Sources */,
 				5ADED1D02A6838AD00C0CBF4 /* RecordViewController.swift in Sources */,
+				5A3210022AA6336E003A40BD /* moreVideosView.swift in Sources */,
 				5ADED1CA2A68071E00C0CBF4 /* TabBarController.swift in Sources */,
 				0281723C2A793A670089FD51 /* SelectColorViewController.swift in Sources */,
 				5ADED1D22A6838C400C0CBF4 /* CommunityViewController.swift in Sources */,
@@ -1081,6 +1102,7 @@
 				5ADED1C32A67A1B300C0CBF4 /* ViewModelType.swift in Sources */,
 				026BC4762A680FC000F49B87 /* AuthViewController.swift in Sources */,
 				02EB6E7D2A88BC9B00C749A6 /* SuccessRecordView.swift in Sources */,
+				5A3210042AA63D04003A40BD /* kakaoMapView.swift in Sources */,
 				5ADED1C12A67A06F00C0CBF4 /* ImageLiteral.swift in Sources */,
 				5A21C6A02A9B916400E7CC95 /* DefaultSignUpRepository.swift in Sources */,
 				028981642A93176000B928E5 /* PostRecordViewController.swift in Sources */,
@@ -1100,10 +1122,12 @@
 				5AC80C782A838B5400FE9D6C /* PlayerView.swift in Sources */,
 				02E2532F2A8A17DB00D3E9E1 /* PhotoCollectionViewCell.swift in Sources */,
 				5A21C6A42A9BAC6000E7CC95 /* Date+Extension.swift in Sources */,
+				5A3210002AA60C41003A40BD /* ClimbingGymDetailViewController.swift in Sources */,
 				5ADED1AD2A66ADA900C0CBF4 /* ReusableView+Extension.swift in Sources */,
 				5AEFAAE72A8E2D6800A67C43 /* TermsCheckBox.swift in Sources */,
 				5ADED1CE2A68388A00C0CBF4 /* ClimbingGymSearchViewController.swift in Sources */,
 				5A21C6552A98F7B900E7CC95 /* UserDefault.swift in Sources */,
+				5A3210072AA649D6003A40BD /* LevelBadge.swift in Sources */,
 				5A21C69C2A9B8C2200E7CC95 /* RootHandler.swift in Sources */,
 				5A21C69A2A9B758700E7CC95 /* SignInViewModel.swift in Sources */,
 				5A21C6832A9A3E8B00E7CC95 /* CommonMoyaProvider.swift in Sources */,
