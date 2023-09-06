@@ -32,6 +32,13 @@ final class ClimbingGymSearchViewController: BaseViewController {
     }()
     
     private var dummyArray: [ClimbingGym] = [ClimbingGym(id: "aa", location: Location(distance: 2, x: 3, y: 4), place: Place(addressName: "서울시 동대문구 회기동", name: "더 클라이밍 연남", parking: true, roadAddressName: "서울시 동대문구 회기동 조흔 곳", shower: true), type: "aa"), ClimbingGym(id: "aa", location: Location(distance: 2, x: 3, y: 4), place: Place(addressName: "서울시 동대문구 회기동", name: "더 클라이밍 연남", parking: true, roadAddressName: "서울시 동대문구 회기동 조흔 곳", shower: true), type: "aa"), ClimbingGym(id: "aa", location: Location(distance: 2, x: 3, y: 4), place: Place(addressName: "서울시 동대문구 회기동", name: "더 클라이밍 연남", parking: true, roadAddressName: "서울시 동대문구 회기동 조흔 곳", shower: true), type: "aa"), ClimbingGym(id: "aa", location: Location(distance: 2, x: 3, y: 4), place: Place(addressName: "서울시 동대문구 회기동", name: "더 클라이밍 연남", parking: true, roadAddressName: "서울시 동대문구 회기동 조흔 곳", shower: true), type: "aa"), ClimbingGym(id: "aa", location: Location(distance: 2, x: 3, y: 4), place: Place(addressName: "서울시 동대문구 회기동", name: "더 클라이밍 연남", parking: true, roadAddressName: "서울시 동대문구 회기동 조흔 곳", shower: true), type: "aa")]
+    
+    private let viewModel: ClimbingGymSearchViewModel
+    
+    init(viewModel: ClimbingGymSearchViewModel) {
+        self.viewModel = viewModel
+        super.init()
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,6 +46,24 @@ final class ClimbingGymSearchViewController: BaseViewController {
     }
     
     override func Bind() {
+        
+        let input = ClimbingGymSearchViewModel.Input(viewDidLoadEvent: Observable.just(()).asObservable())
+        let output = viewModel.transform(input: input)
+        
+        output.authorizationAlertShouldShow
+            .withUnretained(self)
+            .bind { owner, bool in
+                print("권한 상태", bool)
+            }
+            .disposed(by: disposeBag)
+        
+        output.currentUserLocation
+            .bind { coordinator in
+                print("최종으로 뷰컨에서 나오는 \(coordinator)")
+            }
+            .disposed(by: disposeBag)
+        
+        
         Driver<[ClimbingGym]>
             .just(dummyArray)
             .drive(climbingGymTableView.rx.items) { tableView, index, menu in
