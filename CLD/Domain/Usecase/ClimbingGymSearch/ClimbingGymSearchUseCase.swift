@@ -10,6 +10,10 @@ import CoreLocation
 
 import RxSwift
 
+enum ClimbingGymSearchError: Error {
+    case failGymSearchError
+}
+
 
 final class ClimbingGymSearchUseCase {
     
@@ -18,12 +22,15 @@ final class ClimbingGymSearchUseCase {
     
     private let disposeBag = DisposeBag()
     private let locationService: LocationService
+    private let gymsRepository: DefaultGymsRepository
     
     // MARK: - Initializer
-     init(locationService: LocationService) {
-         self.locationService = locationService
+    init(locationService: LocationService, gymsRepository: DefaultGymsRepository) {
+        self.locationService = locationService
+        self.gymsRepository = gymsRepository
     }
     
+    // MARK: - CoreLocationUseCase
     func observeUserLocation() {
         self.locationService.coodinate
             .subscribe { [weak self] coodinate in
@@ -47,4 +54,9 @@ final class ClimbingGymSearchUseCase {
     func checkDeviceLocationAuthorization() {
         self.locationService.checkLocationAuthorization()
     }
+    
+    // MARK: - NetworkUseCase
+    public func getLocationGyms(latitude: Int, longitude: Int, keyword: String, limit: Int, skip: Int) -> Single<GymsVO?> {
+        gymsRepository.getLocationGyms(latitude: latitude, longitude:  longitude, keyword: keyword, limit: limit, skip: skip)
+      }
 }

@@ -25,11 +25,13 @@ class ClimbingGymSearchViewModel: ViewModelType {
     
     struct Input {
         let viewDidLoadEvent: Observable<Void>
+        let viewWillAppearEvent: Observable<Void>
     }
     
     struct Output {
         let currentUserLocation = BehaviorRelay<CLLocationCoordinate2D>(value: CLLocationCoordinate2D(latitude: 0, longitude: 0))
         let authorizationAlertShouldShow = BehaviorRelay<Bool>(value: false)
+        let gyms = PublishRelay<GymsVO?>()
     }
     
     func transform(input: Input) -> Output {
@@ -53,5 +55,18 @@ class ClimbingGymSearchViewModel: ViewModelType {
             .disposed(by: disposeBag)
         
         return output
+    }
+    
+    func getLocationGyms(latitude: Int, longitude: Int, keyword: String, limit: Int, skip: Int, output: Output) {
+        useCase.getLocationGyms(latitude: latitude, longitude: longitude, keyword: keyword, limit: limit, skip: skip)
+            .subscribe { response in
+                switch response {
+                case .success(let value):
+                    output.gyms.accept(value)
+                case .failure(let error):
+                    print(error.localizedDescription)
+                }
+            }
+            .disposed(by: disposeBag)
     }
 }
