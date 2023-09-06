@@ -49,4 +49,51 @@ struct Pagination: Codable {
     let total, skip, limit: Int
 }
 
+extension GetGymsDTO {
+    func toDomain() -> GymsVO {
+        let paginationVO = PaginationVO(total: self.pagination.total, skip: self.pagination.skip, limit: self.pagination.limit)
+        let climbingGymsVO = self.climbingGyms.map { $0.toDomain() }
+
+        return GymsVO(pagination: paginationVO, climbingGyms: climbingGymsVO)
+    }
+}
+
+extension ClimbingGym {
+    func toDomain() -> ClimbingGymVO {
+        return ClimbingGymVO(
+            id: self.id,
+            type: self.type,
+            place: self.place.toDomain(),
+            location: self.location.toDomain()
+        )
+    }
+}
+
+extension Place {
+    func toDomain() -> PlaceVO {
+        return PlaceVO(
+            name: self.name,
+            addressName: self.addressName,
+            roadAddressName: self.roadAddressName,
+            parking: self.parking
+        )
+    }
+}
+
+extension Location {
+    func toDomain() -> LocationVO {
+        return LocationVO(
+            x: self.x,
+            y: self.y,
+            distance: self.distance
+        )
+    }
+}
+
+
+
+
+
+
+
 
