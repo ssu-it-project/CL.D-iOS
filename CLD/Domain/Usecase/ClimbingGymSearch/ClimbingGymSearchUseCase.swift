@@ -56,7 +56,7 @@ final class ClimbingGymSearchUseCase {
     }
     
     // MARK: - NetworkUseCase
-    public func getLocationGyms(latitude: Int, longitude: Int, keyword: String, limit: Int, skip: Int) -> Single<GymsVO?> {
+    public func getLocationGyms(latitude: Double, longitude: Double, keyword: String, limit: Int, skip: Int) -> Single<GymsVO?> {
         gymsRepository.getLocationGyms(latitude: latitude, longitude:  longitude, keyword: keyword, limit: limit, skip: skip)
       }
 }

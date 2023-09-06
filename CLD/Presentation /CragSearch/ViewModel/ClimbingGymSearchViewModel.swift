@@ -46,6 +46,13 @@ class ClimbingGymSearchViewModel: ViewModelType {
             })
             .disposed(by: disposeBag)
         
+        input.viewWillAppearEvent
+            .withUnretained(self)
+            .subscribe(onNext: { owner, _ in
+                owner.getLocationGyms(latitude: output.currentUserLocation.value.latitude, longitude: output.currentUserLocation.value.longitude, keyword: "", limit: 5, skip: 5, output: output)
+            })
+            .disposed(by: disposeBag)
+        
         self.useCase.authorizationDeniedStatus
             .bind(to: output.authorizationAlertShouldShow)
             .disposed(by: disposeBag)
@@ -57,7 +64,7 @@ class ClimbingGymSearchViewModel: ViewModelType {
         return output
     }
     
-    func getLocationGyms(latitude: Int, longitude: Int, keyword: String, limit: Int, skip: Int, output: Output) {
+    func getLocationGyms(latitude: Double, longitude: Double, keyword: String, limit: Int, skip: Int, output: Output) {
         useCase.getLocationGyms(latitude: latitude, longitude: longitude, keyword: keyword, limit: limit, skip: skip)
             .subscribe { response in
                 switch response {

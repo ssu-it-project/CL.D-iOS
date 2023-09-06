@@ -11,7 +11,7 @@ import Moya
 
 enum GymsAPI {
     case getGyms(keyword: String, limit: Int, skip: Int)
-    case getLocationGyms(x: Int, y: Int, keyword: String, limit: Int, skip: Int)
+    case getLocationGyms(x: Double, y: Double, keyword: String, limit: Int, skip: Int)
 }
 
 extension GymsAPI: BaseTargetType {

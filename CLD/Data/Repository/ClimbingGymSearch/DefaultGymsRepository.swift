@@ -18,7 +18,7 @@ final class DefaultGymsRepository {
         self.gymsService = .init()
     }
     
-    func getLocationGyms(latitude: Int, longitude: Int, keyword: String, limit: Int, skip: Int) -> Single<GymsVO?> {
+    func getLocationGyms(latitude: Double, longitude: Double, keyword: String, limit: Int, skip: Int) -> Single<GymsVO?> {
         return gymsService.rx.request(.getLocationGyms(x: latitude, y: longitude, keyword: keyword, limit: limit, skip: skip))
             .flatMap { response in
                 return Single<GymsVO?>.create { observer in

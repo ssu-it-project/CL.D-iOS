@@ -48,7 +48,7 @@ final class ClimbingGymSearchViewController: BaseViewController {
     
     override func Bind() {
         
-        let input = ClimbingGymSearchViewModel.Input(viewDidLoadEvent: Observable.just(()).asObservable())
+        let input = ClimbingGymSearchViewModel.Input(viewDidLoadEvent: Observable.just(()).asObservable(), viewWillAppearEvent: rx.viewWillAppear.take(1).map { _ in } )
         let output = viewModel.transform(input: input)
         
         output.authorizationAlertShouldShow
@@ -61,6 +61,12 @@ final class ClimbingGymSearchViewController: BaseViewController {
         output.currentUserLocation
             .bind { coordinator in
                 print("최종으로 뷰컨에서 나오는 \(coordinator)")
+            }
+            .disposed(by: disposeBag)
+        
+        output.gyms
+            .bind { data in
+                print(data)
             }
             .disposed(by: disposeBag)
         
