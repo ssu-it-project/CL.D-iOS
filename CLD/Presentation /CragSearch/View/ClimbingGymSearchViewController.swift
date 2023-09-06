@@ -27,6 +27,7 @@ final class ClimbingGymSearchViewController: BaseViewController {
     private lazy var climbingGymTableView: UITableView = {
         let view = UITableView()
         view.rowHeight = 120
+        view.showsVerticalScrollIndicator = false
         view.register(ClimbingGymTableViewCell.self, forCellReuseIdentifier: "ClimbingGymTableViewCell")
         return view
     }()
@@ -39,10 +40,10 @@ final class ClimbingGymSearchViewController: BaseViewController {
         self.viewModel = viewModel
         super.init()
     }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "암장 검색"
+        self.navigationController?.navigationBar.topItem?.title = "암장 검색"
     }
     
     override func Bind() {
@@ -83,12 +84,13 @@ final class ClimbingGymSearchViewController: BaseViewController {
         searchBar.snp.makeConstraints { make in
             make.top.equalTo(view.safeAreaLayoutGuide.snp.top).inset(24)
             make.leading.trailing.equalToSuperview().inset(19)
-            make.height.equalTo(27)
+            make.height.equalTo(40)
         }
         
         climbingGymSegmentControl.snp.makeConstraints { make in
             make.top.equalTo(searchBar.snp.bottom).offset(17)
             make.leading.equalToSuperview().inset(19)
+            make.height.equalTo(searchBar.snp.height).multipliedBy(0.8)
         }
         
         climbingGymTableView.snp.makeConstraints { make in
