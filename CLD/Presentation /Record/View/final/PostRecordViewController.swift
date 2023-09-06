@@ -36,13 +36,14 @@ final class PostRecordViewController: BaseViewController {
         recordButton.isHidden = true
         successRecordView.isHidden = false
 
-        let climbing_gym_id = postRecordDic["place"] as! String
+        let place = postRecordDic["place"] as! String
+        let climbing_gym_id = postRecordDic["climbing_gym_id"] as! String
         let content = postRecordView.getTextView()
         let sector = postRecordDic["sector"] as! String
         let level = postRecordDic["color"] as! ColorChipName
         let asset: PHAsset! = postRecordDic["video"] as? PHAsset
 
-        print("==== place: \(climbing_gym_id), content: \(content), sector: \(sector), color: \(level), video: \(asset)")
+        print("==== place: \(place), climbing_gym_id: \(climbing_gym_id), content: \(content), sector: \(sector), color: \(level), video: \(asset)")
         //postRecord(climbing_gym_id, content, sector, level, video)
     }
     

@@ -77,6 +77,7 @@ class RecordViewController: TabmanViewController {
         if currentPage == 3 {
             if let nextViewController = viewControllers[currentPage-3] as? SelectPlaceViewController {
                 recordDic["place"] = nextViewController.placeText
+                recordDic["climbing_gym_id"] = nextViewController.climbing_gym_id
             }
             if let nextViewController = viewControllers[currentPage-2] as? SelectSectorViewController {
                 recordDic["sector"] = nextViewController.sectorText

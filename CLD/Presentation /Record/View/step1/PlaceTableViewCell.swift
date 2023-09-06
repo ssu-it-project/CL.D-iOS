@@ -10,27 +10,47 @@ import UIKit
 class PlaceTableViewCell: UITableViewCell {
     static let identifier = "PlaceTableViewCell"
 
-    private let searchTextField: UITextField = {
-        let textField = UITextField()
-        textField.placeholder = "장소"
-        textField.font = UIFont(name: "Roboto-Regular", size: 15)
-        textField.textColor = .CLDBlack
-        textField.backgroundColor = .CLDLightGray
-        textField.borderStyle = .none
-        return textField
+    private let customView: UIView =  {
+        let contentView = UIView()
+        return contentView
+    }()
+    private let placeIcon: UIImageView = {
+        let iconView = UIImageView()
+        iconView.image = ImageLiteral.searchIcon.withRenderingMode(.alwaysTemplate)
+        iconView.tintColor = .CLDDarkGray
+        return iconView
+    }()
+    let placeLabel: UILabel = {
+        let label = UILabel()
+        label.font = UIFont(name: "Roboto-Regular", size: 15)
+        label.text = "장소장소장소"
+        label.textColor = .CLDDarkGray
+        label.backgroundColor = .clear
+        return label
     }()
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
 
-        searchTextField.addLeftPadding()
-        searchTextField.addLeftImageGray(image: ImageLiteral.searchIcon)
-
-        self.contentView.addSubview(searchTextField)
+        addSubview(customView)
+        customView.addSubviews(placeIcon, placeLabel)
         
-        searchTextField.snp.makeConstraints {
+        setUpLayouts()
+    }
+
+    func setUpLayouts() {
+        customView.snp.makeConstraints {
             $0.edges.equalToSuperview()
-            $0.height.equalTo(18)
+            $0.height.equalTo(20)
+        }
+        placeIcon.snp.makeConstraints {
+            $0.size.equalTo(13)
+            $0.leading.equalToSuperview().inset(6)
+            $0.centerY.equalToSuperview()
+        }
+        placeLabel.snp.makeConstraints {
+            $0.leading.equalTo(placeIcon.snp.trailing).offset(4)
+            $0.centerY.equalToSuperview()
         }
     }
 

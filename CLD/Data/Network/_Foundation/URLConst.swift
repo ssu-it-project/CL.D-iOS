@@ -8,5 +8,6 @@
 enum URLConst {
     static let base = "http://ec2-13-209-11-183.ap-northeast-2.compute.amazonaws.com:1323"
 
+    static let gyms = "/clime/gyms"
     static let record = "/clime/record"
 }
