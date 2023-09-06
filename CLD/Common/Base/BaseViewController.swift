@@ -43,14 +43,16 @@ protocol BaseViewControllerProtocol: AnyObject, BaseViewItemProtocol {
         super.viewDidLoad()
         view.backgroundColor = .white
         
+        Bind()
         setViewProperty()
         setDelegate()
         setHierarchy()
         setConstraints()
-        Bind()
     }
 
-     func setViewProperty() { }
+     func setViewProperty() {
+         self.view.backgroundColor = .white
+     }
      func setDelegate() { }
      func setHierarchy() { }
      func setConstraints() { }

@@ -87,6 +87,16 @@
 		5A21C6A42A9BAC6000E7CC95 /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A21C6A32A9BAC6000E7CC95 /* Date+Extension.swift */; };
 		5A21C6A62A9BAD5B00E7CC95 /* SNSLoginType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A21C6A52A9BAD5B00E7CC95 /* SNSLoginType.swift */; };
 		5A21C7052A9CF2CF00E7CC95 /* SignInRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A21C7042A9CF2CF00E7CC95 /* SignInRepository.swift */; };
+		5A320FFA2AA5DC87003A40BD /* ClimbingGymTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A320FF92AA5DC87003A40BD /* ClimbingGymTableViewCell.swift */; };
+		5A320FFE2AA5FC5E003A40BD /* ClimeGymsDummy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A320FFD2AA5FC5E003A40BD /* ClimeGymsDummy.swift */; };
+		5A3210002AA60C41003A40BD /* ClimbingGymDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A320FFF2AA60C41003A40BD /* ClimbingGymDetailViewController.swift */; };
+		5A3210022AA6336E003A40BD /* moreVideosView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A3210012AA6336E003A40BD /* moreVideosView.swift */; };
+		5A3210042AA63D04003A40BD /* kakaoMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A3210032AA63D04003A40BD /* kakaoMapView.swift */; };
+		5A3210072AA649D6003A40BD /* LevelBadge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A3210062AA649D6003A40BD /* LevelBadge.swift */; };
+		5A3210162AA80081003A40BD /* DefaultLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A3210152AA80081003A40BD /* DefaultLocationManager.swift */; };
+		5A32101E2AA87EE4003A40BD /* ClimbingGymSearchUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A32101D2AA87EE4003A40BD /* ClimbingGymSearchUseCase.swift */; };
+		5A3210202AA88218003A40BD /* ClimbingGymSearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A32101F2AA88218003A40BD /* ClimbingGymSearchViewModel.swift */; };
+		5A3210222AA88A6A003A40BD /* RxViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A3210212AA88A6A003A40BD /* RxViewController+Extension.swift */; };
 		5A97A1232A91229F00264AB5 /* RxGesture in Frameworks */ = {isa = PBXBuildFile; productRef = 5A97A1222A91229F00264AB5 /* RxGesture */; };
 		5A97A1252A922F7A00264AB5 /* TermsWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A97A1242A922F7A00264AB5 /* TermsWebViewController.swift */; };
 		5A97A1652A93848F00264AB5 /* TermsCheckListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A97A1642A93848E00264AB5 /* TermsCheckListView.swift */; };
@@ -112,7 +122,7 @@
 		5ADED1C32A67A1B300C0CBF4 /* ViewModelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ADED1C22A67A1B300C0CBF4 /* ViewModelType.swift */; };
 		5ADED1CA2A68071E00C0CBF4 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ADED1C92A68071E00C0CBF4 /* TabBarController.swift */; };
 		5ADED1CC2A682B6300C0CBF4 /* TabBarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ADED1CB2A682B6300C0CBF4 /* TabBarItem.swift */; };
-		5ADED1CE2A68388A00C0CBF4 /* CragSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ADED1CD2A68388A00C0CBF4 /* CragSearchViewController.swift */; };
+		5ADED1CE2A68388A00C0CBF4 /* ClimbingGymSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ADED1CD2A68388A00C0CBF4 /* ClimbingGymSearchViewController.swift */; };
 		5ADED1D02A6838AD00C0CBF4 /* RecordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ADED1CF2A6838AD00C0CBF4 /* RecordViewController.swift */; };
 		5ADED1D22A6838C400C0CBF4 /* CommunityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ADED1D12A6838C400C0CBF4 /* CommunityViewController.swift */; };
 		5ADED1D42A6838D300C0CBF4 /* MyPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ADED1D32A6838D300C0CBF4 /* MyPageViewController.swift */; };
@@ -205,6 +215,16 @@
 		5A21C6A52A9BAD5B00E7CC95 /* SNSLoginType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SNSLoginType.swift; sourceTree = "<group>"; };
 		5A21C7042A9CF2CF00E7CC95 /* SignInRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInRepository.swift; sourceTree = "<group>"; };
 		5A21C7062A9D056F00E7CC95 /* CLD.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CLD.entitlements; sourceTree = "<group>"; };
+		5A320FF92AA5DC87003A40BD /* ClimbingGymTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClimbingGymTableViewCell.swift; sourceTree = "<group>"; };
+		5A320FFD2AA5FC5E003A40BD /* ClimeGymsDummy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClimeGymsDummy.swift; sourceTree = "<group>"; };
+		5A320FFF2AA60C41003A40BD /* ClimbingGymDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClimbingGymDetailViewController.swift; sourceTree = "<group>"; };
+		5A3210012AA6336E003A40BD /* moreVideosView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = moreVideosView.swift; sourceTree = "<group>"; };
+		5A3210032AA63D04003A40BD /* kakaoMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = kakaoMapView.swift; sourceTree = "<group>"; };
+		5A3210062AA649D6003A40BD /* LevelBadge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelBadge.swift; sourceTree = "<group>"; };
+		5A3210152AA80081003A40BD /* DefaultLocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultLocationManager.swift; sourceTree = "<group>"; };
+		5A32101D2AA87EE4003A40BD /* ClimbingGymSearchUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClimbingGymSearchUseCase.swift; sourceTree = "<group>"; };
+		5A32101F2AA88218003A40BD /* ClimbingGymSearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClimbingGymSearchViewModel.swift; sourceTree = "<group>"; };
+		5A3210212AA88A6A003A40BD /* RxViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RxViewController+Extension.swift"; sourceTree = "<group>"; };
 		5A97A1242A922F7A00264AB5 /* TermsWebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsWebViewController.swift; sourceTree = "<group>"; };
 		5A97A1642A93848E00264AB5 /* TermsCheckListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsCheckListView.swift; sourceTree = "<group>"; };
 		5AC80C772A838B5400FE9D6C /* PlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerView.swift; sourceTree = "<group>"; };
@@ -223,7 +243,6 @@
 		5ACADD6A2A6592BE00B92C07 /* keep.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = keep.txt; sourceTree = "<group>"; };
 		5ACADD7C2A65931E00B92C07 /* keep.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = keep.txt; sourceTree = "<group>"; };
 		5ACADD842A6593B400B92C07 /* keep.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = keep.txt; sourceTree = "<group>"; };
-		5ACADD882A6593C000B92C07 /* keep.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = keep.txt; sourceTree = "<group>"; };
 		5ACADD8C2A6593CB00B92C07 /* keep.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = keep.txt; sourceTree = "<group>"; };
 		5ACADD8E2A6593D100B92C07 /* keep.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = keep.txt; sourceTree = "<group>"; };
 		5ACADD902A6593D600B92C07 /* keep.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = keep.txt; sourceTree = "<group>"; };
@@ -242,7 +261,7 @@
 		5ADED1C22A67A1B300C0CBF4 /* ViewModelType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelType.swift; sourceTree = "<group>"; };
 		5ADED1C92A68071E00C0CBF4 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		5ADED1CB2A682B6300C0CBF4 /* TabBarItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarItem.swift; sourceTree = "<group>"; };
-		5ADED1CD2A68388A00C0CBF4 /* CragSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CragSearchViewController.swift; sourceTree = "<group>"; };
+		5ADED1CD2A68388A00C0CBF4 /* ClimbingGymSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClimbingGymSearchViewController.swift; sourceTree = "<group>"; };
 		5ADED1CF2A6838AD00C0CBF4 /* RecordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordViewController.swift; sourceTree = "<group>"; };
 		5ADED1D12A6838C400C0CBF4 /* CommunityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityViewController.swift; sourceTree = "<group>"; };
 		5ADED1D32A6838D300C0CBF4 /* MyPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageViewController.swift; sourceTree = "<group>"; };
@@ -461,10 +480,61 @@
 			isa = PBXGroup;
 			children = (
 				5A21C6802A9A3C9800E7CC95 /* UserTokenDTO.swift */,
+				5A320FFC2AA5FBEF003A40BD /* Gym */,
 				5A21C6842A9A410400E7CC95 /* BaseErrorDTO.swift */,
 				02B655362AA5D66600E4AC4F /* GetGymsDTO.swift */,
 			);
 			path = Response;
+			sourceTree = "<group>";
+		};
+		5A320FF82AA5DC41003A40BD /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				5A320FF92AA5DC87003A40BD /* ClimbingGymTableViewCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		5A320FFC2AA5FBEF003A40BD /* Gym */ = {
+			isa = PBXGroup;
+			children = (
+				5A320FFD2AA5FC5E003A40BD /* ClimeGymsDummy.swift */,
+			);
+			path = Gym;
+			sourceTree = "<group>";
+		};
+		5A3210052AA64642003A40BD /* Component */ = {
+			isa = PBXGroup;
+			children = (
+				5A3210012AA6336E003A40BD /* moreVideosView.swift */,
+				5A3210032AA63D04003A40BD /* kakaoMapView.swift */,
+			);
+			path = Component;
+			sourceTree = "<group>";
+		};
+		5A32101B2AA87EA1003A40BD /* ClimbingGymSearch */ = {
+			isa = PBXGroup;
+			children = (
+				5A32101D2AA87EE4003A40BD /* ClimbingGymSearchUseCase.swift */,
+			);
+			path = ClimbingGymSearch;
+			sourceTree = "<group>";
+		};
+		5A32101C2AA87EA8003A40BD /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				5A21C6972A9B749800E7CC95 /* SignInUseCase.swift */,
+				5A21C6A12A9B9F7000E7CC95 /* SignUpUseCase.swift */,
+			);
+			path = Auth;
+			sourceTree = "<group>";
+		};
+		5A3210242AA89E53003A40BD /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				5A3210152AA80081003A40BD /* DefaultLocationManager.swift */,
+			);
+			path = Service;
 			sourceTree = "<group>";
 		};
 		5ACADCED2A5D988F00B92C07 = {
@@ -564,6 +634,7 @@
 		5ACADD432A6581FD00B92C07 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				5A3210242AA89E53003A40BD /* Service */,
 				5A1C48862A76811600CC345A /* Enum */,
 				5ACADD4A2A65874900B92C07 /* Base */,
 				5ACADD482A6586B900B92C07 /* Extensions */,
@@ -625,6 +696,7 @@
 				5A1C48892A7687FB00CC345A /* CGSize+Extension.swift */,
 				02EB6E852A88C45A00C749A6 /* CALayer+Extension.swift */,
 				5A21C6A32A9BAC6000E7CC95 /* Date+Extension.swift */,
+				5A3210212AA88A6A003A40BD /* RxViewController+Extension.swift */,
 				02B6553E2AA63AE400E4AC4F /* UITableview+Extension.swift */,
 			);
 			path = Extensions;
@@ -635,6 +707,7 @@
 			children = (
 				5AC80C772A838B5400FE9D6C /* PlayerView.swift */,
 				5AEFAAE82A8E3E5E00A67C43 /* CLDButton.swift */,
+				5A3210062AA649D6003A40BD /* LevelBadge.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -733,8 +806,8 @@
 		5ACADD562A658E0600B92C07 /* Usecase */ = {
 			isa = PBXGroup;
 			children = (
-				5A21C6972A9B749800E7CC95 /* SignInUseCase.swift */,
-				5A21C6A12A9B9F7000E7CC95 /* SignUpUseCase.swift */,
+				5A32101C2AA87EA8003A40BD /* Auth */,
+				5A32101B2AA87EA1003A40BD /* ClimbingGymSearch */,
 			);
 			path = Usecase;
 			sourceTree = "<group>";
@@ -806,7 +879,10 @@
 		5ACADD602A65923A00B92C07 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				5ADED1CD2A68388A00C0CBF4 /* CragSearchViewController.swift */,
+				5A320FF82AA5DC41003A40BD /* Cell */,
+				5A3210052AA64642003A40BD /* Component */,
+				5ADED1CD2A68388A00C0CBF4 /* ClimbingGymSearchViewController.swift */,
+				5A320FFF2AA60C41003A40BD /* ClimbingGymDetailViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -814,7 +890,7 @@
 		5ACADD612A65924000B92C07 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				5ACADD882A6593C000B92C07 /* keep.txt */,
+				5A32101F2AA88218003A40BD /* ClimbingGymSearchViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -1061,6 +1137,7 @@
 			files = (
 				02DC9AC52A75789800F8989E /* SelectListCell.swift in Sources */,
 				5ADED1AF2A66AEAD00C0CBF4 /* UICollectionView+Extension.swift in Sources */,
+				5A32101E2AA87EE4003A40BD /* ClimbingGymSearchUseCase.swift in Sources */,
 				020F65532A7D09450036CFB1 /* SelectVideoViewController.swift in Sources */,
 				029E36242A9E36EB0069A773 /* PlaceTableViewCell.swift in Sources */,
 				02EB6E862A88C45A00C749A6 /* CALayer+Extension.swift in Sources */,
@@ -1081,7 +1158,9 @@
 				5A1C48882A76813300CC345A /* HomeSectionType.swift in Sources */,
 				5A21C6892A9A46B400E7CC95 /* NetworkError.swift in Sources */,
 				5ADED1D02A6838AD00C0CBF4 /* RecordViewController.swift in Sources */,
+				5A3210022AA6336E003A40BD /* moreVideosView.swift in Sources */,
 				5ADED1CA2A68071E00C0CBF4 /* TabBarController.swift in Sources */,
+				5A3210162AA80081003A40BD /* DefaultLocationManager.swift in Sources */,
 				0281723C2A793A670089FD51 /* SelectColorViewController.swift in Sources */,
 				5ADED1D22A6838C400C0CBF4 /* CommunityViewController.swift in Sources */,
 				02CCDD6D2A9F61A500301ABF /* ErrorResponse.swift in Sources */,
@@ -1091,7 +1170,9 @@
 				5A21C6942A9B6D4E00E7CC95 /* SignInRequest.swift in Sources */,
 				5A21C6792A9A009000E7CC95 /* AuthAPI.swift in Sources */,
 				5A21C65A2A98FAEC00E7CC95 /* BaseTargetType.swift in Sources */,
+				5A3210222AA88A6A003A40BD /* RxViewController+Extension.swift in Sources */,
 				023868C32A70009B0006C762 /* LoginManager.swift in Sources */,
+				5A320FFE2AA5FC5E003A40BD /* ClimeGymsDummy.swift in Sources */,
 				5ADED1BD2A679B6A00C0CBF4 /* UIColor+Extension.swift in Sources */,
 				5A1C488A2A7687FB00CC345A /* CGSize+Extension.swift in Sources */,
 				5ADED1CC2A682B6300C0CBF4 /* TabBarItem.swift in Sources */,
@@ -1108,6 +1189,8 @@
 				5ADED1C32A67A1B300C0CBF4 /* ViewModelType.swift in Sources */,
 				026BC4762A680FC000F49B87 /* AuthViewController.swift in Sources */,
 				02EB6E7D2A88BC9B00C749A6 /* SuccessRecordView.swift in Sources */,
+				5A3210202AA88218003A40BD /* ClimbingGymSearchViewModel.swift in Sources */,
+				5A3210042AA63D04003A40BD /* kakaoMapView.swift in Sources */,
 				5ADED1C12A67A06F00C0CBF4 /* ImageLiteral.swift in Sources */,
 				5A21C6A02A9B916400E7CC95 /* DefaultSignUpRepository.swift in Sources */,
 				028981642A93176000B928E5 /* PostRecordViewController.swift in Sources */,
@@ -1123,6 +1206,7 @@
 				5ADED1BB2A67929500C0CBF4 /* BaseViewController.swift in Sources */,
 				5ACADCFC2A5D988F00B92C07 /* SceneDelegate.swift in Sources */,
 				5A21C6A22A9B9F7000E7CC95 /* SignUpUseCase.swift in Sources */,
+				5A320FFA2AA5DC87003A40BD /* ClimbingGymTableViewCell.swift in Sources */,
 				5ADED1D42A6838D300C0CBF4 /* MyPageViewController.swift in Sources */,
 				5A21C6962A9B721E00E7CC95 /* UserToken.swift in Sources */,
 				02E2532F2A8A17DB00D3E9E1 /* PhotoCollectionViewCell.swift in Sources */,
@@ -1132,10 +1216,12 @@
 				02CCDD6F2A9F623A00301ABF /* NetworkService.swift in Sources */,
 				02E2532F2A8A17DB00D3E9E1 /* PhotoCollectionViewCell.swift in Sources */,
 				5A21C6A42A9BAC6000E7CC95 /* Date+Extension.swift in Sources */,
+				5A3210002AA60C41003A40BD /* ClimbingGymDetailViewController.swift in Sources */,
 				5ADED1AD2A66ADA900C0CBF4 /* ReusableView+Extension.swift in Sources */,
 				5AEFAAE72A8E2D6800A67C43 /* TermsCheckBox.swift in Sources */,
-				5ADED1CE2A68388A00C0CBF4 /* CragSearchViewController.swift in Sources */,
+				5ADED1CE2A68388A00C0CBF4 /* ClimbingGymSearchViewController.swift in Sources */,
 				5A21C6552A98F7B900E7CC95 /* UserDefault.swift in Sources */,
+				5A3210072AA649D6003A40BD /* LevelBadge.swift in Sources */,
 				5A21C69C2A9B8C2200E7CC95 /* RootHandler.swift in Sources */,
 				5A21C69A2A9B758700E7CC95 /* SignInViewModel.swift in Sources */,
 				5A21C6832A9A3E8B00E7CC95 /* CommonMoyaProvider.swift in Sources */,
