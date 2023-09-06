@@ -30,8 +30,8 @@ final class ClimbingGymSearchViewController: BaseViewController {
         view.register(ClimbingGymTableViewCell.self, forCellReuseIdentifier: "ClimbingGymTableViewCell")
         return view
     }()
-    
-    private var dummyArray: [ClimbingGym] = [ClimbingGym(id: "aa", location: Location(distance: 2, x: 3, y: 4), place: Place(addressName: "서울시 동대문구 회기동", name: "더 클라이밍 연남", parking: true, roadAddressName: "서울시 동대문구 회기동 조흔 곳", shower: true), type: "aa"), ClimbingGym(id: "aa", location: Location(distance: 2, x: 3, y: 4), place: Place(addressName: "서울시 동대문구 회기동", name: "더 클라이밍 연남", parking: true, roadAddressName: "서울시 동대문구 회기동 조흔 곳", shower: true), type: "aa"), ClimbingGym(id: "aa", location: Location(distance: 2, x: 3, y: 4), place: Place(addressName: "서울시 동대문구 회기동", name: "더 클라이밍 연남", parking: true, roadAddressName: "서울시 동대문구 회기동 조흔 곳", shower: true), type: "aa"), ClimbingGym(id: "aa", location: Location(distance: 2, x: 3, y: 4), place: Place(addressName: "서울시 동대문구 회기동", name: "더 클라이밍 연남", parking: true, roadAddressName: "서울시 동대문구 회기동 조흔 곳", shower: true), type: "aa"), ClimbingGym(id: "aa", location: Location(distance: 2, x: 3, y: 4), place: Place(addressName: "서울시 동대문구 회기동", name: "더 클라이밍 연남", parking: true, roadAddressName: "서울시 동대문구 회기동 조흔 곳", shower: true), type: "aa")]
+        
+    private var dummyArray: [ClimbingGymsDummy] = [ClimbingGymsDummy(id: "aa", location: LocationData(distance: 2, x: 3, y: 4), place: PlaceData(addressName: "서울시 동대문구 회기동", name: "더 클라이밍 연남", parking: true, roadAddressName: "서울시 동대문구 회기동 조흔 곳", shower: true), type: "aa"), ClimbingGymsDummy(id: "aa", location: LocationData(distance: 2, x: 3, y: 4), place: PlaceData(addressName: "서울시 동대문구 회기동", name: "더 클라이밍 연남", parking: true, roadAddressName: "서울시 동대문구 회기동 조흔 곳", shower: true), type: "aa"), ClimbingGymsDummy(id: "aa", location: LocationData(distance: 2, x: 3, y: 4), place: PlaceData(addressName: "서울시 동대문구 회기동", name: "더 클라이밍 연남", parking: true, roadAddressName: "서울시 동대문구 회기동 조흔 곳", shower: true), type: "aa"), ClimbingGymsDummy(id: "aa", location: LocationData(distance: 2, x: 3, y: 4), place: PlaceData(addressName: "서울시 동대문구 회기동", name: "더 클라이밍 연남", parking: true, roadAddressName: "서울시 동대문구 회기동 조흔 곳", shower: true), type: "aa"), ClimbingGymsDummy(id: "aa", location: LocationData(distance: 2, x: 3, y: 4), place: PlaceData(addressName: "서울시 동대문구 회기동", name: "더 클라이밍 연남", parking: true, roadAddressName: "서울시 동대문구 회기동 조흔 곳", shower: true), type: "aa")]
     
     private let viewModel: ClimbingGymSearchViewModel
     
@@ -64,7 +64,7 @@ final class ClimbingGymSearchViewController: BaseViewController {
             .disposed(by: disposeBag)
         
         
-        Driver<[ClimbingGym]>
+        Driver<[ClimbingGymsDummy]>
             .just(dummyArray)
             .drive(climbingGymTableView.rx.items) { tableView, index, menu in
                 guard let cell = tableView.dequeueReusableCell(withIdentifier: "ClimbingGymTableViewCell", for: IndexPath(row: index, section: 0)) as? ClimbingGymTableViewCell else { return UITableViewCell() }

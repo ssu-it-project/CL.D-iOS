@@ -7,31 +7,31 @@
 
 import Foundation
 
-struct ClimeGyms: Codable {
-    let climbingGyms: [ClimbingGym]
-    let pagination: Pagination
+struct ClimeGymDummy {
+    let climbingGymData: [ClimbingGymsDummy]
+    let pagination: PaginationData
 
     enum CodingKeys: String, CodingKey {
-        case climbingGyms = "climbing_gyms"
+        case climbingGymData = "climbing_gyms"
         case pagination
     }
 }
 
 // MARK: - ClimbingGym
-struct ClimbingGym: Codable {
+struct ClimbingGymsDummy {
     let id: String
-    let location: Location
-    let place: Place
+    let location: LocationData
+    let place: PlaceData
     let type: String
 }
 
 // MARK: - Location
-struct Location: Codable {
+struct LocationData {
     let distance, x, y: Int
 }
 
 // MARK: - Place
-struct Place: Codable {
+struct PlaceData {
     let addressName, name: String
     let parking: Bool
     let roadAddressName: String
@@ -46,6 +46,6 @@ struct Place: Codable {
 }
 
 // MARK: - Pagination
-struct Pagination: Codable {
+struct PaginationData {
     let limit, skip, total: Int
 }
