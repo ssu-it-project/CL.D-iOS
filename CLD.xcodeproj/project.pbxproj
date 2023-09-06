@@ -33,6 +33,18 @@
 		0281723C2A793A670089FD51 /* SelectColorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0281723B2A793A670089FD51 /* SelectColorViewController.swift */; };
 		0281723E2A793B900089FD51 /* SelectColorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0281723D2A793B900089FD51 /* SelectColorCell.swift */; };
 		028981642A93176000B928E5 /* PostRecordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 028981632A93175F00B928E5 /* PostRecordViewController.swift */; };
+		029E36242A9E36EB0069A773 /* PlaceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 029E36232A9E36EB0069A773 /* PlaceTableViewCell.swift */; };
+		02B655372AA5D66600E4AC4F /* GetGymsDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B655362AA5D66600E4AC4F /* GetGymsDTO.swift */; };
+		02B655392AA5D97700E4AC4F /* GymsAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B655382AA5D97700E4AC4F /* GymsAPI.swift */; };
+		02B6553B2AA5DAFC00E4AC4F /* GymsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B6553A2AA5DAFC00E4AC4F /* GymsService.swift */; };
+		02B6553F2AA63AE400E4AC4F /* UITableview+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B6553E2AA63AE400E4AC4F /* UITableview+Extension.swift */; };
+		02CCDD622A9F292F00301ABF /* RecordRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02CCDD612A9F292F00301ABF /* RecordRequest.swift */; };
+		02CCDD642A9F2AF100301ABF /* RecordAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02CCDD632A9F2AF100301ABF /* RecordAPI.swift */; };
+		02CCDD672A9F2C8A00301ABF /* RecordService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02CCDD662A9F2C8A00301ABF /* RecordService.swift */; };
+		02CCDD692A9F614B00301ABF /* NetworkResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02CCDD682A9F614B00301ABF /* NetworkResult.swift */; };
+		02CCDD6B2A9F617F00301ABF /* BlankDataResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02CCDD6A2A9F617F00301ABF /* BlankDataResponse.swift */; };
+		02CCDD6D2A9F61A500301ABF /* ErrorResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02CCDD6C2A9F61A500301ABF /* ErrorResponse.swift */; };
+		02CCDD6F2A9F623A00301ABF /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02CCDD6E2A9F623A00301ABF /* NetworkService.swift */; };
 		02D56F4A2A9317FB00FF41EA /* PostRecordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D56F492A9317FB00FF41EA /* PostRecordView.swift */; };
 		02DC9AC52A75789800F8989E /* SelectListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02DC9AC42A75789800F8989E /* SelectListCell.swift */; };
 		02E2532F2A8A17DB00D3E9E1 /* PhotoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E2532E2A8A17DB00D3E9E1 /* PhotoCollectionViewCell.swift */; };
@@ -157,6 +169,18 @@
 		0281723B2A793A670089FD51 /* SelectColorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectColorViewController.swift; sourceTree = "<group>"; };
 		0281723D2A793B900089FD51 /* SelectColorCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectColorCell.swift; sourceTree = "<group>"; };
 		028981632A93175F00B928E5 /* PostRecordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostRecordViewController.swift; sourceTree = "<group>"; };
+		029E36232A9E36EB0069A773 /* PlaceTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceTableViewCell.swift; sourceTree = "<group>"; };
+		02B655362AA5D66600E4AC4F /* GetGymsDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetGymsDTO.swift; sourceTree = "<group>"; };
+		02B655382AA5D97700E4AC4F /* GymsAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GymsAPI.swift; sourceTree = "<group>"; };
+		02B6553A2AA5DAFC00E4AC4F /* GymsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GymsService.swift; sourceTree = "<group>"; };
+		02B6553E2AA63AE400E4AC4F /* UITableview+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableview+Extension.swift"; sourceTree = "<group>"; };
+		02CCDD612A9F292F00301ABF /* RecordRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordRequest.swift; sourceTree = "<group>"; };
+		02CCDD632A9F2AF100301ABF /* RecordAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordAPI.swift; sourceTree = "<group>"; };
+		02CCDD662A9F2C8A00301ABF /* RecordService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordService.swift; sourceTree = "<group>"; };
+		02CCDD682A9F614B00301ABF /* NetworkResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkResult.swift; sourceTree = "<group>"; };
+		02CCDD6A2A9F617F00301ABF /* BlankDataResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlankDataResponse.swift; sourceTree = "<group>"; };
+		02CCDD6C2A9F61A500301ABF /* ErrorResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorResponse.swift; sourceTree = "<group>"; };
+		02CCDD6E2A9F623A00301ABF /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		02D56F492A9317FB00FF41EA /* PostRecordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostRecordView.swift; sourceTree = "<group>"; };
 		02DC9AC42A75789800F8989E /* SelectListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectListCell.swift; sourceTree = "<group>"; };
 		02E2532E2A8A17DB00D3E9E1 /* PhotoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -343,6 +367,17 @@
 			path = Splash;
 			sourceTree = "<group>";
 		};
+		0286A8E92AA06B1A00D0BAD6 /* forService */ = {
+			isa = PBXGroup;
+			children = (
+				02CCDD6E2A9F623A00301ABF /* NetworkService.swift */,
+				02CCDD682A9F614B00301ABF /* NetworkResult.swift */,
+				02CCDD6A2A9F617F00301ABF /* BlankDataResponse.swift */,
+				02CCDD6C2A9F61A500301ABF /* ErrorResponse.swift */,
+			);
+			path = forService;
+			sourceTree = "<group>";
+		};
 		0289815F2A93174800B928E5 /* final */ = {
 			isa = PBXGroup;
 			children = (
@@ -353,10 +388,20 @@
 			path = final;
 			sourceTree = "<group>";
 		};
+		02CCDD652A9F2C6100301ABF /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				02CCDD662A9F2C8A00301ABF /* RecordService.swift */,
+				02B6553A2AA5DAFC00E4AC4F /* GymsService.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
 		02EB6E7E2A88C04C00C749A6 /* step1 */ = {
 			isa = PBXGroup;
 			children = (
 				02EB6E772A874D4D00C749A6 /* SelectPlaceViewController.swift */,
+				029E36232A9E36EB0069A773 /* PlaceTableViewCell.swift */,
 			);
 			path = step1;
 			sourceTree = "<group>";
@@ -411,6 +456,7 @@
 		5A21C6582A98FA2700E7CC95 /* _Foundation */ = {
 			isa = PBXGroup;
 			children = (
+				0286A8E92AA06B1A00D0BAD6 /* forService */,
 				5A21C6592A98FAEC00E7CC95 /* BaseTargetType.swift */,
 				5A21C65B2A98FC4800E7CC95 /* URLConst.swift */,
 				5A21C67D2A9A047800E7CC95 /* NetworkPluginType.swift */,
@@ -425,6 +471,7 @@
 			children = (
 				5A21C67B2A9A01AA00E7CC95 /* SignUpRequest.swift */,
 				5A21C6932A9B6D4E00E7CC95 /* SignInRequest.swift */,
+				02CCDD612A9F292F00301ABF /* RecordRequest.swift */,
 			);
 			path = Request;
 			sourceTree = "<group>";
@@ -435,6 +482,7 @@
 				5A21C6802A9A3C9800E7CC95 /* UserTokenDTO.swift */,
 				5A320FFC2AA5FBEF003A40BD /* Gym */,
 				5A21C6842A9A410400E7CC95 /* BaseErrorDTO.swift */,
+				02B655362AA5D66600E4AC4F /* GetGymsDTO.swift */,
 			);
 			path = Response;
 			sourceTree = "<group>";
@@ -649,6 +697,7 @@
 				02EB6E852A88C45A00C749A6 /* CALayer+Extension.swift */,
 				5A21C6A32A9BAC6000E7CC95 /* Date+Extension.swift */,
 				5A3210212AA88A6A003A40BD /* RxViewController+Extension.swift */,
+				02B6553E2AA63AE400E4AC4F /* UITableview+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -711,6 +760,7 @@
 		5ACADD512A658AEB00B92C07 /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				02CCDD652A9F2C6100301ABF /* Service */,
 				5A21C6582A98FA2700E7CC95 /* _Foundation */,
 				5ACADD532A658B3A00B92C07 /* API */,
 				5ACADD502A658AE000B92C07 /* DTO+Mapping */,
@@ -731,6 +781,8 @@
 			isa = PBXGroup;
 			children = (
 				5A21C6782A9A009000E7CC95 /* AuthAPI.swift */,
+				02CCDD632A9F2AF100301ABF /* RecordAPI.swift */,
+				02B655382AA5D97700E4AC4F /* GymsAPI.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -1087,6 +1139,7 @@
 				5ADED1AF2A66AEAD00C0CBF4 /* UICollectionView+Extension.swift in Sources */,
 				5A32101E2AA87EE4003A40BD /* ClimbingGymSearchUseCase.swift in Sources */,
 				020F65532A7D09450036CFB1 /* SelectVideoViewController.swift in Sources */,
+				029E36242A9E36EB0069A773 /* PlaceTableViewCell.swift in Sources */,
 				02EB6E862A88C45A00C749A6 /* CALayer+Extension.swift in Sources */,
 				5A21C6812A9A3C9800E7CC95 /* UserTokenDTO.swift in Sources */,
 				5A21C68B2A9A76D200E7CC95 /* DefaultSignInRepository.swift in Sources */,
@@ -1097,6 +1150,7 @@
 				020F65492A7B72050036CFB1 /* SelectListView.swift in Sources */,
 				5AEFAAA82A8BD07500A67C43 /* TermsType.swift in Sources */,
 				5ADED1B12A66AFF700C0CBF4 /* UIStackView+Extension.swift in Sources */,
+				02B655372AA5D66600E4AC4F /* GetGymsDTO.swift in Sources */,
 				02177C8E2A99ABDB00A4EF2C /* RecordTabItem.swift in Sources */,
 				5ADED1B72A67793F00C0CBF4 /* UIView+Extension.swift in Sources */,
 				02EB6E782A874D4D00C749A6 /* SelectPlaceViewController.swift in Sources */,
@@ -1109,6 +1163,7 @@
 				5A3210162AA80081003A40BD /* DefaultLocationManager.swift in Sources */,
 				0281723C2A793A670089FD51 /* SelectColorViewController.swift in Sources */,
 				5ADED1D22A6838C400C0CBF4 /* CommunityViewController.swift in Sources */,
+				02CCDD6D2A9F61A500301ABF /* ErrorResponse.swift in Sources */,
 				5AEFAAE92A8E3E5E00A67C43 /* CLDButton.swift in Sources */,
 				5ADED1BF2A679FB100C0CBF4 /* UIImage+Extension.swift in Sources */,
 				5AEFAAA02A8B966900A67C43 /* TermsViewController.swift in Sources */,
@@ -1124,8 +1179,11 @@
 				5A21C6572A98F7DE00E7CC95 /* UserDefaultHandler.swift in Sources */,
 				026BC4942A69102F00F49B87 /* SplashViewController.swift in Sources */,
 				026BC4782A680FE900F49B87 /* SignInView.swift in Sources */,
+				02CCDD642A9F2AF100301ABF /* RecordAPI.swift in Sources */,
 				5A21C67C2A9A01AA00E7CC95 /* SignUpRequest.swift in Sources */,
 				5A1C488F2A76CC9C00CC345A /* VideoCollectionViewCell.swift in Sources */,
+				02B655392AA5D97700E4AC4F /* GymsAPI.swift in Sources */,
+				02CCDD672A9F2C8A00301ABF /* RecordService.swift in Sources */,
 				5A21C6982A9B749800E7CC95 /* SignInUseCase.swift in Sources */,
 				5ACADCFA2A5D988F00B92C07 /* AppDelegate.swift in Sources */,
 				5ADED1C32A67A1B300C0CBF4 /* ViewModelType.swift in Sources */,
@@ -1138,9 +1196,12 @@
 				028981642A93176000B928E5 /* PostRecordViewController.swift in Sources */,
 				5ADED1AB2A66ACC500C0CBF4 /* UITextField+Extension.swift in Sources */,
 				02D56F4A2A9317FB00FF41EA /* PostRecordView.swift in Sources */,
+				02CCDD6B2A9F617F00301ABF /* BlankDataResponse.swift in Sources */,
 				5A21C6A62A9BAD5B00E7CC95 /* SNSLoginType.swift in Sources */,
+				02B6553B2AA5DAFC00E4AC4F /* GymsService.swift in Sources */,
 				5A21C67E2A9A047800E7CC95 /* NetworkPluginType.swift in Sources */,
 				5A1C488D2A76C49200CC345A /* BadgeCollectionViewCell.swift in Sources */,
+				02CCDD692A9F614B00301ABF /* NetworkResult.swift in Sources */,
 				5A97A1652A93848F00264AB5 /* TermsCheckListView.swift in Sources */,
 				5ADED1BB2A67929500C0CBF4 /* BaseViewController.swift in Sources */,
 				5ACADCFC2A5D988F00B92C07 /* SceneDelegate.swift in Sources */,
@@ -1150,6 +1211,9 @@
 				5A21C6962A9B721E00E7CC95 /* UserToken.swift in Sources */,
 				02E2532F2A8A17DB00D3E9E1 /* PhotoCollectionViewCell.swift in Sources */,
 				5AC80C782A838B5400FE9D6C /* PlayerView.swift in Sources */,
+				02CCDD622A9F292F00301ABF /* RecordRequest.swift in Sources */,
+				02B6553F2AA63AE400E4AC4F /* UITableview+Extension.swift in Sources */,
+				02CCDD6F2A9F623A00301ABF /* NetworkService.swift in Sources */,
 				02E2532F2A8A17DB00D3E9E1 /* PhotoCollectionViewCell.swift in Sources */,
 				5A21C6A42A9BAC6000E7CC95 /* Date+Extension.swift in Sources */,
 				5A3210002AA60C41003A40BD /* ClimbingGymDetailViewController.swift in Sources */,

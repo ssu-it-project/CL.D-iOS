@@ -26,15 +26,25 @@ final class PostRecordViewController: BaseViewController {
         button.semanticContentAttribute = .forceLeftToRight
         button.contentVerticalAlignment = .center
         button.contentHorizontalAlignment = .center
-        button.addTarget(self, action: #selector(postRecord), for: .touchUpInside)
+        button.addTarget(self, action: #selector(postRecordButton), for: .touchUpInside)
         return button
     }()
     
-    @objc private func postRecord () {
+    @objc private func postRecordButton () {
         print("기록하기")
         postRecordView.isHidden = true
         recordButton.isHidden = true
         successRecordView.isHidden = false
+
+        let place = postRecordDic["place"] as! String
+        let climbing_gym_id = postRecordDic["climbing_gym_id"] as! String
+        let content = postRecordView.getTextView()
+        let sector = postRecordDic["sector"] as! String
+        let level = postRecordDic["color"] as! ColorChipName
+        let asset: PHAsset! = postRecordDic["video"] as? PHAsset
+
+        print("==== place: \(place), climbing_gym_id: \(climbing_gym_id), content: \(content), sector: \(sector), color: \(level), video: \(asset)")
+        //postRecord(climbing_gym_id, content, sector, level, video)
     }
     
     @objc func backPage() {
@@ -91,6 +101,30 @@ final class PostRecordViewController: BaseViewController {
         successRecordView.snp.makeConstraints {
             $0.top.equalToSuperview()
             $0.bottom.leading.trailing.equalToSuperview()
+        }
+    }
+}
+
+extension PostRecordViewController {
+    func postRecord(_ climbing_gym_id: String,_ content: String,_ sector: String,_ level: String,_ video: URL,
+                    completion: @escaping (BlankDataResponse) -> Void) {
+        NetworkService.shared.record.postRecord(climbing_gym_id: climbing_gym_id, content: content, sector: sector, level: level, video: video) { result in
+            print("=== 기록하기 \(result)")
+            switch result {
+            case .success(let response):
+                guard let data = response as? BlankDataResponse else { return }
+                completion(data)
+            case .requestErr(let errorResponse):
+                dump(errorResponse)
+                guard let data = errorResponse as? ErrorResponse else { return }
+                print(data)
+            case .serverErr:
+                print("serverErr")
+            case .networkFail:
+                print("networkFail")
+            case .pathErr:
+                print("pathErr")
+            }
         }
     }
 }
