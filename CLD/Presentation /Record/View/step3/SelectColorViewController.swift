@@ -12,6 +12,7 @@ import SnapKit
 final class SelectColorViewController: BaseViewController {
     private var colorData = [ColorChipName.white,ColorChipName.gray,ColorChipName.black,ColorChipName.blue,ColorChipName.red,ColorChipName.brown,ColorChipName.pink,ColorChipName.green,ColorChipName.purple,ColorChipName.orange,ColorChipName.yellow]
     var colorInfo: ColorChipName? = nil
+    var colorText: String = ""
     private var addColorName: String = ""
     
     private let dotDivider: UIImageView = {
@@ -158,8 +159,9 @@ extension SelectColorViewController : UICollectionViewDelegate, UICollectionView
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if collectionView.cellForItem(at: indexPath) is SelectColorCell {
+        if let cell = collectionView.cellForItem(at: indexPath) as? SelectColorCell {
             colorInfo = colorData[indexPath.row]
+            self.colorText = cell.colorLabel.text ?? ""
         }
     }
 }

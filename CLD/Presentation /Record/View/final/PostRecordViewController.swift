@@ -9,6 +9,7 @@ import UIKit
 
 import SnapKit
 import Photos
+import Alamofire
 
 final class PostRecordViewController: BaseViewController {
     var postRecordDic: Dictionary<String, Any> = [:]
@@ -31,20 +32,17 @@ final class PostRecordViewController: BaseViewController {
     }()
     
     @objc private func postRecordButton () {
-        print("기록하기")
-        postRecordView.isHidden = true
-        recordButton.isHidden = true
-        successRecordView.isHidden = false
-
         let place = postRecordDic["place"] as! String
         let climbing_gym_id = postRecordDic["climbing_gym_id"] as! String
         let content = postRecordView.getTextView()
         let sector = postRecordDic["sector"] as! String
-        let level = postRecordDic["color"] as! ColorChipName
-        let asset: PHAsset! = postRecordDic["video"] as? PHAsset
+        // let test = postRecordDic["colorText"] as! ColorChipName
+        let level = postRecordDic["colorText"] as! String
+        let asset: PHAsset! = postRecordDic["thumbnail"] as? PHAsset
+        let video: URL = postRecordDic["videoURL"] as! URL
 
-        print("==== place: \(place), climbing_gym_id: \(climbing_gym_id), content: \(content), sector: \(sector), color: \(level), video: \(asset)")
-        //postRecord(climbing_gym_id, content, sector, level, video)
+        print("==== place: \(place), climbing_gym_id: \(climbing_gym_id), content: \(content), sector: \(sector), color: \(level), video: \(asset), videoURL: \(video)")
+        postRecord(climbing_gym_id, content, sector, level, video)
     }
     
     @objc func backPage() {
@@ -55,15 +53,16 @@ final class PostRecordViewController: BaseViewController {
         let place = postRecordDic["place"] as! String
         let sector = postRecordDic["sector"] as! String
         let color = postRecordDic["color"] as! ColorChipName
+        let colorText = postRecordDic["colorText"] as! String
 
-        let asset: PHAsset! = postRecordDic["video"] as? PHAsset
+        let asset: PHAsset! = postRecordDic["thumbnail"] as? PHAsset
         imageManager.requestImage(for: asset, targetSize: CGSize(width: 217, height: 212),
                                   contentMode: .aspectFill,
                                   options: nil,
                                   resultHandler: { image, _ in
             let thumbnailImage: UIImage = image!
             self.successRecordView.setSuccessRecord(thumbnailImage)
-            self.postRecordView.setPostRecord(thumbnailImage, place, sector, color)
+            self.postRecordView.setPostRecord(thumbnailImage, place, sector, color, colorText)
         })
     }
     
@@ -106,14 +105,15 @@ final class PostRecordViewController: BaseViewController {
 }
 
 extension PostRecordViewController {
-    func postRecord(_ climbing_gym_id: String,_ content: String,_ sector: String,_ level: String,_ video: URL,
-                    completion: @escaping (BlankDataResponse) -> Void) {
-        NetworkService.shared.record.postRecord(climbing_gym_id: climbing_gym_id, content: content, sector: sector, level: level, video: video) { result in
-            print("=== 기록하기 \(result)")
+    func postRecord(_ climbing_gym_id: String,_ content: String,_ sector: String,_ level: String,_ video: URL) {
+        print("=== 기록하기 성공")
+        PostRecordService.shared.postRecord(climbing_gym_id: climbing_gym_id, content: content, sector: sector, level: level, video: video) { result in
             switch result {
             case .success(let response):
+                self.postRecordView.isHidden = true
+                self.recordButton.isHidden = true
+                self.successRecordView.isHidden = false
                 guard let data = response as? BlankDataResponse else { return }
-                completion(data)
             case .requestErr(let errorResponse):
                 dump(errorResponse)
                 guard let data = errorResponse as? ErrorResponse else { return }

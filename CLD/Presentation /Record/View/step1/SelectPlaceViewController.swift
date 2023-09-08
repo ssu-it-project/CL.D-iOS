@@ -53,7 +53,7 @@ final class SelectPlaceViewController: BaseViewController {
         tableView.isScrollEnabled = false
         tableView.tableHeaderView = UIView(frame: CGRect(x: 0.0, y: 0.0, width: 0.0, height: CGFloat.leastNonzeroMagnitude))
         tableView.rowHeight = UITableView.automaticDimension
-        tableView.estimatedRowHeight = 190
+        tableView.estimatedRowHeight = 200
         tableView.register(PlaceTableViewCell.self, forCellReuseIdentifier: PlaceTableViewCell.identifier)
 
         return tableView
@@ -68,7 +68,7 @@ final class SelectPlaceViewController: BaseViewController {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         // 여기에서 검색 동작을 수행하도록 코드를 작성
         let searchKeyword: String = searchTextField.text ?? ""
-        getGyms(searchKeyword,5, 0)
+        getGyms(searchKeyword,9, 0)
         tableView.isHidden = false
         return true
     }
@@ -113,7 +113,7 @@ final class SelectPlaceViewController: BaseViewController {
             $0.top.equalTo(searchTextField.snp.bottom).offset(7)
             $0.leading.equalToSuperview().inset(25)
             $0.width.equalTo(312)
-            $0.bottom.equalToSuperview().inset(200)
+            $0.height.equalTo(200)
         }
     }
 }
@@ -159,6 +159,7 @@ extension SelectPlaceViewController {
         NetworkService.shared.gyms.getGyms(keyword: keyword, limit: limit, skip: skip) { [weak self] result in
                 switch result {
                 case .success(let response):
+
                     guard let data = response as? GetGymsDTO
                     else {
                         self?.gymsCount = 0

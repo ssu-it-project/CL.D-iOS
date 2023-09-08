@@ -20,15 +20,9 @@ struct GetGymsDTO: Codable {
 
 // MARK: - ClimbingGym
 struct ClimbingGym: Codable {
-    let id, type: String
+    let id: String
+    let type: TypeEnum
     let place: Place
-    let location: Location
-}
-
-// MARK: - Location
-struct Location: Codable {
-    let x, y: Int
-    let distance: Double
 }
 
 // MARK: - Place
@@ -44,9 +38,11 @@ struct Place: Codable {
     }
 }
 
+enum TypeEnum: String, Codable {
+    case bouldering = "bouldering"
+}
+
 // MARK: - Pagination
 struct Pagination: Codable {
     let total, skip, limit: Int
 }
-
-
