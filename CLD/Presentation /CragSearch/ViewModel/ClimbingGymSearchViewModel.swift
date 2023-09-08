@@ -32,6 +32,7 @@ class ClimbingGymSearchViewModel: ViewModelType {
         let currentUserLocation = BehaviorRelay<CLLocationCoordinate2D>(value: CLLocationCoordinate2D(latitude: 0, longitude: 0))
         let authorizationAlertShouldShow = BehaviorRelay<Bool>(value: false)
         let gyms = PublishRelay<GymsVO?>()
+        let climbingGymData = PublishRelay<[ClimbingGymVO]>()
     }
     
     func transform(input: Input) -> Output {
@@ -49,7 +50,7 @@ class ClimbingGymSearchViewModel: ViewModelType {
         input.viewWillAppearEvent
             .withUnretained(self)
             .subscribe(onNext: { owner, _ in
-                owner.getLocationGyms(latitude: output.currentUserLocation.value.latitude, longitude: output.currentUserLocation.value.longitude, keyword: "", limit: 5, skip: 5, output: output)
+                owner.getLocationGyms(longitude: output.currentUserLocation.value.latitude, latitude: output.currentUserLocation.value.longitude, keyword: "", limit: 5, skip: 5, output: output)
             })
             .disposed(by: disposeBag)
         
@@ -64,12 +65,13 @@ class ClimbingGymSearchViewModel: ViewModelType {
         return output
     }
     
-    func getLocationGyms(latitude: Double, longitude: Double, keyword: String, limit: Int, skip: Int, output: Output) {
-        useCase.getLocationGyms(latitude: latitude, longitude: longitude, keyword: keyword, limit: limit, skip: skip)
+    func getLocationGyms(longitude: Double, latitude: Double, keyword: String, limit: Int, skip: Int, output: Output) {
+        useCase.getLocationGyms(longitude: longitude, latitude: latitude, keyword: keyword, limit: limit, skip: skip)
             .subscribe { response in
                 switch response {
                 case .success(let value):
                     output.gyms.accept(value)
+                    output.climbingGymData.accept(value.climbingGyms)
                 case .failure(let error):
                     print(error.localizedDescription)
                 }

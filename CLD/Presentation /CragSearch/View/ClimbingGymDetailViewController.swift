@@ -27,10 +27,17 @@ final class ClimbingGymDetailViewController: BaseViewController {
         return label
     }()
     private let kakaoMapContentView = kakaoMapView()
+    
+    private var id: String
+    
+    init(id: String) {
+        self.id = id
+        super.init()
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        print(id)
     }
     
     override func setHierarchy() {
@@ -60,7 +67,4 @@ final class ClimbingGymDetailViewController: BaseViewController {
     override func setViewProperty() {
         super.setViewProperty()
     }
-    
-    
-
 }

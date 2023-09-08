@@ -31,8 +31,6 @@ final class ClimbingGymSearchViewController: BaseViewController {
         view.register(ClimbingGymTableViewCell.self, forCellReuseIdentifier: "ClimbingGymTableViewCell")
         return view
     }()
-        
-    private var dummyArray: [ClimbingGymsDummy] = [ClimbingGymsDummy(id: "aa", location: LocationData(distance: 2, x: 3, y: 4), place: PlaceData(addressName: "서울시 동대문구 회기동", name: "더 클라이밍 연남", parking: true, roadAddressName: "서울시 동대문구 회기동 조흔 곳", shower: true), type: "aa"), ClimbingGymsDummy(id: "aa", location: LocationData(distance: 2, x: 3, y: 4), place: PlaceData(addressName: "서울시 동대문구 회기동", name: "더 클라이밍 연남", parking: true, roadAddressName: "서울시 동대문구 회기동 조흔 곳", shower: true), type: "aa"), ClimbingGymsDummy(id: "aa", location: LocationData(distance: 2, x: 3, y: 4), place: PlaceData(addressName: "서울시 동대문구 회기동", name: "더 클라이밍 연남", parking: true, roadAddressName: "서울시 동대문구 회기동 조흔 곳", shower: true), type: "aa"), ClimbingGymsDummy(id: "aa", location: LocationData(distance: 2, x: 3, y: 4), place: PlaceData(addressName: "서울시 동대문구 회기동", name: "더 클라이밍 연남", parking: true, roadAddressName: "서울시 동대문구 회기동 조흔 곳", shower: true), type: "aa"), ClimbingGymsDummy(id: "aa", location: LocationData(distance: 2, x: 3, y: 4), place: PlaceData(addressName: "서울시 동대문구 회기동", name: "더 클라이밍 연남", parking: true, roadAddressName: "서울시 동대문구 회기동 조흔 곳", shower: true), type: "aa")]
     
     private let viewModel: ClimbingGymSearchViewModel
     
@@ -47,8 +45,7 @@ final class ClimbingGymSearchViewController: BaseViewController {
     }
     
     override func Bind() {
-        
-        let input = ClimbingGymSearchViewModel.Input(viewDidLoadEvent: Observable.just(()).asObservable(), viewWillAppearEvent: rx.viewWillAppear.take(1).map { _ in } )
+        let input = ClimbingGymSearchViewModel.Input(viewDidLoadEvent: Observable.just(()).asObservable(), viewWillAppearEvent: rx.viewWillAppear.map { _ in } )
         let output = viewModel.transform(input: input)
         
         output.authorizationAlertShouldShow
@@ -64,22 +61,24 @@ final class ClimbingGymSearchViewController: BaseViewController {
             }
             .disposed(by: disposeBag)
         
-        output.gyms
-            .bind { data in
-                print(data)
-            }
-            .disposed(by: disposeBag)
+        let climbingGymsDriver = output.climbingGymData.asDriver(onErrorJustReturn: [])
         
-        
-        Driver<[ClimbingGymsDummy]>
-            .just(dummyArray)
-            .drive(climbingGymTableView.rx.items) { tableView, index, menu in
+        climbingGymsDriver
+            .drive(climbingGymTableView.rx.items) { tableView, index, gym in
                 guard let cell = tableView.dequeueReusableCell(withIdentifier: "ClimbingGymTableViewCell", for: IndexPath(row: index, section: 0)) as? ClimbingGymTableViewCell else { return UITableViewCell() }
+                cell.configCell(row: gym)
                 return cell
             }
             .disposed(by: disposeBag)
-    }
         
+        Observable.zip(climbingGymTableView.rx.modelSelected(ClimbingGymVO.self), climbingGymTableView.rx.itemSelected)
+            .bind { [weak self] ( item, indexPath) in
+                let detailViewController = ClimbingGymDetailViewController(id: item.id)
+                self?.navigationController?.pushViewController(detailViewController, animated: true)
+            }
+            .disposed(by: disposeBag)
+    }
+    
     override func setHierarchy() {
         [searchBar, climbingGymSegmentControl, climbingGymTableView].forEach { view in
             self.view.addSubview(view)
