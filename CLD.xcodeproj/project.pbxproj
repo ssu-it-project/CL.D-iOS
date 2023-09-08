@@ -54,6 +54,8 @@
 		02EB6E862A88C45A00C749A6 /* CALayer+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02EB6E852A88C45A00C749A6 /* CALayer+Extension.swift */; };
 		5A05DEED2AA8DE2E0050AD55 /* DefaultGymsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A05DEEC2AA8DE2E0050AD55 /* DefaultGymsRepository.swift */; };
 		5A05DEF12AA8E0560050AD55 /* GymsVO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A05DEF02AA8E0560050AD55 /* GymsVO.swift */; };
+		5A05DF432AAB038C0050AD55 /* DefaultHomeRecordRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A05DF422AAB038B0050AD55 /* DefaultHomeRecordRepository.swift */; };
+		5A05DF452AAB04C40050AD55 /* RecordDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A05DF442AAB04C40050AD55 /* RecordDTO.swift */; };
 		5A0871112A65A7DD00947794 /* Moya in Frameworks */ = {isa = PBXBuildFile; productRef = 5A0871102A65A7DD00947794 /* Moya */; };
 		5A0871132A65A7DD00947794 /* ReactiveMoya in Frameworks */ = {isa = PBXBuildFile; productRef = 5A0871122A65A7DD00947794 /* ReactiveMoya */; };
 		5A0871152A65A7DD00947794 /* RxMoya in Frameworks */ = {isa = PBXBuildFile; productRef = 5A0871142A65A7DD00947794 /* RxMoya */; };
@@ -191,6 +193,8 @@
 		02EB6E852A88C45A00C749A6 /* CALayer+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CALayer+Extension.swift"; sourceTree = "<group>"; };
 		5A05DEEC2AA8DE2E0050AD55 /* DefaultGymsRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultGymsRepository.swift; sourceTree = "<group>"; };
 		5A05DEF02AA8E0560050AD55 /* GymsVO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GymsVO.swift; sourceTree = "<group>"; };
+		5A05DF422AAB038B0050AD55 /* DefaultHomeRecordRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultHomeRecordRepository.swift; sourceTree = "<group>"; };
+		5A05DF442AAB04C40050AD55 /* RecordDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordDTO.swift; sourceTree = "<group>"; };
 		5A1C48872A76813300CC345A /* HomeSectionType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeSectionType.swift; sourceTree = "<group>"; };
 		5A1C48892A7687FB00CC345A /* CGSize+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGSize+Extension.swift"; sourceTree = "<group>"; };
 		5A1C488C2A76C49200CC345A /* BadgeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BadgeCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -469,6 +473,14 @@
 			path = ClimbingGymSearch;
 			sourceTree = "<group>";
 		};
+		5A05DF412AAB03400050AD55 /* Record */ = {
+			isa = PBXGroup;
+			children = (
+				5A05DF422AAB038B0050AD55 /* DefaultHomeRecordRepository.swift */,
+			);
+			path = Record;
+			sourceTree = "<group>";
+		};
 		5A1C48862A76811600CC345A /* Enum */ = {
 			isa = PBXGroup;
 			children = (
@@ -520,6 +532,7 @@
 				5A320FFC2AA5FBEF003A40BD /* Gym */,
 				5A21C6842A9A410400E7CC95 /* BaseErrorDTO.swift */,
 				02B655362AA5D66600E4AC4F /* GetGymsDTO.swift */,
+				5A05DF442AAB04C40050AD55 /* RecordDTO.swift */,
 			);
 			path = Response;
 			sourceTree = "<group>";
@@ -808,6 +821,7 @@
 		5ACADD522A658AF400B92C07 /* Repository */ = {
 			isa = PBXGroup;
 			children = (
+				5A05DF412AAB03400050AD55 /* Record */,
 				5A05DEEA2AA8DD8D0050AD55 /* Auth */,
 				5A05DEEB2AA8DD980050AD55 /* ClimbingGymSearch */,
 			);
@@ -1189,6 +1203,7 @@
 				5AEFAAA82A8BD07500A67C43 /* TermsType.swift in Sources */,
 				5ADED1B12A66AFF700C0CBF4 /* UIStackView+Extension.swift in Sources */,
 				02B655372AA5D66600E4AC4F /* GetGymsDTO.swift in Sources */,
+				5A05DF452AAB04C40050AD55 /* RecordDTO.swift in Sources */,
 				02177C8E2A99ABDB00A4EF2C /* RecordTabItem.swift in Sources */,
 				5ADED1B72A67793F00C0CBF4 /* UIView+Extension.swift in Sources */,
 				02EB6E782A874D4D00C749A6 /* SelectPlaceViewController.swift in Sources */,
@@ -1229,6 +1244,7 @@
 				026BC4762A680FC000F49B87 /* AuthViewController.swift in Sources */,
 				02EB6E7D2A88BC9B00C749A6 /* SuccessRecordView.swift in Sources */,
 				5A3210202AA88218003A40BD /* ClimbingGymSearchViewModel.swift in Sources */,
+				5A05DF432AAB038C0050AD55 /* DefaultHomeRecordRepository.swift in Sources */,
 				5A3210042AA63D04003A40BD /* kakaoMapView.swift in Sources */,
 				5ADED1C12A67A06F00C0CBF4 /* ImageLiteral.swift in Sources */,
 				5A21C6A02A9B916400E7CC95 /* DefaultSignUpRepository.swift in Sources */,
