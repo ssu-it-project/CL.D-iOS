@@ -19,13 +19,14 @@ struct ClimbingGymVO {
 }
 
 struct LocationVO {
-    let x, y: Int
+    let x, y: Double
     let distance: Double
 }
 
 struct PlaceVO {
     let name, addressName, roadAddressName: String
     let parking: Bool
+    let shower: Bool
 }
 
 struct PaginationVO {

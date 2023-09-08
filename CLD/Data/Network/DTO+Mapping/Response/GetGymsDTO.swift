@@ -8,39 +8,41 @@
 import Foundation
 
 // MARK: - GetGymsDTO
-struct GetGymsDTO: Codable {
+struct GetGymsDTO: Decodable {
     let pagination: Pagination
     let climbingGyms: [ClimbingGym]
-
+    
     enum CodingKeys: String, CodingKey {
-        case pagination
         case climbingGyms = "climbing_gyms"
+        case pagination
     }
 }
 
 // MARK: - ClimbingGym
-struct ClimbingGym: Codable {
-    let id, type: String
+struct ClimbingGym: Decodable {
+    let id: String
+    let type: String
     let place: Place
     let location: Location
 }
 
 // MARK: - Location
-struct Location: Codable {
-    let x, y: Int
+struct Location: Decodable {
+    let x: Double
+    let y: Double
     let distance: Double
 }
 
 // MARK: - Place
-struct Place: Codable {
+struct Place: Decodable {
     let name, addressName, roadAddressName: String
     let parking, shower: Bool
-
+    
     enum CodingKeys: String, CodingKey {
-        case name
         case addressName = "address_name"
+        case name, parking
         case roadAddressName = "road_address_name"
-        case parking, shower
+        case shower
     }
 }
 
@@ -51,42 +53,25 @@ struct Pagination: Codable {
 
 extension GetGymsDTO {
     func toDomain() -> GymsVO {
-        let paginationVO = PaginationVO(total: self.pagination.total, skip: self.pagination.skip, limit: self.pagination.limit)
-        let climbingGymsVO = self.climbingGyms.map { $0.toDomain() }
-
+        let paginationVO = PaginationVO(total: pagination.total, skip: pagination.skip, limit: pagination.limit)
+        let climbingGymsVO = climbingGyms.map { climbingGymDTO in
+            let placeVO = climbingGymDTO.place.toDomain()
+            let locationVO = climbingGymDTO.location.toDomain()
+            return ClimbingGymVO(id: climbingGymDTO.id, type: climbingGymDTO.type, place: placeVO, location: locationVO)
+        }
         return GymsVO(pagination: paginationVO, climbingGyms: climbingGymsVO)
-    }
-}
-
-extension ClimbingGym {
-    func toDomain() -> ClimbingGymVO {
-        return ClimbingGymVO(
-            id: self.id,
-            type: self.type,
-            place: self.place.toDomain(),
-            location: self.location.toDomain()
-        )
     }
 }
 
 extension Place {
     func toDomain() -> PlaceVO {
-        return PlaceVO(
-            name: self.name,
-            addressName: self.addressName,
-            roadAddressName: self.roadAddressName,
-            parking: self.parking
-        )
+        return PlaceVO(name: name, addressName: addressName, roadAddressName: roadAddressName, parking: parking, shower: shower)
     }
 }
 
 extension Location {
     func toDomain() -> LocationVO {
-        return LocationVO(
-            x: self.x,
-            y: self.y,
-            distance: self.distance
-        )
+        return LocationVO(x: x, y: y, distance: distance)
     }
 }
 
