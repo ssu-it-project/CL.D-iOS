@@ -18,16 +18,17 @@ final class DefaultGymsRepository {
         self.gymsService = .init()
     }
     
-    func getLocationGyms(latitude: Double, longitude: Double, keyword: String, limit: Int, skip: Int) -> Single<GymsVO?> {
+    func getLocationGyms(latitude: Double, longitude: Double, keyword: String, limit: Int, skip: Int) -> Single<GymsVO> {
         return gymsService.rx.request(.getLocationGyms(x: latitude, y: longitude, keyword: keyword, limit: limit, skip: skip))
             .flatMap { response in
-                return Single<GymsVO?>.create { observer in
+                return Single<GymsVO>.create { observer in
                     if (200..<300).contains(response.statusCode) {
                         do {
                             let getGymsDTO = try response.map(GetGymsDTO.self)
                             let gymsVO = getGymsDTO.toDomain()
                             observer(.success(gymsVO))
                         } catch {
+                            print("====", error)
                             observer(.failure(error))
                         }
                     } else {
