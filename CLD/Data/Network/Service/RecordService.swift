@@ -6,63 +6,46 @@
 //
 
 import Foundation
-import Moya
+import Alamofire
 
-final class RecordService {
+struct PostRecordService {
+    static let shared = PostRecordService()
 
-    private var recordProvider = MoyaProvider<RecordAPI>()
+    func postRecord(climbing_gym_id: String,
+                    content: String,
+                    sector: String,
+                    level: String,
+                    video: URL,
+                    completion: @escaping (NetworkResult<Any>) -> Void) {
+        let url = URL(string: "http://ec2-13-209-11-183.ap-northeast-2.compute.amazonaws.com:1323/clime/record")! // 실제 서버 URL로 교체해야 합니다.
+        let header: HTTPHeaders = [ "Content-Type": "multipart/form-data",
+                                    "Authorization": "Bearer \(UserDefaultHandler.accessToken)"]
+        let parameters: [String: Any] = [
+            "climbing_gym_id": climbing_gym_id,
+            "content": content,
+            "sector": sector,
+            "level": level,
+            "video": video
+        ]
 
-    private enum ResponseData {
-        case postRecord
-    }
-
-    public func postRecord(climbing_gym_id: String, content: String, sector: String, level: String, video: URL, completion: @escaping (NetworkResult<Any>) -> Void) {
-        recordProvider.request(.postRecord(climbing_gym_id: climbing_gym_id, content: content, sector: sector, level: level, video: video)) { result in
-            switch result {
-            case .success(let response):
-                let statusCode = response.statusCode
-                let data = response.data
-
-                let networkResult = self.judgeStatus(by: statusCode, data, responseData: .postRecord)
-                completion(networkResult)
-
-            case .failure(let error):
-                print(error)
-
+        print("===video: \(video)")
+        //multipart 업로드
+        AF.upload(multipartFormData: { (multipart) in
+            for (key, value) in parameters {
+                multipart.append("\(value)".data(using: .utf8, allowLossyConversion: false)!, withName: "\(key)")
             }
-        }
-    }
-
-    private func judgeStatus(by statusCode: Int, _ data: Data, responseData: ResponseData) -> NetworkResult<Any> {
-
-        let decoder = JSONDecoder()
-
-        switch statusCode {
-        case 200..<300:
-            switch responseData {
-            case .postRecord:
-                return isValidData(data: data, responseData: responseData)
+            multipart.append(video,
+                             withName: "video",
+                             fileName: "video.mov",
+                             mimeType: "video/mov")
+        }, to: url, method: .post, headers: header)
+        .responseJSON(completionHandler: { (response) in
+            if let err = response.error{
+                print(err)
+                completion(.requestErr(response))
+                return
             }
-        case 400..<500:
-            print(statusCode)
-            guard let decodedData = try? decoder.decode(ErrorResponse.self, from: data) else {
-                return .pathErr
-            }
-            print(decodedData)
-            return .requestErr(data)
-        case 500:
-            return .serverErr
-        default:
-            return .networkFail
-        }
-    }
-
-    private func isValidData(data: Data, responseData: ResponseData) -> NetworkResult<Any> {
-        let decoder = JSONDecoder()
-        switch responseData {
-        case .postRecord:
-            let decodedData = try? decoder.decode(BlankDataResponse.self, from: data)
-            return .success(decodedData ?? "success")
-        }
+            completion(.success(response))
+        })
     }
 }
