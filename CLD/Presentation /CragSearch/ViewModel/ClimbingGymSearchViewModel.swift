@@ -25,11 +25,14 @@ class ClimbingGymSearchViewModel: ViewModelType {
     
     struct Input {
         let viewDidLoadEvent: Observable<Void>
+        let viewWillAppearEvent: Observable<Void>
     }
     
     struct Output {
         let currentUserLocation = BehaviorRelay<CLLocationCoordinate2D>(value: CLLocationCoordinate2D(latitude: 0, longitude: 0))
         let authorizationAlertShouldShow = BehaviorRelay<Bool>(value: false)
+        let gyms = PublishRelay<GymsVO?>()
+        let climbingGymData = PublishRelay<[ClimbingGymVO]>()
     }
     
     func transform(input: Input) -> Output {
@@ -44,6 +47,13 @@ class ClimbingGymSearchViewModel: ViewModelType {
             })
             .disposed(by: disposeBag)
         
+        input.viewWillAppearEvent
+            .withUnretained(self)
+            .subscribe(onNext: { owner, _ in
+                owner.getLocationGyms(longitude: output.currentUserLocation.value.latitude, latitude: output.currentUserLocation.value.longitude, keyword: "", limit: 5, skip: 5, output: output)
+            })
+            .disposed(by: disposeBag)
+        
         self.useCase.authorizationDeniedStatus
             .bind(to: output.authorizationAlertShouldShow)
             .disposed(by: disposeBag)
@@ -53,5 +63,19 @@ class ClimbingGymSearchViewModel: ViewModelType {
             .disposed(by: disposeBag)
         
         return output
+    }
+    
+    func getLocationGyms(longitude: Double, latitude: Double, keyword: String, limit: Int, skip: Int, output: Output) {
+        useCase.getLocationGyms(longitude: longitude, latitude: latitude, keyword: keyword, limit: limit, skip: skip)
+            .subscribe { response in
+                switch response {
+                case .success(let value):
+                    output.gyms.accept(value)
+                    output.climbingGymData.accept(value.climbingGyms)
+                case .failure(let error):
+                    print(error.localizedDescription)
+                }
+            }
+            .disposed(by: disposeBag)
     }
 }

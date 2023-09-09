@@ -9,6 +9,7 @@ import UIKit
 
 import RxCocoa
 import RxSwift
+import Kingfisher
 
 final class ClimbingGymTableViewCell: UITableViewCell {
     
@@ -71,7 +72,7 @@ final class ClimbingGymTableViewCell: UITableViewCell {
     
     override func prepareForReuse() {
         super.prepareForReuse()
-        gymImageView.image = nil
+//        gymImageView.image = nil
     }
     
     override func layoutSubviews() {
@@ -81,6 +82,7 @@ final class ClimbingGymTableViewCell: UITableViewCell {
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
+        self.selectionStyle = .none
         setHierarchy()
         setConstraints()
     }
@@ -139,7 +141,14 @@ final class ClimbingGymTableViewCell: UITableViewCell {
 }
 
 extension ClimbingGymTableViewCell {
-    func configCell(row: ClimbingGym) {
+    func configCell(row: ClimbingGymVO) {
+        titleLabel.text = row.place.name
+        addressLabel.text = row.place.addressName
         
+        if !row.place.parking {
+            parkingAvailableBadgeStackView.isHidden = true
+        }
+        
+        locationLabel.text = "\(row.location.distance) km"
     }
 }
