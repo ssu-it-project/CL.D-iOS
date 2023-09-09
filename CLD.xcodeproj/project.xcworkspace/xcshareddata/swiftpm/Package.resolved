@@ -46,6 +46,15 @@
       }
     },
     {
+      "identity" : "lightcompressor_ios",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/AbedElazizShe/LightCompressor_iOS.git",
+      "state" : {
+        "branch" : "master",
+        "revision" : "3d21a0c8bb653fc00daf11ea82c590aa8d70c50b"
+      }
+    },
+    {
       "identity" : "moya",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/Moya/Moya.git",
