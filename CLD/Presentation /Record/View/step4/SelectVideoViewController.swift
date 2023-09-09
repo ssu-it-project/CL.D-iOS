@@ -12,7 +12,7 @@ import Photos
 
 final class SelectVideoViewController: BaseViewController {
     var finalRecordDic: Dictionary<String, Any> = [:]
-    var videoURLS: [URL] = []
+    var videoUrls: [URL] = []
     var videoURL: URL!
     var assetInfo: PHAsset!
 
@@ -207,7 +207,8 @@ extension SelectVideoViewController : UICollectionViewDelegate, UICollectionView
             PHImageManager.default().requestAVAsset(forVideo: videoAsset, options: nil) { [self] (avAsset, _, _) in
                 if let urlAsset = avAsset as? AVURLAsset {
                     let url = urlAsset.url
-                    videoURLS.append(url)
+                    videoUrls.append(url)
+                    print("=== videoUrls: \(videoUrls)")
 
                     let assetDuration = urlAsset.duration
                     let seconds = CMTimeGetSeconds(assetDuration)
@@ -249,7 +250,7 @@ extension SelectVideoViewController : UICollectionViewDelegate, UICollectionView
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let index: IndexPath = indexPath
         assetInfo = self.videos[index.row]
-        videoURL = self.videoURLS[index.row]
+        videoURL = self.videoUrls[index.row]
     }
 }
 
