@@ -9,7 +9,7 @@ import UIKit
 
 import SnapKit
 import Photos
-import Alamofire
+import LightCompressor
 
 final class PostRecordViewController: BaseViewController {
     var postRecordDic: Dictionary<String, Any> = [:]
@@ -18,6 +18,10 @@ final class PostRecordViewController: BaseViewController {
     
     let postRecordView = PostRecordView()
     let successRecordView = SuccessRecordView()
+
+    private var compression: Compression?
+    private var compressedPath: URL?
+    private var destinationPath = URL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent("compressed.mp4")
     
     let recordButton: UIButton = {
         let button = UIButton()
@@ -36,12 +40,34 @@ final class PostRecordViewController: BaseViewController {
         let climbing_gym_id = postRecordDic["climbing_gym_id"] as! String
         let content = postRecordView.getTextView()
         let sector = postRecordDic["sector"] as! String
-        // let test = postRecordDic["colorText"] as! ColorChipName
         let level = postRecordDic["colorText"] as! String
         let asset: PHAsset! = postRecordDic["thumbnail"] as? PHAsset
-        let video: URL = postRecordDic["videoURL"] as! URL
+        var video: URL = postRecordDic["videoURL"] as! URL
+        //print("Original size: \(video.fileSizeInMB())")
 
-        print("==== place: \(place), climbing_gym_id: \(climbing_gym_id), content: \(content), sector: \(sector), color: \(level), video: \(asset), videoURL: \(video)")
+        let videoCompressor = LightCompressor()
+        compression = videoCompressor.compressVideo(videos: [.init(source: video, destination: destinationPath, configuration: .init(quality: VideoQuality.low, videoBitrateInMbps: 5, disableAudio: false, keepOriginalResolution: true))],
+                                                    progressQueue: .main,
+                                                    progressHandler: { progress in
+            DispatchQueue.main.async { [unowned self] in
+                // Handle progress- "\(String(format: "%.0f", progress.fractionCompleted * 100))%"
+            }},
+                                                    completion: {[weak self] result in
+            guard let `self` = self else { return }
+            switch result {
+            case .onSuccess(let index, let path):
+                self.compressedPath = path
+                video = path
+                //print("Size after compression: \(video.fileSizeInMB())")
+            case .onStart:
+                print("onStart")
+            case .onFailure(let index, let error):
+                print("onFailure")
+            case .onCancelled:
+                print("Cancelled")
+            }
+        })
+        // print("==== place: \(place), climbing_gym_id: \(climbing_gym_id), content: \(content), sector: \(sector), color: \(level), video: \(asset), videoURL: \(video)")
         postRecord(climbing_gym_id, content, sector, level, video)
     }
     
@@ -106,13 +132,13 @@ final class PostRecordViewController: BaseViewController {
 
 extension PostRecordViewController {
     func postRecord(_ climbing_gym_id: String,_ content: String,_ sector: String,_ level: String,_ video: URL) {
-        print("=== 기록하기 성공")
         PostRecordService.shared.postRecord(climbing_gym_id: climbing_gym_id, content: content, sector: sector, level: level, video: video) { result in
             switch result {
             case .success(let response):
                 self.postRecordView.isHidden = true
                 self.recordButton.isHidden = true
                 self.successRecordView.isHidden = false
+                try? FileManager.default.removeItem(at: self.destinationPath)
                 guard let data = response as? BlankDataResponse else { return }
             case .requestErr(let errorResponse):
                 dump(errorResponse)

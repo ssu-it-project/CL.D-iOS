@@ -12,6 +12,8 @@
 		02177C8C2A99126100A4EF2C /* ColorChipName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02177C8B2A99126100A4EF2C /* ColorChipName.swift */; };
 		02177C8E2A99ABDB00A4EF2C /* RecordTabItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02177C8D2A99ABDB00A4EF2C /* RecordTabItem.swift */; };
 		023868C32A70009B0006C762 /* LoginManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 023868C22A70009B0006C762 /* LoginManager.swift */; };
+		023C71512AACC52500CA095D /* LightCompressor in Frameworks */ = {isa = PBXBuildFile; productRef = 023C71502AACC52500CA095D /* LightCompressor */; };
+		023C71532AACC69D00CA095D /* URL+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 023C71522AACC69D00CA095D /* URL+Extension.swift */; };
 		023F37822A783C1F007B0511 /* SelectSectorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 023F37812A783C1F007B0511 /* SelectSectorViewController.swift */; };
 		0241775A2A6E5DA7006C3C4D /* KakaoSDKAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 024177592A6E5DA7006C3C4D /* KakaoSDKAuth */; };
 		0241775C2A6E5DA7006C3C4D /* KakaoSDKCommon in Frameworks */ = {isa = PBXBuildFile; productRef = 0241775B2A6E5DA7006C3C4D /* KakaoSDKCommon */; };
@@ -158,6 +160,7 @@
 		02177C8B2A99126100A4EF2C /* ColorChipName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorChipName.swift; sourceTree = "<group>"; };
 		02177C8D2A99ABDB00A4EF2C /* RecordTabItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordTabItem.swift; sourceTree = "<group>"; };
 		023868C22A70009B0006C762 /* LoginManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginManager.swift; sourceTree = "<group>"; };
+		023C71522AACC69D00CA095D /* URL+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+Extension.swift"; sourceTree = "<group>"; };
 		023F37812A783C1F007B0511 /* SelectSectorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectSectorViewController.swift; sourceTree = "<group>"; };
 		026BC4752A680FC000F49B87 /* AuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewController.swift; sourceTree = "<group>"; };
 		026BC4772A680FE900F49B87 /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
@@ -299,6 +302,7 @@
 				5A08711B2A65A85700947794 /* Kingfisher in Frameworks */,
 				0241775A2A6E5DA7006C3C4D /* KakaoSDKAuth in Frameworks */,
 				024509F52A6E6D7600F0DC76 /* RxRelay in Frameworks */,
+				023C71512AACC52500CA095D /* LightCompressor in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -743,6 +747,7 @@
 				5A21C6A32A9BAC6000E7CC95 /* Date+Extension.swift */,
 				5A3210212AA88A6A003A40BD /* RxViewController+Extension.swift */,
 				02B6553E2AA63AE400E4AC4F /* UITableview+Extension.swift */,
+				023C71522AACC69D00CA095D /* URL+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1049,6 +1054,7 @@
 				5A21C68D2A9A7DBC00E7CC95 /* RxKakaoSDKAuth */,
 				5A21C68F2A9A7DBC00E7CC95 /* RxKakaoSDKCommon */,
 				5A21C6912A9A7DBC00E7CC95 /* RxKakaoSDKUser */,
+				023C71502AACC52500CA095D /* LightCompressor */,
 			);
 			productName = CLD;
 			productReference = 5ACADCF62A5D988F00B92C07 /* CLD.app */;
@@ -1132,6 +1138,7 @@
 				5A97A1212A91229F00264AB5 /* XCRemoteSwiftPackageReference "RxGesture" */,
 				02EB6E792A874E5100C749A6 /* XCRemoteSwiftPackageReference "Tabman" */,
 				5A21C68C2A9A7DBC00E7CC95 /* XCRemoteSwiftPackageReference "kakao-ios-sdk-rx" */,
+				023C714F2AACC52500CA095D /* XCRemoteSwiftPackageReference "LightCompressor_iOS" */,
 			);
 			productRefGroup = 5ACADCF72A5D988F00B92C07 /* Products */;
 			projectDirPath = "";
@@ -1195,6 +1202,7 @@
 				0281723E2A793B900089FD51 /* SelectColorCell.swift in Sources */,
 				020F65492A7B72050036CFB1 /* SelectListView.swift in Sources */,
 				5AEFAAA82A8BD07500A67C43 /* TermsType.swift in Sources */,
+				023C71532AACC69D00CA095D /* URL+Extension.swift in Sources */,
 				5ADED1B12A66AFF700C0CBF4 /* UIStackView+Extension.swift in Sources */,
 				02B655372AA5D66600E4AC4F /* GetGymsDTO.swift in Sources */,
 				5A05DF452AAB04C40050AD55 /* RecordDTO.swift in Sources */,
@@ -1624,6 +1632,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		023C714F2AACC52500CA095D /* XCRemoteSwiftPackageReference "LightCompressor_iOS" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/AbedElazizShe/LightCompressor_iOS.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 		024177582A6E5DA7006C3C4D /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/kakao/kakao-ios-sdk.git";
@@ -1699,6 +1715,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		023C71502AACC52500CA095D /* LightCompressor */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 023C714F2AACC52500CA095D /* XCRemoteSwiftPackageReference "LightCompressor_iOS" */;
+			productName = LightCompressor;
+		};
 		024177592A6E5DA7006C3C4D /* KakaoSDKAuth */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 024177582A6E5DA7006C3C4D /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */;

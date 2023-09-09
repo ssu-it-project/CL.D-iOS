@@ -60,7 +60,7 @@ final class SelectVideoViewController: BaseViewController {
     @objc private func nextView () {
         finalRecordDic["thumbnail"] = assetInfo
         finalRecordDic["videoURL"] = videoURL
-        print("finalRecordDic: \(finalRecordDic)")
+        // print("finalRecordDic: \(finalRecordDic)")
         if ( finalRecordDic["place"] as? String != "" && finalRecordDic["sector"] as? String != "" && finalRecordDic["color"] as? ColorChipName != nil && finalRecordDic["videoURL"] != nil) {
             presentModalBtnTap()
         } else {
@@ -208,7 +208,6 @@ extension SelectVideoViewController : UICollectionViewDelegate, UICollectionView
                 if let urlAsset = avAsset as? AVURLAsset {
                     let url = urlAsset.url
                     videoUrls.append(url)
-                    print("=== videoUrls: \(videoUrls)")
 
                     let assetDuration = urlAsset.duration
                     let seconds = CMTimeGetSeconds(assetDuration)
