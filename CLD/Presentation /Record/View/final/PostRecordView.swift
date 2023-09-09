@@ -145,7 +145,7 @@ final class PostRecordView: UIView {
         thumbnailView.image = thumbnailImage
         placeLabel.text = place
         sectorLabel.text = sector
-        colorLabel.text = colorText
+        colorLabel.text = color.colorName()
         colorCircle.layer.backgroundColor = color.colorChip()
     }
     func getTextView() -> String {
