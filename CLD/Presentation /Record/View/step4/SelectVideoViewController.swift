@@ -12,7 +12,14 @@ import Photos
 
 final class SelectVideoViewController: BaseViewController {
     var finalRecordDic: Dictionary<String, Any> = [:]
+    var videoUrls: [URL] = []
+    var videoURL: URL!
     var assetInfo: PHAsset!
+
+    var fetchResult: PHFetchResult<PHAsset>!
+    let imageManager: PHCachingImageManager = PHCachingImageManager()
+    var videos: [PHAsset] = []
+    let cellIdentifier: String = "PhotoCollectionViewCell"
     
     private let dotDivider: UIImageView = {
         let view = UIImageView()
@@ -21,11 +28,6 @@ final class SelectVideoViewController: BaseViewController {
         view.backgroundColor = nil
         return view
     }()
-    
-    var fetchResult: PHFetchResult<PHAsset>!
-    let imageManager: PHCachingImageManager = PHCachingImageManager()
-    var videos: [PHAsset] = []
-    let cellIdentifier: String = "PhotoCollectionViewCell"
 
     var selectCollectionView: UICollectionView = {
         var layout = UICollectionViewFlowLayout()
@@ -56,9 +58,10 @@ final class SelectVideoViewController: BaseViewController {
     }()
 
     @objc private func nextView () {
-        finalRecordDic["video"] = assetInfo
+        finalRecordDic["thumbnail"] = assetInfo
+        finalRecordDic["videoURL"] = videoURL
         print("finalRecordDic: \(finalRecordDic)")
-        if ( finalRecordDic["place"] as? String != "" && finalRecordDic["sector"] as? String != "" && finalRecordDic["color"] as? ColorChipName != nil && finalRecordDic["video"] != nil) {
+        if ( finalRecordDic["place"] as? String != "" && finalRecordDic["sector"] as? String != "" && finalRecordDic["color"] as? ColorChipName != nil && finalRecordDic["videoURL"] != nil) {
             presentModalBtnTap()
         } else {
             let alert = UIAlertController(title: "확인", message: """
@@ -102,16 +105,16 @@ final class SelectVideoViewController: BaseViewController {
 
     override func viewDidLoad() {
         self.view.backgroundColor = .white
-        
+
         selectCollectionView.delegate = self
         selectCollectionView.dataSource = self
-        
+
         setHierarchy()
         setConstraints()
-        
+
         //사용자가 사진첩에 접근을 허가 했는지 확인
         let photoAurhorizationStatus = PHPhotoLibrary.authorizationStatus()
-        
+
         switch photoAurhorizationStatus {
         case .notDetermined:
             print("아직 응답하지 않음")
@@ -156,11 +159,11 @@ final class SelectVideoViewController: BaseViewController {
         PHPhotoLibrary.shared().register(self)
         setPhoto()
     }
-    
+
     override func setHierarchy() {
         self.view.addSubviews(dotDivider,selectCollectionView,nextButton)
     }
-    
+
     override func setConstraints() {
         dotDivider.snp.makeConstraints {
             $0.top.equalToSuperview().inset(77)
@@ -201,9 +204,11 @@ extension SelectVideoViewController : UICollectionViewDelegate, UICollectionView
         let videoAsset = videos[indexPath.row]
 
         DispatchQueue.global().async {
-            PHImageManager.default().requestAVAsset(forVideo: videoAsset, options: nil) { (avAsset, _, _) in
+            PHImageManager.default().requestAVAsset(forVideo: videoAsset, options: nil) { [self] (avAsset, _, _) in
                 if let urlAsset = avAsset as? AVURLAsset {
                     let url = urlAsset.url
+                    videoUrls.append(url)
+                    print("=== videoUrls: \(videoUrls)")
 
                     let assetDuration = urlAsset.duration
                     let seconds = CMTimeGetSeconds(assetDuration)
@@ -245,6 +250,7 @@ extension SelectVideoViewController : UICollectionViewDelegate, UICollectionView
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let index: IndexPath = indexPath
         assetInfo = self.videos[index.row]
+        videoURL = self.videoUrls[index.row]
     }
 }
 

@@ -141,7 +141,7 @@ final class PostRecordView: UIView {
         return label
     }()
 
-    func setPostRecord(_ thumbnailImage: UIImage, _ place: String, _ sector: String, _ color: ColorChipName) {
+    func setPostRecord(_ thumbnailImage: UIImage, _ place: String, _ sector: String, _ color: ColorChipName, _ colorText: String) {
         thumbnailView.image = thumbnailImage
         placeLabel.text = place
         sectorLabel.text = sector

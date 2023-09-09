@@ -38,8 +38,6 @@
 		02B655392AA5D97700E4AC4F /* GymsAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B655382AA5D97700E4AC4F /* GymsAPI.swift */; };
 		02B6553B2AA5DAFC00E4AC4F /* GymsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B6553A2AA5DAFC00E4AC4F /* GymsService.swift */; };
 		02B6553F2AA63AE400E4AC4F /* UITableview+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B6553E2AA63AE400E4AC4F /* UITableview+Extension.swift */; };
-		02CCDD622A9F292F00301ABF /* RecordRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02CCDD612A9F292F00301ABF /* RecordRequest.swift */; };
-		02CCDD642A9F2AF100301ABF /* RecordAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02CCDD632A9F2AF100301ABF /* RecordAPI.swift */; };
 		02CCDD672A9F2C8A00301ABF /* RecordService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02CCDD662A9F2C8A00301ABF /* RecordService.swift */; };
 		02CCDD692A9F614B00301ABF /* NetworkResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02CCDD682A9F614B00301ABF /* NetworkResult.swift */; };
 		02CCDD6B2A9F617F00301ABF /* BlankDataResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02CCDD6A2A9F617F00301ABF /* BlankDataResponse.swift */; };
@@ -178,8 +176,6 @@
 		02B655382AA5D97700E4AC4F /* GymsAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GymsAPI.swift; sourceTree = "<group>"; };
 		02B6553A2AA5DAFC00E4AC4F /* GymsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GymsService.swift; sourceTree = "<group>"; };
 		02B6553E2AA63AE400E4AC4F /* UITableview+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableview+Extension.swift"; sourceTree = "<group>"; };
-		02CCDD612A9F292F00301ABF /* RecordRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordRequest.swift; sourceTree = "<group>"; };
-		02CCDD632A9F2AF100301ABF /* RecordAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordAPI.swift; sourceTree = "<group>"; };
 		02CCDD662A9F2C8A00301ABF /* RecordService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordService.swift; sourceTree = "<group>"; };
 		02CCDD682A9F614B00301ABF /* NetworkResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkResult.swift; sourceTree = "<group>"; };
 		02CCDD6A2A9F617F00301ABF /* BlankDataResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlankDataResponse.swift; sourceTree = "<group>"; };
@@ -520,7 +516,6 @@
 			children = (
 				5A21C67B2A9A01AA00E7CC95 /* SignUpRequest.swift */,
 				5A21C6932A9B6D4E00E7CC95 /* SignInRequest.swift */,
-				02CCDD612A9F292F00301ABF /* RecordRequest.swift */,
 			);
 			path = Request;
 			sourceTree = "<group>";
@@ -832,7 +827,6 @@
 			isa = PBXGroup;
 			children = (
 				5A21C6782A9A009000E7CC95 /* AuthAPI.swift */,
-				02CCDD632A9F2AF100301ABF /* RecordAPI.swift */,
 				02B655382AA5D97700E4AC4F /* GymsAPI.swift */,
 			);
 			path = API;
@@ -1233,7 +1227,6 @@
 				5A21C6572A98F7DE00E7CC95 /* UserDefaultHandler.swift in Sources */,
 				026BC4942A69102F00F49B87 /* SplashViewController.swift in Sources */,
 				026BC4782A680FE900F49B87 /* SignInView.swift in Sources */,
-				02CCDD642A9F2AF100301ABF /* RecordAPI.swift in Sources */,
 				5A21C67C2A9A01AA00E7CC95 /* SignUpRequest.swift in Sources */,
 				5A1C488F2A76CC9C00CC345A /* VideoCollectionViewCell.swift in Sources */,
 				02B655392AA5D97700E4AC4F /* GymsAPI.swift in Sources */,
@@ -1266,7 +1259,6 @@
 				5A21C6962A9B721E00E7CC95 /* UserToken.swift in Sources */,
 				02E2532F2A8A17DB00D3E9E1 /* PhotoCollectionViewCell.swift in Sources */,
 				5AC80C782A838B5400FE9D6C /* PlayerView.swift in Sources */,
-				02CCDD622A9F292F00301ABF /* RecordRequest.swift in Sources */,
 				02B6553F2AA63AE400E4AC4F /* UITableview+Extension.swift in Sources */,
 				02CCDD6F2A9F623A00301ABF /* NetworkService.swift in Sources */,
 				02E2532F2A8A17DB00D3E9E1 /* PhotoCollectionViewCell.swift in Sources */,

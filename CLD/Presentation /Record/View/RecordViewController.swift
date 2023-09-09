@@ -84,6 +84,7 @@ class RecordViewController: TabmanViewController {
             }
             if let nextViewController = viewControllers[currentPage-1] as? SelectColorViewController {
                 recordDic["color"] = nextViewController.colorInfo
+                recordDic["colorText"] = nextViewController.colorText
             }
             if let currentViewController = viewControllers[currentPage] as? SelectVideoViewController {
                 currentViewController.finalRecordDic = recordDic

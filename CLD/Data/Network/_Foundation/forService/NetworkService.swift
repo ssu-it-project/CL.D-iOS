@@ -12,6 +12,6 @@ final class NetworkService {
 
     private init() { }
 
-    let record = RecordService()
+    //let record = RecordService()
     let gyms = GymsService()
 }
