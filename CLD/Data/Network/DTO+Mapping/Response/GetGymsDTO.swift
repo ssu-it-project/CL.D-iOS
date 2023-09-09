@@ -32,12 +32,6 @@ struct Location: Decodable {
     let x: Double
     let y: Double
     let distance: Double
-
-struct ClimbingGym: Codable {
-    let id: String
-    let type: TypeEnum
-    let place: Place
-
 }
 
 // MARK: - Place
@@ -53,15 +47,14 @@ struct Place: Decodable {
     }
 }
 
-enum TypeEnum: String, Codable {
+enum TypeEnum: String, Decodable {
     case bouldering = "bouldering"
 }
 
 // MARK: - Pagination
-struct Pagination: Codable {
+struct Pagination: Decodable {
     let total, skip, limit: Int
 }
-
 
 extension GetGymsDTO {
     func toDomain() -> GymsVO {
@@ -86,11 +79,3 @@ extension Location {
         return LocationVO(x: x, y: y, distance: distance)
     }
 }
-
-
-
-
-
-
-
-
