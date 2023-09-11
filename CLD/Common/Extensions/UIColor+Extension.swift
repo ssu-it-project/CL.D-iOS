@@ -91,6 +91,10 @@ extension UIColor {
     static var ChipYellow: UIColor {
         return UIColor(hex: "#F0D575")
     }
+
+    static var KakaoYellow: UIColor {
+        return UIColor(hex: "#FEE500")
+    }
 }
 
 extension UIColor {
