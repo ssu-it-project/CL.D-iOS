@@ -18,9 +18,9 @@ enum ImageLiteral {
     
     //MARK: - logo icon
     static var cldLogo: UIImage { .load(named: "cldLogo") }
-    static var kakaoLogo: UIImage { .load(named: "kakaoLogo") }
-    static var appleLogo: UIImage { .load(named: "appleLogo") }
-    static var instaLogo: UIImage { .load(named: "instaLogo") }
+    static var kakaoLogo: UIImage { .load(named: "kakao_login") }
+    static var appleLogo: UIImage { .load(named: "apple_login") }
+    static var instaLogo: UIImage { .load(named: "facebook_login") }
     
     //MARK: - Home
     static var commentIcon: UIImage { .load(named: "commentIcon") }
