@@ -25,6 +25,7 @@ struct LocationVO {
 
 struct PlaceVO {
     let name, addressName, roadAddressName: String
+    let imageURL: String
     let parking: Bool
     let shower: Bool
 }

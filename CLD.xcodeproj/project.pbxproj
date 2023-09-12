@@ -92,7 +92,6 @@
 		5A21C6A62A9BAD5B00E7CC95 /* SNSLoginType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A21C6A52A9BAD5B00E7CC95 /* SNSLoginType.swift */; };
 		5A21C7052A9CF2CF00E7CC95 /* SignInRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A21C7042A9CF2CF00E7CC95 /* SignInRepository.swift */; };
 		5A320FFA2AA5DC87003A40BD /* ClimbingGymTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A320FF92AA5DC87003A40BD /* ClimbingGymTableViewCell.swift */; };
-		5A320FFE2AA5FC5E003A40BD /* ClimeGymsDummy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A320FFD2AA5FC5E003A40BD /* ClimeGymsDummy.swift */; };
 		5A3210002AA60C41003A40BD /* ClimbingGymDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A320FFF2AA60C41003A40BD /* ClimbingGymDetailViewController.swift */; };
 		5A3210022AA6336E003A40BD /* moreVideosView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A3210012AA6336E003A40BD /* moreVideosView.swift */; };
 		5A3210042AA63D04003A40BD /* kakaoMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A3210032AA63D04003A40BD /* kakaoMapView.swift */; };
@@ -223,7 +222,6 @@
 		5A21C7042A9CF2CF00E7CC95 /* SignInRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInRepository.swift; sourceTree = "<group>"; };
 		5A21C7062A9D056F00E7CC95 /* CLD.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CLD.entitlements; sourceTree = "<group>"; };
 		5A320FF92AA5DC87003A40BD /* ClimbingGymTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClimbingGymTableViewCell.swift; sourceTree = "<group>"; };
-		5A320FFD2AA5FC5E003A40BD /* ClimeGymsDummy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClimeGymsDummy.swift; sourceTree = "<group>"; };
 		5A320FFF2AA60C41003A40BD /* ClimbingGymDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClimbingGymDetailViewController.swift; sourceTree = "<group>"; };
 		5A3210012AA6336E003A40BD /* moreVideosView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = moreVideosView.swift; sourceTree = "<group>"; };
 		5A3210032AA63D04003A40BD /* kakaoMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = kakaoMapView.swift; sourceTree = "<group>"; };
@@ -248,7 +246,6 @@
 		5ACADD1C2A5D989300B92C07 /* CLDUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CLDUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		5ACADD5C2A65919400B92C07 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		5ACADD6A2A6592BE00B92C07 /* keep.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = keep.txt; sourceTree = "<group>"; };
-		5ACADD7C2A65931E00B92C07 /* keep.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = keep.txt; sourceTree = "<group>"; };
 		5ACADD842A6593B400B92C07 /* keep.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = keep.txt; sourceTree = "<group>"; };
 		5ACADD8C2A6593CB00B92C07 /* keep.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = keep.txt; sourceTree = "<group>"; };
 		5ACADD8E2A6593D100B92C07 /* keep.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = keep.txt; sourceTree = "<group>"; };
@@ -528,7 +525,6 @@
 			isa = PBXGroup;
 			children = (
 				5A21C6802A9A3C9800E7CC95 /* UserTokenDTO.swift */,
-				5A320FFC2AA5FBEF003A40BD /* Gym */,
 				5A21C6842A9A410400E7CC95 /* BaseErrorDTO.swift */,
 				02B655362AA5D66600E4AC4F /* GetGymsDTO.swift */,
 				5A05DF442AAB04C40050AD55 /* RecordDTO.swift */,
@@ -542,14 +538,6 @@
 				5A320FF92AA5DC87003A40BD /* ClimbingGymTableViewCell.swift */,
 			);
 			path = Cell;
-			sourceTree = "<group>";
-		};
-		5A320FFC2AA5FBEF003A40BD /* Gym */ = {
-			isa = PBXGroup;
-			children = (
-				5A320FFD2AA5FC5E003A40BD /* ClimeGymsDummy.swift */,
-			);
-			path = Gym;
 			sourceTree = "<group>";
 		};
 		5A3210052AA64642003A40BD /* Component */ = {
@@ -802,7 +790,6 @@
 			children = (
 				5A21C67F2A9A3C8200E7CC95 /* Response */,
 				5A21C67A2A9A019A00E7CC95 /* Request */,
-				5ACADD7C2A65931E00B92C07 /* keep.txt */,
 			);
 			path = "DTO+Mapping";
 			sourceTree = "<group>";
@@ -1228,7 +1215,6 @@
 				5A21C65A2A98FAEC00E7CC95 /* BaseTargetType.swift in Sources */,
 				5A3210222AA88A6A003A40BD /* RxViewController+Extension.swift in Sources */,
 				023868C32A70009B0006C762 /* LoginManager.swift in Sources */,
-				5A320FFE2AA5FC5E003A40BD /* ClimeGymsDummy.swift in Sources */,
 				5ADED1BD2A679B6A00C0CBF4 /* UIColor+Extension.swift in Sources */,
 				5A1C488A2A7687FB00CC345A /* CGSize+Extension.swift in Sources */,
 				5ADED1CC2A682B6300C0CBF4 /* TabBarItem.swift in Sources */,
