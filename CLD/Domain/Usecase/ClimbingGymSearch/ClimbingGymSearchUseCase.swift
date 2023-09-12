@@ -16,13 +16,13 @@ enum ClimbingGymSearchError: Error {
 
 
 final class ClimbingGymSearchUseCase {
-    
-    var authorizationDeniedStatus = PublishSubject<Bool>()
-    var coodinate = BehaviorSubject<CLLocationCoordinate2D>(value: CLLocationCoordinate2D(latitude: 0, longitude: 0))
-    
+        
     private let disposeBag = DisposeBag()
     private let locationService: LocationService
     private let gymsRepository: DefaultGymsRepository
+    
+    var authorizationDeniedStatus = PublishSubject<Bool>()
+    var coodinate = BehaviorSubject<CLLocationCoordinate2D>(value: CLLocationCoordinate2D(latitude: 0, longitude: 0))
     
     // MARK: - Initializer
     init(locationService: LocationService, gymsRepository: DefaultGymsRepository) {
