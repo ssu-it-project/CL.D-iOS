@@ -71,6 +71,7 @@ final class TermsViewController: BaseViewController {
             .withUnretained(self)
             .bind(onNext: { owner, toggle in
                 owner.allTermsCheckBox.isSelected = toggle
+                owner.eventInfoTermsCheckView.termsCheckButton.rx.isSelected.onNext(toggle)
             })
             .disposed(by: disposeBag)
         
@@ -80,7 +81,7 @@ final class TermsViewController: BaseViewController {
                 RootHandler.shard.update(.Main)
             }
             .disposed(by: disposeBag)
-                    
+        
         allTermsCheckBox.termsCheckBoxToggleisSeleted()
             .withUnretained(self)
             .emit(onNext: { owner, toggle in

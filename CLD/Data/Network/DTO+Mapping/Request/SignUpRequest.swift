@@ -14,7 +14,7 @@ public struct SignUpRequest: Encodable {
 
 // MARK: - Agreement
 struct Agreement: Encodable {
-    let agree: Bool
+    let agreed: Bool
     let id: String
 }
 
