@@ -101,6 +101,7 @@
 		5A3210202AA88218003A40BD /* ClimbingGymSearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A32101F2AA88218003A40BD /* ClimbingGymSearchViewModel.swift */; };
 		5A3210222AA88A6A003A40BD /* RxViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A3210212AA88A6A003A40BD /* RxViewController+Extension.swift */; };
 		5A7E398D2AB0DCAC00143175 /* RecordVO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A7E398C2AB0DCAC00143175 /* RecordVO.swift */; };
+		5A7E398F2AB0E1D600143175 /* RecordAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A7E398E2AB0E1D600143175 /* RecordAPI.swift */; };
 		5A97A1232A91229F00264AB5 /* RxGesture in Frameworks */ = {isa = PBXBuildFile; productRef = 5A97A1222A91229F00264AB5 /* RxGesture */; };
 		5A97A1252A922F7A00264AB5 /* TermsWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A97A1242A922F7A00264AB5 /* TermsWebViewController.swift */; };
 		5A97A1652A93848F00264AB5 /* TermsCheckListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A97A1642A93848E00264AB5 /* TermsCheckListView.swift */; };
@@ -232,6 +233,7 @@
 		5A32101F2AA88218003A40BD /* ClimbingGymSearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClimbingGymSearchViewModel.swift; sourceTree = "<group>"; };
 		5A3210212AA88A6A003A40BD /* RxViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RxViewController+Extension.swift"; sourceTree = "<group>"; };
 		5A7E398C2AB0DCAC00143175 /* RecordVO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordVO.swift; sourceTree = "<group>"; };
+		5A7E398E2AB0E1D600143175 /* RecordAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordAPI.swift; sourceTree = "<group>"; };
 		5A97A1242A922F7A00264AB5 /* TermsWebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsWebViewController.swift; sourceTree = "<group>"; };
 		5A97A1642A93848E00264AB5 /* TermsCheckListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsCheckListView.swift; sourceTree = "<group>"; };
 		5AC80C772A838B5400FE9D6C /* PlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerView.swift; sourceTree = "<group>"; };
@@ -830,6 +832,7 @@
 			children = (
 				5A21C6782A9A009000E7CC95 /* AuthAPI.swift */,
 				02B655382AA5D97700E4AC4F /* GymsAPI.swift */,
+				5A7E398E2AB0E1D600143175 /* RecordAPI.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -1237,6 +1240,7 @@
 				5A1C488F2A76CC9C00CC345A /* VideoCollectionViewCell.swift in Sources */,
 				02B655392AA5D97700E4AC4F /* GymsAPI.swift in Sources */,
 				02CCDD672A9F2C8A00301ABF /* RecordService.swift in Sources */,
+				5A7E398F2AB0E1D600143175 /* RecordAPI.swift in Sources */,
 				5A21C6982A9B749800E7CC95 /* SignInUseCase.swift in Sources */,
 				5ACADCFA2A5D988F00B92C07 /* AppDelegate.swift in Sources */,
 				5ADED1C32A67A1B300C0CBF4 /* ViewModelType.swift in Sources */,
