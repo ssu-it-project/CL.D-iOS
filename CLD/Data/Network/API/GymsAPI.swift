@@ -12,19 +12,24 @@ import Moya
 enum GymsAPI {
     case getGyms(keyword: String, limit: Int, skip: Int)
     case getLocationGyms(x: Double, y: Double, keyword: String, limit: Int, skip: Int)
+    case getDetailGym(id: String)
 }
 
 extension GymsAPI: BaseTargetType {
     var path: String {
+        let baseDetailGymRoutePath: String = "/clime/gym"
+        
         switch self {
         case .getGyms, .getLocationGyms:
             return URLConst.gyms
+        case .getDetailGym(let id):
+            return baseDetailGymRoutePath + "/\(id)"
         }
     }
 
     var method: Moya.Method {
         switch self {
-        case .getGyms, .getLocationGyms:
+        case .getGyms, .getLocationGyms, .getDetailGym:
             return .get
         }
     }
@@ -45,6 +50,8 @@ extension GymsAPI: BaseTargetType {
                 "limit": limit,
                 "skip": skip
             ], encoding: URLEncoding.default)
+        case .getDetailGym:
+            return .requestPlain
         }
     }
 }

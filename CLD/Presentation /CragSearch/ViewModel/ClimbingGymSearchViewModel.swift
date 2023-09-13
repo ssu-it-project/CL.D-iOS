@@ -14,11 +14,11 @@ import RxSwift
 class ClimbingGymSearchViewModel: ViewModelType {
     var disposeBag = DisposeBag()
     
-    private let useCase: ClimbingGymSearchUseCase
+    private let useCase: ClimbingGymUseCase
     
     // MARK: - Initializer
     init(
-        useCase: ClimbingGymSearchUseCase
+        useCase: ClimbingGymUseCase
     ) {
         self.useCase = useCase
     }
@@ -50,7 +50,7 @@ class ClimbingGymSearchViewModel: ViewModelType {
         input.viewWillAppearEvent
             .withUnretained(self)
             .subscribe(onNext: { owner, _ in
-                owner.getLocationGyms(longitude: output.currentUserLocation.value.latitude, latitude: output.currentUserLocation.value.longitude, keyword: "", limit: 5, skip: 5, output: output)
+                owner.getLocationGyms(longitude: output.currentUserLocation.value.latitude, latitude: output.currentUserLocation.value.longitude, keyword: "", limit: 10, skip: 10, output: output)
             })
             .disposed(by: disposeBag)
         
@@ -64,8 +64,10 @@ class ClimbingGymSearchViewModel: ViewModelType {
         
         return output
     }
-    
-    func getLocationGyms(longitude: Double, latitude: Double, keyword: String, limit: Int, skip: Int, output: Output) {
+}
+
+extension ClimbingGymSearchViewModel {
+    private func getLocationGyms(longitude: Double, latitude: Double, keyword: String, limit: Int, skip: Int, output: Output) {
         useCase.getLocationGyms(longitude: longitude, latitude: latitude, keyword: keyword, limit: limit, skip: skip)
             .subscribe { response in
                 switch response {

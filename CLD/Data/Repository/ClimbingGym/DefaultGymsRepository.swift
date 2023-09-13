@@ -10,7 +10,7 @@ import Foundation
 import Moya
 import RxSwift
 
-final class DefaultGymsRepository {
+final class DefaultGymsRepository: GymsRepository {
     
     private let gymsService: CommonMoyaProvider<GymsAPI>
     
@@ -32,9 +32,30 @@ final class DefaultGymsRepository {
                             observer(.failure(error))
                         }
                     } else {
-                        observer(.failure(ClimbingGymSearchError.failGymSearchError))
+                        observer(.failure(ClimbingGymError.GymSearchError))
                     }
                     
+                    return Disposables.create()
+                }
+            }
+    }
+    
+    func getDetailGym(id: String) -> Single<DetailGymVO> {
+        return gymsService.rx.request(.getDetailGym(id: id))
+            .flatMap { response in
+                return Single<DetailGymVO>.create { observer in
+                    if (200..<300).contains(response.statusCode) {
+                        do {
+                            let detailGymDTO = try response.map(DetailGymDTO.self)
+                            let detailGymVO = detailGymDTO.toDomain()
+                            observer(.success(detailGymVO))
+                        } catch {
+                            print("====", error)
+                            observer(.failure(error))
+                        }
+                    } else {
+                        observer(.failure(ClimbingGymError.detailGymError))
+                    }
                     return Disposables.create()
                 }
             }

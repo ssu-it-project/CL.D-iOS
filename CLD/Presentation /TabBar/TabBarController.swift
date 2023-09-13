@@ -39,11 +39,11 @@ final class TabBarController: UITabBarController {
             
             switch tabBarItem {
             case .home:
-                viewController = UINavigationController(rootViewController: HomeViewController())
+                viewController = UINavigationController(rootViewController: HomeViewController(viewModel: HomeViewModel(useCase: DefaultHomeRecordUseCase(homeRecordRepository: DefaultHomeRecordRepository()))))
             case .cragSearch:
-                viewController = UINavigationController(rootViewController: ClimbingGymSearchViewController(viewModel: ClimbingGymSearchViewModel(useCase: ClimbingGymSearchUseCase(locationService: DefaultLocationManager(), gymsRepository: DefaultGymsRepository()))))
+                viewController = UINavigationController(rootViewController: ClimbingGymSearchViewController(viewModel: ClimbingGymSearchViewModel(useCase: DefaultClimbingGymUseCase(locationService: DefaultLocationManager(), gymsRepository: DefaultGymsRepository()))))
             case .record:
-                viewController = UINavigationController(rootViewController: HomeViewController())
+                viewController = UINavigationController(rootViewController: HomeViewController(viewModel: HomeViewModel(useCase: DefaultHomeRecordUseCase(homeRecordRepository: DefaultHomeRecordRepository()))))
             case .community:
                 viewController = UINavigationController(rootViewController: CommunityViewController())
             case .myPage:

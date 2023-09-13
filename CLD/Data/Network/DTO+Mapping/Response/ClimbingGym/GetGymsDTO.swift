@@ -19,7 +19,6 @@ struct GetGymsDTO: Decodable {
 }
 
 // MARK: - ClimbingGym
-
 struct ClimbingGym: Decodable {
     let id: String
     let type: String
@@ -37,6 +36,7 @@ struct Location: Decodable {
 // MARK: - Place
 struct Place: Decodable {
     let name, addressName, roadAddressName: String
+    let imageURL: String
     let parking, shower: Bool
     
     enum CodingKeys: String, CodingKey {
@@ -44,6 +44,7 @@ struct Place: Decodable {
         case name, parking
         case roadAddressName = "road_address_name"
         case shower
+        case imageURL = "image_url"
     }
 }
 
@@ -70,7 +71,7 @@ extension GetGymsDTO {
 
 extension Place {
     func toDomain() -> PlaceVO {
-        return PlaceVO(name: name, addressName: addressName, roadAddressName: roadAddressName, parking: parking, shower: shower)
+        return PlaceVO(name: name, addressName: addressName, roadAddressName: roadAddressName, imageURL: imageURL, parking: parking, shower: shower)
     }
 }
 

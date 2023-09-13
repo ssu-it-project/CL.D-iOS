@@ -66,7 +66,7 @@ final class kakaoMapView: UIView {
         mapView.snp.makeConstraints { make in
             make.top.equalToSuperview().inset(15)
             make.leading.trailing.equalToSuperview().inset(20)
-            make.height.equalTo(120)
+            make.height.equalTo(180)
         }
         
         addressLabel.snp.makeConstraints { make in
@@ -79,6 +79,7 @@ final class kakaoMapView: UIView {
             make.top.equalTo(addressLabel.snp.bottom).offset(6)
             make.leading.equalToSuperview().inset(20)
             make.trailing.equalToSuperview().inset(10).priority(.high)
+            make.height.equalTo(addressLabel.snp.height)
         }
         
         videoButton.snp.makeConstraints { make in

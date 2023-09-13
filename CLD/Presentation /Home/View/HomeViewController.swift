@@ -29,6 +29,13 @@ final class HomeViewController: BaseViewController {
     
     var url: [String] = []
     
+    private var viewModel: HomeViewModel
+    
+    init(viewModel: HomeViewModel) {
+        self.viewModel = viewModel
+        super.init()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionView.backgroundColor = .clear
@@ -44,6 +51,17 @@ final class HomeViewController: BaseViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         pauseAllVideoCells()
+    }
+    
+    override func Bind() {
+        let input = HomeViewModel.Input(viewWillAppearEvent: rx.viewWillAppear.map { _ in })
+        let output = viewModel.transform(input: input)
+        
+        output.homeRecordList
+            .subscribe { recordList in
+                print("===", recordList)
+            }
+            .disposed(by: disposeBag)
     }
     
     private func setUpDataSource() {

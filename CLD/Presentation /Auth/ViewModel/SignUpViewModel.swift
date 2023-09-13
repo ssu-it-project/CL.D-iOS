@@ -14,6 +14,7 @@ class SignUpViewModel: ViewModelType {
     var disposeBag = DisposeBag()
     
     private let useCase: SignUpUseCase
+    private var eventInfoTermsAgreed = false
     
     // MARK: - Initializer
     init(
@@ -33,7 +34,6 @@ class SignUpViewModel: ViewModelType {
     struct Output {
         let totalTermsChecked = PublishRelay<Bool>()
         let nextButtonEnabled = PublishRelay<Bool>()
-        let eventInfoTermsAgreed = BehaviorRelay<Bool>(value: false)
         let didSuccessSignUp = PublishRelay<Bool>()
     }
     
@@ -53,21 +53,29 @@ class SignUpViewModel: ViewModelType {
             .disposed(by: disposeBag)
         
         input.eventInfoTerms
-            .bind(to: output.eventInfoTermsAgreed)
+            .withUnretained(self)
+            .bind { owner, bool in
+                owner.eventInfoTermsAgreed = bool
+            }
             .disposed(by: disposeBag)
-        
+
         input.signUpButtonTapped
             .withUnretained(self)
-            .subscribe(onNext: { onwer, _ in
-                let requestDTO = SignUpRequest(agreements: [Agreement(agree: output.eventInfoTermsAgreed.value, id: "64dcf036ce81c3226358cfc8")], auth: Auth(accessToken: UserDefaultHandler.snsAccessToken, device: DeviceData(deviceID: UUID.getDeviceUUID()), loginType: UserDefaultHandler.snsLoginType))
+            .subscribe(onNext: { owner, _ in
+                let requestDTO = SignUpRequest(
+                    agreements: [TermsType.termsOfUseRequired.agreement(agree: true), TermsType.personalInfoCollectionRequired.agreement(agree: true),
+                        TermsType.eventInfoConsent.agreement(agree: owner.eventInfoTermsAgreed)],
+                    auth: Auth(accessToken: UserDefaultHandler.snsAccessToken,
+                    device: DeviceData(deviceID: UUID.getDeviceUUID()),
+                    loginType: UserDefaultHandler.snsLoginType))
                 dump(requestDTO)
-                onwer.trySignUp(output: output, requestDTO: requestDTO)
+                owner.trySignUp(output: output, requestDTO: requestDTO)
             })
             .disposed(by: disposeBag)
         
         return output
     }
-    
+        
     private func trySignUp(output: Output, requestDTO: SignUpRequest) {
         useCase.trySignUp(requestDTO: requestDTO)
             .subscribe { response in

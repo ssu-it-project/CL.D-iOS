@@ -7,37 +7,46 @@
 
 import UIKit
 
+import RxSwift
+import RxCocoa
+
 final class ClimbingGymDetailViewController: BaseViewController {
     
-    private let scrollView = UIScrollView()
+    private let scrollView: UIScrollView = {
+        let scrollView = UIScrollView()
+        scrollView.showsVerticalScrollIndicator = false
+        return scrollView
+    }()
     private lazy var stackView: UIStackView = {
         let stackView = UIStackView()
-        stackView.addArrangedSubviews(videoView, locationTitleLabel, kakaoMapContentView)
+        stackView.addArrangedSubviews(kakaoMapContentView, videoView)
         stackView.axis = .vertical
         stackView.spacing = 10
         return stackView
     }()
     private let videoView = moreVideosView()
-    private let locationTitleLabel: UILabel = {
-        let label = UILabel()
-        label.sizeToFit()
-        label.font = UIFont(name: "Roboto-Medium", size: 16)
-        label.textColor = .black
-        label.text = "위치 정보"
-        return label
-    }()
     private let kakaoMapContentView = kakaoMapView()
     
-    private var id: String
+    private var viewModel: ClimbingGymDetailViewModel
     
-    init(id: String) {
-        self.id = id
+    init(viewModel: ClimbingGymDetailViewModel) {
+        self.viewModel = viewModel
         super.init()
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        print(id)
+    }
+    
+    override func Bind() {
+        let input = ClimbingGymDetailViewModel.Input(viewDidLoadEvent: Observable.just(()).asObservable())
+        let output = viewModel.transform(input: input)
+        
+        output.placeVO
+            .bind { placeVO in
+                print("===", placeVO)
+            }
+            .disposed(by: disposeBag)
     }
     
     override func setHierarchy() {
@@ -47,20 +56,21 @@ final class ClimbingGymDetailViewController: BaseViewController {
     
     override func setConstraints() {
         scrollView.snp.makeConstraints { make in
-            make.top.bottom.equalTo(view.safeAreaLayoutGuide)
+            make.top.equalTo(view.safeAreaLayoutGuide)
             make.leading.trailing.equalTo(view.safeAreaLayoutGuide).inset(26)
+            make.bottom.equalTo(view.safeAreaLayoutGuide)
         }
         
         stackView.snp.makeConstraints { make in
             make.edges.width.equalToSuperview()
         }
         
-        videoView.snp.makeConstraints { make in
-            make.height.equalTo(150)
+        kakaoMapContentView.snp.makeConstraints { make in
+            make.height.equalTo(view.safeAreaLayoutGuide.snp.height).multipliedBy(0.4)
         }
         
-        kakaoMapContentView.snp.makeConstraints { make in
-            make.height.equalTo(250)
+        videoView.snp.makeConstraints { make in
+            make.height.equalTo(view.safeAreaLayoutGuide.snp.height).multipliedBy(0.59)
         }
     }
     
