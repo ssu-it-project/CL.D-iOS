@@ -21,14 +21,14 @@ protocol HomeRecordUseCase {
 final class DefaultHomeRecordUseCase: HomeRecordUseCase {
     
     private let disposeBag = DisposeBag()
-    private let recordRepository: RecordRepository
+    private let homeRecordRepository: HomeRecordRepository
     
     // MARK: - Initializer
-    init(recordRepository: RecordRepository) {
-        self.recordRepository = recordRepository
+    init(homeRecordRepository: HomeRecordRepository) {
+        self.homeRecordRepository = homeRecordRepository
     }
     
     func getHomeRecords(limit: Int, skip: Int) -> Single<RecordListVO> {
-        recordRepository.getRecords(limit: limit, skip: skip)
+        homeRecordRepository.getRecords(limit: limit, skip: skip)
     }
 }
