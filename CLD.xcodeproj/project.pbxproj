@@ -97,7 +97,7 @@
 		5A3210042AA63D04003A40BD /* kakaoMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A3210032AA63D04003A40BD /* kakaoMapView.swift */; };
 		5A3210072AA649D6003A40BD /* LevelBadge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A3210062AA649D6003A40BD /* LevelBadge.swift */; };
 		5A3210162AA80081003A40BD /* DefaultLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A3210152AA80081003A40BD /* DefaultLocationManager.swift */; };
-		5A32101E2AA87EE4003A40BD /* ClimbingGymSearchUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A32101D2AA87EE4003A40BD /* ClimbingGymSearchUseCase.swift */; };
+		5A32101E2AA87EE4003A40BD /* ClimbingGymUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A32101D2AA87EE4003A40BD /* ClimbingGymUseCase.swift */; };
 		5A3210202AA88218003A40BD /* ClimbingGymSearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A32101F2AA88218003A40BD /* ClimbingGymSearchViewModel.swift */; };
 		5A3210222AA88A6A003A40BD /* RxViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A3210212AA88A6A003A40BD /* RxViewController+Extension.swift */; };
 		5A7E398D2AB0DCAC00143175 /* RecordVO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A7E398C2AB0DCAC00143175 /* RecordVO.swift */; };
@@ -105,6 +105,10 @@
 		5A7E39992AB1467600143175 /* HomeRecordUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A7E39982AB1467600143175 /* HomeRecordUseCase.swift */; };
 		5A7E399D2AB148C300143175 /* RecordRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A7E399C2AB148C300143175 /* RecordRepository.swift */; };
 		5A7E399F2AB158A800143175 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A7E399E2AB158A800143175 /* HomeViewModel.swift */; };
+		5A7E39AC2AB2188600143175 /* DetailGymDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A7E39AB2AB2188600143175 /* DetailGymDTO.swift */; };
+		5A7E39B12AB21A9600143175 /* DetailGymVO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A7E39B02AB21A9600143175 /* DetailGymVO.swift */; };
+		5A7E39B42AB2214400143175 /* GymsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A7E39B32AB2214400143175 /* GymsRepository.swift */; };
+		5A7E39B62AB2226700143175 /* ClimbingGymDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A7E39B52AB2226700143175 /* ClimbingGymDetailViewModel.swift */; };
 		5A97A1232A91229F00264AB5 /* RxGesture in Frameworks */ = {isa = PBXBuildFile; productRef = 5A97A1222A91229F00264AB5 /* RxGesture */; };
 		5A97A1252A922F7A00264AB5 /* TermsWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A97A1242A922F7A00264AB5 /* TermsWebViewController.swift */; };
 		5A97A1652A93848F00264AB5 /* TermsCheckListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A97A1642A93848E00264AB5 /* TermsCheckListView.swift */; };
@@ -232,7 +236,7 @@
 		5A3210032AA63D04003A40BD /* kakaoMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = kakaoMapView.swift; sourceTree = "<group>"; };
 		5A3210062AA649D6003A40BD /* LevelBadge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelBadge.swift; sourceTree = "<group>"; };
 		5A3210152AA80081003A40BD /* DefaultLocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultLocationManager.swift; sourceTree = "<group>"; };
-		5A32101D2AA87EE4003A40BD /* ClimbingGymSearchUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClimbingGymSearchUseCase.swift; sourceTree = "<group>"; };
+		5A32101D2AA87EE4003A40BD /* ClimbingGymUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClimbingGymUseCase.swift; sourceTree = "<group>"; };
 		5A32101F2AA88218003A40BD /* ClimbingGymSearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClimbingGymSearchViewModel.swift; sourceTree = "<group>"; };
 		5A3210212AA88A6A003A40BD /* RxViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RxViewController+Extension.swift"; sourceTree = "<group>"; };
 		5A7E398C2AB0DCAC00143175 /* RecordVO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordVO.swift; sourceTree = "<group>"; };
@@ -240,6 +244,10 @@
 		5A7E39982AB1467600143175 /* HomeRecordUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeRecordUseCase.swift; sourceTree = "<group>"; };
 		5A7E399C2AB148C300143175 /* RecordRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordRepository.swift; sourceTree = "<group>"; };
 		5A7E399E2AB158A800143175 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		5A7E39AB2AB2188600143175 /* DetailGymDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailGymDTO.swift; sourceTree = "<group>"; };
+		5A7E39B02AB21A9600143175 /* DetailGymVO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailGymVO.swift; sourceTree = "<group>"; };
+		5A7E39B32AB2214400143175 /* GymsRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GymsRepository.swift; sourceTree = "<group>"; };
+		5A7E39B52AB2226700143175 /* ClimbingGymDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClimbingGymDetailViewModel.swift; sourceTree = "<group>"; };
 		5A97A1242A922F7A00264AB5 /* TermsWebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsWebViewController.swift; sourceTree = "<group>"; };
 		5A97A1642A93848E00264AB5 /* TermsCheckListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsCheckListView.swift; sourceTree = "<group>"; };
 		5AC80C772A838B5400FE9D6C /* PlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerView.swift; sourceTree = "<group>"; };
@@ -455,12 +463,12 @@
 			path = Auth;
 			sourceTree = "<group>";
 		};
-		5A05DEEB2AA8DD980050AD55 /* ClimbingGymSearch */ = {
+		5A05DEEB2AA8DD980050AD55 /* ClimbingGym */ = {
 			isa = PBXGroup;
 			children = (
 				5A05DEEC2AA8DE2E0050AD55 /* DefaultGymsRepository.swift */,
 			);
-			path = ClimbingGymSearch;
+			path = ClimbingGym;
 			sourceTree = "<group>";
 		};
 		5A05DEEE2AA8E0360050AD55 /* Auth */ = {
@@ -471,12 +479,13 @@
 			path = Auth;
 			sourceTree = "<group>";
 		};
-		5A05DEEF2AA8E0430050AD55 /* ClimbingGymSearch */ = {
+		5A05DEEF2AA8E0430050AD55 /* ClimbingGym */ = {
 			isa = PBXGroup;
 			children = (
 				5A05DEF02AA8E0560050AD55 /* GymsVO.swift */,
+				5A7E39B02AB21A9600143175 /* DetailGymVO.swift */,
 			);
-			path = ClimbingGymSearch;
+			path = ClimbingGym;
 			sourceTree = "<group>";
 		};
 		5A05DF412AAB03400050AD55 /* Record */ = {
@@ -533,10 +542,10 @@
 		5A21C67F2A9A3C8200E7CC95 /* Response */ = {
 			isa = PBXGroup;
 			children = (
-				5A21C6802A9A3C9800E7CC95 /* UserTokenDTO.swift */,
+				5A7E39AF2AB218C800143175 /* Record */,
+				5A7E39AE2AB218BD00143175 /* Auth */,
+				5A7E39AD2AB2189A00143175 /* ClimbingGym */,
 				5A21C6842A9A410400E7CC95 /* BaseErrorDTO.swift */,
-				02B655362AA5D66600E4AC4F /* GetGymsDTO.swift */,
-				5A05DF442AAB04C40050AD55 /* RecordDTO.swift */,
 			);
 			path = Response;
 			sourceTree = "<group>";
@@ -558,12 +567,12 @@
 			path = Component;
 			sourceTree = "<group>";
 		};
-		5A32101B2AA87EA1003A40BD /* ClimbingGymSearch */ = {
+		5A32101B2AA87EA1003A40BD /* ClimbingGym */ = {
 			isa = PBXGroup;
 			children = (
-				5A32101D2AA87EE4003A40BD /* ClimbingGymSearchUseCase.swift */,
+				5A32101D2AA87EE4003A40BD /* ClimbingGymUseCase.swift */,
 			);
-			path = ClimbingGymSearch;
+			path = ClimbingGym;
 			sourceTree = "<group>";
 		};
 		5A32101C2AA87EA8003A40BD /* Auth */ = {
@@ -614,6 +623,39 @@
 				5A7E399C2AB148C300143175 /* RecordRepository.swift */,
 			);
 			path = Record;
+			sourceTree = "<group>";
+		};
+		5A7E39AD2AB2189A00143175 /* ClimbingGym */ = {
+			isa = PBXGroup;
+			children = (
+				5A7E39AB2AB2188600143175 /* DetailGymDTO.swift */,
+				02B655362AA5D66600E4AC4F /* GetGymsDTO.swift */,
+			);
+			path = ClimbingGym;
+			sourceTree = "<group>";
+		};
+		5A7E39AE2AB218BD00143175 /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				5A21C6802A9A3C9800E7CC95 /* UserTokenDTO.swift */,
+			);
+			path = Auth;
+			sourceTree = "<group>";
+		};
+		5A7E39AF2AB218C800143175 /* Record */ = {
+			isa = PBXGroup;
+			children = (
+				5A05DF442AAB04C40050AD55 /* RecordDTO.swift */,
+			);
+			path = Record;
+			sourceTree = "<group>";
+		};
+		5A7E39B22AB2211A00143175 /* ClimbingGym */ = {
+			isa = PBXGroup;
+			children = (
+				5A7E39B32AB2214400143175 /* GymsRepository.swift */,
+			);
+			path = ClimbingGym;
 			sourceTree = "<group>";
 		};
 		5ACADCED2A5D988F00B92C07 = {
@@ -852,7 +894,7 @@
 			children = (
 				5A05DF412AAB03400050AD55 /* Record */,
 				5A05DEEA2AA8DD8D0050AD55 /* Auth */,
-				5A05DEEB2AA8DD980050AD55 /* ClimbingGymSearch */,
+				5A05DEEB2AA8DD980050AD55 /* ClimbingGym */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -870,6 +912,7 @@
 		5ACADD542A658DE400B92C07 /* RepositoryInterface */ = {
 			isa = PBXGroup;
 			children = (
+				5A7E39B22AB2211A00143175 /* ClimbingGym */,
 				5A7E399B2AB148A000143175 /* Record */,
 				5A7E399A2AB1489000143175 /* Auth */,
 			);
@@ -880,7 +923,7 @@
 			isa = PBXGroup;
 			children = (
 				5A7E398B2AB0DC9B00143175 /* Record */,
-				5A05DEEF2AA8E0430050AD55 /* ClimbingGymSearch */,
+				5A05DEEF2AA8E0430050AD55 /* ClimbingGym */,
 				5A05DEEE2AA8E0360050AD55 /* Auth */,
 			);
 			path = VO;
@@ -891,7 +934,7 @@
 			children = (
 				5A32101C2AA87EA8003A40BD /* Auth */,
 				5A7E39972AB1456500143175 /* Home */,
-				5A32101B2AA87EA1003A40BD /* ClimbingGymSearch */,
+				5A32101B2AA87EA1003A40BD /* ClimbingGym */,
 			);
 			path = Usecase;
 			sourceTree = "<group>";
@@ -975,6 +1018,7 @@
 			isa = PBXGroup;
 			children = (
 				5A32101F2AA88218003A40BD /* ClimbingGymSearchViewModel.swift */,
+				5A7E39B52AB2226700143175 /* ClimbingGymDetailViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -1223,7 +1267,7 @@
 			files = (
 				02DC9AC52A75789800F8989E /* SelectListCell.swift in Sources */,
 				5ADED1AF2A66AEAD00C0CBF4 /* UICollectionView+Extension.swift in Sources */,
-				5A32101E2AA87EE4003A40BD /* ClimbingGymSearchUseCase.swift in Sources */,
+				5A32101E2AA87EE4003A40BD /* ClimbingGymUseCase.swift in Sources */,
 				020F65532A7D09450036CFB1 /* SelectVideoViewController.swift in Sources */,
 				029E36242A9E36EB0069A773 /* PlaceTableViewCell.swift in Sources */,
 				02EB6E862A88C45A00C749A6 /* CALayer+Extension.swift in Sources */,
@@ -1231,6 +1275,8 @@
 				5A21C68B2A9A76D200E7CC95 /* DefaultSignInRepository.swift in Sources */,
 				5A21C69E2A9B8ED700E7CC95 /* UUID.swift in Sources */,
 				5A21C7052A9CF2CF00E7CC95 /* SignInRepository.swift in Sources */,
+				5A7E39AC2AB2188600143175 /* DetailGymDTO.swift in Sources */,
+				5A7E39B42AB2214400143175 /* GymsRepository.swift in Sources */,
 				5A21C6852A9A410400E7CC95 /* BaseErrorDTO.swift in Sources */,
 				0281723E2A793B900089FD51 /* SelectColorCell.swift in Sources */,
 				020F65492A7B72050036CFB1 /* SelectListView.swift in Sources */,
@@ -1272,6 +1318,7 @@
 				026BC4782A680FE900F49B87 /* SignInView.swift in Sources */,
 				5A21C67C2A9A01AA00E7CC95 /* SignUpRequest.swift in Sources */,
 				5A1C488F2A76CC9C00CC345A /* VideoCollectionViewCell.swift in Sources */,
+				5A7E39B62AB2226700143175 /* ClimbingGymDetailViewModel.swift in Sources */,
 				5A7E399D2AB148C300143175 /* RecordRepository.swift in Sources */,
 				02B655392AA5D97700E4AC4F /* GymsAPI.swift in Sources */,
 				02CCDD672A9F2C8A00301ABF /* RecordService.swift in Sources */,
@@ -1324,6 +1371,7 @@
 				5ADED1B92A678E9C00C0CBF4 /* UILabel+Extension.swift in Sources */,
 				5A97A1252A922F7A00264AB5 /* TermsWebViewController.swift in Sources */,
 				5AEFAAC32A8D178600A67C43 /* SignUpViewModel.swift in Sources */,
+				5A7E39B12AB21A9600143175 /* DetailGymVO.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

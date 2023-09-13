@@ -12,7 +12,6 @@ struct RecordListVO {
     let records: [RecordVO]
 }
 
-// MARK: - Record
 struct RecordVO {
     let author: AuthorVO
     let climbingGymInfo: ClimbingGymInfoVO
@@ -24,17 +23,14 @@ struct RecordVO {
     let viewCount: Int
 }
 
-// MARK: - Author
 struct AuthorVO {
     let id, nickname, profileImage: String
 }
 
-// MARK: - ClimbingGymInfo
 struct ClimbingGymInfoVO {
     let id, name: String
 }
 
-// MARK: - DateClass
 struct DateClassVO {
     let created, modified: String
 }
