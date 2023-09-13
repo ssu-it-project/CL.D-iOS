@@ -73,7 +73,7 @@ final class ClimbingGymSearchViewController: BaseViewController {
         
         Observable.zip(climbingGymTableView.rx.modelSelected(ClimbingGymVO.self), climbingGymTableView.rx.itemSelected)
             .bind { [weak self] ( item, indexPath) in
-                let detailViewController = ClimbingGymDetailViewController(id: item.id)
+                let detailViewController = ClimbingGymDetailViewController(viewModel: ClimbingGymDetailViewModel(id: item.id, useCase: DefaultClimbingGymDetailUseCase(gymsRepository: DefaultGymsRepository())))
                 self?.navigationController?.pushViewController(detailViewController, animated: true)
             }
             .disposed(by: disposeBag)
