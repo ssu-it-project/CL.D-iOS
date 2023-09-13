@@ -102,6 +102,9 @@
 		5A3210222AA88A6A003A40BD /* RxViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A3210212AA88A6A003A40BD /* RxViewController+Extension.swift */; };
 		5A7E398D2AB0DCAC00143175 /* RecordVO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A7E398C2AB0DCAC00143175 /* RecordVO.swift */; };
 		5A7E398F2AB0E1D600143175 /* RecordAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A7E398E2AB0E1D600143175 /* RecordAPI.swift */; };
+		5A7E39992AB1467600143175 /* HomeRecordUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A7E39982AB1467600143175 /* HomeRecordUseCase.swift */; };
+		5A7E399D2AB148C300143175 /* RecordRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A7E399C2AB148C300143175 /* RecordRepository.swift */; };
+		5A7E399F2AB158A800143175 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A7E399E2AB158A800143175 /* HomeViewModel.swift */; };
 		5A97A1232A91229F00264AB5 /* RxGesture in Frameworks */ = {isa = PBXBuildFile; productRef = 5A97A1222A91229F00264AB5 /* RxGesture */; };
 		5A97A1252A922F7A00264AB5 /* TermsWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A97A1242A922F7A00264AB5 /* TermsWebViewController.swift */; };
 		5A97A1652A93848F00264AB5 /* TermsCheckListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A97A1642A93848E00264AB5 /* TermsCheckListView.swift */; };
@@ -234,6 +237,9 @@
 		5A3210212AA88A6A003A40BD /* RxViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RxViewController+Extension.swift"; sourceTree = "<group>"; };
 		5A7E398C2AB0DCAC00143175 /* RecordVO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordVO.swift; sourceTree = "<group>"; };
 		5A7E398E2AB0E1D600143175 /* RecordAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordAPI.swift; sourceTree = "<group>"; };
+		5A7E39982AB1467600143175 /* HomeRecordUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeRecordUseCase.swift; sourceTree = "<group>"; };
+		5A7E399C2AB148C300143175 /* RecordRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordRepository.swift; sourceTree = "<group>"; };
+		5A7E399E2AB158A800143175 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		5A97A1242A922F7A00264AB5 /* TermsWebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsWebViewController.swift; sourceTree = "<group>"; };
 		5A97A1642A93848E00264AB5 /* TermsCheckListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsCheckListView.swift; sourceTree = "<group>"; };
 		5AC80C772A838B5400FE9D6C /* PlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerView.swift; sourceTree = "<group>"; };
@@ -250,7 +256,6 @@
 		5ACADD1C2A5D989300B92C07 /* CLDUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CLDUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		5ACADD5C2A65919400B92C07 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		5ACADD6A2A6592BE00B92C07 /* keep.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = keep.txt; sourceTree = "<group>"; };
-		5ACADD842A6593B400B92C07 /* keep.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = keep.txt; sourceTree = "<group>"; };
 		5ACADD8C2A6593CB00B92C07 /* keep.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = keep.txt; sourceTree = "<group>"; };
 		5ACADD8E2A6593D100B92C07 /* keep.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = keep.txt; sourceTree = "<group>"; };
 		5ACADD902A6593D600B92C07 /* keep.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = keep.txt; sourceTree = "<group>"; };
@@ -586,6 +591,31 @@
 			path = Record;
 			sourceTree = "<group>";
 		};
+		5A7E39972AB1456500143175 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				5A7E39982AB1467600143175 /* HomeRecordUseCase.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		5A7E399A2AB1489000143175 /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				5A21C7042A9CF2CF00E7CC95 /* SignInRepository.swift */,
+			);
+			name = Auth;
+			path = "며소";
+			sourceTree = "<group>";
+		};
+		5A7E399B2AB148A000143175 /* Record */ = {
+			isa = PBXGroup;
+			children = (
+				5A7E399C2AB148C300143175 /* RecordRepository.swift */,
+			);
+			path = Record;
+			sourceTree = "<group>";
+		};
 		5ACADCED2A5D988F00B92C07 = {
 			isa = PBXGroup;
 			children = (
@@ -840,7 +870,8 @@
 		5ACADD542A658DE400B92C07 /* RepositoryInterface */ = {
 			isa = PBXGroup;
 			children = (
-				5A21C7042A9CF2CF00E7CC95 /* SignInRepository.swift */,
+				5A7E399B2AB148A000143175 /* Record */,
+				5A7E399A2AB1489000143175 /* Auth */,
 			);
 			path = RepositoryInterface;
 			sourceTree = "<group>";
@@ -859,6 +890,7 @@
 			isa = PBXGroup;
 			children = (
 				5A32101C2AA87EA8003A40BD /* Auth */,
+				5A7E39972AB1456500143175 /* Home */,
 				5A32101B2AA87EA1003A40BD /* ClimbingGymSearch */,
 			);
 			path = Usecase;
@@ -923,7 +955,7 @@
 		5ACADD5F2A65921C00B92C07 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				5ACADD842A6593B400B92C07 /* keep.txt */,
+				5A7E399E2AB158A800143175 /* HomeViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -1224,10 +1256,12 @@
 				02CCDD6D2A9F61A500301ABF /* ErrorResponse.swift in Sources */,
 				5AEFAAE92A8E3E5E00A67C43 /* CLDButton.swift in Sources */,
 				5ADED1BF2A679FB100C0CBF4 /* UIImage+Extension.swift in Sources */,
+				5A7E39992AB1467600143175 /* HomeRecordUseCase.swift in Sources */,
 				5AEFAAA02A8B966900A67C43 /* TermsViewController.swift in Sources */,
 				5A21C6942A9B6D4E00E7CC95 /* SignInRequest.swift in Sources */,
 				5A21C6792A9A009000E7CC95 /* AuthAPI.swift in Sources */,
 				5A21C65A2A98FAEC00E7CC95 /* BaseTargetType.swift in Sources */,
+				5A7E399F2AB158A800143175 /* HomeViewModel.swift in Sources */,
 				5A3210222AA88A6A003A40BD /* RxViewController+Extension.swift in Sources */,
 				023868C32A70009B0006C762 /* LoginManager.swift in Sources */,
 				5ADED1BD2A679B6A00C0CBF4 /* UIColor+Extension.swift in Sources */,
@@ -1238,6 +1272,7 @@
 				026BC4782A680FE900F49B87 /* SignInView.swift in Sources */,
 				5A21C67C2A9A01AA00E7CC95 /* SignUpRequest.swift in Sources */,
 				5A1C488F2A76CC9C00CC345A /* VideoCollectionViewCell.swift in Sources */,
+				5A7E399D2AB148C300143175 /* RecordRepository.swift in Sources */,
 				02B655392AA5D97700E4AC4F /* GymsAPI.swift in Sources */,
 				02CCDD672A9F2C8A00301ABF /* RecordService.swift in Sources */,
 				5A7E398F2AB0E1D600143175 /* RecordAPI.swift in Sources */,

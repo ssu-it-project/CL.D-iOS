@@ -14,11 +14,11 @@ import RxSwift
 class ClimbingGymSearchViewModel: ViewModelType {
     var disposeBag = DisposeBag()
     
-    private let useCase: ClimbingGymSearchUseCase
+    private let useCase: DefaultClimbingGymSearchUseCase
     
     // MARK: - Initializer
     init(
-        useCase: ClimbingGymSearchUseCase
+        useCase: DefaultClimbingGymSearchUseCase
     ) {
         self.useCase = useCase
     }

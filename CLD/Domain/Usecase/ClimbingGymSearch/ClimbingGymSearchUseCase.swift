@@ -15,7 +15,7 @@ enum ClimbingGymSearchError: Error {
 }
 
 
-final class ClimbingGymSearchUseCase {
+final class DefaultClimbingGymSearchUseCase {
         
     private let disposeBag = DisposeBag()
     private let locationService: LocationService
