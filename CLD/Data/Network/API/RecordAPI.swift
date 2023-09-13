@@ -15,10 +15,10 @@ enum RecordAPI {
 
 extension RecordAPI: BaseTargetType {
     var path: String {
-//        let baseRecordRoutePath: String = "/record"
+        let baseRecordRoutePath: String = "/clime"
         
         switch self {
-        case .getRecord: return "/records"
+        case .getRecord: return baseRecordRoutePath + "/records"
         }
     }
     
