@@ -49,21 +49,21 @@ final class moreVideosView: UIView {
     }
     
     private func setConstraints() {
-        videoButton.snp.makeConstraints { make in
+        videoSampleImageView.snp.makeConstraints { make in
             make.top.equalToSuperview().inset(15)
             make.leading.trailing.equalToSuperview().inset(27)
-            make.height.equalTo(25)
-        }
-
-        videoSampleImageView.snp.makeConstraints { make in
-            make.top.equalTo(videoButton.snp.bottom).offset(10)
-            make.leading.trailing.equalToSuperview().inset(27)
-            make.bottom.equalToSuperview()
         }
         
         levelLabel.snp.makeConstraints { make in
             make.top.equalToSuperview().inset(6)
             make.centerX.equalToSuperview()
+        }
+        
+        videoButton.snp.makeConstraints { make in
+            make.top.equalTo(videoSampleImageView.snp.bottom).offset(10)
+            make.leading.trailing.equalToSuperview().inset(27)
+            make.height.equalTo(30)
+            make.bottom.equalToSuperview().inset(10)
         }
     }
 }
