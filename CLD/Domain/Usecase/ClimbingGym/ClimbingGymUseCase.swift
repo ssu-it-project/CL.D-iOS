@@ -23,7 +23,6 @@ protocol ClimbingGymUseCase {
     func checkAuthorization()
     func checkDeviceLocationAuthorization()
     func getLocationGyms(longitude: Double, latitude: Double, keyword: String, limit: Int, skip: Int) -> Single<GymsVO>
-    func getDetailGym(id: String) -> Single<DetailGymVO>
 }
 
 
@@ -70,9 +69,5 @@ final class DefaultClimbingGymUseCase: ClimbingGymUseCase {
     // MARK: - NetworkUseCase
     func getLocationGyms(longitude: Double, latitude: Double, keyword: String, limit: Int, skip: Int) -> Single<GymsVO> {
         gymsRepository.getLocationGyms(latitude: latitude, longitude:  longitude, keyword: keyword, limit: limit, skip: skip)
-      }
-    
-    func getDetailGym(id: String) -> Single<DetailGymVO> {
-        gymsRepository.getDetailGym(id: id)
       }
 }

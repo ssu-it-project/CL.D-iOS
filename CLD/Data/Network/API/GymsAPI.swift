@@ -17,11 +17,13 @@ enum GymsAPI {
 
 extension GymsAPI: BaseTargetType {
     var path: String {
+        let baseDetailGymRoutePath: String = "/clime/gym"
+        
         switch self {
         case .getGyms, .getLocationGyms:
             return URLConst.gyms
         case .getDetailGym(let id):
-            return URLConst.gyms + "/\(id)"
+            return baseDetailGymRoutePath + "/\(id)"
         }
     }
 
