@@ -109,6 +109,7 @@
 		5A7E39B12AB21A9600143175 /* DetailGymVO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A7E39B02AB21A9600143175 /* DetailGymVO.swift */; };
 		5A7E39B42AB2214400143175 /* GymsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A7E39B32AB2214400143175 /* GymsRepository.swift */; };
 		5A7E39B62AB2226700143175 /* ClimbingGymDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A7E39B52AB2226700143175 /* ClimbingGymDetailViewModel.swift */; };
+		5A7E39B82AB22DBF00143175 /* ClimbingGymDetailUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A7E39B72AB22DBF00143175 /* ClimbingGymDetailUseCase.swift */; };
 		5A97A1232A91229F00264AB5 /* RxGesture in Frameworks */ = {isa = PBXBuildFile; productRef = 5A97A1222A91229F00264AB5 /* RxGesture */; };
 		5A97A1252A922F7A00264AB5 /* TermsWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A97A1242A922F7A00264AB5 /* TermsWebViewController.swift */; };
 		5A97A1652A93848F00264AB5 /* TermsCheckListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A97A1642A93848E00264AB5 /* TermsCheckListView.swift */; };
@@ -248,6 +249,7 @@
 		5A7E39B02AB21A9600143175 /* DetailGymVO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailGymVO.swift; sourceTree = "<group>"; };
 		5A7E39B32AB2214400143175 /* GymsRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GymsRepository.swift; sourceTree = "<group>"; };
 		5A7E39B52AB2226700143175 /* ClimbingGymDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClimbingGymDetailViewModel.swift; sourceTree = "<group>"; };
+		5A7E39B72AB22DBF00143175 /* ClimbingGymDetailUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClimbingGymDetailUseCase.swift; sourceTree = "<group>"; };
 		5A97A1242A922F7A00264AB5 /* TermsWebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsWebViewController.swift; sourceTree = "<group>"; };
 		5A97A1642A93848E00264AB5 /* TermsCheckListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsCheckListView.swift; sourceTree = "<group>"; };
 		5AC80C772A838B5400FE9D6C /* PlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerView.swift; sourceTree = "<group>"; };
@@ -571,6 +573,7 @@
 			isa = PBXGroup;
 			children = (
 				5A32101D2AA87EE4003A40BD /* ClimbingGymUseCase.swift */,
+				5A7E39B72AB22DBF00143175 /* ClimbingGymDetailUseCase.swift */,
 			);
 			path = ClimbingGym;
 			sourceTree = "<group>";
@@ -1304,6 +1307,7 @@
 				5ADED1BF2A679FB100C0CBF4 /* UIImage+Extension.swift in Sources */,
 				5A7E39992AB1467600143175 /* HomeRecordUseCase.swift in Sources */,
 				5AEFAAA02A8B966900A67C43 /* TermsViewController.swift in Sources */,
+				5A7E39B82AB22DBF00143175 /* ClimbingGymDetailUseCase.swift in Sources */,
 				5A21C6942A9B6D4E00E7CC95 /* SignInRequest.swift in Sources */,
 				5A21C6792A9A009000E7CC95 /* AuthAPI.swift in Sources */,
 				5A21C65A2A98FAEC00E7CC95 /* BaseTargetType.swift in Sources */,
