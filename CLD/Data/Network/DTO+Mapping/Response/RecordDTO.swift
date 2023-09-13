@@ -3,7 +3,7 @@ import Foundation
 // MARK: - Welcome
 struct RecordListDTO: Decodable {
     let pagination: Pagination
-    let records: [RecordDTO]
+    let records: [RecordDTO]?
 }
 
 // MARK: - Record
@@ -49,7 +49,7 @@ struct DateClassDTO: Decodable {
 
 extension RecordListDTO {
     func toDomain() -> RecordListVO {
-        return RecordListVO(pagination: PaginationVO(total: pagination.total, skip: pagination.skip, limit: pagination.limit), records: records.map { $0.toDomain() })
+        return RecordListVO(pagination: PaginationVO(total: pagination.total, skip: pagination.skip, limit: pagination.limit), records: records?.compactMap { $0.toDomain() } ?? [] )
     }
 }
 
