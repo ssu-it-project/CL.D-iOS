@@ -44,6 +44,7 @@ enum ImageLiteral {
     //MARK: - MyPage
     static var settingIcon: UIImage { .load(named: "settingIcon")}
     static var videoIcon: UIImage { .load(named: "videoIcon")}
+    static var editProfileImage: UIImage { .load(named: "editProfileImage")}
 
     //MARK: - test image
     static var videoThumbnail: UIImage { .load(named: "videoThumbnail") }

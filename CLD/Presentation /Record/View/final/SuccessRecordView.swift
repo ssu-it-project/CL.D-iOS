@@ -61,16 +61,13 @@ final class SuccessRecordView: UIView {
         button.setTitle("공유하기", for: .normal)
         button.setTitleColor(.CLDBlack, for: .normal)
         button.titleLabel?.font = UIFont(name: "Roboto-Bold", size: 15)
-        button.semanticContentAttribute = .forceLeftToRight
-        button.contentVerticalAlignment = .center
-        button.contentHorizontalAlignment = .center
-        // button.addTarget(self, action: #selector(), for: .touchUpInside)
         button.backgroundColor = .CLDLightGray
         button.setImage(ImageLiteral.instaLogo, for: .normal)
         button.semanticContentAttribute = .forceLeftToRight
         button.contentVerticalAlignment = .center
         button.contentHorizontalAlignment = .center
         button.layer.cornerRadius = 6
+        // button.addTarget(self, action: #selector(), for: .touchUpInside)
         return button
     }()
     private let gotoButton: UIButton = {
