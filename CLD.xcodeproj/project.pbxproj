@@ -38,7 +38,11 @@
 		0294D01C2AB1E9CA00F4244A /* MyPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0294D01B2AB1E9CA00F4244A /* MyPageView.swift */; };
 		0294D01F2AB1F88500F4244A /* CountCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0294D01E2AB1F88500F4244A /* CountCollectionViewCell.swift */; };
 		0294D0212AB202ED00F4244A /* HistoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0294D0202AB202ED00F4244A /* HistoryCollectionViewCell.swift */; };
-		0294D0232AB2BAC900F4244A /* MyPageSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0294D0222AB2BAC900F4244A /* MyPageSettingView.swift */; };
+		0294D0232AB2BAC900F4244A /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0294D0222AB2BAC900F4244A /* SettingView.swift */; };
+		0294D0252AB2C01A00F4244A /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0294D0242AB2C01A00F4244A /* SettingViewController.swift */; };
+		0294D0272AB2CC0300F4244A /* SettingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0294D0262AB2CC0300F4244A /* SettingTableViewCell.swift */; };
+		0294D0292AB2D38700F4244A /* ProfileSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0294D0282AB2D38700F4244A /* ProfileSettingViewController.swift */; };
+		0294D02B2AB2D39100F4244A /* ProfileSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0294D02A2AB2D39000F4244A /* ProfileSettingView.swift */; };
 		029E36242A9E36EB0069A773 /* PlaceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 029E36232A9E36EB0069A773 /* PlaceTableViewCell.swift */; };
 		02B655372AA5D66600E4AC4F /* GetGymsDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B655362AA5D66600E4AC4F /* GetGymsDTO.swift */; };
 		02B655392AA5D97700E4AC4F /* GymsAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B655382AA5D97700E4AC4F /* GymsAPI.swift */; };
@@ -190,7 +194,11 @@
 		0294D01B2AB1E9CA00F4244A /* MyPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageView.swift; sourceTree = "<group>"; };
 		0294D01E2AB1F88500F4244A /* CountCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountCollectionViewCell.swift; sourceTree = "<group>"; };
 		0294D0202AB202ED00F4244A /* HistoryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryCollectionViewCell.swift; sourceTree = "<group>"; };
-		0294D0222AB2BAC900F4244A /* MyPageSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageSettingView.swift; sourceTree = "<group>"; };
+		0294D0222AB2BAC900F4244A /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
+		0294D0242AB2C01A00F4244A /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
+		0294D0262AB2CC0300F4244A /* SettingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTableViewCell.swift; sourceTree = "<group>"; };
+		0294D0282AB2D38700F4244A /* ProfileSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSettingViewController.swift; sourceTree = "<group>"; };
+		0294D02A2AB2D39000F4244A /* ProfileSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSettingView.swift; sourceTree = "<group>"; };
 		029E36232A9E36EB0069A773 /* PlaceTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceTableViewCell.swift; sourceTree = "<group>"; };
 		02B655362AA5D66600E4AC4F /* GetGymsDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetGymsDTO.swift; sourceTree = "<group>"; };
 		02B655382AA5D97700E4AC4F /* GymsAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GymsAPI.swift; sourceTree = "<group>"; };
@@ -425,6 +433,7 @@
 			children = (
 				0294D01E2AB1F88500F4244A /* CountCollectionViewCell.swift */,
 				0294D0202AB202ED00F4244A /* HistoryCollectionViewCell.swift */,
+				0294D0262AB2CC0300F4244A /* SettingTableViewCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -983,6 +992,8 @@
 				5ACADD672A65926300B92C07 /* View */,
 				5ACADD662A65925D00B92C07 /* ViewModel */,
 				5ADED1D32A6838D300C0CBF4 /* MyPageViewController.swift */,
+				0294D0242AB2C01A00F4244A /* SettingViewController.swift */,
+				0294D0282AB2D38700F4244A /* ProfileSettingViewController.swift */,
 			);
 			path = MyPage;
 			sourceTree = "<group>";
@@ -1096,7 +1107,8 @@
 				5ACADD922A6593DC00B92C07 /* keep.txt */,
 				0294D01D2AB1F7DC00F4244A /* Cell */,
 				0294D01B2AB1E9CA00F4244A /* MyPageView.swift */,
-				0294D0222AB2BAC900F4244A /* MyPageSettingView.swift */,
+				0294D0222AB2BAC900F4244A /* SettingView.swift */,
+				0294D02A2AB2D39000F4244A /* ProfileSettingView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1291,6 +1303,8 @@
 				02DC9AC52A75789800F8989E /* SelectListCell.swift in Sources */,
 				5ADED1AF2A66AEAD00C0CBF4 /* UICollectionView+Extension.swift in Sources */,
 				5A32101E2AA87EE4003A40BD /* ClimbingGymUseCase.swift in Sources */,
+				5A32101E2AA87EE4003A40BD /* ClimbingGymSearchUseCase.swift in Sources */,
+				0294D0252AB2C01A00F4244A /* SettingViewController.swift in Sources */,
 				020F65532A7D09450036CFB1 /* SelectVideoViewController.swift in Sources */,
 				029E36242A9E36EB0069A773 /* PlaceTableViewCell.swift in Sources */,
 				02EB6E862A88C45A00C749A6 /* CALayer+Extension.swift in Sources */,
@@ -1303,7 +1317,7 @@
 				5A21C6852A9A410400E7CC95 /* BaseErrorDTO.swift in Sources */,
 				0281723E2A793B900089FD51 /* SelectColorCell.swift in Sources */,
 				020F65492A7B72050036CFB1 /* SelectListView.swift in Sources */,
-				0294D0232AB2BAC900F4244A /* MyPageSettingView.swift in Sources */,
+				0294D0232AB2BAC900F4244A /* SettingView.swift in Sources */,
 				5AEFAAA82A8BD07500A67C43 /* TermsType.swift in Sources */,
 				023C71532AACC69D00CA095D /* URL+Extension.swift in Sources */,
 				5ADED1B12A66AFF700C0CBF4 /* UIStackView+Extension.swift in Sources */,
@@ -1343,6 +1357,7 @@
 				5A21C6572A98F7DE00E7CC95 /* UserDefaultHandler.swift in Sources */,
 				026BC4942A69102F00F49B87 /* SplashViewController.swift in Sources */,
 				026BC4782A680FE900F49B87 /* SignInView.swift in Sources */,
+				0294D0272AB2CC0300F4244A /* SettingTableViewCell.swift in Sources */,
 				5A21C67C2A9A01AA00E7CC95 /* SignUpRequest.swift in Sources */,
 				5A1C488F2A76CC9C00CC345A /* VideoCollectionViewCell.swift in Sources */,
 				5A7E39B62AB2226700143175 /* ClimbingGymDetailViewModel.swift in Sources */,
@@ -1395,8 +1410,10 @@
 				5A21C65C2A98FC4800E7CC95 /* URLConst.swift in Sources */,
 				5ACADD5D2A65919400B92C07 /* HomeViewController.swift in Sources */,
 				023F37822A783C1F007B0511 /* SelectSectorViewController.swift in Sources */,
+				0294D0292AB2D38700F4244A /* ProfileSettingViewController.swift in Sources */,
 				5A05DEED2AA8DE2E0050AD55 /* DefaultGymsRepository.swift in Sources */,
 				5ADED1B92A678E9C00C0CBF4 /* UILabel+Extension.swift in Sources */,
+				0294D02B2AB2D39100F4244A /* ProfileSettingView.swift in Sources */,
 				5A97A1252A922F7A00264AB5 /* TermsWebViewController.swift in Sources */,
 				5AEFAAC32A8D178600A67C43 /* SignUpViewModel.swift in Sources */,
 				5A7E39B12AB21A9600143175 /* DetailGymVO.swift in Sources */,
