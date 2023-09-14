@@ -29,7 +29,7 @@ final class MyPageView: UIView {
 
         return label
     }()
-    private let settingButton: UIButton = {
+    let settingButton: UIButton = {
         let button = UIButton()
         button.setImage(ImageLiteral.settingIcon, for: .normal)
 

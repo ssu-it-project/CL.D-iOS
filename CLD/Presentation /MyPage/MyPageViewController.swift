@@ -8,6 +8,8 @@
 import UIKit
 
 import SnapKit
+import RxSwift
+import RxCocoa
 
 class MyPageViewController: BaseViewController {
     var lableInfo: [String] = ["등반 기록", "방문한 암장", "비디오", "좋아요", "게시글"]
@@ -17,11 +19,15 @@ class MyPageViewController: BaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        buttonTap()
 
         mypageView.countCollectionView.delegate = self
         mypageView.countCollectionView.dataSource = self
         mypageView.badgeCollectionView.delegate = self
         mypageView.badgeCollectionView.dataSource = self
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        self.navigationController?.isNavigationBarHidden = true
     }
     override func setHierarchy() {
         self.view.addSubview(mypageView)
@@ -37,7 +43,6 @@ class MyPageViewController: BaseViewController {
 extension MyPageViewController : UICollectionViewDelegate, UICollectionViewDelegateFlowLayout,
                                  UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        print("=== collectionView: \(collectionView)")
         if collectionView == mypageView.countCollectionView {
             return 5
         }
@@ -75,5 +80,15 @@ extension MyPageViewController : UICollectionViewDelegate, UICollectionViewDeleg
         } else {
             print("=== badge index: \(indexPath.row)")
         }
+    }
+}
+
+extension MyPageViewController {
+    func buttonTap() {
+        mypageView.settingButton.rx.tap
+            .bind {
+            let nextViewController = SettingViewController()
+            self.navigationController?.pushViewController(nextViewController, animated: true)
+        }.disposed(by: disposeBag)
     }
 }
