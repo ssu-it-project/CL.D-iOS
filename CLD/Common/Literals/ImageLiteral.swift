@@ -37,13 +37,19 @@ enum ImageLiteral {
     static var backButton: UIImage { .load(named: "backButton") }
     static var addIcon: UIImage { .load(named: "addIcon") }
     
-    //MARK: - test image
-    static var videoThumbnail: UIImage { .load(named: "videoThumbnail") }
-    static var testthumBnailImage: UIImage { .load(named: "thumbnailImage") }
-    
     //MARK: - System image
     static var checkIcon: UIImage { .load(systemName: "checkmark")}
     static var thumbnailImage: UIImage { .load(named: "thumbnailImage")}
+
+    //MARK: - MyPage
+    static var settingIcon: UIImage { .load(named: "settingIcon")}
+    static var videoIcon: UIImage { .load(named: "videoIcon")}
+
+    //MARK: - test image
+    static var videoThumbnail: UIImage { .load(named: "videoThumbnail") }
+    static var testthumBnailImage: UIImage { .load(named: "thumbnailImage") }
+    static var testProfileImage: UIImage { .load(named: "seolgi") }
+    static var testBadgeImage: UIImage { .load(named: "testBadgeImage") }
 }
 
 extension UIImage {
