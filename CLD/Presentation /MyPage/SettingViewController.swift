@@ -49,9 +49,14 @@ extension SettingViewController: UITableViewDataSource, UITableViewDelegate {
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let index: IndexPath = indexPath
-        //let nextViewController = ImageZoomViewController()
-        //self.navigationController?.pushViewController(nextViewController, animated: true)
+        let index: Int = indexPath.row
+        if (index == 0) {
+            let nextViewController = ProfileSettingViewController()
+            self.navigationController?.pushViewController(nextViewController, animated: true)
+        } else if (index == 1) {
+            let nextViewController = AccountSettingViewController()
+            self.navigationController?.pushViewController(nextViewController, animated: true)
+        }
         tableView.deselectRow(at: indexPath, animated: true)
     }
 }

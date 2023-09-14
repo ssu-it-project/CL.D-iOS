@@ -43,6 +43,8 @@
 		0294D0272AB2CC0300F4244A /* SettingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0294D0262AB2CC0300F4244A /* SettingTableViewCell.swift */; };
 		0294D0292AB2D38700F4244A /* ProfileSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0294D0282AB2D38700F4244A /* ProfileSettingViewController.swift */; };
 		0294D02B2AB2D39100F4244A /* ProfileSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0294D02A2AB2D39000F4244A /* ProfileSettingView.swift */; };
+		0294D02D2AB330ED00F4244A /* AccountSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0294D02C2AB330ED00F4244A /* AccountSettingViewController.swift */; };
+		0294D02F2AB3310200F4244A /* AccountSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0294D02E2AB3310200F4244A /* AccountSettingView.swift */; };
 		029E36242A9E36EB0069A773 /* PlaceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 029E36232A9E36EB0069A773 /* PlaceTableViewCell.swift */; };
 		02B655372AA5D66600E4AC4F /* GetGymsDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B655362AA5D66600E4AC4F /* GetGymsDTO.swift */; };
 		02B655392AA5D97700E4AC4F /* GymsAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B655382AA5D97700E4AC4F /* GymsAPI.swift */; };
@@ -199,6 +201,8 @@
 		0294D0262AB2CC0300F4244A /* SettingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTableViewCell.swift; sourceTree = "<group>"; };
 		0294D0282AB2D38700F4244A /* ProfileSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSettingViewController.swift; sourceTree = "<group>"; };
 		0294D02A2AB2D39000F4244A /* ProfileSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSettingView.swift; sourceTree = "<group>"; };
+		0294D02C2AB330ED00F4244A /* AccountSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountSettingViewController.swift; sourceTree = "<group>"; };
+		0294D02E2AB3310200F4244A /* AccountSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountSettingView.swift; sourceTree = "<group>"; };
 		029E36232A9E36EB0069A773 /* PlaceTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceTableViewCell.swift; sourceTree = "<group>"; };
 		02B655362AA5D66600E4AC4F /* GetGymsDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetGymsDTO.swift; sourceTree = "<group>"; };
 		02B655382AA5D97700E4AC4F /* GymsAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GymsAPI.swift; sourceTree = "<group>"; };
@@ -994,6 +998,7 @@
 				5ADED1D32A6838D300C0CBF4 /* MyPageViewController.swift */,
 				0294D0242AB2C01A00F4244A /* SettingViewController.swift */,
 				0294D0282AB2D38700F4244A /* ProfileSettingViewController.swift */,
+				0294D02C2AB330ED00F4244A /* AccountSettingViewController.swift */,
 			);
 			path = MyPage;
 			sourceTree = "<group>";
@@ -1109,6 +1114,7 @@
 				0294D01B2AB1E9CA00F4244A /* MyPageView.swift */,
 				0294D0222AB2BAC900F4244A /* SettingView.swift */,
 				0294D02A2AB2D39000F4244A /* ProfileSettingView.swift */,
+				0294D02E2AB3310200F4244A /* AccountSettingView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1379,6 +1385,7 @@
 				028981642A93176000B928E5 /* PostRecordViewController.swift in Sources */,
 				5ADED1AB2A66ACC500C0CBF4 /* UITextField+Extension.swift in Sources */,
 				02D56F4A2A9317FB00FF41EA /* PostRecordView.swift in Sources */,
+				0294D02F2AB3310200F4244A /* AccountSettingView.swift in Sources */,
 				02CCDD6B2A9F617F00301ABF /* BlankDataResponse.swift in Sources */,
 				5A21C6A62A9BAD5B00E7CC95 /* SNSLoginType.swift in Sources */,
 				02B6553B2AA5DAFC00E4AC4F /* GymsService.swift in Sources */,
@@ -1392,6 +1399,7 @@
 				5A320FFA2AA5DC87003A40BD /* ClimbingGymTableViewCell.swift in Sources */,
 				5ADED1D42A6838D300C0CBF4 /* MyPageViewController.swift in Sources */,
 				5A21C6962A9B721E00E7CC95 /* UserToken.swift in Sources */,
+				0294D02D2AB330ED00F4244A /* AccountSettingViewController.swift in Sources */,
 				02E2532F2A8A17DB00D3E9E1 /* PhotoCollectionViewCell.swift in Sources */,
 				5AC80C782A838B5400FE9D6C /* PlayerView.swift in Sources */,
 				02B6553F2AA63AE400E4AC4F /* UITableview+Extension.swift in Sources */,

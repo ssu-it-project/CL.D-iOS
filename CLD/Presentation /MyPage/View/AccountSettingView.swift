@@ -1,5 +1,5 @@
 //
-//  SettingView.swift
+//  AccountSettingView.swift
 //  CLD
 //
 //  Created by 이조은 on 2023/09/14.
@@ -9,8 +9,8 @@ import UIKit
 
 import SnapKit
 
-final class SettingView: UIView {
-    lazy var settingTableView: UITableView = {
+final class AccountSettingView: UIView {
+    lazy var accountTableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .plain)
         tableView.register(SettingTableViewCell.self, forCellReuseIdentifier: SettingTableViewCell.identifier)
         tableView.backgroundColor = .clear
@@ -34,12 +34,13 @@ final class SettingView: UIView {
     }
 
     func setHierarchy() {
-        addSubview(settingTableView)
+        addSubview(accountTableView)
     }
 
     func setConstraints() {
-        settingTableView.snp.makeConstraints {
+        accountTableView.snp.makeConstraints {
             $0.edges.equalToSuperview()
         }
     }
 }
+

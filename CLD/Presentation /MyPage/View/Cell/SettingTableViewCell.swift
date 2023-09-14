@@ -40,9 +40,6 @@ class SettingTableViewCell: UITableViewCell {
 
     private func setViewHierarchy() {
         self.addSubview(InfoLabel)
-        // self.addSubview(nextBtn)
-        // 기존 코드를 해석하면 cell에 photoView와 nextBtn이 올라가고 그 위에 contentView가 올라가기 때문에
-        // self.contentView.addSubview(nextBtn)로 코드를 작성해 주어야지 contentView 위에 nextBtn이 올라간다.
     }
 
     private func setConstraints() {

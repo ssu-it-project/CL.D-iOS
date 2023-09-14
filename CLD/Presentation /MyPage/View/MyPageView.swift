@@ -90,7 +90,7 @@ final class MyPageView: UIView {
 
     func setConstraints() {
         contentView.snp.makeConstraints {
-            $0.top.equalToSuperview().inset(55)
+            $0.top.equalToSuperview().inset(75)
             $0.leading.trailing.equalToSuperview()
             $0.height.equalTo(46)
         }
