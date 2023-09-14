@@ -35,6 +35,10 @@
 		0281723C2A793A670089FD51 /* SelectColorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0281723B2A793A670089FD51 /* SelectColorViewController.swift */; };
 		0281723E2A793B900089FD51 /* SelectColorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0281723D2A793B900089FD51 /* SelectColorCell.swift */; };
 		028981642A93176000B928E5 /* PostRecordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 028981632A93175F00B928E5 /* PostRecordViewController.swift */; };
+		0294D01C2AB1E9CA00F4244A /* MyPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0294D01B2AB1E9CA00F4244A /* MyPageView.swift */; };
+		0294D01F2AB1F88500F4244A /* CountCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0294D01E2AB1F88500F4244A /* CountCollectionViewCell.swift */; };
+		0294D0212AB202ED00F4244A /* HistoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0294D0202AB202ED00F4244A /* HistoryCollectionViewCell.swift */; };
+		0294D0232AB2BAC900F4244A /* MyPageSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0294D0222AB2BAC900F4244A /* MyPageSettingView.swift */; };
 		029E36242A9E36EB0069A773 /* PlaceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 029E36232A9E36EB0069A773 /* PlaceTableViewCell.swift */; };
 		02B655372AA5D66600E4AC4F /* GetGymsDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B655362AA5D66600E4AC4F /* GetGymsDTO.swift */; };
 		02B655392AA5D97700E4AC4F /* GymsAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B655382AA5D97700E4AC4F /* GymsAPI.swift */; };
@@ -183,6 +187,10 @@
 		0281723B2A793A670089FD51 /* SelectColorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectColorViewController.swift; sourceTree = "<group>"; };
 		0281723D2A793B900089FD51 /* SelectColorCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectColorCell.swift; sourceTree = "<group>"; };
 		028981632A93175F00B928E5 /* PostRecordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostRecordViewController.swift; sourceTree = "<group>"; };
+		0294D01B2AB1E9CA00F4244A /* MyPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageView.swift; sourceTree = "<group>"; };
+		0294D01E2AB1F88500F4244A /* CountCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountCollectionViewCell.swift; sourceTree = "<group>"; };
+		0294D0202AB202ED00F4244A /* HistoryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryCollectionViewCell.swift; sourceTree = "<group>"; };
+		0294D0222AB2BAC900F4244A /* MyPageSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageSettingView.swift; sourceTree = "<group>"; };
 		029E36232A9E36EB0069A773 /* PlaceTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceTableViewCell.swift; sourceTree = "<group>"; };
 		02B655362AA5D66600E4AC4F /* GetGymsDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetGymsDTO.swift; sourceTree = "<group>"; };
 		02B655382AA5D97700E4AC4F /* GymsAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GymsAPI.swift; sourceTree = "<group>"; };
@@ -410,6 +418,15 @@
 				02D56F492A9317FB00FF41EA /* PostRecordView.swift */,
 			);
 			path = final;
+			sourceTree = "<group>";
+		};
+		0294D01D2AB1F7DC00F4244A /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				0294D01E2AB1F88500F4244A /* CountCollectionViewCell.swift */,
+				0294D0202AB202ED00F4244A /* HistoryCollectionViewCell.swift */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 		02CCDD652A9F2C6100301ABF /* Service */ = {
@@ -1077,6 +1094,9 @@
 			isa = PBXGroup;
 			children = (
 				5ACADD922A6593DC00B92C07 /* keep.txt */,
+				0294D01D2AB1F7DC00F4244A /* Cell */,
+				0294D01B2AB1E9CA00F4244A /* MyPageView.swift */,
+				0294D0222AB2BAC900F4244A /* MyPageSettingView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1283,10 +1303,12 @@
 				5A21C6852A9A410400E7CC95 /* BaseErrorDTO.swift in Sources */,
 				0281723E2A793B900089FD51 /* SelectColorCell.swift in Sources */,
 				020F65492A7B72050036CFB1 /* SelectListView.swift in Sources */,
+				0294D0232AB2BAC900F4244A /* MyPageSettingView.swift in Sources */,
 				5AEFAAA82A8BD07500A67C43 /* TermsType.swift in Sources */,
 				023C71532AACC69D00CA095D /* URL+Extension.swift in Sources */,
 				5ADED1B12A66AFF700C0CBF4 /* UIStackView+Extension.swift in Sources */,
 				02B655372AA5D66600E4AC4F /* GetGymsDTO.swift in Sources */,
+				0294D01C2AB1E9CA00F4244A /* MyPageView.swift in Sources */,
 				5A05DF452AAB04C40050AD55 /* RecordDTO.swift in Sources */,
 				02177C8E2A99ABDB00A4EF2C /* RecordTabItem.swift in Sources */,
 				5ADED1B72A67793F00C0CBF4 /* UIView+Extension.swift in Sources */,
@@ -1316,6 +1338,7 @@
 				023868C32A70009B0006C762 /* LoginManager.swift in Sources */,
 				5ADED1BD2A679B6A00C0CBF4 /* UIColor+Extension.swift in Sources */,
 				5A1C488A2A7687FB00CC345A /* CGSize+Extension.swift in Sources */,
+				0294D0212AB202ED00F4244A /* HistoryCollectionViewCell.swift in Sources */,
 				5ADED1CC2A682B6300C0CBF4 /* TabBarItem.swift in Sources */,
 				5A21C6572A98F7DE00E7CC95 /* UserDefaultHandler.swift in Sources */,
 				026BC4942A69102F00F49B87 /* SplashViewController.swift in Sources */,
@@ -1330,6 +1353,7 @@
 				5A21C6982A9B749800E7CC95 /* SignInUseCase.swift in Sources */,
 				5ACADCFA2A5D988F00B92C07 /* AppDelegate.swift in Sources */,
 				5ADED1C32A67A1B300C0CBF4 /* ViewModelType.swift in Sources */,
+				0294D01F2AB1F88500F4244A /* CountCollectionViewCell.swift in Sources */,
 				026BC4762A680FC000F49B87 /* AuthViewController.swift in Sources */,
 				02EB6E7D2A88BC9B00C749A6 /* SuccessRecordView.swift in Sources */,
 				5A3210202AA88218003A40BD /* ClimbingGymSearchViewModel.swift in Sources */,
