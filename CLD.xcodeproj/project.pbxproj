@@ -100,6 +100,7 @@
 		5A32101E2AA87EE4003A40BD /* ClimbingGymUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A32101D2AA87EE4003A40BD /* ClimbingGymUseCase.swift */; };
 		5A3210202AA88218003A40BD /* ClimbingGymSearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A32101F2AA88218003A40BD /* ClimbingGymSearchViewModel.swift */; };
 		5A3210222AA88A6A003A40BD /* RxViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A3210212AA88A6A003A40BD /* RxViewController+Extension.swift */; };
+		5A70B8B42AB43AD100506846 /* UIImageView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A70B8B32AB43AD100506846 /* UIImageView+.swift */; };
 		5A7E398D2AB0DCAC00143175 /* RecordVO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A7E398C2AB0DCAC00143175 /* RecordVO.swift */; };
 		5A7E398F2AB0E1D600143175 /* RecordAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A7E398E2AB0E1D600143175 /* RecordAPI.swift */; };
 		5A7E39992AB1467600143175 /* HomeRecordUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A7E39982AB1467600143175 /* HomeRecordUseCase.swift */; };
@@ -240,6 +241,7 @@
 		5A32101D2AA87EE4003A40BD /* ClimbingGymUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClimbingGymUseCase.swift; sourceTree = "<group>"; };
 		5A32101F2AA88218003A40BD /* ClimbingGymSearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClimbingGymSearchViewModel.swift; sourceTree = "<group>"; };
 		5A3210212AA88A6A003A40BD /* RxViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RxViewController+Extension.swift"; sourceTree = "<group>"; };
+		5A70B8B32AB43AD100506846 /* UIImageView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+.swift"; sourceTree = "<group>"; };
 		5A7E398C2AB0DCAC00143175 /* RecordVO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordVO.swift; sourceTree = "<group>"; };
 		5A7E398E2AB0E1D600143175 /* RecordAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordAPI.swift; sourceTree = "<group>"; };
 		5A7E39982AB1467600143175 /* HomeRecordUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeRecordUseCase.swift; sourceTree = "<group>"; };
@@ -823,6 +825,7 @@
 				5A3210212AA88A6A003A40BD /* RxViewController+Extension.swift */,
 				02B6553E2AA63AE400E4AC4F /* UITableview+Extension.swift */,
 				023C71522AACC69D00CA095D /* URL+Extension.swift */,
+				5A70B8B32AB43AD100506846 /* UIImageView+.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1283,6 +1286,7 @@
 				5A21C6852A9A410400E7CC95 /* BaseErrorDTO.swift in Sources */,
 				0281723E2A793B900089FD51 /* SelectColorCell.swift in Sources */,
 				020F65492A7B72050036CFB1 /* SelectListView.swift in Sources */,
+				5A70B8B42AB43AD100506846 /* UIImageView+.swift in Sources */,
 				5AEFAAA82A8BD07500A67C43 /* TermsType.swift in Sources */,
 				023C71532AACC69D00CA095D /* URL+Extension.swift in Sources */,
 				5ADED1B12A66AFF700C0CBF4 /* UIStackView+Extension.swift in Sources */,

@@ -166,7 +166,6 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
         let cells = collectionView.visibleCells
          let videoCells = cells.compactMap({ $0 as? VideoCollectionViewCell })
          
-         let contentHeight = scrollView.contentSize.height
          let yOffset = scrollView.contentOffset.y
          let frameHeight = scrollView.frame.size.height
          
