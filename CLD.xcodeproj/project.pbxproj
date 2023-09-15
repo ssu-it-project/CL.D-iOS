@@ -89,7 +89,6 @@
 		5A21C6A22A9B9F7000E7CC95 /* SignUpUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A21C6A12A9B9F7000E7CC95 /* SignUpUseCase.swift */; };
 		5A21C6A42A9BAC6000E7CC95 /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A21C6A32A9BAC6000E7CC95 /* Date+Extension.swift */; };
 		5A21C6A62A9BAD5B00E7CC95 /* SNSLoginType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A21C6A52A9BAD5B00E7CC95 /* SNSLoginType.swift */; };
-		5A21C7052A9CF2CF00E7CC95 /* SignInRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A21C7042A9CF2CF00E7CC95 /* SignInRepository.swift */; };
 		5A320FFA2AA5DC87003A40BD /* ClimbingGymTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A320FF92AA5DC87003A40BD /* ClimbingGymTableViewCell.swift */; };
 		5A3210002AA60C41003A40BD /* ClimbingGymDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A320FFF2AA60C41003A40BD /* ClimbingGymDetailViewController.swift */; };
 		5A3210022AA6336E003A40BD /* moreVideosView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A3210012AA6336E003A40BD /* moreVideosView.swift */; };
@@ -104,6 +103,7 @@
 		5A70B8B72AB4536700506846 /* LevelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A70B8B62AB4536700506846 /* LevelType.swift */; };
 		5A70B8B92AB459BC00506846 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A70B8B82AB459BC00506846 /* String+Extension.swift */; };
 		5A70B8BB2AB47B3900506846 /* Double+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A70B8BA2AB47B3900506846 /* Double+Extension.swift */; };
+		5A70B8BD2AB4BA5A00506846 /* SignInRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A70B8BC2AB4BA5A00506846 /* SignInRepository.swift */; };
 		5A7E398D2AB0DCAC00143175 /* RecordVO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A7E398C2AB0DCAC00143175 /* RecordVO.swift */; };
 		5A7E398F2AB0E1D600143175 /* RecordAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A7E398E2AB0E1D600143175 /* RecordAPI.swift */; };
 		5A7E39992AB1467600143175 /* HomeRecordUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A7E39982AB1467600143175 /* HomeRecordUseCase.swift */; };
@@ -233,7 +233,6 @@
 		5A21C6A12A9B9F7000E7CC95 /* SignUpUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpUseCase.swift; sourceTree = "<group>"; };
 		5A21C6A32A9BAC6000E7CC95 /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
 		5A21C6A52A9BAD5B00E7CC95 /* SNSLoginType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SNSLoginType.swift; sourceTree = "<group>"; };
-		5A21C7042A9CF2CF00E7CC95 /* SignInRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInRepository.swift; sourceTree = "<group>"; };
 		5A21C7062A9D056F00E7CC95 /* CLD.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CLD.entitlements; sourceTree = "<group>"; };
 		5A320FF92AA5DC87003A40BD /* ClimbingGymTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClimbingGymTableViewCell.swift; sourceTree = "<group>"; };
 		5A320FFF2AA60C41003A40BD /* ClimbingGymDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClimbingGymDetailViewController.swift; sourceTree = "<group>"; };
@@ -248,6 +247,7 @@
 		5A70B8B62AB4536700506846 /* LevelType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelType.swift; sourceTree = "<group>"; };
 		5A70B8B82AB459BC00506846 /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 		5A70B8BA2AB47B3900506846 /* Double+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Extension.swift"; sourceTree = "<group>"; };
+		5A70B8BC2AB4BA5A00506846 /* SignInRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SignInRepository.swift; path = CLD/Domain/RepositoryInterface/Auth/SignInRepository.swift; sourceTree = SOURCE_ROOT; };
 		5A7E398C2AB0DCAC00143175 /* RecordVO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordVO.swift; sourceTree = "<group>"; };
 		5A7E398E2AB0E1D600143175 /* RecordAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordAPI.swift; sourceTree = "<group>"; };
 		5A7E39982AB1467600143175 /* HomeRecordUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeRecordUseCase.swift; sourceTree = "<group>"; };
@@ -623,7 +623,7 @@
 		5A7E399A2AB1489000143175 /* Auth */ = {
 			isa = PBXGroup;
 			children = (
-				5A21C7042A9CF2CF00E7CC95 /* SignInRepository.swift */,
+				5A70B8BC2AB4BA5A00506846 /* SignInRepository.swift */,
 			);
 			name = Auth;
 			path = "며소";
@@ -1291,7 +1291,6 @@
 				5A21C6812A9A3C9800E7CC95 /* UserTokenDTO.swift in Sources */,
 				5A21C68B2A9A76D200E7CC95 /* DefaultSignInRepository.swift in Sources */,
 				5A21C69E2A9B8ED700E7CC95 /* UUID.swift in Sources */,
-				5A21C7052A9CF2CF00E7CC95 /* SignInRepository.swift in Sources */,
 				5A7E39AC2AB2188600143175 /* DetailGymDTO.swift in Sources */,
 				5A7E39B42AB2214400143175 /* GymsRepository.swift in Sources */,
 				5A21C6852A9A410400E7CC95 /* BaseErrorDTO.swift in Sources */,
@@ -1325,6 +1324,7 @@
 				5A7E39B82AB22DBF00143175 /* ClimbingGymDetailUseCase.swift in Sources */,
 				5A21C6942A9B6D4E00E7CC95 /* SignInRequest.swift in Sources */,
 				5A21C6792A9A009000E7CC95 /* AuthAPI.swift in Sources */,
+				5A70B8BD2AB4BA5A00506846 /* SignInRepository.swift in Sources */,
 				5A21C65A2A98FAEC00E7CC95 /* BaseTargetType.swift in Sources */,
 				5A7E399F2AB158A800143175 /* HomeViewModel.swift in Sources */,
 				5A3210222AA88A6A003A40BD /* RxViewController+Extension.swift in Sources */,
