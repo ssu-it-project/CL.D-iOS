@@ -51,6 +51,9 @@ enum ImageLiteral {
     static var testthumBnailImage: UIImage { .load(named: "thumbnailImage") }
     static var testProfileImage: UIImage { .load(named: "seolgi") }
     static var testBadgeImage: UIImage { .load(named: "testBadgeImage") }
+    static var holderBlue: UIImage { .load(named: "holderBlue") }
+    static var holderOrange: UIImage { .load(named: "holderOrange") }
+    static var holderPurple: UIImage { .load(named: "holderPurple") }
 }
 
 extension UIImage {

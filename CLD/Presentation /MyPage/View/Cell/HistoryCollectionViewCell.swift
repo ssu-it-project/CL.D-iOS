@@ -81,7 +81,6 @@ final class HistoryCollectionViewCell: UICollectionViewCell {
             $0.leading.equalToSuperview().inset(22)
             $0.centerY.equalToSuperview()
             $0.width.equalTo(31)
-            $0.height.equalTo(50)
         }
         titleLabel.snp.makeConstraints {
             $0.top.equalToSuperview().inset(26)
