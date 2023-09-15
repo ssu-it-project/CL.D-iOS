@@ -738,8 +738,9 @@
 		5ACADD3F2A64073300B92C07 /* Data */ = {
 			isa = PBXGroup;
 			children = (
-				5ACADD522A658AF400B92C07 /* Repository */,
 				5ACADD512A658AEB00B92C07 /* Network */,
+				5ACADD502A658AE000B92C07 /* DTO+Mapping */,
+				5ACADD522A658AF400B92C07 /* Repository */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -896,10 +897,9 @@
 		5ACADD512A658AEB00B92C07 /* Network */ = {
 			isa = PBXGroup;
 			children = (
-				02CCDD652A9F2C6100301ABF /* Service */,
-				5A21C6582A98FA2700E7CC95 /* _Foundation */,
 				5ACADD532A658B3A00B92C07 /* API */,
-				5ACADD502A658AE000B92C07 /* DTO+Mapping */,
+				5A21C6582A98FA2700E7CC95 /* _Foundation */,
+				02CCDD652A9F2C6100301ABF /* Service */,
 			);
 			path = Network;
 			sourceTree = "<group>";

@@ -31,7 +31,7 @@ final class DefaultSignInRepository: SignInRepository {
             }
     }
     
-    public func tryKakaoLogin() -> Observable<UserToken> {
+    func tryKakaoLogin() -> Observable<UserToken> {
         if UserApi.isKakaoTalkLoginAvailable() {
             return UserApi.shared.rx.loginWithKakaoTalk()
                 .withUnretained(self)

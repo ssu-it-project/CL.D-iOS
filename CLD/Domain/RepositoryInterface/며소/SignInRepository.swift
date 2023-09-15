@@ -7,7 +7,7 @@
 
 import RxSwift
 
-public protocol SignInRepository: AnyObject {
+protocol SignInRepository: AnyObject {
   func tryAppleLogin(requestDTO: SignInRequest) -> Single<UserToken>
   func tryKakaoLogin() -> Observable<UserToken>
 }

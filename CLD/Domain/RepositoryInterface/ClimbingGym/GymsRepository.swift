@@ -10,4 +10,5 @@ import RxSwift
 protocol GymsRepository: AnyObject {
     func getLocationGyms(latitude: Double, longitude: Double, keyword: String, limit: Int, skip: Int) -> Single<GymsVO>
     func getDetailGym(id: String) -> Single<DetailGymVO>
+    func getDetailGymRecord(id: String, keyword: String, limit: Int, skip: Int) -> Single<RecordListVO>
 }

@@ -1,27 +1,15 @@
 //
-//  SignUpRequest.swift
+//  SignInRequest.swift
 //  CLD
 //
-//  Created by 김규철 on 2023/08/26.
+//  Created by 김규철 on 2023/08/27.
 //
 
 import Foundation
 
-public struct SignUpRequest: Encodable {
-    let agreements: [Agreement]
-    let auth: Auth
-}
-
-// MARK: - Agreement
-struct Agreement: Encodable {
-    let agreed: Bool
-    let id: String
-}
-
-// MARK: - Auth
-struct Auth: Encodable {
+struct SignInRequest: Encodable {
     let accessToken: String
-    let device: DeviceData
+    let device: Device
     let loginType: String
 
     enum CodingKeys: String, CodingKey {
@@ -32,7 +20,7 @@ struct Auth: Encodable {
 }
 
 // MARK: - Device
-struct DeviceData: Encodable {
+struct Device: Encodable {
     let deviceID: String
     let deviceInfo: String = "IOS"
 

@@ -9,26 +9,26 @@ import Foundation
 
 import RxSwift
 
-public protocol SignInUseCase {
-  func tryKakaoSignIn() -> Observable<UserToken>
-  func tryAppleSignIn(requestDTO: SignInRequest) -> Single<UserToken>
+protocol SignInUseCase {
+    func tryKakaoSignIn() -> Observable<UserToken>
+    func tryAppleSignIn(requestDTO: SignInRequest) -> Single<UserToken>
 }
 
 final class DefaultSignInUseCase: SignInUseCase {
-
-  private let signInRepository: DefaultSignInRepository
-
-  // MARK: - Initializer
-  public init(repository: DefaultSignInRepository) {
-    signInRepository = repository
-  }
-
-  // MARK: - Methods
-  public func tryAppleSignIn(requestDTO: SignInRequest) -> Single<UserToken> {
-      signInRepository.tryAppleLogin(requestDTO: requestDTO)
+    
+    private let signInRepository: DefaultSignInRepository
+    
+    // MARK: - Initializer
+    init(repository: DefaultSignInRepository) {
+        signInRepository = repository
     }
     
-  public func tryKakaoSignIn() -> Observable<UserToken> {
-      signInRepository.tryKakaoLogin()
-  }
+    // MARK: - Methods
+    func tryAppleSignIn(requestDTO: SignInRequest) -> Single<UserToken> {
+        signInRepository.tryAppleLogin(requestDTO: requestDTO)
+    }
+    
+    public func tryKakaoSignIn() -> Observable<UserToken> {
+        signInRepository.tryKakaoLogin()
+    }
 }
