@@ -90,3 +90,10 @@ final class kakaoMapView: UIView {
         }
     }
 }
+
+extension kakaoMapView {
+    func configurationVIew(_ detailPlaceVO: DetailPlaceVO) {
+        addressLabel.text = detailPlaceVO.addressName
+        phoneNumberLabel.text = detailPlaceVO.phone
+    }
+}

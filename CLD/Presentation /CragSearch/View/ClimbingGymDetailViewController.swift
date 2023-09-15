@@ -43,8 +43,9 @@ final class ClimbingGymDetailViewController: BaseViewController {
         let output = viewModel.transform(input: input)
         
         output.placeVO
-            .bind { placeVO in
-                print("===", placeVO)
+            .withUnretained(self)
+            .bind { owner, detailPlaceVO in
+                owner.kakaoMapContentView.configurationVIew(detailPlaceVO)
             }
             .disposed(by: disposeBag)
     }

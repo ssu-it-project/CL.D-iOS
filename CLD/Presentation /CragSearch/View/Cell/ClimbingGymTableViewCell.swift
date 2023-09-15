@@ -20,8 +20,7 @@ final class ClimbingGymTableViewCell: UITableViewCell {
     }()
     private let gymImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.contentMode = .scaleAspectFit
-        imageView.image = UIImage(named: "videoCellProfleImage")
+        imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
         return imageView
     }()
@@ -30,7 +29,6 @@ final class ClimbingGymTableViewCell: UITableViewCell {
         UILabel.sizeToFit()
         UILabel.font = UIFont(name: "Roboto-ExtraBold", size: 12)
         UILabel.textColor = .black
-        UILabel.text = "더클라이밍 마곡동"
         return UILabel
     }()
     private let addressLabel: UILabel = {
@@ -38,24 +36,23 @@ final class ClimbingGymTableViewCell: UITableViewCell {
         UILabel.sizeToFit()
         UILabel.font = UIFont(name: "Roboto-ExtraBold", size: 12)
         UILabel.textColor = .CLDDarkGray
-        UILabel.text = "더클라이밍 마곡동 52 - 1"
         return UILabel
     }()
-    private let vehicleAvailableBadge: UIImageView = {
+    private let showerAvailableBadge: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFit
-        imageView.image = UIImage(named: "videoCellProfleImage")
+        imageView.image = ImageLiteral.ParkingIcon
         return imageView
     }()
     private let parkingAvailableBadge: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFit
-        imageView.image = UIImage(named: "videoCellProfleImage")
+        imageView.image = ImageLiteral.ParkingIcon
         return imageView
     }()
-    private lazy var parkingAvailableBadgeStackView: UIStackView = {
+    private lazy var badgeStackView: UIStackView = {
         let view = UIStackView()
-        view.addArrangedSubviews(vehicleAvailableBadge, parkingAvailableBadge)
+        view.addArrangedSubviews(showerAvailableBadge, parkingAvailableBadge)
         view.axis = .horizontal
         view.spacing = 2
         view.distribution = .fillEqually
@@ -66,18 +63,17 @@ final class ClimbingGymTableViewCell: UITableViewCell {
         UILabel.sizeToFit()
         UILabel.font = UIFont(name: "Roboto-Bold", size: 12)
         UILabel.textColor = .black
-        UILabel.text = "2.0 km"
         return UILabel
     }()
     
     override func prepareForReuse() {
         super.prepareForReuse()
-//        gymImageView.image = nil
+        gymImageView.image = nil
     }
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        gymImageView.layer.cornerRadius = 3
+        gymImageView.layer.cornerRadius = 6
     }
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -93,7 +89,7 @@ final class ClimbingGymTableViewCell: UITableViewCell {
     }
     
     private func setHierarchy() {
-        addSubviews(topLineView, gymImageView, titleLabel, addressLabel, parkingAvailableBadgeStackView, locationLabel)
+        addSubviews(topLineView, gymImageView, titleLabel, addressLabel, badgeStackView, locationLabel)
     }
     
     private func setConstraints() {
@@ -122,18 +118,18 @@ final class ClimbingGymTableViewCell: UITableViewCell {
             make.trailing.equalToSuperview().inset(20).priority(.high)
         }
         
-        vehicleAvailableBadge.snp.makeConstraints { make in
+        showerAvailableBadge.snp.makeConstraints { make in
             make.size.equalTo(17)
         }
         
-        parkingAvailableBadgeStackView.snp.makeConstraints { make in
+        badgeStackView.snp.makeConstraints { make in
             make.leading.equalTo(gymImageView.snp.trailing).offset(5)
             make.bottom.equalToSuperview().inset(7)
         }
         
         locationLabel.snp.makeConstraints { make in
             make.trailing.equalToSuperview().inset(20).priority(.high)
-            make.centerY.equalTo(parkingAvailableBadgeStackView.snp.centerY)
+            make.centerY.equalTo(badgeStackView.snp.centerY)
             make.bottom.equalToSuperview().inset(7)
         }
     }
@@ -144,11 +140,9 @@ extension ClimbingGymTableViewCell {
     func configCell(row: ClimbingGymVO) {
         titleLabel.text = row.place.name
         addressLabel.text = row.place.addressName
-        
-        if !row.place.parking {
-            parkingAvailableBadgeStackView.isHidden = true
-        }
-        
+        gymImageView.setImage(urlString: row.place.imageURL)
+        showerAvailableBadge.isHidden = row.place.shower ? false : true
+        parkingAvailableBadge.isHidden = row.place.parking ? false : true
         locationLabel.text = "\(row.location.distance) km"
     }
 }
