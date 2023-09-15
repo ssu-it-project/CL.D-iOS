@@ -14,7 +14,6 @@ final class ClimbingGymSearchViewController: BaseViewController {
     
     private lazy var searchBar: UISearchBar = {
         let view = UISearchBar()
-        view.delegate = self
         view.placeholder = "검색"
         view.searchBarStyle = .minimal
         return view
@@ -108,8 +107,4 @@ final class ClimbingGymSearchViewController: BaseViewController {
     override func setViewProperty() {
         super.setViewProperty()
     }
-}
-
-extension ClimbingGymSearchViewController: UISearchBarDelegate {
-    
 }

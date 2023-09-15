@@ -32,21 +32,13 @@ final class TermsViewController: BaseViewController {
     private var signUpButton = CLDButton(title: "확인", isEnabled: false)
     
     private let viewModel: SignUpViewModel
-    let servicePolicytoggleRelay = BehaviorRelay<Bool>(value: false)
-    let contentPolicytoggleRelay = BehaviorRelay<Bool>(value: false)
-    let termsPolicytoggleRelay = BehaviorRelay<Bool>(value: false)
 
     // MARK: - Inits
-    
     init(viewModel: SignUpViewModel) {
         self.viewModel = viewModel
         super.init()
     }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
+        
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "회원가입"
@@ -81,7 +73,9 @@ final class TermsViewController: BaseViewController {
                 RootHandler.shard.update(.Main)
             }
             .disposed(by: disposeBag)
-        
+    }
+    
+    private func bindAction() {
         allTermsCheckBox.termsCheckBoxToggleisSeleted()
             .withUnretained(self)
             .emit(onNext: { owner, toggle in
@@ -90,9 +84,6 @@ final class TermsViewController: BaseViewController {
                 owner.eventInfoTermsCheckView.termsCheckButton.rx.isSelected.onNext(toggle)
             })
             .disposed(by: disposeBag)
-    }
-    
-    private func bindAction() {
     }
  
     override func setHierarchy() {
@@ -135,7 +126,6 @@ final class TermsViewController: BaseViewController {
 
 extension TermsViewController: PushTermsViewDelegate {
     func detailButtonTapped(index: Int) {
-        print("aa")
         let vc = TermsWebViewController()
         vc.termsUrl = TermsType.allCases[index].url
         self.navigationController?.pushViewController(vc, animated: true)
