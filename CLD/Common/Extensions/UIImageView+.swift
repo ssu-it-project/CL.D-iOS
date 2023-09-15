@@ -10,7 +10,7 @@ import UIKit
 import Kingfisher
 
 extension UIImageView {
-    func setImage(urlString: String) {
+    func setImage(urlString: String, defaultImage: UIImage) {
         ImageCache.default.retrieveImage(forKey: urlString, options: nil) { result in
             switch result {
             case .success(let value):
@@ -18,7 +18,7 @@ extension UIImageView {
                     self.image = image
                 } else {
                     guard !urlString.isEmpty, let url = URL(string: urlString) else {
-                        self.image = ImageLiteral.DefaultGymImage
+                        self.image = defaultImage
                         return
                     }
     
