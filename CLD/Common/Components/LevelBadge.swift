@@ -18,13 +18,7 @@ final class LevelBadge: UILabel {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-    convenience init(title: String, backgroundColor: UIColor) {
-        self.init()
-        self.text = title
-        self.backgroundColor = backgroundColor
-    }
-    
+        
     override func layoutSubviews() {
         super.layoutSubviews()
         self.layer.cornerRadius = self.frame.height / 2
@@ -32,8 +26,8 @@ final class LevelBadge: UILabel {
     }
     
     private func setUp() {
-        heightAnchor.constraint(equalToConstant: 17).isActive = true
-        widthAnchor.constraint(equalToConstant: 109).isActive = true
+        heightAnchor.constraint(equalToConstant: 30).isActive = true
+        widthAnchor.constraint(equalToConstant: 110).isActive = true
     }
     
     private func setLayout() {
@@ -41,5 +35,12 @@ final class LevelBadge: UILabel {
         self.font = UIFont(name: "Roboto-Black", size: 13)
         self.textColor = .white
         self.textAlignment = .center
+    }
+}
+
+extension LevelBadge {
+    func configurationLevelBadge(level: String, sector: String) {
+        self.backgroundColor = level.getColorForLevel()
+        self.text = "\(sector)|\(level)"
     }
 }

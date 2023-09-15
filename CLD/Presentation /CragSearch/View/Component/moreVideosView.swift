@@ -13,12 +13,12 @@ final class moreVideosView: UIView {
         let button = UIButton()
         button.setTitle("영상 더보기", for: .normal)
         button.setTitleColor(.CLDBlack, for: .normal)
-        button.titleLabel?.font = UIFont(name: "Roboto-Regular", size: 10)
+        button.titleLabel?.font = UIFont(name: "Roboto-Regular", size: 13)
         button.backgroundColor = .white
         button.clipsToBounds = true
         return button
     }()
-    private let levelLabel = LevelBadge(title: "A|빨강", backgroundColor: .red)
+    private let levelLabel = LevelBadge()
     private let videoSampleImageView: UIImageView = {
         let view = UIImageView()
         view.image = UIImage(named: "videoCellProfleImage")
@@ -65,5 +65,10 @@ final class moreVideosView: UIView {
             make.height.equalTo(30)
             make.bottom.equalToSuperview().inset(10)
         }
+    }
+}
+
+extension moreVideosView {
+    func configurationView() {
     }
 }

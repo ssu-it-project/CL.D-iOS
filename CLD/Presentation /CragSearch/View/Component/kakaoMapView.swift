@@ -17,18 +17,16 @@ final class kakaoMapView: UIView {
     private let addressLabel: UILabel = {
         let label = UILabel()
         label.sizeToFit()
-        label.font = UIFont(name: "Roboto-Bold", size: 13)
+        label.font = UIFont(name: "Roboto-Bold", size: 15)
         label.numberOfLines = 2
-        label.textColor = .black
-        label.text = "서울 영등포구 도림로 423 1층 더플라스틱 클라이밍 문래점"
+        label.textColor = .black    
         return label
     }()
     private let phoneNumberLabel: UILabel = {
         let UILabel = UILabel()
         UILabel.sizeToFit()
-        UILabel.font = UIFont(name: "Roboto-Medium", size: 13)
+        UILabel.font = UIFont(name: "Roboto-Medium", size: 15)
         UILabel.textColor = .CLDDarkGray
-        UILabel.text = "02-6406-8890"
         return UILabel
     }()
     private let videoButton: UIButton = {
@@ -36,7 +34,7 @@ final class kakaoMapView: UIView {
         button.setTitle("길찾기", for: .normal)
         button.setTitleColor(.CLDBlack, for: .normal)
         button.backgroundColor = .white
-        button.titleLabel?.font = UIFont(name: "Roboto-Regular", size: 10)
+        button.titleLabel?.font = UIFont(name: "Roboto-Regular", size: 13)
         button.clipsToBounds = true
         return button
     }()
@@ -66,7 +64,7 @@ final class kakaoMapView: UIView {
         mapView.snp.makeConstraints { make in
             make.top.equalToSuperview().inset(15)
             make.leading.trailing.equalToSuperview().inset(20)
-            make.height.equalTo(180)
+            make.height.equalTo(160)
         }
         
         addressLabel.snp.makeConstraints { make in
