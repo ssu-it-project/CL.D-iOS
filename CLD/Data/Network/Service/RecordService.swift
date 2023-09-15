@@ -17,7 +17,7 @@ struct PostRecordService {
                     level: String,
                     video: URL,
                     completion: @escaping (NetworkResult<Any>) -> Void) {
-        let url = URL(string: "http://ec2-13-209-11-183.ap-northeast-2.compute.amazonaws.com:1323/clime/record")! // 실제 서버 URL로 교체해야 합니다.
+        let url = URL(string: "https://cl-d.com/clime/record")! // 실제 서버 URL로 교체해야 합니다.
         let header: HTTPHeaders = [ "Content-Type": "multipart/form-data",
                                     "Authorization": "Bearer \(UserDefaultHandler.accessToken)"]
         let parameters: [String: Any] = [

@@ -62,7 +62,6 @@ final class SuccessRecordView: UIView {
         button.setTitleColor(.CLDBlack, for: .normal)
         button.titleLabel?.font = UIFont(name: "Roboto-Bold", size: 15)
         button.backgroundColor = .CLDLightGray
-        button.setImage(ImageLiteral.instaLogo, for: .normal)
         button.semanticContentAttribute = .forceLeftToRight
         button.contentVerticalAlignment = .center
         button.contentHorizontalAlignment = .center
@@ -98,7 +97,7 @@ final class SuccessRecordView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     func setHierarchy() {
-        addSubviews(titleLabel,thumbnailView,successLabel,shareButton,gotoButton)
+        addSubviews(titleLabel,thumbnailView,successLabel,gotoButton)
         thumbnailView.addSubviews(playIcon,labelBackground)
         labelBackground.addSubview(timeLabel)
     }
@@ -132,14 +131,14 @@ final class SuccessRecordView: UIView {
             $0.top.equalTo(thumbnailView.snp.bottom).offset(25)
             $0.centerX.equalToSuperview()
         }
-        shareButton.snp.makeConstraints {
-            $0.top.equalTo(successLabel.snp.bottom).offset(132)
-            $0.width.equalTo(340)
-            $0.height.equalTo(40)
-            $0.centerX.equalToSuperview()
-        }
+//        shareButton.snp.makeConstraints {
+//            $0.top.equalTo(successLabel.snp.bottom).offset(132)
+//            $0.width.equalTo(340)
+//            $0.height.equalTo(40)
+//            $0.centerX.equalToSuperview()
+//        }
         gotoButton.snp.makeConstraints {
-            $0.top.equalTo(shareButton.snp.bottom).offset(7)
+            $0.top.equalTo(successLabel.snp.bottom).offset(132)
             $0.width.equalTo(340)
             $0.height.equalTo(40)
             $0.centerX.equalToSuperview()
