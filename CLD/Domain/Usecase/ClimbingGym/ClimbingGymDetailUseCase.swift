@@ -11,6 +11,7 @@ import RxSwift
 
 protocol ClimbingGymDetailUseCase {
     func getDetailGym(id: String) -> Single<DetailGymVO>
+    func getDetailGymRecord(id: String, keyword: String, limit: Int, skip: Int) -> Single<RecordListVO>
 }
 
 final class DefaultClimbingGymDetailUseCase: ClimbingGymDetailUseCase {
@@ -25,5 +26,9 @@ final class DefaultClimbingGymDetailUseCase: ClimbingGymDetailUseCase {
     
     func getDetailGym(id: String) -> Single<DetailGymVO> {
         gymsRepository.getDetailGym(id: id)
+    }
+    
+    func getDetailGymRecord(id: String, keyword: String, limit: Int, skip: Int) -> Single<RecordListVO> {
+        gymsRepository.getDetailGymRecord(id: id, keyword: keyword, limit: limit, skip: skip)
     }
 }
