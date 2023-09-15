@@ -103,6 +103,7 @@
 		5A70B8B52AB4431000506846 /* PhotoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E2532E2A8A17DB00D3E9E1 /* PhotoCollectionViewCell.swift */; };
 		5A70B8B72AB4536700506846 /* LevelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A70B8B62AB4536700506846 /* LevelType.swift */; };
 		5A70B8B92AB459BC00506846 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A70B8B82AB459BC00506846 /* String+Extension.swift */; };
+		5A70B8BB2AB47B3900506846 /* Double+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A70B8BA2AB47B3900506846 /* Double+Extension.swift */; };
 		5A7E398D2AB0DCAC00143175 /* RecordVO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A7E398C2AB0DCAC00143175 /* RecordVO.swift */; };
 		5A7E398F2AB0E1D600143175 /* RecordAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A7E398E2AB0E1D600143175 /* RecordAPI.swift */; };
 		5A7E39992AB1467600143175 /* HomeRecordUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A7E39982AB1467600143175 /* HomeRecordUseCase.swift */; };
@@ -246,6 +247,7 @@
 		5A70B8B32AB43AD100506846 /* UIImageView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+.swift"; sourceTree = "<group>"; };
 		5A70B8B62AB4536700506846 /* LevelType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelType.swift; sourceTree = "<group>"; };
 		5A70B8B82AB459BC00506846 /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
+		5A70B8BA2AB47B3900506846 /* Double+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Extension.swift"; sourceTree = "<group>"; };
 		5A7E398C2AB0DCAC00143175 /* RecordVO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordVO.swift; sourceTree = "<group>"; };
 		5A7E398E2AB0E1D600143175 /* RecordAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordAPI.swift; sourceTree = "<group>"; };
 		5A7E39982AB1467600143175 /* HomeRecordUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeRecordUseCase.swift; sourceTree = "<group>"; };
@@ -832,6 +834,7 @@
 				023C71522AACC69D00CA095D /* URL+Extension.swift */,
 				5A70B8B32AB43AD100506846 /* UIImageView+.swift */,
 				5A70B8B82AB459BC00506846 /* String+Extension.swift */,
+				5A70B8BA2AB47B3900506846 /* Double+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1282,6 +1285,7 @@
 				5ADED1AF2A66AEAD00C0CBF4 /* UICollectionView+Extension.swift in Sources */,
 				5A32101E2AA87EE4003A40BD /* ClimbingGymUseCase.swift in Sources */,
 				020F65532A7D09450036CFB1 /* SelectVideoViewController.swift in Sources */,
+				5A70B8BB2AB47B3900506846 /* Double+Extension.swift in Sources */,
 				029E36242A9E36EB0069A773 /* PlaceTableViewCell.swift in Sources */,
 				02EB6E862A88C45A00C749A6 /* CALayer+Extension.swift in Sources */,
 				5A21C6812A9A3C9800E7CC95 /* UserTokenDTO.swift in Sources */,

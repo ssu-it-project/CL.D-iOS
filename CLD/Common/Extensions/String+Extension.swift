@@ -52,4 +52,13 @@ extension String {
         
         return nil
     }
+    
+    func convertDistanceToKilometers() -> String? {
+        guard let distanceDouble = Double(self) else {
+            return nil
+        }
+        
+        let distanceInKilometers = distanceDouble / 1000.0
+        return String(format: "%.1f km", distanceInKilometers)
+    }
 }

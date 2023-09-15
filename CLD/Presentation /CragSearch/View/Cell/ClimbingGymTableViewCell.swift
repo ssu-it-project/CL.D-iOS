@@ -143,6 +143,6 @@ extension ClimbingGymTableViewCell {
         gymImageView.setImage(urlString: row.place.imageURL, defaultImage: ImageLiteral.DefaultGymImage)
         showerAvailableBadge.isHidden = row.place.shower ? false : true
         parkingAvailableBadge.isHidden = row.place.parking ? false : true
-        locationLabel.text = "\(row.location.distance) km"
+        locationLabel.text = row.location.distance
     }
 }
