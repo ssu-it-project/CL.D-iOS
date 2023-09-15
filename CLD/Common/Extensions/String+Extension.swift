@@ -38,5 +38,18 @@ extension String {
             return UIColor.ChipYellow
         }
     }
-
+    
+    func convertToKoreanDateFormat() -> String? {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
+        
+        if let date = dateFormatter.date(from: self) {
+            dateFormatter.dateFormat = "yyyy.MM.dd"
+            dateFormatter.timeZone = TimeZone(abbreviation: "KST")
+            
+            return dateFormatter.string(from: date)
+        }
+        
+        return nil
+    }
 }
