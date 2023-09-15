@@ -59,6 +59,18 @@ final class MyPageView: UIView {
 
         return label
     }()
+    let categoryCollectionView: UICollectionView = {
+        var layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .horizontal
+
+        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        collectionView.backgroundColor = .clear
+        collectionView.isScrollEnabled = false
+        collectionView.register(CategoryCollectionViewCell.self,
+                                forCellWithReuseIdentifier: CategoryCollectionViewCell.identifier)
+
+        return collectionView
+    }()
     let badgeCollectionView: UICollectionView = {
         var layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
@@ -84,7 +96,7 @@ final class MyPageView: UIView {
     }
 
     func setHierarchy() {
-        addSubviews(contentView, countCollectionView, dateLabel, badgeCollectionView)
+        addSubviews(contentView, countCollectionView, categoryCollectionView, badgeCollectionView)
         contentView.addSubviews(profileImageView, nameLabel, settingButton)
     }
 
@@ -115,12 +127,18 @@ final class MyPageView: UIView {
             $0.width.equalTo(360)
             $0.height.equalTo(72)
         }
-        dateLabel.snp.makeConstraints {
-            $0.top.equalTo(countCollectionView.snp.bottom).offset(20)
+//        dateLabel.snp.makeConstraints {
+//            $0.top.equalTo(countCollectionView.snp.bottom).offset(20)
+//            $0.leading.equalToSuperview().inset(21)
+//        }
+        categoryCollectionView.snp.makeConstraints {
+            $0.top.equalTo(countCollectionView.snp.bottom).offset(25)
             $0.leading.equalToSuperview().inset(21)
+            $0.width.equalTo(150)
+            $0.height.equalTo(20)
         }
         badgeCollectionView.snp.makeConstraints {
-            $0.top.equalTo(dateLabel.snp.bottom).offset(23)
+            $0.top.equalTo(categoryCollectionView.snp.bottom).offset(8)
             $0.centerX.equalToSuperview()
             $0.width.equalTo(360)
             $0.bottom.equalToSuperview().inset(20)
