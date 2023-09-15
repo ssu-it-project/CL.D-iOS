@@ -38,7 +38,7 @@ class HomeViewModel: ViewModelType {
         input.viewWillAppearEvent
             .withUnretained(self)
             .subscribe(onNext: { owner, _ in
-                owner.getHomeRecords(limit: 10, skip: 10, output: output)
+                owner.getHomeRecords(limit: 10, skip: 0, output: output)
             })
             .disposed(by: disposeBag)
         return output

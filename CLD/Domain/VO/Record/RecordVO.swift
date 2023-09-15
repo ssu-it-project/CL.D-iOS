@@ -19,7 +19,8 @@ struct RecordVO {
     let date: DateClassVO
     let id, image, level: String
     let likeCount: Int
-    let sector, video: String
+    let sector: String
+    let video: String
     let viewCount: Int
 }
 
