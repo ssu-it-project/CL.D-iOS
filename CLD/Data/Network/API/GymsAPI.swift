@@ -13,6 +13,7 @@ enum GymsAPI {
     case getGyms(keyword: String, limit: Int, skip: Int)
     case getLocationGyms(x: Double, y: Double, keyword: String, limit: Int, skip: Int)
     case getDetailGym(id: String)
+    case getDetailGymRecord(id: String, keyword: String, limit: Int, skip: Int)
 }
 
 extension GymsAPI: BaseTargetType {
@@ -24,12 +25,14 @@ extension GymsAPI: BaseTargetType {
             return URLConst.gyms
         case .getDetailGym(let id):
             return baseDetailGymRoutePath + "/\(id)"
+        case .getDetailGymRecord(let id, _, _, _):
+            return baseDetailGymRoutePath + "/\(id)" + "/records"
         }
     }
 
     var method: Moya.Method {
         switch self {
-        case .getGyms, .getLocationGyms, .getDetailGym:
+        case .getGyms, .getLocationGyms, .getDetailGym, .getDetailGymRecord:
             return .get
         }
     }
@@ -52,6 +55,12 @@ extension GymsAPI: BaseTargetType {
             ], encoding: URLEncoding.default)
         case .getDetailGym:
             return .requestPlain
+        case .getDetailGymRecord(id: _, keyword: let keyword, limit: let limit, skip: let skip):
+            return .requestParameters(parameters: [
+                "keyword": keyword,
+                "limit": limit,
+                "skip": skip
+            ], encoding: URLEncoding.default)
         }
     }
 }
