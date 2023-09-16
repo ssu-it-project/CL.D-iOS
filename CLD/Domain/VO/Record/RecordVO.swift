@@ -19,7 +19,8 @@ struct RecordVO {
     let date: DateClassVO
     let id, image, level: String
     let likeCount: Int
-    let sector, video: String
+    let sector: String
+    let video: String
     let viewCount: Int
 }
 
@@ -33,5 +34,15 @@ struct ClimbingGymInfoVO {
 
 struct DateClassVO {
     let created, modified: String
+}
+
+extension RecordVO: Equatable, Hashable {
+    static func == (lhs: RecordVO, rhs: RecordVO) -> Bool {
+        return lhs.id == rhs.id
+    }
+
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(id)
+    }
 }
 

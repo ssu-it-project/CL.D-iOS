@@ -39,13 +39,11 @@ final class HomeViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionView.backgroundColor = .clear
-        setUpDataSource()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.navigationBar.isHidden = true
-        setUpDataSource()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -58,23 +56,14 @@ final class HomeViewController: BaseViewController {
         let output = viewModel.transform(input: input)
         
         output.homeRecordList
-            .subscribe { recordList in
+            .withUnretained(self)
+            .subscribe { owner, recordList in
                 print("===", recordList)
+                owner.collectionView.reloadData()
             }
             .disposed(by: disposeBag)
     }
-    
-    private func setUpDataSource() {
-        url = [
-            "https://cl-d.s3.ap-northeast-2.amazonaws.com/clime_record/64db8009654538cfc659aa31/%E1%84%8B%E1%85%A3%E1%86%BC%E1%84%8C%E1%85%A2_%E1%84%83%E1%85%A5%E1%84%8F%E1%85%B3%E1%86%AF%E1%84%85%E1%85%A1%E1%84%8B%E1%85%B5%E1%86%B7_%E1%84%80%E1%85%A1%E1%86%BC%E1%84%87%E1%85%A5%E1%86%B7%E1%84%8C%E1%85%AE%E1%86%AB.mov",
-            "https://cl-d.s3.ap-northeast-2.amazonaws.com/clime_record/64db8009654538cfc659aa31/%E1%84%8B%E1%85%A3%E1%86%BC%E1%84%8C%E1%85%A2_%E1%84%83%E1%85%A5%E1%84%8F%E1%85%B3%E1%86%AF%E1%84%85%E1%85%A1%E1%84%8B%E1%85%B5%E1%86%B7_%E1%84%80%E1%85%A1%E1%86%BC%E1%84%87%E1%85%A5%E1%86%B7%E1%84%8C%E1%85%AE%E1%86%AB.mov",
-            "https://cl-d.s3.ap-northeast-2.amazonaws.com/clime_record/64db8009654538cfc659aa31/%E1%84%8B%E1%85%A3%E1%86%BC%E1%84%8C%E1%85%A2_%E1%84%83%E1%85%A5%E1%84%8F%E1%85%B3%E1%86%AF%E1%84%85%E1%85%A1%E1%84%8B%E1%85%B5%E1%86%B7_%E1%84%80%E1%85%A1%E1%86%BC%E1%84%87%E1%85%A5%E1%86%B7%E1%84%8C%E1%85%AE%E1%86%AB.mov",
-            "https://cl-d.s3.ap-northeast-2.amazonaws.com/clime_record/64db8009654538cfc659aa31/%E1%84%8B%E1%85%A3%E1%86%BC%E1%84%8C%E1%85%A2_%E1%84%83%E1%85%A5%E1%84%8F%E1%85%B3%E1%86%AF%E1%84%85%E1%85%A1%E1%84%8B%E1%85%B5%E1%86%B7_%E1%84%80%E1%85%A1%E1%86%BC%E1%84%87%E1%85%A5%E1%86%B7%E1%84%8C%E1%85%AE%E1%86%AB.mov",
-            "https://cl-d.s3.ap-northeast-2.amazonaws.com/clime_record/64db8009654538cfc659aa31/%E1%84%8B%E1%85%A3%E1%86%BC%E1%84%8C%E1%85%A2_%E1%84%83%E1%85%A5%E1%84%8F%E1%85%B3%E1%86%AF%E1%84%85%E1%85%A1%E1%84%8B%E1%85%B5%E1%86%B7_%E1%84%80%E1%85%A1%E1%86%BC%E1%84%87%E1%85%A5%E1%86%B7%E1%84%8C%E1%85%AE%E1%86%AB.mov",
-            "https://cl-d.s3.ap-northeast-2.amazonaws.com/clime_record/64db8009654538cfc659aa31/%E1%84%8B%E1%85%A3%E1%86%BC%E1%84%8C%E1%85%A2_%E1%84%83%E1%85%A5%E1%84%8F%E1%85%B3%E1%86%AF%E1%84%85%E1%85%A1%E1%84%8B%E1%85%B5%E1%86%B7_%E1%84%80%E1%85%A1%E1%86%BC%E1%84%87%E1%85%A5%E1%86%B7%E1%84%8C%E1%85%AE%E1%86%AB.mov"
-        ]
-    }
-    
+
     private func createLayout() -> UICollectionViewCompositionalLayout {
         let config = UICollectionViewCompositionalLayoutConfiguration()
         config.scrollDirection = .vertical
@@ -142,7 +131,7 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
         case .badgeSection:
             return 1
         case .videoBanner:
-            return url.count
+            return viewModel.collectionViewCount
         }
     }
     
@@ -155,9 +144,11 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
             return cell
         case .videoBanner:
             let cell: VideoCollectionViewCell = collectionView.dequeueReusableCell(forIndexPath: indexPath)
-            let videoURL = url[indexPath.item]
-            cell.configure(with: videoURL)
-            cell.playerView.play()
+            if let recordVO = viewModel.cellInfo(index: indexPath.item) {
+                cell.configureVideo(with: recordVO.video)
+                cell.configureCell(row: recordVO)
+                cell.playerView.play()
+            }
             return cell
         }
     }
@@ -166,7 +157,6 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
         let cells = collectionView.visibleCells
          let videoCells = cells.compactMap({ $0 as? VideoCollectionViewCell })
          
-         let contentHeight = scrollView.contentSize.height
          let yOffset = scrollView.contentOffset.y
          let frameHeight = scrollView.frame.size.height
          

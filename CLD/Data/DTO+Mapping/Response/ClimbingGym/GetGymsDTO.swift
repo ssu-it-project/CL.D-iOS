@@ -77,6 +77,6 @@ extension Place {
 
 extension Location {
     func toDomain() -> LocationVO {
-        return LocationVO(x: x, y: y, distance: distance)
+        return LocationVO(x: x, y: y, distance: distance.formatToKilometersString())
     }
 }

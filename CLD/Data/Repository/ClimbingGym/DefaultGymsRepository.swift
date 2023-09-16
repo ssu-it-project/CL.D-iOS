@@ -60,4 +60,25 @@ final class DefaultGymsRepository: GymsRepository {
                 }
             }
     }
+    
+    func getDetailGymRecord(id: String, keyword: String, limit: Int, skip: Int) -> Single<RecordListVO> {
+        return gymsService.rx.request(.getDetailGymRecord(id: id, keyword: keyword, limit: limit, skip: skip))
+            .flatMap { response in
+                return Single<RecordListVO>.create { observer in
+                    if (200..<300).contains(response.statusCode) {
+                        do {
+                            let gymRecordListDTO = try response.map(RecordListDTO.self)
+                            let gymRecordListVO = gymRecordListDTO.toDomain()
+                            observer(.success(gymRecordListVO))
+                        } catch {
+                            print("====", error)
+                            observer(.failure(error))
+                        }
+                    } else {
+                        observer(.failure(ClimbingGymError.detailGymError))
+                    }
+                    return Disposables.create()
+                }
+            }
+    }
 }

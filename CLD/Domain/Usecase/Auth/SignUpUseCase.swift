@@ -9,24 +9,24 @@ import Foundation
 
 import RxSwift
 
-public enum SignUpError: Error {
-  case failSignUp
+enum SignUpError: Error {
+    case failSignUp
 }
 
-public protocol SignUpUseCase {
-  func trySignUp(requestDTO: SignUpRequest) -> Single<UserToken>
+protocol SignUpUseCase {
+    func trySignUp(requestDTO: SignUpRequest) -> Single<UserToken>
 }
 
 final class DefaultSignUpUseCase: SignUpUseCase {
     
-  private let signUpRepository: DefaultSignUpRepository
-
-  // MARK: - Initializer
-  public init(repository: DefaultSignUpRepository) {
-      signUpRepository = repository
-  }
-
-  // MARK: - Methods
+    private let signUpRepository: DefaultSignUpRepository
+    
+    // MARK: - Initializer
+    init(repository: DefaultSignUpRepository) {
+        signUpRepository = repository
+    }
+    
+    // MARK: - Methods
     func trySignUp(requestDTO: SignUpRequest) -> Single<UserToken> {
         signUpRepository.trySignUp(requestDTO: requestDTO)
     }

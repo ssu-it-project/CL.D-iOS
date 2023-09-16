@@ -33,12 +33,22 @@ class HomeViewModel: ViewModelType {
         let homeRecordList = PublishRelay<RecordListVO>()
     }
     
+    let recordList = BehaviorSubject<[RecordVO]>(value: [])
+    var collectionViewCount: Int {
+          guard let count = try? recordList.value().count else { return 0 }
+          return count
+      }
+    
+    func cellInfo(index: Int) -> RecordVO? {
+        return try? recordList.value()[index]
+    }
+    
     func transform(input: Input) -> Output {
         let output = Output()
         input.viewWillAppearEvent
             .withUnretained(self)
             .subscribe(onNext: { owner, _ in
-                owner.getHomeRecords(limit: 10, skip: 10, output: output)
+                owner.getHomeRecords(limit: 10, skip: 0, output: output)
             })
             .disposed(by: disposeBag)
         return output
@@ -48,9 +58,10 @@ class HomeViewModel: ViewModelType {
 extension HomeViewModel {
     func getHomeRecords(limit: Int, skip: Int, output: Output) {
         useCase.getHomeRecords(limit: limit, skip: skip)
-            .subscribe { response in
+            .subscribe { [weak self] response in
                 switch response {
                 case .success(let value):
+                    self?.recordList.onNext(value.records)
                     output.homeRecordList.accept(value)
                 case .failure(let error):
                     print(error)

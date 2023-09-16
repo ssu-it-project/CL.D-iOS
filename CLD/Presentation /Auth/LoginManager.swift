@@ -49,10 +49,8 @@ class SNSLoginManager {
                 print("Encountered Erorr: \(error)")
             } else {
                 if let result = result {
-                    print("페이스북 계정으로 로그인 성공")
-                    let tokenString = result.token?.tokenString
-                    let userID = result.token?.userID
-                    print("token: \(userID)")
+                    let _ = result.token?.tokenString
+                    _ = result.token?.userID
                     
                     let sceneDelegate = UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate
                     sceneDelegate?.changeRootView()

@@ -14,7 +14,6 @@ final class ClimbingGymSearchViewController: BaseViewController {
     
     private lazy var searchBar: UISearchBar = {
         let view = UISearchBar()
-        view.delegate = self
         view.placeholder = "검색"
         view.searchBarStyle = .minimal
         return view
@@ -87,13 +86,13 @@ final class ClimbingGymSearchViewController: BaseViewController {
     
     override func setConstraints() {
         searchBar.snp.makeConstraints { make in
-            make.top.equalTo(view.safeAreaLayoutGuide.snp.top).inset(24)
+            make.top.equalTo(view.safeAreaLayoutGuide.snp.top).inset(10)
             make.leading.trailing.equalToSuperview().inset(19)
             make.height.equalTo(40)
         }
         
         climbingGymSegmentControl.snp.makeConstraints { make in
-            make.top.equalTo(searchBar.snp.bottom).offset(17)
+            make.top.equalTo(searchBar.snp.bottom).offset(10)
             make.leading.equalToSuperview().inset(19)
             make.height.equalTo(searchBar.snp.height).multipliedBy(0.8)
         }
@@ -108,8 +107,4 @@ final class ClimbingGymSearchViewController: BaseViewController {
     override func setViewProperty() {
         super.setViewProperty()
     }
-}
-
-extension ClimbingGymSearchViewController: UISearchBarDelegate {
-    
 }

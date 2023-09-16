@@ -25,16 +25,10 @@ final class AuthViewController: BaseViewController {
         super.init()
     }
     
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         bind()
         bindAction()
-//        buttonTap()
-
     }
     
     private func bind() {
@@ -43,16 +37,15 @@ final class AuthViewController: BaseViewController {
         let output = viewModel.transform(input: input)
         
         output.didSuccessSignIn
-            .withUnretained(self)
-            .bind { owner, Success in
-                print("로그인 성공 ====", UserDefaultHandler.accessToken)
+            .bind { success in
+                print("로그인 성공 ==== \(success)", UserDefaultHandler.accessToken)
                 RootHandler.shard.update(.Main)
             }
             .disposed(by: disposeBag)
         
         output.isFirstUserRelay
-            .bind { _ in
-                print("미 가입 유저 입니다. ==== ", UserDefaultHandler.snsAccessToken)
+            .bind { isFirst in
+                print("미 가입 유저 입니다. ==== \(isFirst) ", UserDefaultHandler.snsAccessToken)
                 RootHandler.shard.update(.Terms)
             }
             .disposed(by: disposeBag)

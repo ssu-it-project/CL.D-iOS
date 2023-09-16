@@ -31,14 +31,14 @@ final class DefaultSignInRepository: SignInRepository {
             }
     }
     
-    public func tryKakaoLogin() -> Observable<UserToken> {
+    func tryKakaoLogin() -> Observable<UserToken> {
         if UserApi.isKakaoTalkLoginAvailable() {
             return UserApi.shared.rx.loginWithKakaoTalk()
                 .withUnretained(self)
                 .flatMapLatest { owner, oAuthToken in
                     owner.saveSNSAccessToken(oAuthToken.accessToken)
                     owner.saveSNSLoginType(SNSLoginType.kakao.rawValue)
-                    let dto = SignInRequest(accessToken: oAuthToken.accessToken, device: Device(deviceID: UUID.getDeviceUUID()), loginType: SNSLoginType.kakao.rawValue)
+                    let dto = SignInRequest(accessToken: oAuthToken.accessToken, device: Device(deviceID: DeviceUUID.getDeviceUUID()), loginType: SNSLoginType.kakao.rawValue)
                     return owner.requestKakaoSignIn(requestDTO: dto)
                 }
         } else {
@@ -47,7 +47,7 @@ final class DefaultSignInRepository: SignInRepository {
                 .flatMapLatest { owner, oAuthToken in
                     owner.saveSNSAccessToken(oAuthToken.accessToken)
                     owner.saveSNSLoginType(SNSLoginType.kakao.rawValue)
-                    let dto = SignInRequest(accessToken: oAuthToken.accessToken, device: Device(deviceID: UUID.getDeviceUUID()), loginType: SNSLoginType.kakao.rawValue)
+                    let dto = SignInRequest(accessToken: oAuthToken.accessToken, device: Device(deviceID: DeviceUUID.getDeviceUUID()), loginType: SNSLoginType.kakao.rawValue)
                     return owner.requestKakaoSignIn(requestDTO: dto)
                 }
         }

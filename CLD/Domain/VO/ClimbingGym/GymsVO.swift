@@ -20,7 +20,7 @@ struct ClimbingGymVO {
 
 struct LocationVO {
     let x, y: Double
-    let distance: Double
+    let distance: String
 }
 
 struct PlaceVO {

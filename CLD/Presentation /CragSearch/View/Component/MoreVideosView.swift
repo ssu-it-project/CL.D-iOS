@@ -7,22 +7,25 @@
 
 import UIKit
 
-final class moreVideosView: UIView {
+final class MoreVideosView: UIView {
     
-    private let videoButton: UIButton = {
+    let videoButton: UIButton = {
         let button = UIButton()
         button.setTitle("영상 더보기", for: .normal)
         button.setTitleColor(.CLDBlack, for: .normal)
-        button.titleLabel?.font = UIFont(name: "Roboto-Regular", size: 10)
+        button.titleLabel?.font = UIFont(name: "Roboto-Regular", size: 13)
         button.backgroundColor = .white
         button.clipsToBounds = true
         return button
     }()
-    private let levelLabel = LevelBadge(title: "A|빨강", backgroundColor: .red)
+    private let levelLabel = LevelBadge()
+    private let videoBackView = UIView()
+    private var videoView = PlayerView()
     private let videoSampleImageView: UIImageView = {
         let view = UIImageView()
-        view.image = UIImage(named: "videoCellProfleImage")
-        view.contentMode = .scaleAspectFit
+        view.image = ImageLiteral.DefaultDetailGymVideoImage
+        view.isHidden = true
+        view.contentMode = .scaleToFill
         return view
     }()
     
@@ -44,14 +47,19 @@ final class moreVideosView: UIView {
     }
     
     private func setHierarchy() {
-        addSubviews(videoButton, videoSampleImageView)
-        videoSampleImageView.addSubview(levelLabel)
+        videoBackView.addSubviews(levelLabel, videoSampleImageView, videoView)
+        videoBackView.bringSubviewToFront(levelLabel)
+        addSubviews(videoButton, videoBackView)
+        videoView.addSubview(levelLabel)
     }
     
     private func setConstraints() {
+        videoView.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
+        
         videoSampleImageView.snp.makeConstraints { make in
-            make.top.equalToSuperview().inset(15)
-            make.leading.trailing.equalToSuperview().inset(27)
+            make.edges.equalToSuperview()
         }
         
         levelLabel.snp.makeConstraints { make in
@@ -59,11 +67,30 @@ final class moreVideosView: UIView {
             make.centerX.equalToSuperview()
         }
         
+        videoBackView.snp.makeConstraints { make in
+            make.top.equalToSuperview().inset(15)
+            make.leading.trailing.equalToSuperview().inset(27)
+        }
+        
         videoButton.snp.makeConstraints { make in
-            make.top.equalTo(videoSampleImageView.snp.bottom).offset(10)
+            make.top.equalTo(videoBackView.snp.bottom).offset(10)
             make.leading.trailing.equalToSuperview().inset(27)
             make.height.equalTo(30)
             make.bottom.equalToSuperview().inset(10)
         }
+    }
+}
+
+extension MoreVideosView {
+    func configureVideoURL(videoURL: String) {
+        videoView.setupPlayerItem(with: videoURL)
+    }
+    
+    func handleHiddenVideoSampleImageView(_ isHidden: Bool) {
+        videoSampleImageView.isHidden = isHidden
+    }
+    
+    func setLevelLabel(level: String, section: String) {
+        levelLabel.configurationLevelBadge(level: level, sector: section)
     }
 }

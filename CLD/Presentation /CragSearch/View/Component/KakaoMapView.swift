@@ -1,5 +1,5 @@
 //
-//  kakaoMapView.swift
+//  KakaoMapView.swift
 //  CLD
 //
 //  Created by 김규철 on 2023/09/05.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class kakaoMapView: UIView {
+final class KakaoMapView: UIView {
     
     private let mapView: UIView = {
         let view = UIView()
@@ -17,18 +17,16 @@ final class kakaoMapView: UIView {
     private let addressLabel: UILabel = {
         let label = UILabel()
         label.sizeToFit()
-        label.font = UIFont(name: "Roboto-Bold", size: 13)
+        label.font = UIFont(name: "Roboto-Bold", size: 15)
         label.numberOfLines = 2
-        label.textColor = .black
-        label.text = "서울 영등포구 도림로 423 1층 더플라스틱 클라이밍 문래점"
+        label.textColor = .black    
         return label
     }()
     private let phoneNumberLabel: UILabel = {
         let UILabel = UILabel()
         UILabel.sizeToFit()
-        UILabel.font = UIFont(name: "Roboto-Medium", size: 13)
+        UILabel.font = UIFont(name: "Roboto-Medium", size: 15)
         UILabel.textColor = .CLDDarkGray
-        UILabel.text = "02-6406-8890"
         return UILabel
     }()
     private let videoButton: UIButton = {
@@ -36,7 +34,7 @@ final class kakaoMapView: UIView {
         button.setTitle("길찾기", for: .normal)
         button.setTitleColor(.CLDBlack, for: .normal)
         button.backgroundColor = .white
-        button.titleLabel?.font = UIFont(name: "Roboto-Regular", size: 10)
+        button.titleLabel?.font = UIFont(name: "Roboto-Regular", size: 13)
         button.clipsToBounds = true
         return button
     }()
@@ -66,7 +64,7 @@ final class kakaoMapView: UIView {
         mapView.snp.makeConstraints { make in
             make.top.equalToSuperview().inset(15)
             make.leading.trailing.equalToSuperview().inset(20)
-            make.height.equalTo(180)
+            make.height.equalTo(155)
         }
         
         addressLabel.snp.makeConstraints { make in
@@ -87,6 +85,17 @@ final class kakaoMapView: UIView {
             make.leading.trailing.equalToSuperview().inset(17)
             make.bottom.equalToSuperview().inset(10)
             make.height.equalTo(30)
+        }
+    }
+}
+
+extension KakaoMapView {
+    func configurationVIew(_ detailPlaceVO: DetailPlaceVO) {
+        addressLabel.text = detailPlaceVO.addressName
+        if detailPlaceVO.phone.isEmpty {
+            phoneNumberLabel.text = "전화번호가 정보가 없어요"
+        } else  {
+            phoneNumberLabel.text = detailPlaceVO.phone
         }
     }
 }

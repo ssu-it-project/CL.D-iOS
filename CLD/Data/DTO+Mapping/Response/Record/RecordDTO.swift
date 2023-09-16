@@ -1,12 +1,15 @@
 import Foundation
 
-// MARK: - Welcome
 struct RecordListDTO: Decodable {
     let pagination: Pagination
     let records: [RecordDTO]?
+    
+    enum CodingKeys: String, CodingKey {
+        case pagination
+        case records = "Records"
+    }
 }
 
-// MARK: - Record
 struct RecordDTO: Decodable {
     let author: AuthorDTO
     let climbingGymInfo: ClimbingGymInfoDTO
@@ -14,7 +17,8 @@ struct RecordDTO: Decodable {
     let date: DateClassDTO
     let id, image, level: String
     let likeCount: Int
-    let sector, video: String
+    let sector: String
+    let video: String
     let viewCount: Int
 
     enum CodingKeys: String, CodingKey {
@@ -27,7 +31,6 @@ struct RecordDTO: Decodable {
     }
 }
 
-// MARK: - Author
 struct AuthorDTO: Decodable {
     let id, nickname, profileImage: String
 
@@ -37,19 +40,17 @@ struct AuthorDTO: Decodable {
     }
 }
 
-// MARK: - ClimbingGymInfo
 struct ClimbingGymInfoDTO: Decodable {
     let id, name: String
 }
 
-// MARK: - DateClass
 struct DateClassDTO: Decodable {
     let created, modified: String
 }
 
 extension RecordListDTO {
     func toDomain() -> RecordListVO {
-        return RecordListVO(pagination: PaginationVO(total: pagination.total, skip: pagination.skip, limit: pagination.limit), records: records?.compactMap { $0.toDomain() } ?? [] )
+        return RecordListVO(pagination: PaginationVO(total: pagination.total, skip: pagination.skip, limit: pagination.limit), records: records?.map { $0.toDomain() } ?? [] )
     }
 }
 

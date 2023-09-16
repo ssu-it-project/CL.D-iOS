@@ -29,6 +29,11 @@ enum ImageLiteral {
     static var videoCellMenuIcon: UIImage { .load(named: "videoCellMenuIcon") }
     static var badgeInfoIcon: UIImage { .load(named: "badgeInfoIcon") }
     
+    //MARK: - Gym
+    static var DefaultGymImage: UIImage { .load(named: "DefaultGym") }
+    static var DefaultDetailGymVideoImage: UIImage { .load(named: "DefaultDetailGymVideo").resize(newWidth: 250) }
+    static var ParkingIcon: UIImage { .load(named: "Parking") }
+    
     //MARK: - Record
     static var dotDivider: UIImage { .load(named: "DotDivider") }
     static var placeIcon: UIImage { .load(named: "placeIcon") }
@@ -39,6 +44,8 @@ enum ImageLiteral {
     
     //MARK: - System image
     static var checkIcon: UIImage { .load(systemName: "checkmark")}
+    static var bookMarkIcon: UIImage { .load(systemName: "bookmark") }
+    static var fillBookMarkIcon: UIImage { .load(systemName: "bookmark.fill") }
     static var thumbnailImage: UIImage { .load(named: "thumbnailImage")}
 
     //MARK: - MyPage

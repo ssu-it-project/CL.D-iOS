@@ -24,6 +24,9 @@ protocol BaseViewControllerProtocol: AnyObject, BaseViewItemProtocol {
     /// delegate 설정
     func setDelegate()
     
+    /// Navigation 설정
+    func setNavigationBar()
+    
     /// view binding 설정
     func Bind()
 }

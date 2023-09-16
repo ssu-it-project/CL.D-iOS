@@ -21,15 +21,14 @@ final class VideoCollectionViewCell: UICollectionViewCell {
     private let profileImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFit
-        imageView.image = UIImage(named: "videoCellProfleImage")
+        imageView.clipsToBounds = true
         return imageView
     }()
     private let titleLabel: UILabel = {
         let UILabel = UILabel()
         UILabel.sizeToFit()
-        UILabel.font = .systemFont(ofSize: 12)
+        UILabel.font = .systemFont(ofSize: 14)
         UILabel.textColor = .black
-        UILabel.text = "김성진죽지마화이팅"
         return UILabel
     }()
     private lazy var menuButton: UIButton = {
@@ -42,23 +41,20 @@ final class VideoCollectionViewCell: UICollectionViewCell {
     private let viedoTitleLabel: UILabel = {
         let UILabel = UILabel()
         UILabel.sizeToFit()
-        UILabel.font = .boldSystemFont(ofSize: 15)
+        UILabel.font = .boldSystemFont(ofSize: 16)
         UILabel.textColor = .black
-        UILabel.text = "이게 진짜 가능하다가??"
         return UILabel
     }()
     private let viedoDetailLabel: UILabel = {
         let UILabel = UILabel()
-        UILabel.font = .systemFont(ofSize: 11)
+        UILabel.font = .systemFont(ofSize: 14)
         UILabel.textColor = .CLDDarkGray
-        UILabel.text = "클라이밍장 정보 | A | 빨강 "
         return UILabel
     }()
     private let viedoDateLabel: UILabel = {
         let UILabel = UILabel()
-        UILabel.font = .systemFont(ofSize: 11)
+        UILabel.font = .systemFont(ofSize: 14)
         UILabel.textColor = .CLDDarkGray
-        UILabel.text = "2023.05.21"
         return UILabel
     }()
     private lazy var videoSubTitleStackView: UIStackView = {
@@ -111,6 +107,11 @@ final class VideoCollectionViewCell: UICollectionViewCell {
     override func prepareForReuse() {
         super.prepareForReuse()
         playerView.player = nil
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        profileImageView.layer.cornerRadius = profileImageView.frame.height / 2
     }
     
     required init?(coder: NSCoder) {
@@ -172,7 +173,17 @@ final class VideoCollectionViewCell: UICollectionViewCell {
 }
 
 extension VideoCollectionViewCell {
-    func configure(with videoURLString: String) {
+    func configureVideo(with videoURLString: String) {
         playerView.setupPlayerItem(with: videoURLString)
+    }
+}
+
+extension VideoCollectionViewCell {
+    func configureCell(row: RecordVO) {
+        profileImageView.setImage(urlString: row.author.profileImage, defaultImage: ImageLiteral.myPageIcon)
+        titleLabel.text = row.author.nickname
+        viedoTitleLabel.text = row.content
+        viedoDetailLabel.text = "\(row.climbingGymInfo.name) | \(row.sector) | \(row.level)"
+        viedoDateLabel.text = row.date.created.convertToKoreanDateFormat()
     }
 }
