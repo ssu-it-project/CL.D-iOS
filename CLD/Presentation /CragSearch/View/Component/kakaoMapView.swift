@@ -64,7 +64,7 @@ final class kakaoMapView: UIView {
         mapView.snp.makeConstraints { make in
             make.top.equalToSuperview().inset(15)
             make.leading.trailing.equalToSuperview().inset(20)
-            make.height.equalTo(158)
+            make.height.equalTo(155)
         }
         
         addressLabel.snp.makeConstraints { make in
@@ -92,6 +92,10 @@ final class kakaoMapView: UIView {
 extension kakaoMapView {
     func configurationVIew(_ detailPlaceVO: DetailPlaceVO) {
         addressLabel.text = detailPlaceVO.addressName
-        phoneNumberLabel.text = detailPlaceVO.phone
+        if detailPlaceVO.phone.isEmpty {
+            phoneNumberLabel.text = "전화번호가 정보가 없어요"
+        } else  {
+            phoneNumberLabel.text = detailPlaceVO.phone
+        }
     }
 }

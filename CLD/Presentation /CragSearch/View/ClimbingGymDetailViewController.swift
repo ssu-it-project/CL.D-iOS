@@ -19,12 +19,12 @@ final class ClimbingGymDetailViewController: BaseViewController {
     }()
     private lazy var stackView: UIStackView = {
         let stackView = UIStackView()
-        stackView.addArrangedSubviews(kakaoMapContentView, videoView)
+        stackView.addArrangedSubviews(kakaoMapContentView, morevideoView)
         stackView.axis = .vertical
         stackView.spacing = 10
         return stackView
     }()
-    private let videoView = moreVideosView()
+    private let morevideoView = moreVideosView()
     private let kakaoMapContentView = kakaoMapView()
     
     private var viewModel: ClimbingGymDetailViewModel
@@ -46,6 +46,28 @@ final class ClimbingGymDetailViewController: BaseViewController {
             .withUnretained(self)
             .bind { owner, detailPlaceVO in
                 owner.kakaoMapContentView.configurationVIew(detailPlaceVO)
+            }
+            .disposed(by: disposeBag)
+        
+        output.recordVideoURL
+            .withUnretained(self)
+            .bind { owner, recordVideoURL in
+                owner.morevideoView.videoView.setupPlayerItem(with: recordVideoURL)
+            }
+            .disposed(by: disposeBag)
+        
+        output.recordVideoIsEmpty
+            .withUnretained(self)
+            .bind { owner, isEmpty in
+                owner.morevideoView.handleHiddenVideoSampleImageView(isEmpty)
+            }
+            .disposed(by: disposeBag)
+        
+        output.recordLevel
+            .withUnretained(self)
+            .subscribe { owner, badge in
+                let (level, sector) = badge
+                owner.morevideoView.setLevelLabel(level: level, section: sector)
             }
             .disposed(by: disposeBag)
     }
@@ -70,7 +92,7 @@ final class ClimbingGymDetailViewController: BaseViewController {
             make.height.equalTo(view.safeAreaLayoutGuide.snp.height).multipliedBy(0.4)
         }
         
-        videoView.snp.makeConstraints { make in
+        morevideoView.snp.makeConstraints { make in
             make.height.equalTo(view.safeAreaLayoutGuide.snp.height).multipliedBy(0.59)
         }
     }

@@ -31,6 +31,9 @@ class ClimbingGymDetailViewModel {
     
     struct Output {
         var placeVO = PublishRelay<DetailPlaceVO>()
+        var recordVideoURL = PublishRelay<String>()
+        var recordLevel = PublishRelay<(String, String)>()
+        var recordVideoIsEmpty = PublishRelay<Bool>()
     }
     
     func transform(input: Input) -> Output {
@@ -40,10 +43,10 @@ class ClimbingGymDetailViewModel {
             .withUnretained(self)
             .subscribe(onNext: { owner, _ in
                 owner.getDetailGym(id: owner.id, output: output)
+                owner.getDetailGymRecord(output: output)
             })
             .disposed(by: disposeBag)
-        
-        
+
         return output
     }
 }
@@ -61,4 +64,23 @@ extension ClimbingGymDetailViewModel {
             }
             .disposed(by: disposeBag)
     }
+    
+    private func getDetailGymRecord(output: Output) {
+        useCase.getDetailGymRecord(id: self.id, keyword: "", limit: 1, skip: 0)
+            .subscribe { response in
+                switch response {
+                case .success(let value):
+                    if value.pagination.total == 0 {
+                        output.recordVideoIsEmpty.accept(false)
+                    }
+                    let record = value.records
+                    output.recordVideoURL.accept(record[safe: 0]?.video ?? "")
+                    output.recordLevel.accept((record[safe: 0]?.level ?? "회색", record[safe: 0]?.sector ?? "CLD"))
+                case .failure(let error):
+                    print(error.localizedDescription)
+                    output.recordVideoIsEmpty.accept(false)
+                }
+            }
+            .disposed(by: disposeBag)
+        }
 }
