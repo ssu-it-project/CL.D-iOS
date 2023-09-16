@@ -43,7 +43,8 @@ final class PostRecordViewController: BaseViewController {
         let level = postRecordDic["colorText"] as! String
         let asset: PHAsset! = postRecordDic["thumbnail"] as? PHAsset
         var video: URL = postRecordDic["videoURL"] as! URL
-        //print("Original size: \(video.fileSizeInMB())")
+        // print("Original size: \(video.fileSizeInMB())")
+        // print("=== destinationPath: \(destinationPath)")
 
         let videoCompressor = LightCompressor()
         compression = videoCompressor.compressVideo(videos: [.init(source: video, destination: destinationPath, configuration: .init(quality: VideoQuality.low, videoBitrateInMbps: 5, disableAudio: false, keepOriginalResolution: true))],
@@ -58,10 +59,11 @@ final class PostRecordViewController: BaseViewController {
             case .onSuccess(let index, let path):
                 self.compressedPath = path
                 video = path
-                //print("Size after compression: \(video.fileSizeInMB())")
+                // print("Size after compression: \(video.fileSizeInMB())")
             case .onStart:
                 print("onStart")
             case .onFailure(let index, let error):
+                print("=== error: \(error)")
                 print("onFailure")
             case .onCancelled:
                 print("Cancelled")

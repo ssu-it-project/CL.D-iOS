@@ -140,12 +140,12 @@ extension SelectPlaceViewController: UITableViewDelegate, UITableViewDataSource 
         let cell = tableView.dequeueReusableCell(withIdentifier: PlaceTableViewCell.identifier, for: indexPath) as! PlaceTableViewCell
         cell.selectionStyle = .none
         cell.placeLabel.text = self.gymsArr[indexPath.row].place.name
-        climbing_gym_id = self.gymsArr[indexPath.row].id
         return cell
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         searchTextField.text = self.gymsArr[indexPath.row].place.name
+        climbing_gym_id = self.gymsArr[indexPath.row].id
         //클릭한 셀의 이벤트 처리
         tableView.deselectRow(at: indexPath, animated: true)
     }

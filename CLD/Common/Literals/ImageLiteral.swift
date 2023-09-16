@@ -42,15 +42,25 @@ enum ImageLiteral {
     static var backButton: UIImage { .load(named: "backButton") }
     static var addIcon: UIImage { .load(named: "addIcon") }
     
-    //MARK: - test image
-    static var videoThumbnail: UIImage { .load(named: "videoThumbnail") }
-    static var testthumBnailImage: UIImage { .load(named: "thumbnailImage") }
-    
     //MARK: - System image
     static var checkIcon: UIImage { .load(systemName: "checkmark")}
     static var bookMarkIcon: UIImage { .load(systemName: "bookmark") }
     static var fillBookMarkIcon: UIImage { .load(systemName: "bookmark.fill") }
     static var thumbnailImage: UIImage { .load(named: "thumbnailImage")}
+
+    //MARK: - MyPage
+    static var settingIcon: UIImage { .load(named: "settingIcon")}
+    static var videoIcon: UIImage { .load(named: "videoIcon")}
+    static var editProfileImage: UIImage { .load(named: "editProfileImage")}
+
+    //MARK: - test image
+    static var videoThumbnail: UIImage { .load(named: "videoThumbnail") }
+    static var testthumBnailImage: UIImage { .load(named: "thumbnailImage") }
+    static var testProfileImage: UIImage { .load(named: "seolgi") }
+    static var testBadgeImage: UIImage { .load(named: "testBadgeImage") }
+    static var holderBlue: UIImage { .load(named: "holderBlue") }
+    static var holderOrange: UIImage { .load(named: "holderOrange") }
+    static var holderPurple: UIImage { .load(named: "holderPurple") }
 }
 
 extension UIImage {

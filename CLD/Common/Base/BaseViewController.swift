@@ -7,6 +7,7 @@
 
 import UIKit
 import RxSwift
+import RxCocoa
 
 protocol BaseViewItemProtocol: AnyObject {
     /// view property 설정 - ex ) view.backgroundColor = .white
@@ -30,12 +31,21 @@ protocol BaseViewControllerProtocol: AnyObject, BaseViewItemProtocol {
     func Bind()
 }
 
- class BaseViewController: UIViewController, BaseViewControllerProtocol {
-     var disposeBag: DisposeBag = .init()
+class BaseViewController: UIViewController, BaseViewControllerProtocol {
+    var disposeBag: DisposeBag = .init()
     
     init() {
         super.init(nibName: nil, bundle: nil)
     }
+
+    let customBackButton: UIButton = {
+        let button = UIButton()
+        button.setImage(UIImage(systemName: "chevron.backward"), for: .normal)
+        button.imageView?.contentMode = .scaleAspectFit
+        button.tintColor = .CLDBlack
+
+        return button
+    }()
 
     @available(*, unavailable, message: "remove required init")
     required init?(coder: NSCoder) {
@@ -51,15 +61,37 @@ protocol BaseViewControllerProtocol: AnyObject, BaseViewItemProtocol {
         setDelegate()
         setHierarchy()
         setConstraints()
-        setNavigationBar()
+        setupNavigationBar()
     }
 
-     func setViewProperty() {
-         self.view.backgroundColor = .white
-     }
-     func setDelegate() { }
-     func setHierarchy() { }
-     func setConstraints() { }
-     func setNavigationBar() { }
-     func Bind() { }
+    func setViewProperty() {
+        self.view.backgroundColor = .white
+    }
+    func setDelegate() { }
+    func setHierarchy() { }
+    func setConstraints() { }
+    func Bind() { }
+
+    func setupNavigationBar() {
+        guard let navigationBar = navigationController?.navigationBar else { return }
+        let appearance = UINavigationBarAppearance()
+
+        appearance.shadowColor = .clear
+        appearance.backgroundColor = .white
+        appearance.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.black, NSAttributedString.Key.font: UIFont.systemFont(ofSize: 15)]
+
+        navigationBar.standardAppearance = appearance
+        navigationBar.compactAppearance = appearance
+        navigationBar.scrollEdgeAppearance = appearance
+
+        navigationItem.leftBarButtonItem = UIBarButtonItem(customView: customBackButton)
+
+        customBackButton.rx.tap
+            .bind {
+                self.navigationController?.popViewController(animated: true)
+            }.disposed(by: disposeBag)
+    }
+    func makeBarButtonItem<T: UIView>(with view: T) -> UIBarButtonItem {
+        return UIBarButtonItem(customView: view)
+    }
 }

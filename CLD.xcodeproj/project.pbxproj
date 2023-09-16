@@ -35,6 +35,17 @@
 		0281723C2A793A670089FD51 /* SelectColorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0281723B2A793A670089FD51 /* SelectColorViewController.swift */; };
 		0281723E2A793B900089FD51 /* SelectColorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0281723D2A793B900089FD51 /* SelectColorCell.swift */; };
 		028981642A93176000B928E5 /* PostRecordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 028981632A93175F00B928E5 /* PostRecordViewController.swift */; };
+		0294D01C2AB1E9CA00F4244A /* MyPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0294D01B2AB1E9CA00F4244A /* MyPageView.swift */; };
+		0294D01F2AB1F88500F4244A /* CountCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0294D01E2AB1F88500F4244A /* CountCollectionViewCell.swift */; };
+		0294D0212AB202ED00F4244A /* HistoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0294D0202AB202ED00F4244A /* HistoryCollectionViewCell.swift */; };
+		0294D0232AB2BAC900F4244A /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0294D0222AB2BAC900F4244A /* SettingView.swift */; };
+		0294D0252AB2C01A00F4244A /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0294D0242AB2C01A00F4244A /* SettingViewController.swift */; };
+		0294D0272AB2CC0300F4244A /* SettingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0294D0262AB2CC0300F4244A /* SettingTableViewCell.swift */; };
+		0294D0292AB2D38700F4244A /* ProfileSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0294D0282AB2D38700F4244A /* ProfileSettingViewController.swift */; };
+		0294D02B2AB2D39100F4244A /* ProfileSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0294D02A2AB2D39000F4244A /* ProfileSettingView.swift */; };
+		0294D02D2AB330ED00F4244A /* AccountSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0294D02C2AB330ED00F4244A /* AccountSettingViewController.swift */; };
+		0294D02F2AB3310200F4244A /* AccountSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0294D02E2AB3310200F4244A /* AccountSettingView.swift */; };
+		0294D0312AB3632600F4244A /* CategoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0294D0302AB3632600F4244A /* CategoryCollectionViewCell.swift */; };
 		029E36242A9E36EB0069A773 /* PlaceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 029E36232A9E36EB0069A773 /* PlaceTableViewCell.swift */; };
 		02B655372AA5D66600E4AC4F /* GetGymsDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B655362AA5D66600E4AC4F /* GetGymsDTO.swift */; };
 		02B655392AA5D97700E4AC4F /* GymsAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B655382AA5D97700E4AC4F /* GymsAPI.swift */; };
@@ -194,6 +205,17 @@
 		0281723B2A793A670089FD51 /* SelectColorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectColorViewController.swift; sourceTree = "<group>"; };
 		0281723D2A793B900089FD51 /* SelectColorCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectColorCell.swift; sourceTree = "<group>"; };
 		028981632A93175F00B928E5 /* PostRecordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostRecordViewController.swift; sourceTree = "<group>"; };
+		0294D01B2AB1E9CA00F4244A /* MyPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageView.swift; sourceTree = "<group>"; };
+		0294D01E2AB1F88500F4244A /* CountCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountCollectionViewCell.swift; sourceTree = "<group>"; };
+		0294D0202AB202ED00F4244A /* HistoryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryCollectionViewCell.swift; sourceTree = "<group>"; };
+		0294D0222AB2BAC900F4244A /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
+		0294D0242AB2C01A00F4244A /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
+		0294D0262AB2CC0300F4244A /* SettingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTableViewCell.swift; sourceTree = "<group>"; };
+		0294D0282AB2D38700F4244A /* ProfileSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSettingViewController.swift; sourceTree = "<group>"; };
+		0294D02A2AB2D39000F4244A /* ProfileSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSettingView.swift; sourceTree = "<group>"; };
+		0294D02C2AB330ED00F4244A /* AccountSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountSettingViewController.swift; sourceTree = "<group>"; };
+		0294D02E2AB3310200F4244A /* AccountSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountSettingView.swift; sourceTree = "<group>"; };
+		0294D0302AB3632600F4244A /* CategoryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCollectionViewCell.swift; sourceTree = "<group>"; };
 		029E36232A9E36EB0069A773 /* PlaceTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceTableViewCell.swift; sourceTree = "<group>"; };
 		02B655362AA5D66600E4AC4F /* GetGymsDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetGymsDTO.swift; sourceTree = "<group>"; };
 		02B655382AA5D97700E4AC4F /* GymsAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GymsAPI.swift; sourceTree = "<group>"; };
@@ -432,6 +454,17 @@
 				02D56F492A9317FB00FF41EA /* PostRecordView.swift */,
 			);
 			path = final;
+			sourceTree = "<group>";
+		};
+		0294D01D2AB1F7DC00F4244A /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				0294D01E2AB1F88500F4244A /* CountCollectionViewCell.swift */,
+				0294D0202AB202ED00F4244A /* HistoryCollectionViewCell.swift */,
+				0294D0262AB2CC0300F4244A /* SettingTableViewCell.swift */,
+				0294D0302AB3632600F4244A /* CategoryCollectionViewCell.swift */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 		02CCDD652A9F2C6100301ABF /* Service */ = {
@@ -996,6 +1029,9 @@
 				5ACADD672A65926300B92C07 /* View */,
 				5ACADD662A65925D00B92C07 /* ViewModel */,
 				5ADED1D32A6838D300C0CBF4 /* MyPageViewController.swift */,
+				0294D0242AB2C01A00F4244A /* SettingViewController.swift */,
+				0294D0282AB2D38700F4244A /* ProfileSettingViewController.swift */,
+				0294D02C2AB330ED00F4244A /* AccountSettingViewController.swift */,
 			);
 			path = MyPage;
 			sourceTree = "<group>";
@@ -1110,6 +1146,11 @@
 			isa = PBXGroup;
 			children = (
 				5ACADD922A6593DC00B92C07 /* keep.txt */,
+				0294D01D2AB1F7DC00F4244A /* Cell */,
+				0294D01B2AB1E9CA00F4244A /* MyPageView.swift */,
+				0294D0222AB2BAC900F4244A /* SettingView.swift */,
+				0294D02A2AB2D39000F4244A /* ProfileSettingView.swift */,
+				0294D02E2AB3310200F4244A /* AccountSettingView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1306,6 +1347,8 @@
 				02DC9AC52A75789800F8989E /* SelectListCell.swift in Sources */,
 				5ADED1AF2A66AEAD00C0CBF4 /* UICollectionView+Extension.swift in Sources */,
 				5A32101E2AA87EE4003A40BD /* ClimbingGymUseCase.swift in Sources */,
+				5A32101E2AA87EE4003A40BD /* ClimbingGymSearchUseCase.swift in Sources */,
+				0294D0252AB2C01A00F4244A /* SettingViewController.swift in Sources */,
 				020F65532A7D09450036CFB1 /* SelectVideoViewController.swift in Sources */,
 				5A70B8BB2AB47B3900506846 /* Double+Extension.swift in Sources */,
 				029E36242A9E36EB0069A773 /* PlaceTableViewCell.swift in Sources */,
@@ -1320,10 +1363,12 @@
 				5A70B8C12AB5728400506846 /* ClimbingGymVideoViewController.swift in Sources */,
 				020F65492A7B72050036CFB1 /* SelectListView.swift in Sources */,
 				5A70B8B42AB43AD100506846 /* UIImageView+.swift in Sources */,
+				0294D0232AB2BAC900F4244A /* SettingView.swift in Sources */,
 				5AEFAAA82A8BD07500A67C43 /* TermsType.swift in Sources */,
 				023C71532AACC69D00CA095D /* URL+Extension.swift in Sources */,
 				5ADED1B12A66AFF700C0CBF4 /* UIStackView+Extension.swift in Sources */,
 				02B655372AA5D66600E4AC4F /* GetGymsDTO.swift in Sources */,
+				0294D01C2AB1E9CA00F4244A /* MyPageView.swift in Sources */,
 				5A05DF452AAB04C40050AD55 /* RecordDTO.swift in Sources */,
 				02177C8E2A99ABDB00A4EF2C /* RecordTabItem.swift in Sources */,
 				5ADED1B72A67793F00C0CBF4 /* UIView+Extension.swift in Sources */,
@@ -1356,11 +1401,13 @@
 				023868C32A70009B0006C762 /* LoginManager.swift in Sources */,
 				5ADED1BD2A679B6A00C0CBF4 /* UIColor+Extension.swift in Sources */,
 				5A1C488A2A7687FB00CC345A /* CGSize+Extension.swift in Sources */,
+				0294D0212AB202ED00F4244A /* HistoryCollectionViewCell.swift in Sources */,
 				5ADED1CC2A682B6300C0CBF4 /* TabBarItem.swift in Sources */,
 				5A70B8C92AB5908600506846 /* ClimbingGymVideoUseCase.swift in Sources */,
 				5A21C6572A98F7DE00E7CC95 /* UserDefaultHandler.swift in Sources */,
 				026BC4942A69102F00F49B87 /* SplashViewController.swift in Sources */,
 				026BC4782A680FE900F49B87 /* SignInView.swift in Sources */,
+				0294D0272AB2CC0300F4244A /* SettingTableViewCell.swift in Sources */,
 				5A21C67C2A9A01AA00E7CC95 /* SignUpRequest.swift in Sources */,
 				5A1C488F2A76CC9C00CC345A /* VideoCollectionViewCell.swift in Sources */,
 				5A7E39B62AB2226700143175 /* ClimbingGymDetailViewModel.swift in Sources */,
@@ -1372,6 +1419,8 @@
 				5A21C6982A9B749800E7CC95 /* SignInUseCase.swift in Sources */,
 				5ACADCFA2A5D988F00B92C07 /* AppDelegate.swift in Sources */,
 				5ADED1C32A67A1B300C0CBF4 /* ViewModelType.swift in Sources */,
+				0294D01F2AB1F88500F4244A /* CountCollectionViewCell.swift in Sources */,
+				0294D0312AB3632600F4244A /* CategoryCollectionViewCell.swift in Sources */,
 				026BC4762A680FC000F49B87 /* AuthViewController.swift in Sources */,
 				02EB6E7D2A88BC9B00C749A6 /* SuccessRecordView.swift in Sources */,
 				5A3210202AA88218003A40BD /* ClimbingGymSearchViewModel.swift in Sources */,
@@ -1382,6 +1431,7 @@
 				028981642A93176000B928E5 /* PostRecordViewController.swift in Sources */,
 				5ADED1AB2A66ACC500C0CBF4 /* UITextField+Extension.swift in Sources */,
 				02D56F4A2A9317FB00FF41EA /* PostRecordView.swift in Sources */,
+				0294D02F2AB3310200F4244A /* AccountSettingView.swift in Sources */,
 				02CCDD6B2A9F617F00301ABF /* BlankDataResponse.swift in Sources */,
 				5A21C6A62A9BAD5B00E7CC95 /* SNSLoginType.swift in Sources */,
 				02B6553B2AA5DAFC00E4AC4F /* GymsService.swift in Sources */,
@@ -1396,6 +1446,8 @@
 				5A320FFA2AA5DC87003A40BD /* ClimbingGymTableViewCell.swift in Sources */,
 				5ADED1D42A6838D300C0CBF4 /* MyPageViewController.swift in Sources */,
 				5A21C6962A9B721E00E7CC95 /* UserToken.swift in Sources */,
+				0294D02D2AB330ED00F4244A /* AccountSettingViewController.swift in Sources */,
+				02E2532F2A8A17DB00D3E9E1 /* PhotoCollectionViewCell.swift in Sources */,
 				5AC80C782A838B5400FE9D6C /* PlayerView.swift in Sources */,
 				02B6553F2AA63AE400E4AC4F /* UITableview+Extension.swift in Sources */,
 				02CCDD6F2A9F623A00301ABF /* NetworkService.swift in Sources */,
@@ -1414,8 +1466,10 @@
 				5A21C65C2A98FC4800E7CC95 /* URLConst.swift in Sources */,
 				5ACADD5D2A65919400B92C07 /* HomeViewController.swift in Sources */,
 				023F37822A783C1F007B0511 /* SelectSectorViewController.swift in Sources */,
+				0294D0292AB2D38700F4244A /* ProfileSettingViewController.swift in Sources */,
 				5A05DEED2AA8DE2E0050AD55 /* DefaultGymsRepository.swift in Sources */,
 				5ADED1B92A678E9C00C0CBF4 /* UILabel+Extension.swift in Sources */,
+				0294D02B2AB2D39100F4244A /* ProfileSettingView.swift in Sources */,
 				5A97A1252A922F7A00264AB5 /* TermsWebViewController.swift in Sources */,
 				5AEFAAC32A8D178600A67C43 /* SignUpViewModel.swift in Sources */,
 				5A7E39B12AB21A9600143175 /* DetailGymVO.swift in Sources */,
