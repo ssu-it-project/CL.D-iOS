@@ -2,7 +2,7 @@ import Foundation
 
 struct RecordListDTO: Decodable {
     let pagination: Pagination
-    let records: [RecordDTO]
+    let records: [RecordDTO]?
     
     enum CodingKeys: String, CodingKey {
         case pagination
@@ -50,7 +50,7 @@ struct DateClassDTO: Decodable {
 
 extension RecordListDTO {
     func toDomain() -> RecordListVO {
-        return RecordListVO(pagination: PaginationVO(total: pagination.total, skip: pagination.skip, limit: pagination.limit), records: records.map { $0.toDomain() } )
+        return RecordListVO(pagination: PaginationVO(total: pagination.total, skip: pagination.skip, limit: pagination.limit), records: records?.map { $0.toDomain() } ?? [] )
     }
 }
 
