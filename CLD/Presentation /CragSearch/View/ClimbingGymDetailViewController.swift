@@ -24,8 +24,8 @@ final class ClimbingGymDetailViewController: BaseViewController {
         stackView.spacing = 10
         return stackView
     }()
-    private let morevideoView = moreVideosView()
-    private let kakaoMapContentView = kakaoMapView()
+    private let morevideoView = MoreVideosView()
+    private let kakaoMapContentView = KakaoMapView()
     
     private var viewModel: ClimbingGymDetailViewModel
     
@@ -36,6 +36,7 @@ final class ClimbingGymDetailViewController: BaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        bindAction()
     }
     
     override func Bind() {
@@ -59,7 +60,7 @@ final class ClimbingGymDetailViewController: BaseViewController {
         output.recordVideoURL
             .withUnretained(self)
             .bind { owner, recordVideoURL in
-                owner.morevideoView.videoView.setupPlayerItem(with: recordVideoURL)
+                owner.morevideoView.configureVideoURL(videoURL: recordVideoURL)
             }
             .disposed(by: disposeBag)
         
@@ -77,6 +78,23 @@ final class ClimbingGymDetailViewController: BaseViewController {
                 owner.morevideoView.setLevelLabel(level: level, section: sector)
             }
             .disposed(by: disposeBag)
+    }
+    
+    private func bindAction() {
+        morevideoView.videoButton.rx.tap
+            .withUnretained(self)
+            .bind { owner, _ in
+                let videoViewController = ClimbingGymVideoViewController(viewModel: ClimbingGymVideoViewModel(id: owner.viewModel.id, title: owner.title ?? "", useCase: DefaultClimbingGymVideoUseCase(gymsRepository: DefaultGymsRepository())))
+        
+                owner.navigationController?.pushViewController(videoViewController, animated: true)
+            }
+            .disposed(by: disposeBag)
+    }
+    
+    override func setNavigationBar() {
+        let bookMarkBarButtonItem = UIBarButtonItem(image: ImageLiteral.bookMarkIcon, style: .plain, target: self, action: nil)
+        bookMarkBarButtonItem.tintColor = .CLDBlack
+        self.navigationItem.rightBarButtonItem = bookMarkBarButtonItem
     }
     
     override func setHierarchy() {
