@@ -66,7 +66,7 @@ class SignUpViewModel: ViewModelType {
                     agreements: [TermsType.termsOfUseRequired.agreement(agree: true), TermsType.personalInfoCollectionRequired.agreement(agree: true),
                         TermsType.eventInfoConsent.agreement(agree: owner.eventInfoTermsAgreed)],
                     auth: Auth(accessToken: UserDefaultHandler.snsAccessToken,
-                    device: DeviceData(deviceID: UUID.getDeviceUUID()),
+                    device: DeviceData(deviceID: DeviceUUID.getDeviceUUID()),
                     loginType: UserDefaultHandler.snsLoginType))
                 dump(requestDTO)
                 owner.trySignUp(output: output, requestDTO: requestDTO)

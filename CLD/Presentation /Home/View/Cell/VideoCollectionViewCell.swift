@@ -22,8 +22,6 @@ final class VideoCollectionViewCell: UICollectionViewCell {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFit
         imageView.clipsToBounds = true
-        imageView.layer.borderWidth = 0.6
-        imageView.layer.borderColor = UIColor.CLDBlack.cgColor
         return imageView
     }()
     private let titleLabel: UILabel = {
