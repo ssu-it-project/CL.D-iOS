@@ -31,6 +31,7 @@ enum ImageLiteral {
     
     //MARK: - Gym
     static var DefaultGymImage: UIImage { .load(named: "DefaultGym") }
+    static var DefaultDetailGymVideoImage: UIImage { .load(named: "DefaultDetailGymVideo").resize(newWidth: 250) }
     static var ParkingIcon: UIImage { .load(named: "Parking") }
     
     //MARK: - Record
