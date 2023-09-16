@@ -9,10 +9,10 @@ import UIKit
 
 final class KakaoMapView: UIView {
     
-    private let mapView: UIView = {
-        let view = UIView()
-        view.backgroundColor = .ChipPink
-        return view
+    private let mapView: MTMapView = {
+        let mapView = MTMapView()
+        mapView.baseMapType = .standard
+        return mapView
     }()
     private let addressLabel: UILabel = {
         let label = UILabel()
