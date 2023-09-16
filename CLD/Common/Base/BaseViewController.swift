@@ -23,6 +23,9 @@ protocol BaseViewControllerProtocol: AnyObject, BaseViewItemProtocol {
     /// delegate 설정
     func setDelegate()
     
+    /// Navigation 설정
+    func setNavigationBar()
+    
     /// view binding 설정
     func Bind()
 }
@@ -48,6 +51,7 @@ protocol BaseViewControllerProtocol: AnyObject, BaseViewItemProtocol {
         setDelegate()
         setHierarchy()
         setConstraints()
+        setNavigationBar()
     }
 
      func setViewProperty() {
@@ -56,5 +60,6 @@ protocol BaseViewControllerProtocol: AnyObject, BaseViewItemProtocol {
      func setDelegate() { }
      func setHierarchy() { }
      func setConstraints() { }
+     func setNavigationBar() { }
      func Bind() { }
 }
