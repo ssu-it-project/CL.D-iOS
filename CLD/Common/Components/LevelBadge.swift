@@ -41,6 +41,6 @@ final class LevelBadge: UILabel {
 extension LevelBadge {
     func configurationLevelBadge(level: String, sector: String) {
         self.backgroundColor = level.getColorForLevel()
-        self.text = "\(sector)|\(level)"
+        self.text = "\(sector) | \(level)"
     }
 }
