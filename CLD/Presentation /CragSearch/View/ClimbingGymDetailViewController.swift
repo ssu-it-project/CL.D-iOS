@@ -49,6 +49,13 @@ final class ClimbingGymDetailViewController: BaseViewController {
             }
             .disposed(by: disposeBag)
         
+        output.gymTitle
+            .withUnretained(self)
+            .bind { owner, title in
+                owner.title = title
+            }
+            .disposed(by: disposeBag)
+        
         output.recordVideoURL
             .withUnretained(self)
             .bind { owner, recordVideoURL in

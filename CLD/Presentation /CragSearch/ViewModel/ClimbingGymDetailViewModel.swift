@@ -31,6 +31,7 @@ class ClimbingGymDetailViewModel {
     
     struct Output {
         var placeVO = PublishRelay<DetailPlaceVO>()
+        var gymTitle = PublishRelay<String>()
         var recordVideoURL = PublishRelay<String>()
         var recordLevel = PublishRelay<(String, String)>()
         var recordVideoIsEmpty = PublishRelay<Bool>()
@@ -58,6 +59,7 @@ extension ClimbingGymDetailViewModel {
                 switch response {
                 case .success(let value):
                     output.placeVO.accept(value.place)
+                    output.gymTitle.accept(value.place.name)
                 case .failure(let error):
                     print(error.localizedDescription)
                 }
