@@ -50,7 +50,7 @@ class SNSLoginManager {
             } else {
                 if let result = result {
                     let _ = result.token?.tokenString
-                    let userID = result.token?.userID
+                    _ = result.token?.userID
                     
                     let sceneDelegate = UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate
                     sceneDelegate?.changeRootView()

@@ -1,5 +1,5 @@
 //
-//  kakaoMapView.swift
+//  KakaoMapView.swift
 //  CLD
 //
 //  Created by 김규철 on 2023/09/05.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class kakaoMapView: UIView {
+final class KakaoMapView: UIView {
     
     private let mapView: UIView = {
         let view = UIView()
@@ -89,7 +89,7 @@ final class kakaoMapView: UIView {
     }
 }
 
-extension kakaoMapView {
+extension KakaoMapView {
     func configurationVIew(_ detailPlaceVO: DetailPlaceVO) {
         addressLabel.text = detailPlaceVO.addressName
         if detailPlaceVO.phone.isEmpty {

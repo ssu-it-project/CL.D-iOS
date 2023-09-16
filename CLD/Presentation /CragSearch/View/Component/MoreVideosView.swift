@@ -7,9 +7,9 @@
 
 import UIKit
 
-final class moreVideosView: UIView {
+final class MoreVideosView: UIView {
     
-    private let videoButton: UIButton = {
+    let videoButton: UIButton = {
         let button = UIButton()
         button.setTitle("영상 더보기", for: .normal)
         button.setTitleColor(.CLDBlack, for: .normal)
@@ -20,7 +20,7 @@ final class moreVideosView: UIView {
     }()
     private let levelLabel = LevelBadge()
     private let videoBackView = UIView()
-    var videoView = PlayerView()
+    private var videoView = PlayerView()
     private let videoSampleImageView: UIImageView = {
         let view = UIImageView()
         view.image = ImageLiteral.DefaultDetailGymVideoImage
@@ -48,6 +48,7 @@ final class moreVideosView: UIView {
     
     private func setHierarchy() {
         videoBackView.addSubviews(levelLabel, videoSampleImageView, videoView)
+        videoBackView.bringSubviewToFront(levelLabel)
         addSubviews(videoButton, videoBackView)
         videoView.addSubview(levelLabel)
     }
@@ -80,8 +81,9 @@ final class moreVideosView: UIView {
     }
 }
 
-extension moreVideosView {
-    func configurationView() {
+extension MoreVideosView {
+    func configureVideoURL(videoURL: String) {
+        videoView.setupPlayerItem(with: videoURL)
     }
     
     func handleHiddenVideoSampleImageView(_ isHidden: Bool) {
