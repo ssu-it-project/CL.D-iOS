@@ -91,7 +91,8 @@ final class ClimbingGymDetailViewController: BaseViewController {
             .disposed(by: disposeBag)
     }
     
-    override func setNavigationBar() {
+    override func setupNavigationBar() {
+        super.setupNavigationBar()
         let bookMarkBarButtonItem = UIBarButtonItem(image: ImageLiteral.bookMarkIcon, style: .plain, target: self, action: nil)
         bookMarkBarButtonItem.tintColor = .CLDBlack
         self.navigationItem.rightBarButtonItem = bookMarkBarButtonItem

@@ -114,7 +114,6 @@
 		5A70B8B72AB4536700506846 /* LevelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A70B8B62AB4536700506846 /* LevelType.swift */; };
 		5A70B8B92AB459BC00506846 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A70B8B82AB459BC00506846 /* String+Extension.swift */; };
 		5A70B8BB2AB47B3900506846 /* Double+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A70B8BA2AB47B3900506846 /* Double+Extension.swift */; };
-		5A70B8BD2AB4BA5A00506846 /* SignInRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A70B8BC2AB4BA5A00506846 /* SignInRepository.swift */; };
 		5A70B8BF2AB4BFC300506846 /* Collection+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A70B8BE2AB4BFC300506846 /* Collection+.swift */; };
 		5A70B8C12AB5728400506846 /* ClimbingGymVideoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A70B8C02AB5728400506846 /* ClimbingGymVideoViewController.swift */; };
 		5A70B8C32AB57CF000506846 /* ClimbingGymVideoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A70B8C22AB57CEF00506846 /* ClimbingGymVideoView.swift */; };
@@ -122,6 +121,7 @@
 		5A70B8C72AB584D400506846 /* ClimbingGymVideoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A70B8C62AB584D400506846 /* ClimbingGymVideoCollectionViewCell.swift */; };
 		5A70B8C92AB5908600506846 /* ClimbingGymVideoUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A70B8C82AB5908600506846 /* ClimbingGymVideoUseCase.swift */; };
 		5A70B8CB2AB590D600506846 /* ClimbingGymVideoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A70B8CA2AB590D600506846 /* ClimbingGymVideoViewModel.swift */; };
+		5A70B8D02AB5CA7100506846 /* SignInRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A70B8CF2AB5CA7100506846 /* SignInRepository.swift */; };
 		5A7E398D2AB0DCAC00143175 /* RecordVO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A7E398C2AB0DCAC00143175 /* RecordVO.swift */; };
 		5A7E398F2AB0E1D600143175 /* RecordAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A7E398E2AB0E1D600143175 /* RecordAPI.swift */; };
 		5A7E39992AB1467600143175 /* HomeRecordUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A7E39982AB1467600143175 /* HomeRecordUseCase.swift */; };
@@ -276,7 +276,6 @@
 		5A70B8B62AB4536700506846 /* LevelType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelType.swift; sourceTree = "<group>"; };
 		5A70B8B82AB459BC00506846 /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 		5A70B8BA2AB47B3900506846 /* Double+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Extension.swift"; sourceTree = "<group>"; };
-		5A70B8BC2AB4BA5A00506846 /* SignInRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SignInRepository.swift; path = CLD/Domain/RepositoryInterface/Auth/SignInRepository.swift; sourceTree = SOURCE_ROOT; };
 		5A70B8BE2AB4BFC300506846 /* Collection+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Collection+.swift"; sourceTree = "<group>"; };
 		5A70B8C02AB5728400506846 /* ClimbingGymVideoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClimbingGymVideoViewController.swift; sourceTree = "<group>"; };
 		5A70B8C22AB57CEF00506846 /* ClimbingGymVideoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClimbingGymVideoView.swift; sourceTree = "<group>"; };
@@ -284,6 +283,7 @@
 		5A70B8C62AB584D400506846 /* ClimbingGymVideoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClimbingGymVideoCollectionViewCell.swift; sourceTree = "<group>"; };
 		5A70B8C82AB5908600506846 /* ClimbingGymVideoUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClimbingGymVideoUseCase.swift; sourceTree = "<group>"; };
 		5A70B8CA2AB590D600506846 /* ClimbingGymVideoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClimbingGymVideoViewModel.swift; sourceTree = "<group>"; };
+		5A70B8CF2AB5CA7100506846 /* SignInRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInRepository.swift; sourceTree = "<group>"; };
 		5A7E398C2AB0DCAC00143175 /* RecordVO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordVO.swift; sourceTree = "<group>"; };
 		5A7E398E2AB0E1D600143175 /* RecordAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordAPI.swift; sourceTree = "<group>"; };
 		5A7E39982AB1467600143175 /* HomeRecordUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeRecordUseCase.swift; sourceTree = "<group>"; };
@@ -653,6 +653,14 @@
 			path = Service;
 			sourceTree = "<group>";
 		};
+		5A70B8CE2AB5CA3700506846 /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				5A70B8CF2AB5CA7100506846 /* SignInRepository.swift */,
+			);
+			path = Auth;
+			sourceTree = "<group>";
+		};
 		5A7E398B2AB0DC9B00143175 /* Record */ = {
 			isa = PBXGroup;
 			children = (
@@ -667,15 +675,6 @@
 				5A7E39982AB1467600143175 /* HomeRecordUseCase.swift */,
 			);
 			path = Home;
-			sourceTree = "<group>";
-		};
-		5A7E399A2AB1489000143175 /* Auth */ = {
-			isa = PBXGroup;
-			children = (
-				5A70B8BC2AB4BA5A00506846 /* SignInRepository.swift */,
-			);
-			name = Auth;
-			path = "며소";
 			sourceTree = "<group>";
 		};
 		5A7E399B2AB148A000143175 /* Record */ = {
@@ -978,9 +977,9 @@
 		5ACADD542A658DE400B92C07 /* RepositoryInterface */ = {
 			isa = PBXGroup;
 			children = (
+				5A70B8CE2AB5CA3700506846 /* Auth */,
 				5A7E39B22AB2211A00143175 /* ClimbingGym */,
 				5A7E399B2AB148A000143175 /* Record */,
-				5A7E399A2AB1489000143175 /* Auth */,
 			);
 			path = RepositoryInterface;
 			sourceTree = "<group>";
@@ -1347,7 +1346,7 @@
 				02DC9AC52A75789800F8989E /* SelectListCell.swift in Sources */,
 				5ADED1AF2A66AEAD00C0CBF4 /* UICollectionView+Extension.swift in Sources */,
 				5A32101E2AA87EE4003A40BD /* ClimbingGymUseCase.swift in Sources */,
-				5A32101E2AA87EE4003A40BD /* ClimbingGymSearchUseCase.swift in Sources */,
+				5A32101E2AA87EE4003A40BD /* ClimbingGymUseCase.swift in Sources */,
 				0294D0252AB2C01A00F4244A /* SettingViewController.swift in Sources */,
 				020F65532A7D09450036CFB1 /* SelectVideoViewController.swift in Sources */,
 				5A70B8BB2AB47B3900506846 /* Double+Extension.swift in Sources */,
@@ -1361,6 +1360,7 @@
 				5A21C6852A9A410400E7CC95 /* BaseErrorDTO.swift in Sources */,
 				0281723E2A793B900089FD51 /* SelectColorCell.swift in Sources */,
 				5A70B8C12AB5728400506846 /* ClimbingGymVideoViewController.swift in Sources */,
+				5A70B8D02AB5CA7100506846 /* SignInRepository.swift in Sources */,
 				020F65492A7B72050036CFB1 /* SelectListView.swift in Sources */,
 				5A70B8B42AB43AD100506846 /* UIImageView+.swift in Sources */,
 				0294D0232AB2BAC900F4244A /* SettingView.swift in Sources */,
@@ -1394,7 +1394,6 @@
 				5A7E39B82AB22DBF00143175 /* ClimbingGymDetailUseCase.swift in Sources */,
 				5A21C6942A9B6D4E00E7CC95 /* SignInRequest.swift in Sources */,
 				5A21C6792A9A009000E7CC95 /* AuthAPI.swift in Sources */,
-				5A70B8BD2AB4BA5A00506846 /* SignInRepository.swift in Sources */,
 				5A21C65A2A98FAEC00E7CC95 /* BaseTargetType.swift in Sources */,
 				5A7E399F2AB158A800143175 /* HomeViewModel.swift in Sources */,
 				5A3210222AA88A6A003A40BD /* RxViewController+Extension.swift in Sources */,
@@ -1447,7 +1446,6 @@
 				5ADED1D42A6838D300C0CBF4 /* MyPageViewController.swift in Sources */,
 				5A21C6962A9B721E00E7CC95 /* UserToken.swift in Sources */,
 				0294D02D2AB330ED00F4244A /* AccountSettingViewController.swift in Sources */,
-				02E2532F2A8A17DB00D3E9E1 /* PhotoCollectionViewCell.swift in Sources */,
 				5AC80C782A838B5400FE9D6C /* PlayerView.swift in Sources */,
 				02B6553F2AA63AE400E4AC4F /* UITableview+Extension.swift in Sources */,
 				02CCDD6F2A9F623A00301ABF /* NetworkService.swift in Sources */,
