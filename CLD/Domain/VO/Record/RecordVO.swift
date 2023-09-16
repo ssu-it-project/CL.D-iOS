@@ -36,3 +36,13 @@ struct DateClassVO {
     let created, modified: String
 }
 
+extension RecordVO: Equatable, Hashable {
+    static func == (lhs: RecordVO, rhs: RecordVO) -> Bool {
+        return lhs.id == rhs.id
+    }
+
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(id)
+    }
+}
+
