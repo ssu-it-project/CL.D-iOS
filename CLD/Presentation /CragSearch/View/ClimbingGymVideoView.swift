@@ -13,10 +13,10 @@ final class ClimbingGymVideoView: BaseView {
         case video
     }
     
-    private typealias ClimbingGymVideoCellRegistration = UICollectionView.CellRegistration<ClimbingGymVideoCollectionViewCell, RecordVO>
-    private typealias DiffableDataSource = UICollectionViewDiffableDataSource<Section, RecordVO>
-    private typealias Snapshot = NSDiffableDataSourceSnapshot<Section, RecordVO>
-    private var dataSource: DiffableDataSource!
+    typealias ClimbingGymVideoCellRegistration = UICollectionView.CellRegistration<ClimbingGymVideoCollectionViewCell, RecordVO>
+    typealias DiffableDataSource = UICollectionViewDiffableDataSource<Section, RecordVO>
+    typealias Snapshot = NSDiffableDataSourceSnapshot<Section, RecordVO>
+    var dataSource: DiffableDataSource!
     
     let searchBar: UISearchBar = {
         let view = UISearchBar()
@@ -46,6 +46,9 @@ final class ClimbingGymVideoView: BaseView {
         dataSource.apply(snapshot)
     }
     
+    func itemIdentifier(for indexPath: IndexPath) -> RecordVO? {
+        return dataSource.itemIdentifier(for: indexPath)
+    }
     
     private func configureCellRegistrationAndDataSource() {
         let ClimbingGymVideoCellRegistration = ClimbingGymVideoCellRegistration { cell, _, record in

@@ -158,6 +158,7 @@
 		5A70B9632AB61BB000506846 /* libxml2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A70B9622AB61BB000506846 /* libxml2.tbd */; };
 		5A70B9652AB61BC200506846 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A70B9642AB61BC200506846 /* libsqlite3.tbd */; };
 		5A70B96A2AB6E5D400506846 /* UIVIewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A70B9692AB6E5D400506846 /* UIVIewController+Extension.swift */; };
+		5A70B96D2AB6F11100506846 /* PlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A70B96C2AB6F11100506846 /* PlayerViewController.swift */; };
 		5A7E398D2AB0DCAC00143175 /* RecordVO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A7E398C2AB0DCAC00143175 /* RecordVO.swift */; };
 		5A7E398F2AB0E1D600143175 /* RecordAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A7E398E2AB0E1D600143175 /* RecordAPI.swift */; };
 		5A7E39992AB1467600143175 /* HomeRecordUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A7E39982AB1467600143175 /* HomeRecordUseCase.swift */; };
@@ -365,6 +366,7 @@
 		5A70B9642AB61BC200506846 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		5A70B9662AB61C6B00506846 /* KakaoBridgeHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KakaoBridgeHeader.h; sourceTree = "<group>"; };
 		5A70B9692AB6E5D400506846 /* UIVIewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIVIewController+Extension.swift"; sourceTree = "<group>"; };
+		5A70B96C2AB6F11100506846 /* PlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerViewController.swift; sourceTree = "<group>"; };
 		5A7E398C2AB0DCAC00143175 /* RecordVO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordVO.swift; sourceTree = "<group>"; };
 		5A7E398E2AB0E1D600143175 /* RecordAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordAPI.swift; sourceTree = "<group>"; };
 		5A7E39982AB1467600143175 /* HomeRecordUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeRecordUseCase.swift; sourceTree = "<group>"; };
@@ -824,6 +826,15 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		5A70B96B2AB6F0E200506846 /* AVKit */ = {
+			isa = PBXGroup;
+			children = (
+				5AC80C772A838B5400FE9D6C /* PlayerView.swift */,
+				5A70B96C2AB6F11100506846 /* PlayerViewController.swift */,
+			);
+			path = AVKit;
+			sourceTree = "<group>";
+		};
 		5A7E398B2AB0DC9B00143175 /* Record */ = {
 			isa = PBXGroup;
 			children = (
@@ -1058,7 +1069,7 @@
 		5ACADD492A6586E000B92C07 /* Components */ = {
 			isa = PBXGroup;
 			children = (
-				5AC80C772A838B5400FE9D6C /* PlayerView.swift */,
+				5A70B96B2AB6F0E200506846 /* AVKit */,
 				5AEFAAE82A8E3E5E00A67C43 /* CLDButton.swift */,
 				5A3210062AA649D6003A40BD /* LevelBadge.swift */,
 			);
@@ -1587,6 +1598,7 @@
 				5A7E39B82AB22DBF00143175 /* ClimbingGymDetailUseCase.swift in Sources */,
 				5A21C6942A9B6D4E00E7CC95 /* SignInRequest.swift in Sources */,
 				5A21C6792A9A009000E7CC95 /* AuthAPI.swift in Sources */,
+				5A70B96D2AB6F11100506846 /* PlayerViewController.swift in Sources */,
 				5A21C65A2A98FAEC00E7CC95 /* BaseTargetType.swift in Sources */,
 				5A7E399F2AB158A800143175 /* HomeViewModel.swift in Sources */,
 				5A3210222AA88A6A003A40BD /* RxViewController+Extension.swift in Sources */,
