@@ -157,6 +157,7 @@
 		5A70B9612AB61B9B00506846 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A70B9602AB61B9A00506846 /* libc++.tbd */; };
 		5A70B9632AB61BB000506846 /* libxml2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A70B9622AB61BB000506846 /* libxml2.tbd */; };
 		5A70B9652AB61BC200506846 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A70B9642AB61BC200506846 /* libsqlite3.tbd */; };
+		5A70B96A2AB6E5D400506846 /* UIVIewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A70B9692AB6E5D400506846 /* UIVIewController+Extension.swift */; };
 		5A7E398D2AB0DCAC00143175 /* RecordVO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A7E398C2AB0DCAC00143175 /* RecordVO.swift */; };
 		5A7E398F2AB0E1D600143175 /* RecordAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A7E398E2AB0E1D600143175 /* RecordAPI.swift */; };
 		5A7E39992AB1467600143175 /* HomeRecordUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A7E39982AB1467600143175 /* HomeRecordUseCase.swift */; };
@@ -363,6 +364,7 @@
 		5A70B9622AB61BB000506846 /* libxml2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libxml2.tbd; path = usr/lib/libxml2.tbd; sourceTree = SDKROOT; };
 		5A70B9642AB61BC200506846 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		5A70B9662AB61C6B00506846 /* KakaoBridgeHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KakaoBridgeHeader.h; sourceTree = "<group>"; };
+		5A70B9692AB6E5D400506846 /* UIVIewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIVIewController+Extension.swift"; sourceTree = "<group>"; };
 		5A7E398C2AB0DCAC00143175 /* RecordVO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordVO.swift; sourceTree = "<group>"; };
 		5A7E398E2AB0E1D600143175 /* RecordAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordAPI.swift; sourceTree = "<group>"; };
 		5A7E39982AB1467600143175 /* HomeRecordUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeRecordUseCase.swift; sourceTree = "<group>"; };
@@ -1048,6 +1050,7 @@
 				5A70B8B82AB459BC00506846 /* String+Extension.swift */,
 				5A70B8BA2AB47B3900506846 /* Double+Extension.swift */,
 				5A70B8BE2AB4BFC300506846 /* Collection+.swift */,
+				5A70B9692AB6E5D400506846 /* UIVIewController+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1660,6 +1663,7 @@
 				0294D02B2AB2D39100F4244A /* ProfileSettingView.swift in Sources */,
 				5A97A1252A922F7A00264AB5 /* TermsWebViewController.swift in Sources */,
 				5AEFAAC32A8D178600A67C43 /* SignUpViewModel.swift in Sources */,
+				5A70B96A2AB6E5D400506846 /* UIVIewController+Extension.swift in Sources */,
 				5A7E39B12AB21A9600143175 /* DetailGymVO.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
