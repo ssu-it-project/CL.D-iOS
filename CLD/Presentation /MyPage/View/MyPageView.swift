@@ -22,7 +22,7 @@ final class MyPageView: UIView {
     }()
     private lazy var nameLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont(name: "Roboto-Black", size: 13.0)
+        label.font = RobotoFont.Black.of(size: 13)
         label.text = "돌잡이님"
         label.textColor = .black
         label.textAlignment = .left
@@ -52,7 +52,7 @@ final class MyPageView: UIView {
 
     private lazy var dateLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont(name: "Roboto-Medium", size: 13.0)
+        label.font = RobotoFont.Medium.of(size: 13)
         label.text = "<2023년 6월>"
         label.textColor = .black
         label.textAlignment = .left

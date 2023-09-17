@@ -29,7 +29,7 @@ final class HistoryCollectionViewCell: UICollectionViewCell {
         let label = UILabel()
         label.text = "돌잡이들의 왕"
         label.textColor = .CLDBlack
-        label.font = UIFont(name: "Roboto-Bold", size: 11)
+        label.font = RobotoFont.Bold.of(size: 11)
         label.textAlignment = .center
 
         return label
@@ -38,7 +38,7 @@ final class HistoryCollectionViewCell: UICollectionViewCell {
         let label = UILabel()
         label.text = "2023.6.05 | A섹터 | 보라색"
         label.textColor = .CLDMediumGray
-        label.font = UIFont(name: "Roboto-Light", size: 10)
+        label.font = RobotoFont.Light.of(size: 10)
         label.textAlignment = .center
 
         return label

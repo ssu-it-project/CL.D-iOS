@@ -13,7 +13,7 @@ final class MoreVideosView: UIView {
         let button = UIButton()
         button.setTitle("영상 더보기", for: .normal)
         button.setTitleColor(.CLDBlack, for: .normal)
-        button.titleLabel?.font = UIFont(name: "Roboto-Regular", size: 13)
+        button.titleLabel?.font = RobotoFont.Regular.of(size: 13)
         button.backgroundColor = .white
         button.clipsToBounds = true
         return button

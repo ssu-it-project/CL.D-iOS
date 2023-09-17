@@ -15,7 +15,7 @@ class SettingTableViewCell: UITableViewCell {
     private lazy var InfoLabel: UILabel = {
         let label: UILabel = UILabel()
         label.textColor = .black
-        label.font = UIFont(name: "Roboto-Regular", size: 14)
+        label.font = RobotoFont.Regular.of(size: 14)
         label.numberOfLines = 1
         return label
     }()

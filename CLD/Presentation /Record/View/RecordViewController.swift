@@ -20,7 +20,7 @@ class RecordViewController: TabmanViewController {
         let button = UIButton()
         button.setTitle("다음", for: .normal)
         button.setTitleColor(.CLDBlack, for: .normal)
-        button.titleLabel?.font = UIFont(name: "Roboto-Medium", size: 15)
+        button.titleLabel?.font = RobotoFont.Medium.of(size: 15)
         button.semanticContentAttribute = .forceLeftToRight
         button.contentVerticalAlignment = .center
         button.contentHorizontalAlignment = .center
@@ -52,7 +52,7 @@ class RecordViewController: TabmanViewController {
         ctBar.buttons.customize { (button) in
             button.tintColor = .CLDMediumGray
             button.selectedTintColor = .CLDGold
-            button.font = UIFont(name: "Roboto-Bold", size: 15)!
+            button.font = RobotoFont.Bold.of(size: 15)
         }
         ctBar.indicator.weight = .custom(value: 0)
     }

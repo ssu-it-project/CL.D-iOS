@@ -32,7 +32,7 @@ final class LevelBadge: UILabel {
     
     private func setLayout() {
         self.clipsToBounds = true
-        self.font = UIFont(name: "Roboto-Black", size: 13)
+        self.font = RobotoFont.Black.of(size: 13)
         self.textColor = .white
         self.textAlignment = .center
     }

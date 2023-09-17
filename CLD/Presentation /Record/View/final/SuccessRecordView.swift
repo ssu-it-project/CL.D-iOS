@@ -14,7 +14,7 @@ final class SuccessRecordView: UIView {
         let label = UILabel()
         label.text = "새 게시물"
         label.textColor = .black
-        label.font = UIFont(name: "Roboto-Regular", size: 15)
+        label.font = RobotoFont.Regular.of(size: 15)
         return label
     }()
     private let thumbnailView: UIImageView = {
@@ -46,21 +46,21 @@ final class SuccessRecordView: UIView {
         let label = UILabel()
         label.text = "2:10"
         label.textColor = .white
-        label.font = UIFont(name: "Roboto-Regular", size: 11)
+        label.font = RobotoFont.Regular.of(size: 11)
         return label
     }()
     private let successLabel: UILabel = {
         let label = UILabel()
         label.text = "기록이 완료되었어요"
         label.textColor = .CLDBlack
-        label.font = UIFont(name: "Roboto-Bold", size: 16)
+        label.font = RobotoFont.Bold.of(size: 16)
         return label
     }()
     private let shareButton: UIButton = {
         let button = UIButton()
         button.setTitle("공유하기", for: .normal)
         button.setTitleColor(.CLDBlack, for: .normal)
-        button.titleLabel?.font = UIFont(name: "Roboto-Bold", size: 15)
+        button.titleLabel?.font = RobotoFont.Bold.of(size: 15)
         button.backgroundColor = .CLDLightGray
         button.semanticContentAttribute = .forceLeftToRight
         button.contentVerticalAlignment = .center
@@ -73,7 +73,7 @@ final class SuccessRecordView: UIView {
         let button = UIButton()
         button.setTitle("보러가기", for: .normal)
         button.setTitleColor(.CLDBlack, for: .normal)
-        button.titleLabel?.font = UIFont(name: "Roboto-Bold", size: 15)
+        button.titleLabel?.font = RobotoFont.Bold.of(size: 15)
         button.semanticContentAttribute = .forceLeftToRight
         button.contentVerticalAlignment = .center
         button.contentHorizontalAlignment = .center

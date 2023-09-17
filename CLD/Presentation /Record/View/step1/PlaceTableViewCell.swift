@@ -22,7 +22,7 @@ class PlaceTableViewCell: UITableViewCell {
     }()
     let placeLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont(name: "Roboto-Regular", size: 15)
+        label.font = RobotoFont.Regular.of(size: 15)
         label.text = "장소장소장소"
         label.textColor = .CLDDarkGray
         label.backgroundColor = .clear

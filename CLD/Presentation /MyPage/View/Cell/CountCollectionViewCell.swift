@@ -16,7 +16,7 @@ final class CountCollectionViewCell: UICollectionViewCell {
         let label = UILabel()
         label.text = "372"
         label.textColor = .CLDBlack
-        label.font = UIFont(name: "Roboto-Bold", size: 12)
+        label.font = RobotoFont.Bold.of(size: 12)
         label.textAlignment = .center
 
         return label
@@ -25,7 +25,7 @@ final class CountCollectionViewCell: UICollectionViewCell {
         let label = UILabel()
         label.text = "등반기록"
         label.textColor = .CLDBlack
-        label.font = UIFont(name: "Roboto-Light", size: 10)
+        label.font = RobotoFont.Light.of(size: 10)
         label.textAlignment = .center
 
         return label

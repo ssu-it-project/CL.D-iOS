@@ -18,7 +18,7 @@ final class KakaoMapView: UIView {
     private let addressLabel: UILabel = {
         let label = UILabel()
         label.sizeToFit()
-        label.font = UIFont(name: "Roboto-Bold", size: 15)
+        label.font = RobotoFont.Bold.of(size: 15)
         label.numberOfLines = 2
         label.textColor = .black    
         return label
@@ -26,7 +26,7 @@ final class KakaoMapView: UIView {
     private let phoneNumberLabel: UILabel = {
         let UILabel = UILabel()
         UILabel.sizeToFit()
-        UILabel.font = UIFont(name: "Roboto-Medium", size: 15)
+        UILabel.font = RobotoFont.Medium.of(size: 15)
         UILabel.textColor = .CLDDarkGray
         return UILabel
     }()

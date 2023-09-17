@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		020F65492A7B72050036CFB1 /* SelectListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020F65482A7B72050036CFB1 /* SelectListView.swift */; };
+		020D986E2AB730AB00318C3E /* RobotoFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020D986D2AB730AA00318C3E /* RobotoFont.swift */; };
 		020F65532A7D09450036CFB1 /* SelectVideoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020F65522A7D09450036CFB1 /* SelectVideoViewController.swift */; };
 		02177C8C2A99126100A4EF2C /* ColorChipName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02177C8B2A99126100A4EF2C /* ColorChipName.swift */; };
 		02177C8E2A99ABDB00A4EF2C /* RecordTabItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02177C8D2A99ABDB00A4EF2C /* RecordTabItem.swift */; };
@@ -57,7 +57,6 @@
 		02CCDD6D2A9F61A500301ABF /* ErrorResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02CCDD6C2A9F61A500301ABF /* ErrorResponse.swift */; };
 		02CCDD6F2A9F623A00301ABF /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02CCDD6E2A9F623A00301ABF /* NetworkService.swift */; };
 		02D56F4A2A9317FB00FF41EA /* PostRecordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D56F492A9317FB00FF41EA /* PostRecordView.swift */; };
-		02DC9AC52A75789800F8989E /* SelectListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02DC9AC42A75789800F8989E /* SelectListCell.swift */; };
 		02EB6E782A874D4D00C749A6 /* SelectPlaceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02EB6E772A874D4D00C749A6 /* SelectPlaceViewController.swift */; };
 		02EB6E7B2A874E5100C749A6 /* Tabman in Frameworks */ = {isa = PBXBuildFile; productRef = 02EB6E7A2A874E5100C749A6 /* Tabman */; };
 		02EB6E7D2A88BC9B00C749A6 /* SuccessRecordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02EB6E7C2A88BC9B00C749A6 /* SuccessRecordView.swift */; };
@@ -223,7 +222,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		020F65482A7B72050036CFB1 /* SelectListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectListView.swift; sourceTree = "<group>"; };
+		020D986D2AB730AA00318C3E /* RobotoFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RobotoFont.swift; sourceTree = "<group>"; };
 		020F65522A7D09450036CFB1 /* SelectVideoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectVideoViewController.swift; sourceTree = "<group>"; };
 		02177C8B2A99126100A4EF2C /* ColorChipName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorChipName.swift; sourceTree = "<group>"; };
 		02177C8D2A99ABDB00A4EF2C /* RecordTabItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordTabItem.swift; sourceTree = "<group>"; };
@@ -264,7 +263,6 @@
 		02CCDD6C2A9F61A500301ABF /* ErrorResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorResponse.swift; sourceTree = "<group>"; };
 		02CCDD6E2A9F623A00301ABF /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		02D56F492A9317FB00FF41EA /* PostRecordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostRecordView.swift; sourceTree = "<group>"; };
-		02DC9AC42A75789800F8989E /* SelectListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectListCell.swift; sourceTree = "<group>"; };
 		02E2532E2A8A17DB00D3E9E1 /* PhotoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCollectionViewCell.swift; sourceTree = "<group>"; };
 		02EB6E772A874D4D00C749A6 /* SelectPlaceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectPlaceViewController.swift; sourceTree = "<group>"; };
 		02EB6E7C2A88BC9B00C749A6 /* SuccessRecordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuccessRecordView.swift; sourceTree = "<group>"; };
@@ -653,6 +651,7 @@
 				5A70B8B62AB4536700506846 /* LevelType.swift */,
 				02177C8D2A99ABDB00A4EF2C /* RecordTabItem.swift */,
 				5A21C6A52A9BAD5B00E7CC95 /* SNSLoginType.swift */,
+				020D986D2AB730AA00318C3E /* RobotoFont.swift */,
 			);
 			path = Enum;
 			sourceTree = "<group>";
@@ -1282,8 +1281,6 @@
 		5ACADD632A65924D00B92C07 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				02DC9AC42A75789800F8989E /* SelectListCell.swift */,
-				020F65482A7B72050036CFB1 /* SelectListView.swift */,
 				5ADED1CF2A6838AD00C0CBF4 /* RecordViewController.swift */,
 				02EB6E7E2A88C04C00C749A6 /* step1 */,
 				02EB6E7F2A88C07600C749A6 /* step2 */,
@@ -1547,7 +1544,6 @@
 			files = (
 				5A70B8B52AB4431000506846 /* PhotoCollectionViewCell.swift in Sources */,
 				5A70B8CB2AB590D600506846 /* ClimbingGymVideoViewModel.swift in Sources */,
-				02DC9AC52A75789800F8989E /* SelectListCell.swift in Sources */,
 				5ADED1AF2A66AEAD00C0CBF4 /* UICollectionView+Extension.swift in Sources */,
 				5A32101E2AA87EE4003A40BD /* ClimbingGymUseCase.swift in Sources */,
 				5A32101E2AA87EE4003A40BD /* ClimbingGymUseCase.swift in Sources */,
@@ -1565,7 +1561,6 @@
 				0281723E2A793B900089FD51 /* SelectColorCell.swift in Sources */,
 				5A70B8C12AB5728400506846 /* ClimbingGymVideoViewController.swift in Sources */,
 				5A70B8D02AB5CA7100506846 /* SignInRepository.swift in Sources */,
-				020F65492A7B72050036CFB1 /* SelectListView.swift in Sources */,
 				5A70B8B42AB43AD100506846 /* UIImageView+.swift in Sources */,
 				0294D0232AB2BAC900F4244A /* SettingView.swift in Sources */,
 				5AEFAAA82A8BD07500A67C43 /* TermsType.swift in Sources */,
@@ -1641,6 +1636,7 @@
 				02B6553B2AA5DAFC00E4AC4F /* GymsService.swift in Sources */,
 				5A21C67E2A9A047800E7CC95 /* NetworkPluginType.swift in Sources */,
 				5A70B8B92AB459BC00506846 /* String+Extension.swift in Sources */,
+				020D986E2AB730AB00318C3E /* RobotoFont.swift in Sources */,
 				5A1C488D2A76C49200CC345A /* BadgeCollectionViewCell.swift in Sources */,
 				02CCDD692A9F614B00301ABF /* NetworkResult.swift in Sources */,
 				5A97A1652A93848F00264AB5 /* TermsCheckListView.swift in Sources */,

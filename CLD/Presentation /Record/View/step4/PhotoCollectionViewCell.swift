@@ -37,7 +37,7 @@ final class PhotoCollectionViewCell: UICollectionViewCell {
         let label = UILabel()
         label.text = "2:10"
         label.textColor = .white
-        label.font = UIFont(name: "Roboto-Regular", size: 8)
+        label.font = RobotoFont.Regular.of(size: 8)
         return label
     }()
     

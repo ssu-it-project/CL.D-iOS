@@ -21,7 +21,7 @@ final class PostRecordView: UIView {
         let label = UILabel()
         label.text = "새 게시물"
         label.textColor = .black
-        label.font = UIFont(name: "Roboto-Regular", size: 15)
+        label.font = RobotoFont.Regular.of(size: 15)
         return label
     }()
     private let thumbnailView: UIImageView = {
@@ -53,14 +53,14 @@ final class PostRecordView: UIView {
         let label = UILabel()
         label.text = "2:10"
         label.textColor = .white
-        label.font = UIFont(name: "Roboto-Regular", size: 11)
+        label.font = RobotoFont.Regular.of(size: 11)
         return label
     }()
     
     private let textView: UITextView = {
         let textView = UITextView()
         textView.text = "클라이밍을 기록해주세요."
-        textView.font = UIFont(name: "Roboto-Light", size: 11)
+        textView.font = RobotoFont.Light.of(size: 11)
         textView.textColor = .CLDDarkGray
         textView.textContainerInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10);
         textView.backgroundColor = .ChipWhite
@@ -90,7 +90,7 @@ final class PostRecordView: UIView {
         let label = UILabel()
         label.text = "더클라임 강남점"
         label.textColor = .CLDDarkDarkGray
-        label.font = UIFont(name: "Roboto-Regular", size: 15)
+        label.font = RobotoFont.Regular.of(size: 15)
         return label
     }()
     // 섹터
@@ -109,7 +109,7 @@ final class PostRecordView: UIView {
         let label = UILabel()
         label.text = "7"
         label.textColor = .CLDDarkDarkGray
-        label.font = UIFont(name: "Roboto-Regular", size: 15)
+        label.font = RobotoFont.Regular.of(size: 15)
         return label
     }()
     private let colorRectView: UIView = {
@@ -137,7 +137,7 @@ final class PostRecordView: UIView {
         let label = UILabel()
         label.text = "초록색"
         label.textColor = .CLDDarkDarkGray
-        label.font = UIFont(name: "Roboto-Regular", size: 15)
+        label.font = RobotoFont.Regular.of(size: 15)
         return label
     }()
 

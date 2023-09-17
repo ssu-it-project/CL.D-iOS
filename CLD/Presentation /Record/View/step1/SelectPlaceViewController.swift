@@ -33,7 +33,7 @@ final class SelectPlaceViewController: BaseViewController {
     private let searchTextField: UITextField = {
         let textField = UITextField()
         textField.placeholder = "장소를 입력해주세요."
-        textField.font = UIFont(name: "Roboto-Regular", size: 15)
+        textField.font = RobotoFont.Regular.of(size: 15)
         textField.textColor = .CLDBlack
         textField.backgroundColor = .CLDLightGray
         textField.borderStyle = .none
