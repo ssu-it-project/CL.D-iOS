@@ -9,7 +9,7 @@ import UIKit
 
 final class KakaoMapView: UIView {
     
-    private let mapView: MTMapView = {
+    let mapView: MTMapView = {
         let mapView = MTMapView()
         mapView.baseMapType = .standard
         return mapView
@@ -86,6 +86,19 @@ final class KakaoMapView: UIView {
             make.bottom.equalToSuperview().inset(10)
             make.height.equalTo(30)
         }
+    }
+}
+
+extension KakaoMapView {
+    func createPin(itemName: String, getla: Double, getlo: Double) {
+        let poiItem = MTMapPOIItem()
+        poiItem.itemName = itemName
+        poiItem.mapPoint = MTMapPoint(geoCoord: MTMapPointGeo(latitude: getla, longitude: getlo))
+        poiItem.markerType = .bluePin
+        poiItem.markerSelectedType = .redPin
+        mapView.setMapCenter(MTMapPoint(geoCoord: MTMapPointGeo(latitude: getla, longitude: getlo)), animated: true)
+        mapView.addPOIItems([poiItem])
+        mapView.fitAreaToShowAllPOIItems()
     }
 }
 

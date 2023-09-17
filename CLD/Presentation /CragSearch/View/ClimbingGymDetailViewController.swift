@@ -25,7 +25,11 @@ final class ClimbingGymDetailViewController: BaseViewController {
         return stackView
     }()
     private let morevideoView = MoreVideosView()
-    private let kakaoMapContentView = KakaoMapView()
+    private lazy var kakaoMapContentView: KakaoMapView = {
+        let kakaoMapView = KakaoMapView()
+        kakaoMapView.mapView.delegate = self
+        return kakaoMapView
+    }()
     
     private var viewModel: ClimbingGymDetailViewModel
     
@@ -37,6 +41,7 @@ final class ClimbingGymDetailViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         bindAction()
+        kakaoMapContentView.createPin(itemName: "테스트", getla: 35.86742746, getlo: 129.21698317)
     }
     
     override func Bind() {
@@ -126,4 +131,7 @@ final class ClimbingGymDetailViewController: BaseViewController {
     override func setViewProperty() {
         super.setViewProperty()
     }
+}
+
+extension ClimbingGymDetailViewController: MTMapViewDelegate {
 }
