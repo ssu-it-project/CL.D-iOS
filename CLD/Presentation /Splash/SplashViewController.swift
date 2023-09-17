@@ -22,7 +22,7 @@ final class SplashViewController: BaseViewController {
         super.viewDidLoad()
         
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1) {
-            let rootViewController = TabBarController()
+            let rootViewController = AuthViewController(viewModel: SignInViewModel(useCase: DefaultSignInUseCase(repository: DefaultSignInRepository())))
             let sceneDelegate = UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate
             guard let delegate = sceneDelegate else {
                 print("sceneDelegate가 할당 Error")
