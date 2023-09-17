@@ -37,6 +37,7 @@
 	</array>
 	<key>LSApplicationQueriesSchemes</key>
         <array>
+		<string>kakaomap</string>
             <string>kakaokompassauth</string>
             <string>kakaolink</string>
             <string>fbapi</string>
