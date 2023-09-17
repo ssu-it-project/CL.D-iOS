@@ -12,6 +12,7 @@ final class KakaoMapView: UIView {
     let mapView: MTMapView = {
         let mapView = MTMapView()
         mapView.baseMapType = .standard
+        mapView.clipsToBounds = true
         return mapView
     }()
     private let addressLabel: UILabel = {
@@ -29,15 +30,6 @@ final class KakaoMapView: UIView {
         UILabel.textColor = .CLDDarkGray
         return UILabel
     }()
-    private let videoButton: UIButton = {
-        let button = UIButton()
-        button.setTitle("길찾기", for: .normal)
-        button.setTitleColor(.CLDBlack, for: .normal)
-        button.backgroundColor = .white
-        button.titleLabel?.font = UIFont(name: "Roboto-Regular", size: 13)
-        button.clipsToBounds = true
-        return button
-    }()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -52,19 +44,19 @@ final class KakaoMapView: UIView {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        videoButton.layer.cornerRadius = 11
         self.layer.cornerRadius = 11
+        mapView.layer.cornerRadius = 11
     }
     
     private func setHierarchy() {
-        addSubviews(mapView, addressLabel, phoneNumberLabel, videoButton)
+        addSubviews(mapView, addressLabel, phoneNumberLabel)
     }
     
     private func setConstraints() {
         mapView.snp.makeConstraints { make in
             make.top.equalToSuperview().inset(15)
             make.leading.trailing.equalToSuperview().inset(20)
-            make.height.equalTo(155)
+            make.height.equalTo(180)
         }
         
         addressLabel.snp.makeConstraints { make in
@@ -78,13 +70,7 @@ final class KakaoMapView: UIView {
             make.leading.equalToSuperview().inset(20)
             make.trailing.equalToSuperview().inset(10).priority(.high)
             make.height.equalTo(addressLabel.snp.height)
-        }
-        
-        videoButton.snp.makeConstraints { make in
-            make.top.equalTo(phoneNumberLabel.snp.bottom).offset(10)
-            make.leading.trailing.equalToSuperview().inset(17)
             make.bottom.equalToSuperview().inset(10)
-            make.height.equalTo(30)
         }
     }
 }
@@ -106,7 +92,7 @@ extension KakaoMapView {
     func configurationVIew(_ detailPlaceVO: DetailPlaceVO) {
         addressLabel.text = detailPlaceVO.addressName
         if detailPlaceVO.phone.isEmpty {
-            phoneNumberLabel.text = "전화번호가 정보가 없어요"
+            phoneNumberLabel.text = "전화번호 정보가 없어요"
         } else  {
             phoneNumberLabel.text = detailPlaceVO.phone
         }
