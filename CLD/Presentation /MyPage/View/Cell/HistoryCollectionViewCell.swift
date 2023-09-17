@@ -50,20 +50,6 @@ final class HistoryCollectionViewCell: UICollectionViewCell {
         return imageView
     }()
 
-    override var isSelected: Bool {
-        didSet {
-            if isSelected {
-                cellBackgroundView.backgroundColor = .CLDGold
-                titleLabel.textColor = .white
-                dateLabel.textColor = .white
-            } else {
-                cellBackgroundView.backgroundColor = .CLDLightGray
-                titleLabel.textColor = .CLDBlack
-                dateLabel.textColor = .CLDMediumGray
-            }
-        }
-    }
-
     override init(frame: CGRect) {
         super.init(frame: frame)
         contentView.addSubview(cellBackgroundView)

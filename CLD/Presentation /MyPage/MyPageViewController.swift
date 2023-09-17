@@ -73,7 +73,14 @@ extension MyPageViewController : UICollectionViewDelegate, UICollectionViewDeleg
             cell.badgeImageView.image = dataTarget[indexPath.row][2] as! UIImage
             if (dataTarget[indexPath.row][3] as! String == "novideo"){
                 cell.videoIcon.image = nil
-                mypageView.badgeCollectionView.selectItem(at: [0,indexPath.row], animated: false, scrollPosition: .init())
+                cell.cellBackgroundView.backgroundColor = .CLDGold
+                cell.titleLabel.textColor = .white
+                cell.dateLabel.textColor = .white
+            } else {
+                cell.videoIcon.image = ImageLiteral.videoIcon
+                cell.cellBackgroundView.backgroundColor = .CLDLightGray
+                cell.titleLabel.textColor = .CLDBlack
+                cell.dateLabel.textColor = .CLDMediumGray
             }
             return cell
         } else if collectionView == mypageView.categoryCollectionView {
