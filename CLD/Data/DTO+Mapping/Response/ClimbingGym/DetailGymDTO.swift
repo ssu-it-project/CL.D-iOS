@@ -10,6 +10,7 @@ import Foundation
 struct DetailGymDTO: Decodable {
     let date: DateClassDTO
     let id: String
+    let location: Location
     let place: DetailPlaceDTO
     let type: String
 }
@@ -33,7 +34,7 @@ struct DetailPlaceDTO: Decodable {
 
 extension DetailGymDTO {
     func toDomain() -> DetailGymVO {
-        return DetailGymVO(date: date.toDomain(), id: id, place: place.toDomain(), type: type)
+        return DetailGymVO(date: date.toDomain(), id: id, location: location.toDomain(), place: place.toDomain(), type: type)
     }
 }
 

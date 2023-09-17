@@ -25,7 +25,11 @@ final class ClimbingGymDetailViewController: BaseViewController {
         return stackView
     }()
     private let morevideoView = MoreVideosView()
-    private let kakaoMapContentView = KakaoMapView()
+    private lazy var kakaoMapContentView: KakaoMapView = {
+        let kakaoMapView = KakaoMapView()
+        kakaoMapView.mapView.delegate = self
+        return kakaoMapView
+    }()
     
     private var viewModel: ClimbingGymDetailViewModel
     
@@ -47,6 +51,14 @@ final class ClimbingGymDetailViewController: BaseViewController {
             .withUnretained(self)
             .bind { owner, detailPlaceVO in
                 owner.kakaoMapContentView.configurationVIew(detailPlaceVO)
+            }
+            .disposed(by: disposeBag)
+        
+        output.kakaoMapPoint
+            .withUnretained(self)
+            .bind { owner, mapPoint in
+                let (latitude, longitude, gymTitle) = mapPoint
+                owner.kakaoMapContentView.createPin(itemName: gymTitle, getla: longitude, getlo: latitude)
             }
             .disposed(by: disposeBag)
         
@@ -125,5 +137,22 @@ final class ClimbingGymDetailViewController: BaseViewController {
     
     override func setViewProperty() {
         super.setViewProperty()
+    }
+}
+
+extension ClimbingGymDetailViewController: MTMapViewDelegate {
+    func mapView(_ mapView: MTMapView!, selectedPOIItem poiItem: MTMapPOIItem!) -> Bool {
+        let url = URL(string: viewModel.placeIDURL)
+        let kakaoMapAppstoreURL = URL(string: "https://apps.apple.com/us/app/id304608425")
+        
+        if UIApplication.shared.canOpenURL(URL(string:"kakaomap://")!){
+            UIApplication.shared.open(url!, options: [:], completionHandler: nil)
+            return true
+        } else {
+            self.presentAlert(title: "카카오 맵 미설치", message: "카카오 맵이 설치되어 있지 않습니다. 앱스토어로 이동하시겠습니까?", okButtonTitle: "이동하기") {
+                UIApplication.shared.open(kakaoMapAppstoreURL!, options: [:], completionHandler: nil)
+            }
+            return true
+        }
     }
 }

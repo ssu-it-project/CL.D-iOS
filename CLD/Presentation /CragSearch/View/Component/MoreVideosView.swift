@@ -19,7 +19,11 @@ final class MoreVideosView: UIView {
         return button
     }()
     private let levelLabel = LevelBadge()
-    private let videoBackView = UIView()
+    private let videoBackView: UIView = {
+        let view = UIView()
+        view.clipsToBounds = true
+        return view
+    }()
     private var videoView = PlayerView()
     private let videoSampleImageView: UIImageView = {
         let view = UIImageView()
@@ -44,6 +48,7 @@ final class MoreVideosView: UIView {
         super.layoutSubviews()
         videoButton.layer.cornerRadius = 11
         self.layer.cornerRadius = 11
+        videoBackView.layer.cornerRadius = 11
     }
     
     private func setHierarchy() {
