@@ -16,7 +16,7 @@ final class CategoryCollectionViewCell: UICollectionViewCell {
         let label = UILabel()
         label.text = "전체"
         label.textColor = .CLDBlack
-        label.font = UIFont(name: "Roboto-Bold", size: 14)
+        label.font = RobotoFont.Bold.of(size: 14)
         label.textAlignment = .center
 
         return label

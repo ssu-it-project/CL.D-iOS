@@ -14,7 +14,7 @@ extension UITableView {
         let messageLabel: UILabel = {
             let label = UILabel()
             label.text = message
-            label.font = UIFont(name: "AppleSDGothicNeoR00", size: 14.0)
+            label.font = RobotoFont.Regular.of(size: 14)
             label.textColor = .lightGray
             label.numberOfLines = 0;
             label.textAlignment = .center;

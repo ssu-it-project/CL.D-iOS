@@ -27,14 +27,14 @@ final class ClimbingGymTableViewCell: UITableViewCell {
     private let titleLabel: UILabel = {
         let UILabel = UILabel()
         UILabel.sizeToFit()
-        UILabel.font = UIFont(name: "Roboto-ExtraBold", size: 12)
+        UILabel.font = RobotoFont.Bold.of(size: 12)
         UILabel.textColor = .black
         return UILabel
     }()
     private let addressLabel: UILabel = {
         let UILabel = UILabel()
         UILabel.sizeToFit()
-        UILabel.font = UIFont(name: "Roboto-ExtraBold", size: 12)
+        UILabel.font = RobotoFont.Bold.of(size: 12)
         UILabel.textColor = .CLDDarkGray
         return UILabel
     }()
@@ -61,7 +61,7 @@ final class ClimbingGymTableViewCell: UITableViewCell {
     private let locationLabel: UILabel = {
         let UILabel = UILabel()
         UILabel.sizeToFit()
-        UILabel.font = UIFont(name: "Roboto-Bold", size: 12)
+        UILabel.font = RobotoFont.Bold.of(size: 12)
         UILabel.textColor = .black
         return UILabel
     }()

@@ -78,7 +78,7 @@ class BaseViewController: UIViewController, BaseViewControllerProtocol {
 
         appearance.shadowColor = .clear
         appearance.backgroundColor = .white
-        appearance.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.black, NSAttributedString.Key.font: UIFont.systemFont(ofSize: 15)]
+        appearance.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.black, NSAttributedString.Key.font: RobotoFont.Regular.of(size: 15)]
 
         navigationBar.standardAppearance = appearance
         navigationBar.compactAppearance = appearance

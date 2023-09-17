@@ -35,7 +35,7 @@ final class SelectColorCell: UICollectionViewCell {
         let label = UILabel()
         label.text = "흰색"
         label.textColor = .CLDBlack
-        label.font = UIFont(name: "Roboto-Regular", size: 11)
+        label.font = RobotoFont.Regular.of(size: 11)
         return label
     }()
     

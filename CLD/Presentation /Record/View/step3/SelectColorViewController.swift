@@ -54,7 +54,7 @@ final class SelectColorViewController: BaseViewController {
         let label = UILabel()
         label.text = "추가"
         label.textColor = .CLDBlack
-        label.font = UIFont(name: "Roboto-Regular", size: 11)
+        label.font = RobotoFont.Regular.of(size: 11)
         return label
     }()
     

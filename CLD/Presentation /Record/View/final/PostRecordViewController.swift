@@ -27,7 +27,7 @@ final class PostRecordViewController: BaseViewController {
         let button = UIButton()
         button.setTitle("기록하기", for: .normal)
         button.setTitleColor(.CLDBlack, for: .normal)
-        button.titleLabel?.font = UIFont(name: "Roboto-Medium", size: 15)
+        button.titleLabel?.font = RobotoFont.Medium.of(size: 15)
         button.semanticContentAttribute = .forceLeftToRight
         button.contentVerticalAlignment = .center
         button.contentHorizontalAlignment = .center

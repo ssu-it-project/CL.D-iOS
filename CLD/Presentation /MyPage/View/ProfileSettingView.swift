@@ -27,7 +27,7 @@ final class ProfileSettingView: UIView {
 
     private lazy var nicknameLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont(name: "Roboto-Bold", size: 16.0)
+        label.font = RobotoFont.Bold.of(size: 16)
         label.text = "닉네임"
         label.textColor = .black
         label.textAlignment = .left
@@ -37,7 +37,7 @@ final class ProfileSettingView: UIView {
     private let nicknameTextField: UITextField = {
         let textField = UITextField()
         textField.placeholder = "닉네임을 입력해주세요."
-        textField.font = UIFont(name: "Roboto-Regular", size: 14)
+        textField.font = RobotoFont.Regular.of(size: 14)
         textField.textColor = .CLDBlack
         textField.backgroundColor = .CLDLightGray
 
@@ -46,7 +46,7 @@ final class ProfileSettingView: UIView {
 
     private lazy var heightLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont(name: "Roboto-Bold", size: 16.0)
+        label.font = RobotoFont.Bold.of(size: 16)
         label.text = "키"
         label.textColor = .black
         label.textAlignment = .left
@@ -56,7 +56,7 @@ final class ProfileSettingView: UIView {
     private let heightTextField: UITextField = {
         let textField = UITextField()
         textField.placeholder = "키를 입력해주세요."
-        textField.font = UIFont(name: "Roboto-Regular", size: 14)
+        textField.font = RobotoFont.Regular.of(size: 14)
         textField.textColor = .CLDBlack
         textField.backgroundColor = .CLDLightGray
 
@@ -64,7 +64,7 @@ final class ProfileSettingView: UIView {
     }()
     private lazy var heightcmLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont(name: "Roboto-Bold", size: 14.0)
+        label.font = RobotoFont.Bold.of(size: 14)
         label.text = "cm"
         label.textColor = .CLDDarkGray
         label.textAlignment = .right
@@ -74,7 +74,7 @@ final class ProfileSettingView: UIView {
 
     private lazy var armReachLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont(name: "Roboto-Bold", size: 16.0)
+        label.font = RobotoFont.Bold.of(size: 16)
         label.text = "암리치"
         label.textColor = .black
         label.textAlignment = .left
@@ -84,7 +84,7 @@ final class ProfileSettingView: UIView {
     private let armReachTextField: UITextField = {
         let textField = UITextField()
         textField.placeholder = "암리치를 입력해주세요."
-        textField.font = UIFont(name: "Roboto-Regular", size: 14)
+        textField.font = RobotoFont.Regular.of(size: 14)
         textField.textColor = .CLDBlack
         textField.backgroundColor = .CLDLightGray
 
@@ -92,7 +92,7 @@ final class ProfileSettingView: UIView {
     }()
     private lazy var armReachcmLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont(name: "Roboto-Bold", size: 14.0)
+        label.font = RobotoFont.Bold.of(size: 14)
         label.text = "cm"
         label.textColor = .CLDDarkGray
         label.textAlignment = .right
@@ -123,7 +123,7 @@ final class ProfileSettingView: UIView {
         let button = UIButton()
         button.setTitle("저장", for: .normal)
         button.setTitleColor(.white, for: .normal)
-        button.titleLabel?.font = UIFont(name: "Roboto-Medium", size: 14)
+        button.titleLabel?.font = RobotoFont.Medium.of(size: 14)
         button.backgroundColor = .CLDGold
         button.contentVerticalAlignment = .center
         button.contentHorizontalAlignment = .center
