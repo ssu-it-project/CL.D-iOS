@@ -38,8 +38,10 @@ class ClimbingGymDetailViewModel: ViewModelType {
         var latitude = PublishRelay<Double>()
         var longitude = PublishRelay<Double>()
         var kakaoMapPoint = PublishRelay<(Double, Double, String)>()
-        
     }
+    
+    var placeID = PublishRelay<String>()
+    var placeIDURL: String = ""
     
     func transform(input: Input) -> Output {
         let output = Output()
@@ -56,6 +58,17 @@ class ClimbingGymDetailViewModel: ViewModelType {
             .bind(to: output.kakaoMapPoint)
             .disposed(by: disposeBag)
         
+        placeID
+            .map { placeID in
+                return URLConst.kakaoMap + placeID
+            }
+            .withUnretained(self)
+            .subscribe(onNext: { owner, placeURL in
+                owner.placeIDURL = placeURL
+            })
+            .disposed(by: disposeBag)
+                
+        
         return output
     }
 }
@@ -63,13 +76,14 @@ class ClimbingGymDetailViewModel: ViewModelType {
 extension ClimbingGymDetailViewModel {
     private func getDetailGym(id: String, output: Output) {
         useCase.getDetailGym(id: id)
-            .subscribe { response in
+            .subscribe { [weak self] response in
                 switch response {
                 case .success(let value):
                     output.placeVO.accept(value.place)
                     output.gymTitle.accept(value.place.name)
                     output.latitude.accept(value.location.x)
                     output.longitude.accept(value.location.y)
+                    self?.placeID.accept(value.place.placeID)
                 case .failure(let error):
                     print(error.localizedDescription)
                 }
