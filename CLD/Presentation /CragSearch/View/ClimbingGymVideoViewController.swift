@@ -28,6 +28,7 @@ final class ClimbingGymVideoViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = viewModel.title
+        bindAction()
     }
     
     override func Bind() {
@@ -40,6 +41,17 @@ final class ClimbingGymVideoViewController: BaseViewController {
                 print("==========", recordListVO)
                 owner.contentView.applyCollectionViewDataSource(by: recordListVO)
             }
+            .disposed(by: disposeBag)
+    }
+    
+    private func bindAction() {
+        contentView.collectionView.rx.itemSelected
+            .withUnretained(self)
+            .subscribe(onNext: { owner, indexPath in
+                let data = owner.contentView.itemIdentifier(for: indexPath)
+                let playerViewController = PlayerViewController(url: data?.video ?? "")
+                owner.navigationController?.pushViewController(playerViewController, animated: true)
+            })
             .disposed(by: disposeBag)
     }
 }
