@@ -41,7 +41,6 @@ final class ClimbingGymDetailViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         bindAction()
-        kakaoMapContentView.createPin(itemName: "테스트", getla: 35.86742746, getlo: 129.21698317)
     }
     
     override func Bind() {
@@ -52,6 +51,15 @@ final class ClimbingGymDetailViewController: BaseViewController {
             .withUnretained(self)
             .bind { owner, detailPlaceVO in
                 owner.kakaoMapContentView.configurationVIew(detailPlaceVO)
+            }
+            .disposed(by: disposeBag)
+        
+        output.kakaoMapPoint
+            .withUnretained(self)
+            .bind { owner, mapPoint in
+                let (latitude, longitude, gymTitle) = mapPoint
+                print(mapPoint)
+                owner.kakaoMapContentView.createPin(itemName: gymTitle, getla: longitude, getlo: latitude)
             }
             .disposed(by: disposeBag)
         

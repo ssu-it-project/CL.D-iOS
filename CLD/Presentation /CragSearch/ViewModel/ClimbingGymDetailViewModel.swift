@@ -35,6 +35,10 @@ class ClimbingGymDetailViewModel: ViewModelType {
         var recordVideoURL = PublishRelay<String>()
         var recordLevel = PublishRelay<(String, String)>()
         var recordVideoIsEmpty = PublishRelay<Bool>()
+        var latitude = PublishRelay<Double>()
+        var longitude = PublishRelay<Double>()
+        var kakaoMapPoint = PublishRelay<(Double, Double, String)>()
+        
     }
     
     func transform(input: Input) -> Output {
@@ -47,7 +51,11 @@ class ClimbingGymDetailViewModel: ViewModelType {
                 owner.getDetailGymRecord(output: output)
             })
             .disposed(by: disposeBag)
-
+        
+        Observable.zip(output.latitude, output.longitude, output.gymTitle)
+            .bind(to: output.kakaoMapPoint)
+            .disposed(by: disposeBag)
+        
         return output
     }
 }
@@ -60,6 +68,8 @@ extension ClimbingGymDetailViewModel {
                 case .success(let value):
                     output.placeVO.accept(value.place)
                     output.gymTitle.accept(value.place.name)
+                    output.latitude.accept(value.location.x)
+                    output.longitude.accept(value.location.y)
                 case .failure(let error):
                     print(error.localizedDescription)
                 }
