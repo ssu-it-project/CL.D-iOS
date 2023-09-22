@@ -8,6 +8,13 @@
 import UIKit
 
 import SnapKit
+import RxSwift
+import RxGesture
+import RxCocoa
+
+protocol PushProfileViewDelegate: AnyObject {
+    func editProfileButtonTapped()
+}
 
 final class ProfileSettingView: UIView {
     private let profileImageView: UIImageView = {
@@ -18,6 +25,7 @@ final class ProfileSettingView: UIView {
 
         return imageView
     }()
+    let imagePicker = UIImagePickerController()
     private let editProfileButton: UIButton = {
         let button = UIButton()
         button.setImage(ImageLiteral.editProfileImage, for: .normal)
@@ -132,6 +140,13 @@ final class ProfileSettingView: UIView {
         return button
     }()
 
+    weak var delegate: PushProfileViewDelegate?
+    private var bag = DisposeBag()
+
+    func setProfileImage(image: UIImage) {
+        self.profileImageView.image = image
+    }
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         nicknameTextField.addLeftPadding()
@@ -143,6 +158,7 @@ final class ProfileSettingView: UIView {
 
         setHierarchy()
         setConstraints()
+        bind()
     }
 
     required init?(coder: NSCoder) {
@@ -211,5 +227,13 @@ final class ProfileSettingView: UIView {
             $0.height.equalTo(25)
         }
     }
-}
 
+    private func bind() {
+        editProfileButton.rx.tap
+            .withUnretained(self)
+            .bind(onNext: { owner, event in
+                owner.delegate?.editProfileButtonTapped()
+            })
+            .disposed(by: bag)
+    }
+}
