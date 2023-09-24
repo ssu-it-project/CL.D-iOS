@@ -11,4 +11,5 @@ enum URLConst {
 
     static let gyms = "/clime/gyms"
     static let record = "/clime/record"
+    static let mypage = "/user"
 }

@@ -51,12 +51,16 @@
 		02B655392AA5D97700E4AC4F /* GymsAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B655382AA5D97700E4AC4F /* GymsAPI.swift */; };
 		02B6553B2AA5DAFC00E4AC4F /* GymsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B6553A2AA5DAFC00E4AC4F /* GymsService.swift */; };
 		02B6553F2AA63AE400E4AC4F /* UITableview+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B6553E2AA63AE400E4AC4F /* UITableview+Extension.swift */; };
+		02BB31F52ABC0F0E0074152E /* UserDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02BB31F42ABC0F0E0074152E /* UserDTO.swift */; };
 		02CCDD672A9F2C8A00301ABF /* RecordService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02CCDD662A9F2C8A00301ABF /* RecordService.swift */; };
 		02CCDD692A9F614B00301ABF /* NetworkResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02CCDD682A9F614B00301ABF /* NetworkResult.swift */; };
 		02CCDD6B2A9F617F00301ABF /* BlankDataResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02CCDD6A2A9F617F00301ABF /* BlankDataResponse.swift */; };
 		02CCDD6D2A9F61A500301ABF /* ErrorResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02CCDD6C2A9F61A500301ABF /* ErrorResponse.swift */; };
 		02CCDD6F2A9F623A00301ABF /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02CCDD6E2A9F623A00301ABF /* NetworkService.swift */; };
 		02D56F4A2A9317FB00FF41EA /* PostRecordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D56F492A9317FB00FF41EA /* PostRecordView.swift */; };
+		02DEA47A2ABF359B00ECAB10 /* UserAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02DEA4792ABF359B00ECAB10 /* UserAPI.swift */; };
+		02DEA47C2ABF36EE00ECAB10 /* MyPageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02DEA47B2ABF36EE00ECAB10 /* MyPageService.swift */; };
+		02DEA47E2ABF497D00ECAB10 /* UIImageView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02DEA47D2ABF497D00ECAB10 /* UIImageView+Extension.swift */; };
 		02EB6E782A874D4D00C749A6 /* SelectPlaceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02EB6E772A874D4D00C749A6 /* SelectPlaceViewController.swift */; };
 		02EB6E7B2A874E5100C749A6 /* Tabman in Frameworks */ = {isa = PBXBuildFile; productRef = 02EB6E7A2A874E5100C749A6 /* Tabman */; };
 		02EB6E7D2A88BC9B00C749A6 /* SuccessRecordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02EB6E7C2A88BC9B00C749A6 /* SuccessRecordView.swift */; };
@@ -257,12 +261,16 @@
 		02B655382AA5D97700E4AC4F /* GymsAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GymsAPI.swift; sourceTree = "<group>"; };
 		02B6553A2AA5DAFC00E4AC4F /* GymsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GymsService.swift; sourceTree = "<group>"; };
 		02B6553E2AA63AE400E4AC4F /* UITableview+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableview+Extension.swift"; sourceTree = "<group>"; };
+		02BB31F42ABC0F0E0074152E /* UserDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDTO.swift; sourceTree = "<group>"; };
 		02CCDD662A9F2C8A00301ABF /* RecordService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordService.swift; sourceTree = "<group>"; };
 		02CCDD682A9F614B00301ABF /* NetworkResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkResult.swift; sourceTree = "<group>"; };
 		02CCDD6A2A9F617F00301ABF /* BlankDataResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlankDataResponse.swift; sourceTree = "<group>"; };
 		02CCDD6C2A9F61A500301ABF /* ErrorResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorResponse.swift; sourceTree = "<group>"; };
 		02CCDD6E2A9F623A00301ABF /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		02D56F492A9317FB00FF41EA /* PostRecordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostRecordView.swift; sourceTree = "<group>"; };
+		02DEA4792ABF359B00ECAB10 /* UserAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAPI.swift; sourceTree = "<group>"; };
+		02DEA47B2ABF36EE00ECAB10 /* MyPageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageService.swift; sourceTree = "<group>"; };
+		02DEA47D2ABF497D00ECAB10 /* UIImageView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extension.swift"; sourceTree = "<group>"; };
 		02E2532E2A8A17DB00D3E9E1 /* PhotoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCollectionViewCell.swift; sourceTree = "<group>"; };
 		02EB6E772A874D4D00C749A6 /* SelectPlaceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectPlaceViewController.swift; sourceTree = "<group>"; };
 		02EB6E7C2A88BC9B00C749A6 /* SuccessRecordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuccessRecordView.swift; sourceTree = "<group>"; };
@@ -556,11 +564,20 @@
 			path = Cell;
 			sourceTree = "<group>";
 		};
+		02BB31F32ABC0EF70074152E /* MyPage */ = {
+			isa = PBXGroup;
+			children = (
+				02BB31F42ABC0F0E0074152E /* UserDTO.swift */,
+			);
+			path = MyPage;
+			sourceTree = "<group>";
+		};
 		02CCDD652A9F2C6100301ABF /* Service */ = {
 			isa = PBXGroup;
 			children = (
 				02CCDD662A9F2C8A00301ABF /* RecordService.swift */,
 				02B6553A2AA5DAFC00E4AC4F /* GymsService.swift */,
+				02DEA47B2ABF36EE00ECAB10 /* MyPageService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -690,6 +707,7 @@
 		5A21C67F2A9A3C8200E7CC95 /* Response */ = {
 			isa = PBXGroup;
 			children = (
+				02BB31F32ABC0EF70074152E /* MyPage */,
 				5A7E39AF2AB218C800143175 /* Record */,
 				5A7E39AE2AB218BD00143175 /* Auth */,
 				5A7E39AD2AB2189A00143175 /* ClimbingGym */,
@@ -1061,6 +1079,7 @@
 				5A70B8BA2AB47B3900506846 /* Double+Extension.swift */,
 				5A70B8BE2AB4BFC300506846 /* Collection+.swift */,
 				5A70B9692AB6E5D400506846 /* UIVIewController+Extension.swift */,
+				02DEA47D2ABF497D00ECAB10 /* UIImageView+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1146,6 +1165,7 @@
 				5A21C6782A9A009000E7CC95 /* AuthAPI.swift */,
 				02B655382AA5D97700E4AC4F /* GymsAPI.swift */,
 				5A7E398E2AB0E1D600143175 /* RecordAPI.swift */,
+				02DEA4792ABF359B00ECAB10 /* UserAPI.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -1558,6 +1578,7 @@
 				5A7E39AC2AB2188600143175 /* DetailGymDTO.swift in Sources */,
 				5A7E39B42AB2214400143175 /* GymsRepository.swift in Sources */,
 				5A21C6852A9A410400E7CC95 /* BaseErrorDTO.swift in Sources */,
+				02DEA47C2ABF36EE00ECAB10 /* MyPageService.swift in Sources */,
 				0281723E2A793B900089FD51 /* SelectColorCell.swift in Sources */,
 				5A70B8C12AB5728400506846 /* ClimbingGymVideoViewController.swift in Sources */,
 				5A70B8D02AB5CA7100506846 /* SignInRepository.swift in Sources */,
@@ -1583,6 +1604,7 @@
 				5A3210162AA80081003A40BD /* DefaultLocationManager.swift in Sources */,
 				0281723C2A793A670089FD51 /* SelectColorViewController.swift in Sources */,
 				5A05DEF12AA8E0560050AD55 /* GymsVO.swift in Sources */,
+				02DEA47A2ABF359B00ECAB10 /* UserAPI.swift in Sources */,
 				5ADED1D22A6838C400C0CBF4 /* CommunityViewController.swift in Sources */,
 				02CCDD6D2A9F61A500301ABF /* ErrorResponse.swift in Sources */,
 				5AEFAAE92A8E3E5E00A67C43 /* CLDButton.swift in Sources */,
@@ -1595,6 +1617,7 @@
 				5A21C6792A9A009000E7CC95 /* AuthAPI.swift in Sources */,
 				5A70B96D2AB6F11100506846 /* PlayerViewController.swift in Sources */,
 				5A21C65A2A98FAEC00E7CC95 /* BaseTargetType.swift in Sources */,
+				02BB31F52ABC0F0E0074152E /* UserDTO.swift in Sources */,
 				5A7E399F2AB158A800143175 /* HomeViewModel.swift in Sources */,
 				5A3210222AA88A6A003A40BD /* RxViewController+Extension.swift in Sources */,
 				023868C32A70009B0006C762 /* LoginManager.swift in Sources */,
@@ -1659,6 +1682,7 @@
 				5A21C6552A98F7B900E7CC95 /* UserDefault.swift in Sources */,
 				5A3210072AA649D6003A40BD /* LevelBadge.swift in Sources */,
 				5A21C69C2A9B8C2200E7CC95 /* RootHandler.swift in Sources */,
+				02DEA47E2ABF497D00ECAB10 /* UIImageView+Extension.swift in Sources */,
 				5A21C69A2A9B758700E7CC95 /* SignInViewModel.swift in Sources */,
 				5A21C6832A9A3E8B00E7CC95 /* CommonMoyaProvider.swift in Sources */,
 				5A70B8BF2AB4BFC300506846 /* Collection+.swift in Sources */,

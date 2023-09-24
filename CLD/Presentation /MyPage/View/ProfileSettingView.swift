@@ -16,10 +16,18 @@ protocol PushProfileViewDelegate: AnyObject {
     func editProfileButtonTapped()
 }
 
+protocol UpdateProfileDelegate: AnyObject {
+    func saveProfileButtonTapped()
+}
+
 final class ProfileSettingView: UIView {
+    private lazy var birthday = ""
+    private lazy var gender = 0
+    private lazy var name = ""
     private let profileImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = ImageLiteral.testProfileImage
+        imageView.image = ImageLiteral.profileDefault
+        imageView.tintColor = .CLDGray
         imageView.layer.cornerRadius = 105/2
         imageView.clipsToBounds = true
 
@@ -140,11 +148,36 @@ final class ProfileSettingView: UIView {
         return button
     }()
 
-    weak var delegate: PushProfileViewDelegate?
+    weak var delegatePush: PushProfileViewDelegate?
+    weak var delegateUpdate: UpdateProfileDelegate?
     private var bag = DisposeBag()
+
+    func setProfileInfo(birthday: String, gender: Int, name: String, imageUrl: String, nickname: String, height: Int, reach: Int) {
+        let url = URL(string: imageUrl)
+        self.birthday = birthday
+        self.gender = gender
+        self.name = name
+        self.profileImageView.load(url: url!)
+        self.nicknameTextField.text = nickname
+        self.heightTextField.text = String(height)
+        self.armReachTextField.text = String(reach)
+    }
 
     func setProfileImage(image: UIImage) {
         self.profileImageView.image = image
+    }
+
+    func getProfileInfo() -> Dictionary<String, Any> {
+        let nickname: String = String(nicknameTextField.text ?? "")
+        let height: Int = Int(String(heightTextField.text ?? "")) ?? 0
+        let armReach: Int = Int(String(armReachTextField.text ?? "")) ?? 0
+        return ["birthday": birthday, "gender": gender, "name":name, "nickname": nickname, "height": height, "armReach": armReach]
+    }
+
+    func closeKeyBoard() {
+        nicknameTextField.resignFirstResponder()
+        heightTextField.resignFirstResponder()
+        armReachTextField.resignFirstResponder()
     }
 
     override init(frame: CGRect) {
@@ -232,7 +265,13 @@ final class ProfileSettingView: UIView {
         editProfileButton.rx.tap
             .withUnretained(self)
             .bind(onNext: { owner, event in
-                owner.delegate?.editProfileButtonTapped()
+                owner.delegatePush?.editProfileButtonTapped()
+            })
+            .disposed(by: bag)
+        saveButton.rx.tap
+            .withUnretained(self)
+            .bind(onNext: { owner, event in
+                owner.delegateUpdate?.saveProfileButtonTapped()
             })
             .disposed(by: bag)
     }

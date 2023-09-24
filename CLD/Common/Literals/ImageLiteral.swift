@@ -46,12 +46,13 @@ enum ImageLiteral {
     static var checkIcon: UIImage { .load(systemName: "checkmark")}
     static var bookMarkIcon: UIImage { .load(systemName: "bookmark") }
     static var fillBookMarkIcon: UIImage { .load(systemName: "bookmark.fill") }
-    static var thumbnailImage: UIImage { .load(named: "thumbnailImage")}
+    static var thumbnailImage: UIImage { .load(named: "thumbnailImage") }
 
     //MARK: - MyPage
-    static var settingIcon: UIImage { .load(named: "settingIcon")}
-    static var videoIcon: UIImage { .load(named: "videoIcon")}
-    static var editProfileImage: UIImage { .load(named: "editProfileImage")}
+    static var settingIcon: UIImage { .load(named: "settingIcon") }
+    static var videoIcon: UIImage { .load(named: "videoIcon") }
+    static var editProfileImage: UIImage { .load(named: "editProfileImage") }
+    static var profileDefault: UIImage { .load(named: "profileDefault") }
 
     //MARK: - test image
     static var videoThumbnail: UIImage { .load(named: "videoThumbnail") }

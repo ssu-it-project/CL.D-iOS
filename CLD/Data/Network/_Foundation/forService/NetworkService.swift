@@ -14,4 +14,5 @@ final class NetworkService {
 
     //let record = RecordService()
     let gyms = GymsService()
+    let myPage = MyPageService()
 }

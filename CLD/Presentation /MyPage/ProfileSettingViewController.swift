@@ -22,9 +22,11 @@ class ProfileSettingViewController: BaseViewController {
         super.setupNavigationBar()
         navigationItem.title = "프로필 설정"
 
-        profileSettingView.delegate = self
+        profileSettingView.delegatePush = self
+        profileSettingView.delegateUpdate = self
         profileSettingView.imagePicker.delegate = self
         self.photo.delegate = self
+        getUser()
     }
 
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?){
@@ -89,23 +91,114 @@ extension ProfileSettingViewController: PushProfileViewDelegate {
     }
 
     func openPhoto(){
-            DispatchQueue.main.async {
-                self.photo.sourceType = .photoLibrary
-                self.photo.allowsEditing = false
-                self.present(self.photo, animated: false, completion: nil)
-            }
+        DispatchQueue.main.async {
+            self.photo.sourceType = .photoLibrary
+            self.photo.allowsEditing = false
+            self.present(self.photo, animated: false, completion: nil)
         }
+    }
 }
 
 extension ProfileSettingViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         if let img = info[UIImagePickerController.InfoKey.originalImage]{
             profileSettingView.setProfileImage(image: img as! UIImage)
+            putUserImage(image: img as! UIImage) { _ in
+                print("=== putUserImage 성공")
+            }
         }
         dismiss(animated: true, completion: nil)
     }
 
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         self.dismiss(animated: true, completion: nil)
+    }
+}
+
+extension ProfileSettingViewController: UpdateProfileDelegate {
+    func saveProfileButtonTapped() {
+        profileSettingView.closeKeyBoard()
+        let profileInfo = profileSettingView.getProfileInfo()
+        let birthday: String = profileInfo["birthday"] as! String
+        let gender: Int = profileInfo["gender"] as! Int
+        let name: String = profileInfo["name"] as! String
+        let nickname: String = profileInfo["nickname"] as! String
+        let height: Int = profileInfo["height"] as! Int
+        let armReach: Int = profileInfo["armReach"] as! Int
+        putUserInfo(birthday: birthday, gender: gender, name: name, nickname: nickname, height: height, reach: armReach) { _ in
+            print("=== putUserInfo 성공")
+        }
+    }
+}
+
+extension ProfileSettingViewController {
+    private func getUser() {
+        NetworkService.shared.myPage.getUser() { [weak self] result in
+            switch result {
+            case .success(let response):
+                guard let data = response as? UserDTO else { return }
+                self!.profileSettingView.setProfileInfo(birthday: data.profile.birthday, gender: data.profile.gender, name: data.profile.name, imageUrl: data.profile.image, nickname: data.profile.nickname, height: data.profile.physical.height, reach: data.profile.physical.reach)
+
+            case .requestErr(let errorResponse):
+                dump(errorResponse)
+                guard let data = errorResponse as? ErrorResponse else { return }
+                print(data.message ?? "requestErr")
+            case .pathErr:
+                print("pathErr")
+            case .serverErr:
+                print("serverErr")
+            case .networkFail:
+                print("networkFail")
+            }
+        }
+    }
+
+    private func putUserImage(image: UIImage, completion: @escaping(BlankDataResponse) -> Void) {
+        NetworkService.shared.myPage.putUserImage(image: image) { [weak self] result in
+            switch result {
+            case .success(let response):
+                guard let data = response as? BlankDataResponse else { return }
+                print("=== 이미지 업로드")
+                let alert = UIAlertController(title: "프로필 사진 업데이트", message: "프로필 사진이 수정되었습니다.", preferredStyle: .alert)
+                let okAction = UIAlertAction(title: "확인", style: .default)
+                alert.addAction(okAction)
+                self!.present(alert, animated: true)
+
+            case .requestErr(let errorResponse):
+                dump(errorResponse)
+                guard let data = errorResponse as? ErrorResponse else { return }
+                print(data.message ?? "requestErr")
+            case .pathErr:
+                print("pathErr")
+            case .serverErr:
+                print("serverErr")
+            case .networkFail:
+                print("networkFail")
+            }
+        }
+    }
+
+    private func putUserInfo(birthday: String, gender: Int, name: String, nickname: String, height: Int, reach: Int, completion: @escaping(BlankDataResponse) -> Void) {
+        NetworkService.shared.myPage.putUserInfo(birthday: birthday, gender: gender, name: name, nickname: nickname, height: height, reach: reach) { [weak self] result in
+            switch result {
+            case .success(let response):
+                guard let data = response as? BlankDataResponse else { return }
+                let alert = UIAlertController(title: "프로필 업데이트", message: "프로필 정보가 수정되었습니다.", preferredStyle: .alert)
+                let okAction = UIAlertAction(title: "확인", style: .default)
+                alert.addAction(okAction)
+                self!.present(alert, animated: true)
+
+            case .requestErr(let errorResponse):
+                dump(errorResponse)
+                guard let data = errorResponse as? ErrorResponse else { return }
+                print(data.message ?? "requestErr")
+            case .pathErr:
+                print("pathErr")
+            case .serverErr:
+                print("serverErr")
+            case .networkFail:
+                print("networkFail")
+            }
+        }
     }
 }
