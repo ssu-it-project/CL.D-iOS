@@ -18,6 +18,8 @@ final class MyPageService {
         case getUserHistory
         case putUserImage
         case putUserInfo
+        case postLogoutUser
+        case deleteUser
     }
 
     public func getUser(completion: @escaping (NetworkResult<Any>) -> Void) {
@@ -88,6 +90,40 @@ final class MyPageService {
         }
     }
 
+    public func postLogoutUser(device: String, refresh_token: String, completion: @escaping (NetworkResult<Any>) -> Void) {
+        myPageProvider.request(.postLogoutUserAPI(device: device, refresh_token: refresh_token)) { result in
+            switch result {
+            case .success(let response):
+                let statusCode = response.statusCode
+                let data = response.data
+
+                let networkResult = self.judgeStatus(by: statusCode, data, responseData: .postLogoutUser)
+                completion(networkResult)
+
+            case .failure(let error):
+                print(error)
+
+            }
+        }
+    }
+
+    public func deleteUser(completion: @escaping (NetworkResult<Any>) -> Void) {
+        myPageProvider.request(.deleteUserAPI) { result in
+            switch result {
+            case .success(let response):
+                let statusCode = response.statusCode
+                let data = response.data
+
+                let networkResult = self.judgeStatus(by: statusCode, data, responseData: .deleteUser)
+                completion(networkResult)
+
+            case .failure(let error):
+                print(error)
+
+            }
+        }
+    }
+
     private func judgeStatus(by statusCode: Int, _ data: Data, responseData: ResponseData) -> NetworkResult<Any> {
 
         let decoder = JSONDecoder()
@@ -95,7 +131,7 @@ final class MyPageService {
         switch statusCode {
         case 200..<300:
             switch responseData {
-            case .getUser, .getUserHistory, .putUserImage, .putUserInfo:
+            case .getUser, .getUserHistory, .putUserImage, .putUserInfo, .postLogoutUser, .deleteUser:
                 return isValidData(data: data, responseData: responseData)
             }
         case 400..<500:
@@ -126,17 +162,11 @@ final class MyPageService {
                 return .pathErr
             }
             return .success(decodedData)
-        case .putUserImage:
-            guard let decodedData = try? decoder.decode(BlankDataResponse.self, from: data) else {
-                return .pathErr
-            }
-            return .success(decodedData)
-        case .putUserInfo:
+        case .putUserImage, .putUserInfo, .postLogoutUser, .deleteUser:
             guard let decodedData = try? decoder.decode(BlankDataResponse.self, from: data) else {
                 return .pathErr
             }
             return .success(decodedData)
         }
     }
-
 }
