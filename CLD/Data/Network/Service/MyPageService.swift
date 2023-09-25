@@ -15,6 +15,7 @@ final class MyPageService {
 
     private enum ResponseData {
         case getUser
+        case getUserHistory
         case putUserImage
         case putUserInfo
     }
@@ -27,6 +28,23 @@ final class MyPageService {
                 let data = response.data
 
                 let networkResult = self.judgeStatus(by: statusCode, data, responseData: .getUser)
+                completion(networkResult)
+
+            case .failure(let error):
+                print(error)
+
+            }
+        }
+    }
+
+    public func getUserHistory(type: String, start_date: String, end_date: String, limit: Int, skip: Int, completion: @escaping (NetworkResult<Any>) -> Void) {
+        myPageProvider.request(.getUserHistoryAPI(type: type, start_date: start_date, end_date: end_date, limit: limit, skip: skip)) { result in
+            switch result {
+            case .success(let response):
+                let statusCode = response.statusCode
+                let data = response.data
+
+                let networkResult = self.judgeStatus(by: statusCode, data, responseData: .getUserHistory)
                 completion(networkResult)
 
             case .failure(let error):
@@ -77,7 +95,7 @@ final class MyPageService {
         switch statusCode {
         case 200..<300:
             switch responseData {
-            case .getUser, .putUserImage, .putUserInfo:
+            case .getUser, .getUserHistory, .putUserImage, .putUserInfo:
                 return isValidData(data: data, responseData: responseData)
             }
         case 400..<500:
@@ -100,6 +118,11 @@ final class MyPageService {
         switch responseData {
         case .getUser:
             guard let decodedData = try? decoder.decode(UserDTO.self, from: data) else {
+                return .pathErr
+            }
+            return .success(decodedData)
+        case .getUserHistory:
+            guard let decodedData = try? decoder.decode(UserHistoryDTO.self, from: data) else {
                 return .pathErr
             }
             return .success(decodedData)

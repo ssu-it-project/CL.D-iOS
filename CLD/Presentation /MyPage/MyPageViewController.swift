@@ -12,20 +12,22 @@ import RxSwift
 import RxCocoa
 
 class MyPageViewController: BaseViewController {
+    var data_All: [History] = []
+    lazy var dataTarget: [History] = []
+    var dataCount: Int = 0
     let lableInfo: [String] = ["등반 기록", "방문한 암장", "비디오", "좋아요", "게시글"]
     var countInfo: [Int] = [372, 24, 82, 1002, 6]
     let categoryLabels: [String] = ["전체", "등반기록", "뱃지"]
     let dummyData_All: [[Any]] = [["돌잡이들의 왕", "2023.6.05 뱃지 획득", ImageLiteral.testBadgeImage, "novideo"],["더 클라이밍 마곡", "2023.6.20 | A섹터 | 보라색", ImageLiteral.holderPurple, "video"], ["더 클라이밍 마곡", "2023.6.20 | C섹터 | 파랑색", ImageLiteral.holderBlue, "video"], ["더 클라이밍 마곡", "2023.6.20 | C섹터 | 파란색", ImageLiteral.holderBlue, "video"], ["더 클라이밍 마곡", "2023.6.20 | 5섹터 | 주황색", ImageLiteral.holderOrange, "video"]]
     let dummyData_Record: [[Any]] = [["더 클라이밍 마곡", "2023.6.20 | A섹터 | 보라색", ImageLiteral.holderPurple, "video"], ["더 클라이밍 마곡", "2023.6.20 | C섹터 | 파랑색", ImageLiteral.holderBlue, "video"], ["더 클라이밍 마곡", "2023.6.20 | C섹터 | 파란색", ImageLiteral.holderBlue, "video"], ["더 클라이밍 마곡", "2023.6.20 | 5섹터 | 주황색", ImageLiteral.holderOrange, "video"]]
     let dummyData_Badge: [[Any]] = [["돌잡이들의 왕", "2023.6.05 뱃지 획득", ImageLiteral.testBadgeImage, "novideo"]]
-    lazy var dataTarget: [[Any]] = dummyData_All
 
     let mypageView = MyPageView()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        buttonTap()
 
+        mypageView.delegatePushSetting = self
         mypageView.countCollectionView.delegate = self
         mypageView.countCollectionView.dataSource = self
         mypageView.badgeCollectionView.delegate = self
@@ -35,6 +37,8 @@ class MyPageViewController: BaseViewController {
     }
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.isNavigationBarHidden = true
+        getUser()
+        getUserHistory(type: "" , start_date: "" , end_date: "", limit: 10, skip: 0)
     }
     override func setHierarchy() {
         self.view.addSubview(mypageView)
@@ -53,7 +57,7 @@ extension MyPageViewController : UICollectionViewDelegate, UICollectionViewDeleg
         if collectionView == mypageView.countCollectionView {
             return lableInfo.count
         } else if collectionView == mypageView.badgeCollectionView {
-            return dataTarget.count
+            return dataCount-1
         } else if collectionView == mypageView.categoryCollectionView {
             return categoryLabels.count
         }
@@ -68,19 +72,20 @@ extension MyPageViewController : UICollectionViewDelegate, UICollectionViewDeleg
             return cell
         } else if collectionView == mypageView.badgeCollectionView {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HistoryCollectionViewCell.identifier, for: indexPath) as! HistoryCollectionViewCell
-            cell.titleLabel.text = dataTarget[indexPath.row][0] as! String
-            cell.dateLabel.text = dataTarget[indexPath.row][1] as! String
-            cell.badgeImageView.image = dataTarget[indexPath.row][2] as! UIImage
-            if (dataTarget[indexPath.row][3] as! String == "novideo"){
-                cell.videoIcon.image = nil
-                cell.cellBackgroundView.backgroundColor = .CLDGold
-                cell.titleLabel.textColor = .white
-                cell.dateLabel.textColor = .white
-            } else {
+            print("===== indexPath: \(indexPath.row) ")
+            cell.titleLabel.text = data_All[indexPath.row].record.gymName
+            cell.dateLabel.text = data_All[indexPath.row].historyDate
+            cell.badgeImageView.image = ImageLiteral.holderBlue
+            if (data_All[indexPath.row].type == "record"){
                 cell.videoIcon.image = ImageLiteral.videoIcon
                 cell.cellBackgroundView.backgroundColor = .CLDLightGray
                 cell.titleLabel.textColor = .CLDBlack
                 cell.dateLabel.textColor = .CLDMediumGray
+            } else {
+                cell.videoIcon.image = nil
+                cell.cellBackgroundView.backgroundColor = .CLDGold
+                cell.titleLabel.textColor = .white
+                cell.dateLabel.textColor = .white
             }
             return cell
         } else if collectionView == mypageView.categoryCollectionView {
@@ -135,23 +140,68 @@ extension MyPageViewController : UICollectionViewDelegate, UICollectionViewDeleg
         } else if collectionView == mypageView.categoryCollectionView {
             print("=== category index: \(indexPath.row)")
             if (index == 0) {
-                dataTarget = dummyData_All
+                getUserHistory(type: "" , start_date: "" , end_date: "", limit: 10, skip: 0)
             } else if (index == 1) {
-                dataTarget = dummyData_Record
+                getUserHistory(type: "clime_record" , start_date: "" , end_date: "", limit: 10, skip: 0)
             } else {
-                dataTarget = dummyData_Badge
+                getUserHistory(type: "badge" , start_date: "" , end_date: "", limit: 10, skip: 0)
             }
-            mypageView.badgeCollectionView.reloadData()
         }
     }
 }
 
+extension MyPageViewController: PushSettingDelegate {
+    func settingButtonTapped() {
+        let nextViewController = SettingViewController()
+        self.navigationController?.pushViewController(nextViewController, animated: true)
+    }
+}
+
 extension MyPageViewController {
-    func buttonTap() {
-        mypageView.settingButton.rx.tap
-            .bind {
-                let nextViewController = SettingViewController()
-                self.navigationController?.pushViewController(nextViewController, animated: true)
-            }.disposed(by: disposeBag)
+    private func getUser() {
+        NetworkService.shared.myPage.getUser() { [weak self] result in
+            switch result {
+            case .success(let response):
+                guard let data = response as? UserDTO else { return }
+                self!.mypageView.setProfile(imageUrl: data.profile.image, nickname: data.profile.nickname)
+
+            case .requestErr(let errorResponse):
+                dump(errorResponse)
+                guard let data = errorResponse as? ErrorResponse else { return }
+                print(data.message ?? "requestErr")
+            case .pathErr:
+                print("pathErr")
+            case .serverErr:
+                print("serverErr")
+            case .networkFail:
+                print("networkFail")
+            }
+        }
+    }
+    private func getUserHistory(type: String, start_date: String, end_date: String, limit: Int, skip: Int) {
+        NetworkService.shared.myPage.getUserHistory(type: type, start_date: start_date, end_date: end_date, limit: limit, skip: skip) { [weak self] result in
+            switch result {
+            case .success(let response):
+                guard let data = response as? UserHistoryDTO else { return }
+                self!.data_All = data.histories
+                self!.dataCount = data.pagination.total
+    
+                print("===== histoty: \(self!.data_All)")
+                print("===== count: \(self!.dataCount)")
+
+                self!.mypageView.badgeCollectionView.reloadData()
+
+            case .requestErr(let errorResponse):
+                dump(errorResponse)
+                guard let data = errorResponse as? ErrorResponse else { return }
+                print(data.message ?? "requestErr")
+            case .pathErr:
+                print("pathErr")
+            case .serverErr:
+                print("serverErr")
+            case .networkFail:
+                print("networkFail")
+            }
+        }
     }
 }

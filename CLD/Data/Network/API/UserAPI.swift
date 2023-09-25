@@ -11,6 +11,7 @@ import Moya
 
 enum UserAPI {
     case getUserAPI
+    case getUserHistoryAPI(type: String, start_date: String, end_date: String, limit: Int, skip: Int)
     case putUserImageAPI(image: UIImage)
     case putUserInfoAPI(birthday: String, gender: Int, name: String, nickname: String, height: Int, reach: Int)
 }
@@ -18,7 +19,7 @@ enum UserAPI {
 extension UserAPI: BaseTargetType {
     var headers: [String : String]? {
         switch self {
-        case .getUserAPI, .putUserInfoAPI:
+        case .getUserAPI, .getUserHistoryAPI, .putUserInfoAPI:
             return ["Content-Type": "application/json",
                     "Authorization": "Bearer \(UserDefaultHandler.accessToken)"]
         case .putUserImageAPI:
@@ -31,6 +32,8 @@ extension UserAPI: BaseTargetType {
         switch self {
         case .getUserAPI:
             return URLConst.mypage
+        case .getUserHistoryAPI:
+            return URLConst.mypage + "/history"
         case .putUserImageAPI:
             return URLConst.mypage + "/profile/image"
         case .putUserInfoAPI:
@@ -40,7 +43,7 @@ extension UserAPI: BaseTargetType {
 
     var method: Moya.Method {
         switch self {
-        case .getUserAPI: return .get
+        case .getUserAPI, .getUserHistoryAPI: return .get
         case .putUserImageAPI, .putUserInfoAPI: return .put
         }
     }
@@ -49,6 +52,14 @@ extension UserAPI: BaseTargetType {
         switch self {
         case .getUserAPI:
             return .requestPlain
+        case .getUserHistoryAPI(let type, let start_date, let end_date, let limit, let skip):
+            return .requestParameters(parameters: [
+                "type": type,
+                "start_date": start_date,
+                "end_date": end_date,
+                "limit": limit,
+                "skip": skip
+            ], encoding: URLEncoding.default)
         case .putUserImageAPI(let image):
             let imageData = MultipartFormData(provider: .data(image.jpegData(compressionQuality: 1.0)!), name: "image", fileName: "jpeg", mimeType: "image/jpeg")
             return .uploadMultipart([imageData])
