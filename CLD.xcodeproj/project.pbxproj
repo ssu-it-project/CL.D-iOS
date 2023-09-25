@@ -61,6 +61,7 @@
 		02DEA47A2ABF359B00ECAB10 /* UserAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02DEA4792ABF359B00ECAB10 /* UserAPI.swift */; };
 		02DEA47C2ABF36EE00ECAB10 /* MyPageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02DEA47B2ABF36EE00ECAB10 /* MyPageService.swift */; };
 		02DEA47E2ABF497D00ECAB10 /* UIImageView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02DEA47D2ABF497D00ECAB10 /* UIImageView+Extension.swift */; };
+		02DEA4822AC0661F00ECAB10 /* UserHistoryDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02DEA4812AC0661F00ECAB10 /* UserHistoryDTO.swift */; };
 		02EB6E782A874D4D00C749A6 /* SelectPlaceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02EB6E772A874D4D00C749A6 /* SelectPlaceViewController.swift */; };
 		02EB6E7B2A874E5100C749A6 /* Tabman in Frameworks */ = {isa = PBXBuildFile; productRef = 02EB6E7A2A874E5100C749A6 /* Tabman */; };
 		02EB6E7D2A88BC9B00C749A6 /* SuccessRecordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02EB6E7C2A88BC9B00C749A6 /* SuccessRecordView.swift */; };
@@ -271,6 +272,7 @@
 		02DEA4792ABF359B00ECAB10 /* UserAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAPI.swift; sourceTree = "<group>"; };
 		02DEA47B2ABF36EE00ECAB10 /* MyPageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageService.swift; sourceTree = "<group>"; };
 		02DEA47D2ABF497D00ECAB10 /* UIImageView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extension.swift"; sourceTree = "<group>"; };
+		02DEA4812AC0661F00ECAB10 /* UserHistoryDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserHistoryDTO.swift; sourceTree = "<group>"; };
 		02E2532E2A8A17DB00D3E9E1 /* PhotoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCollectionViewCell.swift; sourceTree = "<group>"; };
 		02EB6E772A874D4D00C749A6 /* SelectPlaceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectPlaceViewController.swift; sourceTree = "<group>"; };
 		02EB6E7C2A88BC9B00C749A6 /* SuccessRecordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuccessRecordView.swift; sourceTree = "<group>"; };
@@ -568,6 +570,7 @@
 			isa = PBXGroup;
 			children = (
 				02BB31F42ABC0F0E0074152E /* UserDTO.swift */,
+				02DEA4812AC0661F00ECAB10 /* UserHistoryDTO.swift */,
 			);
 			path = MyPage;
 			sourceTree = "<group>";
@@ -1585,6 +1588,7 @@
 				5A70B8B42AB43AD100506846 /* UIImageView+.swift in Sources */,
 				0294D0232AB2BAC900F4244A /* SettingView.swift in Sources */,
 				5AEFAAA82A8BD07500A67C43 /* TermsType.swift in Sources */,
+				02DEA4822AC0661F00ECAB10 /* UserHistoryDTO.swift in Sources */,
 				023C71532AACC69D00CA095D /* URL+Extension.swift in Sources */,
 				5ADED1B12A66AFF700C0CBF4 /* UIStackView+Extension.swift in Sources */,
 				02B655372AA5D66600E4AC4F /* GetGymsDTO.swift in Sources */,
@@ -1895,7 +1899,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.ios.CLD;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_OBJC_BRIDGING_HEADER = "/Users/kimkyuchul/Desktop/cl-d-iOS/CLD/KakaoBridgeHeader.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "/Users/joeun/Desktop/CLD/cl-d-iOS/CLD/KakaoBridgeHeader.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -1934,7 +1938,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.ios.CLD;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_OBJC_BRIDGING_HEADER = "/Users/kimkyuchul/Desktop/cl-d-iOS/CLD/KakaoBridgeHeader.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "/Users/joeun/Desktop/CLD/cl-d-iOS/CLD/KakaoBridgeHeader.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
