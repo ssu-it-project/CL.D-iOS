@@ -66,15 +66,15 @@ final class HistoryCollectionViewCell: UICollectionViewCell {
         badgeImageView.snp.makeConstraints {
             $0.leading.equalToSuperview().inset(22)
             $0.centerY.equalToSuperview()
-            $0.width.equalTo(31)
+            $0.width.equalTo(36)
         }
         titleLabel.snp.makeConstraints {
             $0.top.equalToSuperview().inset(26)
-            $0.leading.equalTo(badgeImageView.snp.trailing).offset(21)
+            $0.leading.equalToSuperview().inset(74)
         }
         dateLabel.snp.makeConstraints {
             $0.top.equalTo(titleLabel.snp.bottom).offset(2)
-            $0.leading.equalTo(badgeImageView.snp.trailing).offset(21)
+            $0.leading.equalToSuperview().inset(74)
         }
         videoIcon.snp.makeConstraints {
             $0.trailing.equalToSuperview().inset(15)

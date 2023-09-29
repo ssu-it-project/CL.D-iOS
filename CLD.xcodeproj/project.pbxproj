@@ -60,7 +60,6 @@
 		02D56F4A2A9317FB00FF41EA /* PostRecordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D56F492A9317FB00FF41EA /* PostRecordView.swift */; };
 		02DEA47A2ABF359B00ECAB10 /* UserAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02DEA4792ABF359B00ECAB10 /* UserAPI.swift */; };
 		02DEA47C2ABF36EE00ECAB10 /* MyPageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02DEA47B2ABF36EE00ECAB10 /* MyPageService.swift */; };
-		02DEA47E2ABF497D00ECAB10 /* UIImageView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02DEA47D2ABF497D00ECAB10 /* UIImageView+Extension.swift */; };
 		02DEA4822AC0661F00ECAB10 /* UserHistoryDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02DEA4812AC0661F00ECAB10 /* UserHistoryDTO.swift */; };
 		02EB6E782A874D4D00C749A6 /* SelectPlaceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02EB6E772A874D4D00C749A6 /* SelectPlaceViewController.swift */; };
 		02EB6E7B2A874E5100C749A6 /* Tabman in Frameworks */ = {isa = PBXBuildFile; productRef = 02EB6E7A2A874E5100C749A6 /* Tabman */; };
@@ -271,7 +270,6 @@
 		02D56F492A9317FB00FF41EA /* PostRecordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostRecordView.swift; sourceTree = "<group>"; };
 		02DEA4792ABF359B00ECAB10 /* UserAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAPI.swift; sourceTree = "<group>"; };
 		02DEA47B2ABF36EE00ECAB10 /* MyPageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageService.swift; sourceTree = "<group>"; };
-		02DEA47D2ABF497D00ECAB10 /* UIImageView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extension.swift"; sourceTree = "<group>"; };
 		02DEA4812AC0661F00ECAB10 /* UserHistoryDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserHistoryDTO.swift; sourceTree = "<group>"; };
 		02E2532E2A8A17DB00D3E9E1 /* PhotoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCollectionViewCell.swift; sourceTree = "<group>"; };
 		02EB6E772A874D4D00C749A6 /* SelectPlaceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectPlaceViewController.swift; sourceTree = "<group>"; };
@@ -1082,7 +1080,6 @@
 				5A70B8BA2AB47B3900506846 /* Double+Extension.swift */,
 				5A70B8BE2AB4BFC300506846 /* Collection+.swift */,
 				5A70B9692AB6E5D400506846 /* UIVIewController+Extension.swift */,
-				02DEA47D2ABF497D00ECAB10 /* UIImageView+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1686,7 +1683,6 @@
 				5A21C6552A98F7B900E7CC95 /* UserDefault.swift in Sources */,
 				5A3210072AA649D6003A40BD /* LevelBadge.swift in Sources */,
 				5A21C69C2A9B8C2200E7CC95 /* RootHandler.swift in Sources */,
-				02DEA47E2ABF497D00ECAB10 /* UIImageView+Extension.swift in Sources */,
 				5A21C69A2A9B758700E7CC95 /* SignInViewModel.swift in Sources */,
 				5A21C6832A9A3E8B00E7CC95 /* CommonMoyaProvider.swift in Sources */,
 				5A70B8BF2AB4BFC300506846 /* Collection+.swift in Sources */,

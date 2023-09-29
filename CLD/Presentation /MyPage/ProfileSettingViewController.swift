@@ -158,7 +158,6 @@ extension ProfileSettingViewController {
             switch result {
             case .success(let response):
                 guard let data = response as? BlankDataResponse else { return }
-                print("=== 이미지 업로드")
                 let alert = UIAlertController(title: "프로필 사진 업데이트", message: "프로필 사진이 수정되었습니다.", preferredStyle: .alert)
                 let okAction = UIAlertAction(title: "확인", style: .default)
                 alert.addAction(okAction)

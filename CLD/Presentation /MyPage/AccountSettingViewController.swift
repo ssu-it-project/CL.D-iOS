@@ -13,6 +13,12 @@ class AccountSettingViewController: BaseViewController {
     let accountArr = ["로그아웃", "탈퇴하기"]
     let accountSettingView = AccountSettingView()
 
+    private func resetUserDefaultValues() {
+        UserDefaultHandler.accessToken = ""
+        UserDefaultHandler.refreshToken = ""
+        UserDefaultHandler.loginStatus = false
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.isNavigationBarHidden = false
@@ -55,6 +61,7 @@ extension AccountSettingViewController: UITableViewDataSource, UITableViewDelega
             let alert = UIAlertController(title: "로그아웃", message: "로그아웃 하시겠습니까?", preferredStyle: .alert)
             let okAction = UIAlertAction(title: "로그아웃", style: .destructive) { _ in
                 self.postLogoutUser(device: DeviceUUID.getDeviceUUID(), refresh_token: UserDefaultHandler.refreshToken)
+                self.resetUserDefaultValues()
                 let sceneDelegate = UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate
                 sceneDelegate?.changeRootSplashView()
                 return
@@ -67,6 +74,7 @@ extension AccountSettingViewController: UITableViewDataSource, UITableViewDelega
             let alert = UIAlertController(title: "탈퇴하기", message: "탈퇴 시 계정과 관련된 모든 기록이 삭제되며, 복구할 수 없습니다. 1달 이내 다시 로그인 시 탈퇴가 자동 철회되며, 서비스를 계속 사용할 수 있습니다.", preferredStyle: .alert)
             let okAction = UIAlertAction(title: "탈퇴하기", style: .destructive) { _ in
                 self.deleteUser()
+                self.resetUserDefaultValues()
                 let sceneDelegate = UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate
                 sceneDelegate?.changeRootSplashView()
                 return

@@ -158,10 +158,8 @@ final class MyPageService {
             }
             return .success(decodedData)
         case .getUserHistory:
-            guard let decodedData = try? decoder.decode(UserHistoryDTO.self, from: data) else {
-                return .pathErr
-            }
-            return .success(decodedData)
+            let decodedData = try? decoder.decode(UserHistoryDTO.self, from: data)
+            return .success(decodedData ?? "success")
         case .putUserImage, .putUserInfo, .postLogoutUser, .deleteUser:
             guard let decodedData = try? decoder.decode(BlankDataResponse.self, from: data) else {
                 return .pathErr
