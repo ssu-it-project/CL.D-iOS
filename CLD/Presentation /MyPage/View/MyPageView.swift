@@ -85,6 +85,7 @@ final class MyPageView: UIView {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.backgroundColor = .clear
         collectionView.isScrollEnabled = true
+        collectionView.isUserInteractionEnabled = true
         collectionView.register(HistoryCollectionViewCell.self,
                                 forCellWithReuseIdentifier: HistoryCollectionViewCell.identifier)
         
@@ -143,10 +144,6 @@ final class MyPageView: UIView {
             $0.width.equalTo(360)
             $0.height.equalTo(72)
         }
-        //        dateLabel.snp.makeConstraints {
-        //            $0.top.equalTo(countCollectionView.snp.bottom).offset(20)
-        //            $0.leading.equalToSuperview().inset(21)
-        //        }
         categoryCollectionView.snp.makeConstraints {
             $0.top.equalTo(countCollectionView.snp.bottom).offset(25)
             $0.leading.equalToSuperview().inset(21)
