@@ -74,6 +74,7 @@ extension MyPageViewController : UICollectionViewDelegate, UICollectionViewDeleg
             return cell
         } else if collectionView == mypageView.badgeCollectionView {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HistoryCollectionViewCell.identifier, for: indexPath) as! HistoryCollectionViewCell
+            cell.delegatePushVideo = self
             let date = data_All[indexPath.row].historyDate.split(separator: "T")
             if (data_All[indexPath.row].type == "record"){
                 cell.badgeImageView.image = ImageLiteral.holderBlue
@@ -81,21 +82,16 @@ extension MyPageViewController : UICollectionViewDelegate, UICollectionViewDeleg
                 cell.titleLabel.textColor = .CLDBlack
                 cell.dateLabel.text = "\(date[0]) | 섹터\(data_All[indexPath.row].record.sector) | \(data_All[indexPath.row].record.level)"
                 cell.dateLabel.textColor = .CLDMediumGray
-                cell.videoIcon.image = ImageLiteral.videoIcon
+                cell.videoButton.setImage(ImageLiteral.videoIcon, for: .normal)
                 cell.cellBackgroundView.backgroundColor = .CLDLightGray
             } else {
                 cell.badgeImageView.setImage(urlString: data_All[indexPath.row].userBadge.image, defaultImage: ImageLiteral.testBadgeImage)
-                cell.videoIcon.image = nil
+                cell.videoButton.setImage(nil, for: .normal)
                 cell.titleLabel.textColor = .white
                 cell.titleLabel.text = data_All[indexPath.row].userBadge.title
                 cell.dateLabel.text = "\(date[0]) 배지 획득"
                 cell.dateLabel.textColor = .white
                 cell.cellBackgroundView.backgroundColor = .CLDGold
-                cell.badgeImageView.snp.makeConstraints {
-                    $0.width.equalTo(40)
-                    $0.leading.equalToSuperview().inset(22)
-                    $0.top.equalToSuperview().inset(14)
-                }
             }
             return cell
         } else if collectionView == mypageView.categoryCollectionView {
@@ -162,6 +158,12 @@ extension MyPageViewController: PushSettingDelegate {
     func settingButtonTapped() {
         let nextViewController = SettingViewController()
         self.navigationController?.pushViewController(nextViewController, animated: true)
+    }
+}
+
+extension MyPageViewController: PushVideoDelegate {
+    func videoButtonTapped() {
+        print("==== Video Page로 이동")
     }
 }
 
