@@ -15,8 +15,8 @@ class MyPageViewController: BaseViewController {
     var data_All: [History] = []
     lazy var dataTarget: [History] = []
     var dataCount: Int = 0
-    let lableInfo: [String] = ["등반 기록", "방문한 암장", "비디오", "좋아요", "게시글"]
-    var countInfo: [Int] = [372, 24, 82, 1002, 6]
+    let lableInfo: [String] = ["등반 기록", "방문한 암장", "좋아요", "게시글"]
+    var countInfo: [Int] = [0, 0, 0, 0]
     let categoryLabels: [String] = ["전체", "등반기록", "뱃지"]
 
     let mypageView = MyPageView()
@@ -95,7 +95,6 @@ extension MyPageViewController : UICollectionViewDelegate, UICollectionViewDeleg
                     $0.width.equalTo(40)
                     $0.leading.equalToSuperview().inset(22)
                     $0.top.equalToSuperview().inset(14)
-                    // $0.height.equalTo(47)
                 }
             }
             return cell
@@ -111,7 +110,7 @@ extension MyPageViewController : UICollectionViewDelegate, UICollectionViewDeleg
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         if collectionView == mypageView.countCollectionView {
-            return CGSize(width: 72, height: 72)
+            return CGSize(width: 90, height: 72)
         } else if collectionView == mypageView.badgeCollectionView {
             return CGSize(width: 352, height: 76)
         } else if collectionView == mypageView.categoryCollectionView {
@@ -173,6 +172,11 @@ extension MyPageViewController {
             case .success(let response):
                 guard let data = response as? UserDTO else { return }
                 self!.mypageView.setProfile(imageUrl: data.profile.image, nickname: data.profile.nickname)
+                self!.countInfo[0] = data.count.record.post
+                self!.countInfo[1] = data.count.record.post
+                self!.countInfo[2] = data.count.record.like.received + data.count.community.like.received
+                self!.mypageView.countCollectionView.reloadData()
+                self!.countInfo[3] = data.count.community.post
             case .requestErr(let errorResponse):
                 dump(errorResponse)
                 guard let data = errorResponse as? ErrorResponse else { return }

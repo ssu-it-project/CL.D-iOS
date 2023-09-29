@@ -99,10 +99,6 @@ final class MyPageView: UIView {
         self.nameLabel.text = nickname
     }
     
-    //    func setCountCollection(imageUrl: String, nickname: String) {
-    //        self.nameLabel.text = nickname
-    //    }
-    
     override init(frame: CGRect) {
         super.init(frame: frame)
         
