@@ -53,7 +53,8 @@ final class CountCollectionViewCell: UICollectionViewCell {
     func setUpLayouts() {
         contentView.snp.makeConstraints {
             $0.edges.equalToSuperview()
-            $0.size.equalTo(72)
+            $0.width.equalTo(90)
+            $0.height.equalTo(72)
         }
         countLabel.snp.makeConstraints {
             $0.top.equalToSuperview().inset(21)
