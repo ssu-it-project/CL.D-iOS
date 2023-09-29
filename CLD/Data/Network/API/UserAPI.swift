@@ -58,6 +58,7 @@ extension UserAPI: BaseTargetType {
         switch self {
         case .getUserAPI, .deleteUserAPI:
             return .requestPlain
+
         case .getUserHistoryAPI(let type, let start_date, let end_date, let limit, let skip):
             return .requestParameters(parameters: [
                 "type": type,
@@ -66,9 +67,11 @@ extension UserAPI: BaseTargetType {
                 "limit": limit,
                 "skip": skip
             ], encoding: URLEncoding.default)
+
         case .putUserImageAPI(let image):
             let imageData = MultipartFormData(provider: .data(image.jpegData(compressionQuality: 1.0)!), name: "image", fileName: "jpeg", mimeType: "image/jpeg")
             return .uploadMultipart([imageData])
+
         case .putUserInfoAPI(let birthday, let gender, let name, let nickname, let height, let reach):
             return .requestParameters(parameters: [
                 "birthday": birthday,
@@ -80,6 +83,7 @@ extension UserAPI: BaseTargetType {
                     "reach": reach
                 ]
             ], encoding: JSONEncoding.default)
+            
         case .postLogoutUserAPI(let device, let refresh_token):
             return .requestParameters(parameters: [
                 "device": device,

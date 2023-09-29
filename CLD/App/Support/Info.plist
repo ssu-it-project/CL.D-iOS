@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>KAKAO_APP_KEY</key>
-	<string></string>
+	<string>99dea25ffa8a55618b54602a20b20e0b</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>암장 위치 파악을 위해 위치 권한 설정 켜주세요.</string>
 	<key>NSAppTransportSecurity</key>
@@ -36,37 +36,37 @@
 		</dict>
 	</array>
 	<key>LSApplicationQueriesSchemes</key>
-        <array>
+	<array>
 		<string>kakaomap</string>
-            <string>kakaokompassauth</string>
-            <string>kakaolink</string>
-            <string>fbapi</string>
-            <string>fbapi20130214</string>
-            <string>fbapi20130410</string>
-            <string>fbapi20130702</string>
-            <string>fbapi20131010</string>
-            <string>fbapi20131219</string>
-            <string>fbapi20140410</string>
-            <string>fbapi20140116</string>
-            <string>fbapi20150313</string>
-            <string>fbapi20150629</string>
-            <string>fbapi20160328</string>
-            <string>fbauth</string>
-            <string>fb-messenger-share-api</string>
-            <string>fbauth2</string>
-            <string>fbshareextension</string>
-        </array>
+		<string>kakaokompassauth</string>
+		<string>kakaolink</string>
+		<string>fbapi</string>
+		<string>fbapi20130214</string>
+		<string>fbapi20130410</string>
+		<string>fbapi20130702</string>
+		<string>fbapi20131010</string>
+		<string>fbapi20131219</string>
+		<string>fbapi20140410</string>
+		<string>fbapi20140116</string>
+		<string>fbapi20150313</string>
+		<string>fbapi20150629</string>
+		<string>fbapi20160328</string>
+		<string>fbauth</string>
+		<string>fb-messenger-share-api</string>
+		<string>fbauth2</string>
+		<string>fbshareextension</string>
+	</array>
 	<key>UIAppFonts</key>
-        <array>
-            <string>Roboto-Black.ttf</string>
-            <string>Roboto-Bold.ttf</string>
-            <string>Roboto-Light.ttf</string>
-            <string>Roboto-Medium.ttf</string>
-            <string>Roboto-Regular.ttf</string>
-            <string>Roboto-Thin.ttf</string>
-        </array>
-    <key>NSPhotoLibraryUsageDescription</key>
-    <string>동영상 업로드를 위해 사진첩 접근이 필요합니다. 허용해주세요.</string>
+	<array>
+		<string>Roboto-Black.ttf</string>
+		<string>Roboto-Bold.ttf</string>
+		<string>Roboto-Light.ttf</string>
+		<string>Roboto-Medium.ttf</string>
+		<string>Roboto-Regular.ttf</string>
+		<string>Roboto-Thin.ttf</string>
+	</array>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>동영상 업로드를 위해 사진첩 접근이 필요합니다. 허용해주세요.</string>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>

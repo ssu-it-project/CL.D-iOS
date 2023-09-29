@@ -95,14 +95,11 @@ final class MyPageView: UIView {
     private var bag = DisposeBag()
     
     func setProfile(imageUrl: String, nickname: String) {
-        let url = URL(string: imageUrl)
-        self.profileImageView.load(url: url!)
+        self.profileImageView.setImage(urlString: imageUrl, defaultImage: ImageLiteral.profileDefault)
         self.nameLabel.text = nickname
     }
     
     //    func setCountCollection(imageUrl: String, nickname: String) {
-    //        let url = URL(string: imageUrl)
-    //        self.profileImageView.load(url: url!)
     //        self.nameLabel.text = nickname
     //    }
     

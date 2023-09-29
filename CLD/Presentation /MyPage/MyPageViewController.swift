@@ -18,9 +18,6 @@ class MyPageViewController: BaseViewController {
     let lableInfo: [String] = ["등반 기록", "방문한 암장", "비디오", "좋아요", "게시글"]
     var countInfo: [Int] = [372, 24, 82, 1002, 6]
     let categoryLabels: [String] = ["전체", "등반기록", "뱃지"]
-    let dummyData_All: [[Any]] = [["돌잡이들의 왕", "2023.6.05 뱃지 획득", ImageLiteral.testBadgeImage, "novideo"],["더 클라이밍 마곡", "2023.6.20 | A섹터 | 보라색", ImageLiteral.holderPurple, "video"], ["더 클라이밍 마곡", "2023.6.20 | C섹터 | 파랑색", ImageLiteral.holderBlue, "video"], ["더 클라이밍 마곡", "2023.6.20 | C섹터 | 파란색", ImageLiteral.holderBlue, "video"], ["더 클라이밍 마곡", "2023.6.20 | 5섹터 | 주황색", ImageLiteral.holderOrange, "video"]]
-    let dummyData_Record: [[Any]] = [["더 클라이밍 마곡", "2023.6.20 | A섹터 | 보라색", ImageLiteral.holderPurple, "video"], ["더 클라이밍 마곡", "2023.6.20 | C섹터 | 파랑색", ImageLiteral.holderBlue, "video"], ["더 클라이밍 마곡", "2023.6.20 | C섹터 | 파란색", ImageLiteral.holderBlue, "video"], ["더 클라이밍 마곡", "2023.6.20 | 5섹터 | 주황색", ImageLiteral.holderOrange, "video"]]
-    let dummyData_Badge: [[Any]] = [["돌잡이들의 왕", "2023.6.05 뱃지 획득", ImageLiteral.testBadgeImage, "novideo"]]
 
     let mypageView = MyPageView()
 
@@ -57,7 +54,12 @@ extension MyPageViewController : UICollectionViewDelegate, UICollectionViewDeleg
         if collectionView == mypageView.countCollectionView {
             return lableInfo.count
         } else if collectionView == mypageView.badgeCollectionView {
-            return dataCount-1
+            if (self.dataCount == 0) {
+                mypageView.badgeCollectionView.setEmptyMessage("기록이 아직 없습니다.")
+                return 0
+            }
+            mypageView.badgeCollectionView.restore()
+            return self.dataCount
         } else if collectionView == mypageView.categoryCollectionView {
             return categoryLabels.count
         }
@@ -72,20 +74,29 @@ extension MyPageViewController : UICollectionViewDelegate, UICollectionViewDeleg
             return cell
         } else if collectionView == mypageView.badgeCollectionView {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HistoryCollectionViewCell.identifier, for: indexPath) as! HistoryCollectionViewCell
-            print("===== indexPath: \(indexPath.row) ")
-            cell.titleLabel.text = data_All[indexPath.row].record.gymName
-            cell.dateLabel.text = data_All[indexPath.row].historyDate
-            cell.badgeImageView.image = ImageLiteral.holderBlue
+            let date = data_All[indexPath.row].historyDate.split(separator: "T")
             if (data_All[indexPath.row].type == "record"){
+                cell.badgeImageView.image = ImageLiteral.holderBlue
+                cell.titleLabel.text = data_All[indexPath.row].record.gymName
+                cell.titleLabel.textColor = .CLDBlack
+                cell.dateLabel.text = "\(date[0]) | 섹터\(data_All[indexPath.row].record.sector) | \(data_All[indexPath.row].record.level)"
+                cell.dateLabel.textColor = .CLDMediumGray
                 cell.videoIcon.image = ImageLiteral.videoIcon
                 cell.cellBackgroundView.backgroundColor = .CLDLightGray
-                cell.titleLabel.textColor = .CLDBlack
-                cell.dateLabel.textColor = .CLDMediumGray
             } else {
+                cell.badgeImageView.setImage(urlString: data_All[indexPath.row].userBadge.image, defaultImage: ImageLiteral.testBadgeImage)
                 cell.videoIcon.image = nil
-                cell.cellBackgroundView.backgroundColor = .CLDGold
                 cell.titleLabel.textColor = .white
+                cell.titleLabel.text = data_All[indexPath.row].userBadge.title
+                cell.dateLabel.text = "\(date[0]) 배지 획득"
                 cell.dateLabel.textColor = .white
+                cell.cellBackgroundView.backgroundColor = .CLDGold
+                cell.badgeImageView.snp.makeConstraints {
+                    $0.width.equalTo(40)
+                    $0.leading.equalToSuperview().inset(22)
+                    $0.top.equalToSuperview().inset(14)
+                    // $0.height.equalTo(47)
+                }
             }
             return cell
         } else if collectionView == mypageView.categoryCollectionView {
@@ -136,9 +147,7 @@ extension MyPageViewController : UICollectionViewDelegate, UICollectionViewDeleg
         if collectionView == mypageView.countCollectionView {
             print("=== count index: \(indexPath.row)")
         } else if collectionView == mypageView.badgeCollectionView {
-            print("=== badge index: \(indexPath.row)")
         } else if collectionView == mypageView.categoryCollectionView {
-            print("=== category index: \(indexPath.row)")
             if (index == 0) {
                 getUserHistory(type: "" , start_date: "" , end_date: "", limit: 10, skip: 0)
             } else if (index == 1) {
@@ -164,7 +173,6 @@ extension MyPageViewController {
             case .success(let response):
                 guard let data = response as? UserDTO else { return }
                 self!.mypageView.setProfile(imageUrl: data.profile.image, nickname: data.profile.nickname)
-
             case .requestErr(let errorResponse):
                 dump(errorResponse)
                 guard let data = errorResponse as? ErrorResponse else { return }
@@ -182,13 +190,14 @@ extension MyPageViewController {
         NetworkService.shared.myPage.getUserHistory(type: type, start_date: start_date, end_date: end_date, limit: limit, skip: skip) { [weak self] result in
             switch result {
             case .success(let response):
-                guard let data = response as? UserHistoryDTO else { return }
+                guard let data = response as? UserHistoryDTO
+                else {
+                    self!.dataCount = 0
+                    self!.mypageView.badgeCollectionView.reloadData()
+                    return
+                }
                 self!.data_All = data.histories
                 self!.dataCount = data.pagination.total
-    
-                print("===== histoty: \(self!.data_All)")
-                print("===== count: \(self!.dataCount)")
-
                 self!.mypageView.badgeCollectionView.reloadData()
 
             case .requestErr(let errorResponse):

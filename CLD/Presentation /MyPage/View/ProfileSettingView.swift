@@ -153,11 +153,10 @@ final class ProfileSettingView: UIView {
     private var bag = DisposeBag()
 
     func setProfileInfo(birthday: String, gender: Int, name: String, imageUrl: String, nickname: String, height: Int, reach: Int) {
-        let url = URL(string: imageUrl)
         self.birthday = birthday
         self.gender = gender
         self.name = name
-        self.profileImageView.load(url: url!)
+        self.profileImageView.setImage(urlString: imageUrl, defaultImage: ImageLiteral.profileDefault)
         self.nicknameTextField.text = nickname
         self.heightTextField.text = String(height)
         self.armReachTextField.text = String(reach)
