@@ -52,6 +52,8 @@
 		02B6553B2AA5DAFC00E4AC4F /* GymsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B6553A2AA5DAFC00E4AC4F /* GymsService.swift */; };
 		02B6553F2AA63AE400E4AC4F /* UITableview+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B6553E2AA63AE400E4AC4F /* UITableview+Extension.swift */; };
 		02BB31F52ABC0F0E0074152E /* UserDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02BB31F42ABC0F0E0074152E /* UserDTO.swift */; };
+		02BD9AA22AC85DCA0063326A /* UIAlert+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02BD9AA12AC85DCA0063326A /* UIAlert+Extension.swift */; };
+		02BD9AA42AC874160063326A /* TextLiteral.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02BD9AA32AC874160063326A /* TextLiteral.swift */; };
 		02CCDD672A9F2C8A00301ABF /* RecordService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02CCDD662A9F2C8A00301ABF /* RecordService.swift */; };
 		02CCDD692A9F614B00301ABF /* NetworkResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02CCDD682A9F614B00301ABF /* NetworkResult.swift */; };
 		02CCDD6B2A9F617F00301ABF /* BlankDataResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02CCDD6A2A9F617F00301ABF /* BlankDataResponse.swift */; };
@@ -262,6 +264,8 @@
 		02B6553A2AA5DAFC00E4AC4F /* GymsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GymsService.swift; sourceTree = "<group>"; };
 		02B6553E2AA63AE400E4AC4F /* UITableview+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableview+Extension.swift"; sourceTree = "<group>"; };
 		02BB31F42ABC0F0E0074152E /* UserDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDTO.swift; sourceTree = "<group>"; };
+		02BD9AA12AC85DCA0063326A /* UIAlert+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlert+Extension.swift"; sourceTree = "<group>"; };
+		02BD9AA32AC874160063326A /* TextLiteral.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextLiteral.swift; sourceTree = "<group>"; };
 		02CCDD662A9F2C8A00301ABF /* RecordService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordService.swift; sourceTree = "<group>"; };
 		02CCDD682A9F614B00301ABF /* NetworkResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkResult.swift; sourceTree = "<group>"; };
 		02CCDD6A2A9F617F00301ABF /* BlankDataResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlankDataResponse.swift; sourceTree = "<group>"; };
@@ -1080,6 +1084,7 @@
 				5A70B8BA2AB47B3900506846 /* Double+Extension.swift */,
 				5A70B8BE2AB4BFC300506846 /* Collection+.swift */,
 				5A70B9692AB6E5D400506846 /* UIVIewController+Extension.swift */,
+				02BD9AA12AC85DCA0063326A /* UIAlert+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1107,6 +1112,7 @@
 			isa = PBXGroup;
 			children = (
 				5ADED1C02A67A06F00C0CBF4 /* ImageLiteral.swift */,
+				02BD9AA32AC874160063326A /* TextLiteral.swift */,
 			);
 			path = Literals;
 			sourceTree = "<group>";
@@ -1576,6 +1582,7 @@
 				5A21C68B2A9A76D200E7CC95 /* DefaultSignInRepository.swift in Sources */,
 				5A21C69E2A9B8ED700E7CC95 /* DeviceUUID.swift in Sources */,
 				5A7E39AC2AB2188600143175 /* DetailGymDTO.swift in Sources */,
+				02BD9AA42AC874160063326A /* TextLiteral.swift in Sources */,
 				5A7E39B42AB2214400143175 /* GymsRepository.swift in Sources */,
 				5A21C6852A9A410400E7CC95 /* BaseErrorDTO.swift in Sources */,
 				02DEA47C2ABF36EE00ECAB10 /* MyPageService.swift in Sources */,
@@ -1626,6 +1633,7 @@
 				5A1C488A2A7687FB00CC345A /* CGSize+Extension.swift in Sources */,
 				0294D0212AB202ED00F4244A /* HistoryCollectionViewCell.swift in Sources */,
 				5ADED1CC2A682B6300C0CBF4 /* TabBarItem.swift in Sources */,
+				02BD9AA22AC85DCA0063326A /* UIAlert+Extension.swift in Sources */,
 				5A70B8C92AB5908600506846 /* ClimbingGymVideoUseCase.swift in Sources */,
 				5A21C6572A98F7DE00E7CC95 /* UserDefaultHandler.swift in Sources */,
 				026BC4942A69102F00F49B87 /* SplashViewController.swift in Sources */,

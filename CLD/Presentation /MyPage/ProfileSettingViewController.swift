@@ -16,17 +16,20 @@ class ProfileSettingViewController: BaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-    }
-
-    override func setupNavigationBar() {
-        super.setupNavigationBar()
-        navigationItem.title = "프로필 설정"
 
         profileSettingView.delegatePush = self
         profileSettingView.delegateUpdate = self
         profileSettingView.imagePicker.delegate = self
         self.photo.delegate = self
         getUser()
+    }
+
+    override func setupNavigationBar() {
+        super.setupNavigationBar()
+        if #available(iOS 16.0, *) {
+            self.navigationItem.leftBarButtonItem?.isHidden = false
+        }
+        navigationItem.title = "프로필 설정"
     }
 
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?){
@@ -137,7 +140,7 @@ extension ProfileSettingViewController {
             switch result {
             case .success(let response):
                 guard let data = response as? UserDTO else { return }
-                self!.profileSettingView.setProfileInfo(birthday: data.profile.birthday, gender: data.profile.gender, name: data.profile.name, imageUrl: data.profile.image, nickname: data.profile.nickname, height: data.profile.physical.height, reach: data.profile.physical.reach)
+                self?.profileSettingView.setProfileInfo(birthday: data.profile.birthday, gender: data.profile.gender, name: data.profile.name, imageUrl: data.profile.image, nickname: data.profile.nickname, height: data.profile.physical.height, reach: data.profile.physical.reach)
 
             case .requestErr(let errorResponse):
                 dump(errorResponse)
@@ -157,12 +160,9 @@ extension ProfileSettingViewController {
         NetworkService.shared.myPage.putUserImage(image: image) { [weak self] result in
             switch result {
             case .success(let response):
-                guard let data = response as? BlankDataResponse else { return }
-                let alert = UIAlertController(title: "프로필 사진 업데이트", message: "프로필 사진이 수정되었습니다.", preferredStyle: .alert)
-                let okAction = UIAlertAction(title: "확인", style: .default)
-                alert.addAction(okAction)
-                self!.present(alert, animated: true)
-
+                guard response is BlankDataResponse else { return }
+                let alert = self?.createOKAlert("프로필 사진", "프로필 사진이 수정되었습니다.")
+                self?.present(alert!, animated: true)
             case .requestErr(let errorResponse):
                 dump(errorResponse)
                 guard let data = errorResponse as? ErrorResponse else { return }
@@ -181,12 +181,9 @@ extension ProfileSettingViewController {
         NetworkService.shared.myPage.putUserInfo(birthday: birthday, gender: gender, name: name, nickname: nickname, height: height, reach: reach) { [weak self] result in
             switch result {
             case .success(let response):
-                guard let data = response as? BlankDataResponse else { return }
-                let alert = UIAlertController(title: "프로필 업데이트", message: "프로필 정보가 수정되었습니다.", preferredStyle: .alert)
-                let okAction = UIAlertAction(title: "확인", style: .default)
-                alert.addAction(okAction)
-                self!.present(alert, animated: true)
-
+                guard response is BlankDataResponse else { return }
+                let alert = self?.createOKAlert("프로필 정보", "프로필 정보가 수정되었습니다.")
+                self?.present(alert!, animated: true)
             case .requestErr(let errorResponse):
                 dump(errorResponse)
                 guard let data = errorResponse as? ErrorResponse else { return }

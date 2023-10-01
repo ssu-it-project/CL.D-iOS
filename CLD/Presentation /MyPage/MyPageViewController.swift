@@ -12,11 +12,18 @@ import RxSwift
 import RxCocoa
 
 class MyPageViewController: BaseViewController {
-    var data_All: [History] = []
-    lazy var dataTarget: [History] = []
-    var dataCount: Int = 0
+    lazy var data_All: [History] = [] {
+        didSet {
+            self.mypageView.badgeCollectionView.reloadData()
+        }
+    }
+    lazy var dataCount: Int = 0
     let lableInfo: [String] = ["등반 기록", "방문한 암장", "좋아요", "게시글"]
-    var countInfo: [Int] = [0, 0, 0, 0]
+    lazy var countInfo: [Int] = [0, 0, 0, 0] {
+        didSet {
+            self.mypageView.countCollectionView.reloadData()
+        }
+    }
     let categoryLabels: [String] = ["전체", "등반기록", "뱃지"]
 
     let mypageView = MyPageView()
@@ -80,7 +87,7 @@ extension MyPageViewController : UICollectionViewDelegate, UICollectionViewDeleg
                 cell.badgeImageView.image = ImageLiteral.holderBlue
                 cell.titleLabel.text = data_All[indexPath.row].record.gymName
                 cell.titleLabel.textColor = .CLDBlack
-                cell.dateLabel.text = "\(date[0]) | 섹터\(data_All[indexPath.row].record.sector) | \(data_All[indexPath.row].record.level)"
+                cell.dateLabel.text = "\(date[0]) | 섹터 \(data_All[indexPath.row].record.sector) | \(data_All[indexPath.row].record.level)"
                 cell.dateLabel.textColor = .CLDMediumGray
                 cell.videoButton.setImage(ImageLiteral.videoIcon, for: .normal)
                 cell.cellBackgroundView.backgroundColor = .CLDLightGray
@@ -173,12 +180,11 @@ extension MyPageViewController {
             switch result {
             case .success(let response):
                 guard let data = response as? UserDTO else { return }
-                self!.mypageView.setProfile(imageUrl: data.profile.image, nickname: data.profile.nickname)
-                self!.countInfo[0] = data.count.record.post
-                self!.countInfo[1] = data.count.record.post
-                self!.countInfo[2] = data.count.record.like.received + data.count.community.like.received
-                self!.mypageView.countCollectionView.reloadData()
-                self!.countInfo[3] = data.count.community.post
+                self?.mypageView.setProfile(imageUrl: data.profile.image, nickname: data.profile.nickname)
+                self?.countInfo[0] = data.count.record.post
+                self?.countInfo[1] = data.count.record.post
+                self?.countInfo[2] = data.count.record.like.received + data.count.community.like.received
+                self?.countInfo[3] = data.count.community.post
             case .requestErr(let errorResponse):
                 dump(errorResponse)
                 guard let data = errorResponse as? ErrorResponse else { return }
@@ -198,14 +204,12 @@ extension MyPageViewController {
             case .success(let response):
                 guard let data = response as? UserHistoryDTO
                 else {
-                    self!.dataCount = 0
-                    self!.mypageView.badgeCollectionView.reloadData()
+                    self?.dataCount = 0
+                    self?.data_All = []
                     return
                 }
-                self!.data_All = data.histories
-                self!.dataCount = data.pagination.total
-                self!.mypageView.badgeCollectionView.reloadData()
-
+                self?.data_All = data.histories
+                self?.dataCount = data.pagination.total
             case .requestErr(let errorResponse):
                 dump(errorResponse)
                 guard let data = errorResponse as? ErrorResponse else { return }

@@ -23,6 +23,9 @@ class SettingViewController: BaseViewController {
 
     override func setupNavigationBar() {
         super.setupNavigationBar()
+        if #available(iOS 16.0, *) {
+            self.navigationItem.leftBarButtonItem?.isHidden = false
+        }
         navigationItem.title = "설정"
     }
 
