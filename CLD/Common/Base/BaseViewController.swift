@@ -72,6 +72,10 @@ class BaseViewController: UIViewController, BaseViewControllerProtocol {
     func setConstraints() { }
     func Bind() { }
 
+    func makeBarButtonItem<T: UIView>(with view: T) -> UIBarButtonItem {
+        return UIBarButtonItem(customView: view)
+    }
+
     func setupNavigationBar() {
         guard let navigationBar = navigationController?.navigationBar else { return }
         let appearance = UINavigationBarAppearance()
@@ -85,13 +89,13 @@ class BaseViewController: UIViewController, BaseViewControllerProtocol {
         navigationBar.scrollEdgeAppearance = appearance
 
         navigationItem.leftBarButtonItem = UIBarButtonItem(customView: customBackButton)
+        if #available(iOS 16.0, *) {
+            self.navigationItem.leftBarButtonItem?.isHidden = true
+        }
 
         customBackButton.rx.tap
             .bind {
                 self.navigationController?.popViewController(animated: true)
             }.disposed(by: disposeBag)
-    }
-    func makeBarButtonItem<T: UIView>(with view: T) -> UIBarButtonItem {
-        return UIBarButtonItem(customView: view)
     }
 }

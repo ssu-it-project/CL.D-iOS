@@ -29,6 +29,9 @@ class AccountSettingViewController: BaseViewController {
 
     override func setupNavigationBar() {
         super.setupNavigationBar()
+        if #available(iOS 16.0, *) {
+            self.navigationItem.leftBarButtonItem?.isHidden = false
+        }
         navigationItem.title = "계정 설정"
     }
 
@@ -58,30 +61,21 @@ extension AccountSettingViewController: UITableViewDataSource, UITableViewDelega
         let index: Int = indexPath.row
         tableView.deselectRow(at: indexPath, animated: true)
         if (index == 0){
-            let alert = UIAlertController(title: "로그아웃", message: "로그아웃 하시겠습니까?", preferredStyle: .alert)
-            let okAction = UIAlertAction(title: "로그아웃", style: .destructive) { _ in
+            let alert = createBasicAlert("로그아웃", TextLiteral.logoutMessage, "로그아웃") { [weak self] in
+                guard let self = self else { return }
                 self.postLogoutUser(device: DeviceUUID.getDeviceUUID(), refresh_token: UserDefaultHandler.refreshToken)
                 self.resetUserDefaultValues()
                 let sceneDelegate = UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate
                 sceneDelegate?.changeRootSplashView()
-                return
             }
-            let cancelAction = UIAlertAction(title: "취소", style: .default)
-            alert.addAction(cancelAction)
-            alert.addAction(okAction)
             present(alert, animated: true)
         } else {
-            let alert = UIAlertController(title: "탈퇴하기", message: "탈퇴 시 계정과 관련된 모든 기록이 삭제되며, 복구할 수 없습니다. 1달 이내 다시 로그인 시 탈퇴가 자동 철회되며, 서비스를 계속 사용할 수 있습니다.", preferredStyle: .alert)
-            let okAction = UIAlertAction(title: "탈퇴하기", style: .destructive) { _ in
+            let alert = createBasicAlert("탈퇴하기", TextLiteral.withdrawMessage, "탈퇴하기") { [weak self] in
+                guard let self = self else { return }
                 self.deleteUser()
-                self.resetUserDefaultValues()
                 let sceneDelegate = UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate
                 sceneDelegate?.changeRootSplashView()
-                return
             }
-            let cancelAction = UIAlertAction(title: "취소", style: .default)
-            alert.addAction(cancelAction)
-            alert.addAction(okAction)
             present(alert, animated: true)
         }
     }
@@ -92,7 +86,7 @@ extension AccountSettingViewController {
         NetworkService.shared.myPage.deleteUser() { [weak self] result in
             switch result {
             case .success(let response):
-                guard let data = response as? BlankDataResponse else { return }
+                guard response is BlankDataResponse else { return }
             case .requestErr(let errorResponse):
                 dump(errorResponse)
                 guard let data = errorResponse as? ErrorResponse else { return }
@@ -111,7 +105,7 @@ extension AccountSettingViewController {
         NetworkService.shared.myPage.postLogoutUser(device: device, refresh_token: refresh_token) { [weak self] result in
             switch result {
             case .success(let response):
-                guard let data = response as? BlankDataResponse else { return }
+                guard response is BlankDataResponse else { return }
             case .requestErr(let errorResponse):
                 dump(errorResponse)
                 guard let data = errorResponse as? ErrorResponse else { return }

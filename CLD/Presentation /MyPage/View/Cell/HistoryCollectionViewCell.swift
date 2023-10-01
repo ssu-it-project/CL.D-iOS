@@ -8,9 +8,6 @@
 import UIKit
 
 import SnapKit
-import RxSwift
-import RxGesture
-import RxCocoa
 
 protocol PushVideoDelegate: AnyObject {
     func videoButtonTapped()
@@ -55,12 +52,17 @@ final class HistoryCollectionViewCell: UICollectionViewCell {
         let button = UIButton()
         button.backgroundColor = .clear
         button.setImage(ImageLiteral.videoIcon, for: .normal)
+        button.addTarget(self, action: #selector(videoButtonPush), for: .touchUpInside)
 
         return button
     }()
 
     weak var delegatePushVideo: PushVideoDelegate?
-    private var bag = DisposeBag()
+
+    @objc
+    func videoButtonPush() {
+        delegatePushVideo?.videoButtonTapped()
+    }
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -68,7 +70,6 @@ final class HistoryCollectionViewCell: UICollectionViewCell {
         cellBackgroundView.addSubviews(badgeImageView, titleLabel, dateLabel, videoButton)
 
         setUpLayouts()
-        bind()
     }
     func setUpLayouts() {
         cellBackgroundView.snp.makeConstraints {
@@ -95,15 +96,6 @@ final class HistoryCollectionViewCell: UICollectionViewCell {
             $0.width.equalTo(18)
             $0.height.equalTo(12)
         }
-    }
-
-    private func bind() {
-        videoButton.rx.tap
-            .withUnretained(self)
-            .bind(onNext: { owner, event in
-                owner.delegatePushVideo?.videoButtonTapped()
-            })
-            .disposed(by: bag)
     }
 
     required init?(coder: NSCoder) {
