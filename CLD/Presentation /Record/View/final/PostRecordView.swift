@@ -141,11 +141,42 @@ final class PostRecordView: UIView {
         return label
     }()
 
+    private let loadingView: UIView = {
+        let view = UIView()
+        view.layer.backgroundColor = UIColor.white.cgColor
+        view.layer.opacity = 0.7
+        view.layer.isHidden = true
+        return view
+    }()
+    private lazy var loadingIndicator: UIActivityIndicatorView = {
+        // 해당 클로저에서 나중에 indicator 를 반환해주기 위해 상수형태로 선언
+        let loadingIndicator = UIActivityIndicatorView()
+        loadingIndicator.frame = CGRect(x: 0, y: 0, width: 50, height: 50)
+        // 기타 옵션
+        loadingIndicator.color = .CLDGold
+        loadingIndicator.hidesWhenStopped = true
+        loadingIndicator.style = .medium
+        // stopAnimating을 걸어주는 이유는, 최초에 해당 indicator가 선언되었을 때, 멈춘 상태로 있기 위해서
+        loadingIndicator.stopAnimating()
+
+        return loadingIndicator
+
+    }()
+
+    func startLoadingIndicator() {
+        loadingIndicator.startAnimating()
+        loadingView.isHidden = false
+    }
+    func stopLoadingIndicator() {
+        loadingIndicator.stopAnimating()
+        loadingView.isHidden = true
+    }
+
     func setPostRecord(_ thumbnailImage: UIImage, _ place: String, _ sector: String, _ color: ColorChipName, _ colorText: String) {
         thumbnailView.image = thumbnailImage
         placeLabel.text = place
         sectorLabel.text = sector
-        colorLabel.text = color.colorName()
+        colorLabel.text = colorText
         colorCircle.layer.backgroundColor = color.colorChip()
     }
     func getTextView() -> String {
@@ -167,7 +198,7 @@ final class PostRecordView: UIView {
     }
     
     func setHierarchy() {
-        addSubviews(backButton,titleLabel,thumbnailView,textView,placeRectView,sectorRectView,colorRectView)
+        addSubviews(backButton,titleLabel,thumbnailView,textView,placeRectView,sectorRectView,colorRectView,loadingView,loadingIndicator)
         thumbnailView.addSubviews(playIcon,labelBackground)
         labelBackground.addSubview(timeLabel)
         placeRectView.addSubviews(placeIconView,placeLabel)
@@ -269,6 +300,13 @@ final class PostRecordView: UIView {
             $0.leading.equalTo(colorCircle.snp.trailing).offset(10)
             $0.height.equalTo(18)
             $0.centerY.equalToSuperview()
+        }
+
+        loadingView.snp.makeConstraints {
+            $0.edges.equalToSuperview()
+        }
+        loadingIndicator.snp.makeConstraints {
+            $0.center.equalToSuperview()
         }
     }
 }

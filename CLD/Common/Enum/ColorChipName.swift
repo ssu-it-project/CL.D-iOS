@@ -52,7 +52,7 @@ enum ColorChipName {
         }
     }
 
-    func colorChip() -> CGColor {
+    func colorChip() -> CGColor? {
         switch self {
         case .white:
                 return UIColor.white.cgColor
@@ -77,7 +77,7 @@ enum ColorChipName {
         case .yellow:
                 return UIColor.ChipYellow.cgColor
         case .addColor:
-                return UIColor.CLDLightGray.cgColor
+                return nil
         }
     }
 }
