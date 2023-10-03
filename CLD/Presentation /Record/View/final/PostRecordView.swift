@@ -149,14 +149,11 @@ final class PostRecordView: UIView {
         return view
     }()
     private lazy var loadingIndicator: UIActivityIndicatorView = {
-        // 해당 클로저에서 나중에 indicator 를 반환해주기 위해 상수형태로 선언
         let loadingIndicator = UIActivityIndicatorView()
         loadingIndicator.frame = CGRect(x: 0, y: 0, width: 50, height: 50)
-        // 기타 옵션
         loadingIndicator.color = .CLDGold
         loadingIndicator.hidesWhenStopped = true
         loadingIndicator.style = .medium
-        // stopAnimating을 걸어주는 이유는, 최초에 해당 indicator가 선언되었을 때, 멈춘 상태로 있기 위해서
         loadingIndicator.stopAnimating()
 
         return loadingIndicator
