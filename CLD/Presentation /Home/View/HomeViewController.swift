@@ -72,7 +72,6 @@ final class HomeViewController: BaseViewController {
           .bind { owner, row in
               guard row == owner.viewModel.recordListArray.count - 1 else { return }
               owner.prefetchItems.onNext(())
-              print(1)
           }
           .disposed(by: self.disposeBag)
     }
