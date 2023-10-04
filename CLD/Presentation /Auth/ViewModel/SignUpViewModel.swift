@@ -90,6 +90,7 @@ class SignUpViewModel: ViewModelType {
                 case .success(let userToken):
                     UserDefaultHandler.accessToken = userToken.accessToken
                     UserDefaultHandler.refreshToken = userToken.refreshToken
+                    UserDefaultHandler.loginStatus = true
                     output.didSuccessSignUp.accept(true)
                 case .failure(let error):
                     print(error.localizedDescription)
