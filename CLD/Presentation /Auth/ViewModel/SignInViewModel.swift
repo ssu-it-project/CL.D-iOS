@@ -46,6 +46,9 @@ class SignInViewModel: ViewModelType {
         input.appleSignInSubject
             .withUnretained(self)
             .subscribe(onNext: { onwer, token in
+                UserDefaultHandler.snsLoginType = SNSLoginType.apple.rawValue
+                UserDefaultHandler.snsAccessToken = token
+                
                 let signInRequest = SignInRequest(accessToken: token, device: Device(deviceID: DeviceUUID.getDeviceUUID()), loginType: SNSLoginType.apple.rawValue)
                 dump(signInRequest)
                 onwer.tryAppleSignIn(requestDTO: signInRequest, output: output)
