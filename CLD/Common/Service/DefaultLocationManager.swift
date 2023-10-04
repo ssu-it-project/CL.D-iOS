@@ -81,6 +81,7 @@ extension DefaultLocationManager: CLLocationManagerDelegate {
             print("==\(#function)", coordinate)
             
         }
+        stop()
     }
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
