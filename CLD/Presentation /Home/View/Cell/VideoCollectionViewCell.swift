@@ -12,7 +12,7 @@ import AVFoundation
 
 
 final class VideoCollectionViewCell: UICollectionViewCell {
-        
+    
     private let topLineView: UIView = {
         let view = UIView()
         view.backgroundColor = .black
@@ -161,10 +161,27 @@ final class VideoCollectionViewCell: UICollectionViewCell {
             make.leading.equalTo(viedoTitleLabel.snp.leading)
         }
         
+        likeButton.snp.makeConstraints { make in
+            make.size.equalTo(22)
+        }
+        
+        commentButton.snp.makeConstraints { make in
+            make.size.equalTo(22)
+        }
+        
+        shareButton.snp.makeConstraints { make in
+            make.size.equalTo(22)
+        }
+        
         buttonStackView.snp.makeConstraints { make in
+            make.leading.equalTo(viedoTitleLabel.snp.trailing).offset(5)
+            make.centerY.equalTo(viedoTitleLabel.snp.centerY)
             make.top.equalTo(playerView.snp.bottom).offset(8)
             make.trailing.equalToSuperview().inset(10)
         }
+        
+        buttonStackView.setContentHuggingPriority(.defaultHigh, for: .horizontal)
+        buttonStackView.setContentCompressionResistancePriority(.defaultHigh, for: .horizontal)
     }
     
     private func setViewProperty() {
