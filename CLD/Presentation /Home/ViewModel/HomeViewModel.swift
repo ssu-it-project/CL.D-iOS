@@ -27,6 +27,7 @@ class HomeViewModel: ViewModelType {
     
     struct Input {
         let viewWillAppearEvent: Observable<Void>
+        let prefetchItems: PublishSubject<Void>
     }
     
     struct Output {
@@ -38,9 +39,17 @@ class HomeViewModel: ViewModelType {
           guard let count = try? recordList.value().count else { return 0 }
           return count
       }
+    var recordListArray: [RecordVO] = []
+    
+    var total = 0
+    var skip = 4
     
     func cellInfo(index: Int) -> RecordVO? {
         return try? recordList.value()[index]
+    }
+    
+    func cellArrayInfo(index: Int) -> RecordVO {
+        return recordListArray[index]
     }
     
     func transform(input: Input) -> Output {
@@ -48,9 +57,20 @@ class HomeViewModel: ViewModelType {
         input.viewWillAppearEvent
             .withUnretained(self)
             .subscribe(onNext: { owner, _ in
-                owner.getHomeRecords(limit: 10, skip: 0, output: output)
+                owner.getHomeRecords(limit: 4, skip: 0, output: output)
             })
             .disposed(by: disposeBag)
+        
+        input.prefetchItems
+            .withUnretained(self)
+            .subscribe(onNext: { owner, _ in
+                if owner.collectionViewCount < owner.total {
+                    owner.getHomeRecords(limit: 4, skip: owner.skip, output: output)
+                    owner.skip += 4
+                }
+            })
+            .disposed(by: disposeBag)
+        
         return output
     }
 }
@@ -61,7 +81,8 @@ extension HomeViewModel {
             .subscribe { [weak self] response in
                 switch response {
                 case .success(let value):
-                    self?.recordList.onNext(value.records)
+                    self?.recordListArray.append(contentsOf: value.records)
+                    self?.total = value.pagination.total
                     output.homeRecordList.accept(value)
                 case .failure(let error):
                     print(error)

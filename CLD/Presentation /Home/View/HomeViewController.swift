@@ -28,6 +28,7 @@ final class HomeViewController: BaseViewController {
     }()
     
     var url: [String] = []
+    private var prefetchItems = PublishSubject<Void>()
     
     private var viewModel: HomeViewModel
     
@@ -39,6 +40,7 @@ final class HomeViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionView.backgroundColor = .clear
+        bindAction()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -52,16 +54,27 @@ final class HomeViewController: BaseViewController {
     }
     
     override func Bind() {
-        let input = HomeViewModel.Input(viewWillAppearEvent: rx.viewWillAppear.map { _ in })
+        let input = HomeViewModel.Input(viewWillAppearEvent: rx.viewWillAppear.map { _ in }, prefetchItems: prefetchItems)
         let output = viewModel.transform(input: input)
         
         output.homeRecordList
             .withUnretained(self)
             .subscribe { owner, recordList in
-                print("===", recordList)
                 owner.collectionView.reloadData()
             }
             .disposed(by: disposeBag)
+    }
+    
+    private func bindAction() {
+        self.collectionView.rx.prefetchItems
+          .compactMap(\.last?.row)
+          .withUnretained(self)
+          .bind { owner, row in
+              guard row == owner.viewModel.recordListArray.count - 1 else { return }
+              owner.prefetchItems.onNext(())
+              print(1)
+          }
+          .disposed(by: self.disposeBag)
     }
 
     private func createLayout() -> UICollectionViewCompositionalLayout {
@@ -131,7 +144,7 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
         case .badgeSection:
             return 1
         case .videoBanner:
-            return viewModel.collectionViewCount
+            return viewModel.recordListArray.count
         }
     }
     
@@ -144,11 +157,10 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
             return cell
         case .videoBanner:
             let cell: VideoCollectionViewCell = collectionView.dequeueReusableCell(forIndexPath: indexPath)
-            if let recordVO = viewModel.cellInfo(index: indexPath.item) {
+            let recordVO = viewModel.cellArrayInfo(index: indexPath.item)
                 cell.configureVideo(with: recordVO.video)
                 cell.configureCell(row: recordVO)
-                cell.playerView.play()
-            }
+            
             return cell
         }
     }
