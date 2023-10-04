@@ -11,7 +11,7 @@ import CoreLocation
 import RxRelay
 import RxSwift
 
-class ClimbingGymSearchViewModel: ViewModelType {
+final class ClimbingGymSearchViewModel: ViewModelType {
     var disposeBag = DisposeBag()
     
     private let useCase: ClimbingGymUseCase
