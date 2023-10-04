@@ -49,13 +49,20 @@ class SignUpViewModel: ViewModelType {
             .disposed(by: disposeBag)
         
         input.totalTerms
-            .bind(to: output.nextButtonEnabled)
+            .withUnretained(self)
+            .bind(onNext: { owner, bool in
+                output.nextButtonEnabled.accept(bool)
+                owner.eventInfoTermsAgreed = bool
+                
+                print(owner.eventInfoTermsAgreed)
+            })
             .disposed(by: disposeBag)
-        
+                
         input.eventInfoTerms
             .withUnretained(self)
-            .bind { owner, bool in
-                owner.eventInfoTermsAgreed = bool
+            .bind { owner, eventInfoTerms in
+                owner.eventInfoTermsAgreed = eventInfoTerms
+                print(owner.eventInfoTermsAgreed)
             }
             .disposed(by: disposeBag)
 

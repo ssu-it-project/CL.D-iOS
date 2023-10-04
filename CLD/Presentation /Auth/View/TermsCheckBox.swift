@@ -20,7 +20,7 @@ final class TermsCheckBox: UIView {
         }
     }
     
-    private var termsCheckBoxTapped = false
+    var termsCheckBoxTapped = false
     
     private let checkButton: UIButton = {
         let button = UIButton()
