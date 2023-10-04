@@ -46,22 +46,18 @@ class ClimbingGymSearchViewModel: ViewModelType {
                 owner.useCase.checkAuthorization()
             })
             .disposed(by: disposeBag)
-        
-        input.viewWillAppearEvent
-            .withUnretained(self)
-            .subscribe(onNext: { owner, _ in
-                owner.getLocationGyms(longitude: output.currentUserLocation.value.latitude, latitude: output.currentUserLocation.value.longitude, keyword: "", limit: 10, skip: 10, output: output)
-            })
-            .disposed(by: disposeBag)
-        
+                
         self.useCase.authorizationDeniedStatus
             .bind(to: output.authorizationAlertShouldShow)
             .disposed(by: disposeBag)
         
         self.useCase.coodinate
-            .bind(to: output.currentUserLocation)
+            .withUnretained(self)
+            .subscribe(onNext: { owner, coodinate in
+                output.currentUserLocation.accept(coodinate)
+                owner.getLocationGyms(longitude: coodinate.latitude, latitude: coodinate.longitude, keyword: "", limit: 10, skip: 10, output: output)
+            })
             .disposed(by: disposeBag)
-        
         return output
     }
 }
