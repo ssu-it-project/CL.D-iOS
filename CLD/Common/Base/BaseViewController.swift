@@ -89,9 +89,9 @@ class BaseViewController: UIViewController, BaseViewControllerProtocol {
         navigationBar.scrollEdgeAppearance = appearance
 
         navigationItem.leftBarButtonItem = UIBarButtonItem(customView: customBackButton)
-        if #available(iOS 16.0, *) {
-            self.navigationItem.leftBarButtonItem?.isHidden = true
-        }
+//        if #available(iOS 16.0, *) {
+//            self.navigationItem.leftBarButtonItem?.isHidden = true
+//        }
 
         customBackButton.rx.tap
             .bind {
