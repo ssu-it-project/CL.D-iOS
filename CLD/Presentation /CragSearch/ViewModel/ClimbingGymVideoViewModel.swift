@@ -10,7 +10,7 @@ import Foundation
 import RxRelay
 import RxSwift
 
-class ClimbingGymVideoViewModel: ViewModelType {
+final class ClimbingGymVideoViewModel: ViewModelType {
     var disposeBag = DisposeBag()
     
     private let useCase: ClimbingGymVideoUseCase

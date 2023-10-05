@@ -46,6 +46,9 @@ class SignInViewModel: ViewModelType {
         input.appleSignInSubject
             .withUnretained(self)
             .subscribe(onNext: { onwer, token in
+                UserDefaultHandler.snsLoginType = SNSLoginType.apple.rawValue
+                UserDefaultHandler.snsAccessToken = token
+                
                 let signInRequest = SignInRequest(accessToken: token, device: Device(deviceID: DeviceUUID.getDeviceUUID()), loginType: SNSLoginType.apple.rawValue)
                 dump(signInRequest)
                 onwer.tryAppleSignIn(requestDTO: signInRequest, output: output)
@@ -60,6 +63,7 @@ class SignInViewModel: ViewModelType {
             .subscribe(onNext: { userToken in
                 UserDefaultHandler.accessToken = userToken.accessToken
                 UserDefaultHandler.refreshToken = userToken.refreshToken
+                UserDefaultHandler.loginStatus = true
                 output.didSuccessSignIn.accept(true)
             }, onError: { error in
                 guard let error = error as? MoyaError else { return }
@@ -77,6 +81,7 @@ class SignInViewModel: ViewModelType {
                 case .success(let userToken):
                     UserDefaultHandler.accessToken = userToken.accessToken
                     UserDefaultHandler.refreshToken = userToken.refreshToken
+                    UserDefaultHandler.loginStatus = true
                     output.didSuccessSignIn.accept(true)
                 case .failure(let error):
                     guard let error = error as? MoyaError else { return }

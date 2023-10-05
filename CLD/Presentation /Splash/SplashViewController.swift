@@ -20,15 +20,20 @@ final class SplashViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1) {
-            let rootViewController = AuthViewController(viewModel: SignInViewModel(useCase: DefaultSignInUseCase(repository: DefaultSignInRepository())))
             let sceneDelegate = UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate
             guard let delegate = sceneDelegate else {
                 print("sceneDelegate가 할당 Error")
                 return
             }
-            delegate.window?.rootViewController = rootViewController
+            
+            if UserDefaultHandler.loginStatus == true {
+                RootHandler.shard.update(.Main)
+            } else {
+                let rootViewController = AuthViewController(viewModel: SignInViewModel(useCase: DefaultSignInUseCase(repository: DefaultSignInRepository())))
+                
+                delegate.window?.rootViewController = rootViewController
+            }
         }
     }
     
