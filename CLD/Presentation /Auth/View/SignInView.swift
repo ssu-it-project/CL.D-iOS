@@ -62,16 +62,16 @@ final class SignView: UIView {
             $0.centerX.equalToSuperview()
         }
         kakaoButton.snp.makeConstraints {
-            $0.top.equalTo(cldLogo.snp.bottom).offset(298)
             $0.width.equalTo(280)
             $0.height.equalTo(42)
             $0.centerX.equalToSuperview()
+            $0.bottom.equalToSuperview().inset(200)
         }
         appleButton.snp.makeConstraints {
-            $0.top.equalTo(kakaoButton.snp.bottom).offset(14)
             $0.width.equalTo(280)
             $0.height.equalTo(42)
             $0.centerX.equalToSuperview()
+            $0.bottom.equalToSuperview().inset(148)
         }
 //        instaButton.snp.makeConstraints {
 //            $0.top.equalTo(appleButton.snp.bottom).offset(14)
