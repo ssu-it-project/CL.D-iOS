@@ -66,7 +66,8 @@ extension AccountSettingViewController: UITableViewDataSource, UITableViewDelega
                 self.postLogoutUser(device: DeviceUUID.getDeviceUUID(), refresh_token: UserDefaultHandler.refreshToken)
                 self.resetUserDefaultValues()
                 let sceneDelegate = UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate
-                sceneDelegate?.changeRootSplashView()
+                let rootViewController = AuthViewController(viewModel: SignInViewModel(useCase: DefaultSignInUseCase(repository: DefaultSignInRepository())))
+                sceneDelegate?.window?.rootViewController = rootViewController
             }
             present(alert, animated: true)
         } else {
@@ -74,7 +75,8 @@ extension AccountSettingViewController: UITableViewDataSource, UITableViewDelega
                 guard let self = self else { return }
                 self.deleteUser()
                 let sceneDelegate = UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate
-                sceneDelegate?.changeRootSplashView()
+                let rootViewController = AuthViewController(viewModel: SignInViewModel(useCase: DefaultSignInUseCase(repository: DefaultSignInRepository())))
+                sceneDelegate?.window?.rootViewController = rootViewController
             }
             present(alert, animated: true)
         }
