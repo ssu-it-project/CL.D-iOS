@@ -1888,7 +1888,7 @@
 				);
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = CLD/App/Support/Info.plist;
-				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "암장 위치 파악을 위해 위치 권한 설정 켜주세요.";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "사용자의 위치는 현재 사용자의 위치를 바탕으로 가까운 클라이밍장을 찾는데 사용됩니다.";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "동영상 업로드를 위해 사진첩 접근이 필요합니다. 허용해주세요.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
@@ -1932,7 +1932,7 @@
 				);
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = CLD/App/Support/Info.plist;
-				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "암장 위치 파악을 위해 위치 권한 설정 켜주세요.";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "사용자의 위치는 현재 사용자의 위치를 바탕으로 가까운 클라이밍장을 찾는데 사용됩니다.";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "동영상 업로드를 위해 사진첩 접근이 필요합니다. 허용해주세요.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
