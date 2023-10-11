@@ -20,7 +20,7 @@
 		</dict>
 	</array>
 	<key>KAKAO_APP_KEY</key>
-	<string>99dea25ffa8a55618b54602a20b20e0b</string>
+	<string></string>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
 		<string>kakaomap</string>
