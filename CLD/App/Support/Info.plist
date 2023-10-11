@@ -2,39 +2,25 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>KAKAO_APP_KEY</key>
-	<string>99dea25ffa8a55618b54602a20b20e0b</string>
-	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>암장 위치 파악을 위해 위치 권한 설정 켜주세요.</string>
-	<key>NSAppTransportSecurity</key>
-	<dict>
-		<key>NSAllowsArbitraryLoads</key>
-		<true/>
-	</dict>
 	<key>CFBundleURLTypes</key>
 	<array>
 		<dict>
 			<key>CFBundleTypeRole</key>
 			<string>Editor</string>
 			<key>CFBundleURLSchemes</key>
-			<array>
-<!--				<string></string>-->
-<!--                <string></string>-->
-			</array>
-        </dict>
-        <dict>
-            <key>CFBundleURLSchemes</key>
-            <array>
-<!--                <string></string>-->
-            </array>
-            <key>FacebookAppID</key>
-<!--            <string></string>-->
-            <key>FacebookClientToken</key>
-<!--            <string></string>-->
-            <key>FacebookDisplayName</key>
-            <string>CLD</string>
+			<array/>
+		</dict>
+		<dict>
+			<key>CFBundleURLSchemes</key>
+			<array/>
+			<key>FacebookAppID</key>
+			<string>FacebookClientToken</string>
+			<key>FacebookDisplayName</key>
+			<string>CLD</string>
 		</dict>
 	</array>
+	<key>KAKAO_APP_KEY</key>
+	<string>99dea25ffa8a55618b54602a20b20e0b</string>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
 		<string>kakaomap</string>
@@ -56,6 +42,11 @@
 		<string>fbauth2</string>
 		<string>fbshareextension</string>
 	</array>
+	<key>NSAppTransportSecurity</key>
+	<dict>
+		<key>NSAllowsArbitraryLoads</key>
+		<true/>
+	</dict>
 	<key>UIAppFonts</key>
 	<array>
 		<string>Roboto-Black.ttf</string>
@@ -65,8 +56,6 @@
 		<string>Roboto-Regular.ttf</string>
 		<string>Roboto-Thin.ttf</string>
 	</array>
-	<key>NSPhotoLibraryUsageDescription</key>
-	<string>동영상 업로드를 위해 사진첩 접근이 필요합니다. 허용해주세요.</string>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>
