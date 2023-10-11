@@ -32,13 +32,13 @@ final class TermsViewController: BaseViewController {
     private var signUpButton = CLDButton(title: "확인", isEnabled: false)
     
     private let viewModel: SignUpViewModel
-
+    
     // MARK: - Inits
     init(viewModel: SignUpViewModel) {
         self.viewModel = viewModel
         super.init()
     }
-        
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "회원가입"
@@ -47,13 +47,17 @@ final class TermsViewController: BaseViewController {
         useRequiredTermsCheckView.delegate = self
         personalInfoTermsCheckView.delegate = self
         eventInfoTermsCheckView.delegate = self
+        
+        if #available(iOS 16.0, *) {
+            self.navigationItem.leftBarButtonItem?.isHidden = true
+        }
     }
     
     private func bind() {
         let input = SignUpViewModel.Input(totalTerms: allTermsCheckBox.termsCheckBoxDidTapGesture().asObservable(), useRequiredTerms: useRequiredTermsCheckView.termsCheckButton.rx.isSelected.asObservable(), personalInfoTerms: personalInfoTermsCheckView.termsCheckButton.rx.isSelected.asObservable(), eventInfoTerms: eventInfoTermsCheckView.termsCheckButton.rx.isSelected.asObservable(), signUpButtonTapped: signUpButton.rx.tap.asObservable())
-
+        
         let output = viewModel.transform(input: input)
-
+        
         output.nextButtonEnabled
             .asSignal(onErrorJustReturn: false)
             .emit(to: signUpButton.rx.isEnabled)
@@ -85,7 +89,7 @@ final class TermsViewController: BaseViewController {
             })
             .disposed(by: disposeBag)
     }
- 
+    
     override func setHierarchy() {
         view.addSubviews(badgeTitleLabel, allTermsCheckBox, termsStackView, signUpButton)
     }
@@ -107,7 +111,7 @@ final class TermsViewController: BaseViewController {
             make.top.equalTo(allTermsCheckBox.snp.bottom).offset(26)
             make.leading.trailing.equalToSuperview().inset(12)
         }
-                
+        
         signUpButton.snp.makeConstraints { make in
             make.top.equalTo(termsStackView.snp.bottom).offset(15).priority(.low)
             make.leading.trailing.equalToSuperview().inset(10)
