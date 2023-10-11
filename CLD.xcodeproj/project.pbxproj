@@ -536,15 +536,16 @@
 			path = Splash;
 			sourceTree = "<group>";
 		};
-		0286A8E92AA06B1A00D0BAD6 /* forService */ = {
+		0286A8E92AA06B1A00D0BAD6 /* LegacyNetwork */ = {
 			isa = PBXGroup;
 			children = (
+				02CCDD652A9F2C6100301ABF /* Service */,
 				02CCDD6E2A9F623A00301ABF /* NetworkService.swift */,
 				02CCDD682A9F614B00301ABF /* NetworkResult.swift */,
 				02CCDD6A2A9F617F00301ABF /* BlankDataResponse.swift */,
 				02CCDD6C2A9F61A500301ABF /* ErrorResponse.swift */,
 			);
-			path = forService;
+			path = LegacyNetwork;
 			sourceTree = "<group>";
 		};
 		0289815F2A93174800B928E5 /* final */ = {
@@ -690,7 +691,7 @@
 		5A21C6582A98FA2700E7CC95 /* _Foundation */ = {
 			isa = PBXGroup;
 			children = (
-				0286A8E92AA06B1A00D0BAD6 /* forService */,
+				0286A8E92AA06B1A00D0BAD6 /* LegacyNetwork */,
 				5A21C6592A98FAEC00E7CC95 /* BaseTargetType.swift */,
 				5A21C65B2A98FC4800E7CC95 /* URLConst.swift */,
 				5A21C67D2A9A047800E7CC95 /* NetworkPluginType.swift */,
@@ -1150,7 +1151,6 @@
 			children = (
 				5ACADD532A658B3A00B92C07 /* API */,
 				5A21C6582A98FA2700E7CC95 /* _Foundation */,
-				02CCDD652A9F2C6100301ABF /* Service */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -1888,11 +1888,13 @@
 				);
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = CLD/App/Support/Info.plist;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "사용자의 위치는 현재 사용자의 위치를 바탕으로 가까운 클라이밍장을 찾는데 사용됩니다.";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "동영상 업로드를 위해 사진첩 접근이 필요합니다. 허용해주세요.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = "";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1902,10 +1904,13 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ios.CLD;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "/Users/joeun/Desktop/CLD/cl-d-iOS/CLD/KakaoBridgeHeader.h";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -1927,11 +1932,13 @@
 				);
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = CLD/App/Support/Info.plist;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "사용자의 위치는 현재 사용자의 위치를 바탕으로 가까운 클라이밍장을 찾는데 사용됩니다.";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "동영상 업로드를 위해 사진첩 접근이 필요합니다. 허용해주세요.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = "";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1941,10 +1948,13 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ios.CLD;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "/Users/joeun/Desktop/CLD/cl-d-iOS/CLD/KakaoBridgeHeader.h";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

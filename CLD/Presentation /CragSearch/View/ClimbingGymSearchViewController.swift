@@ -41,6 +41,10 @@ final class ClimbingGymSearchViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.navigationBar.topItem?.title = "암장 검색"
+        
+        if #available(iOS 16.0, *) {
+            self.navigationItem.leftBarButtonItem?.isHidden = true
+        }
     }
     
     override func Bind() {
