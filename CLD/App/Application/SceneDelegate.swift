@@ -27,6 +27,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window.rootViewController = UINavigationController(rootViewController: TabBarController())
         UIView.transition(with: window, duration: 0.2, options: [.transitionCrossDissolve], animations: nil)
     }
+
+    func changeRootSplashView() {
+        guard let window = window else { return }
+        window.rootViewController = UINavigationController(rootViewController: SplashViewController())
+        UIView.transition(with: window, duration: 0.2, options: [.transitionCrossDissolve], animations: nil)
+    }
     
     func sceneDidDisconnect(_ scene: UIScene) {
         

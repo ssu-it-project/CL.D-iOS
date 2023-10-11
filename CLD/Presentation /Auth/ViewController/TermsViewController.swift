@@ -62,8 +62,8 @@ final class TermsViewController: BaseViewController {
         output.totalTermsChecked
             .withUnretained(self)
             .bind(onNext: { owner, toggle in
+                owner.allTermsCheckBox.termsCheckBoxTapped = toggle
                 owner.allTermsCheckBox.isSelected = toggle
-                owner.eventInfoTermsCheckView.termsCheckButton.rx.isSelected.onNext(toggle)
             })
             .disposed(by: disposeBag)
         

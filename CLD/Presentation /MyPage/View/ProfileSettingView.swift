@@ -8,16 +8,32 @@
 import UIKit
 
 import SnapKit
+import RxSwift
+import RxGesture
+import RxCocoa
+
+protocol PushProfileViewDelegate: AnyObject {
+    func editProfileButtonTapped()
+}
+
+protocol UpdateProfileDelegate: AnyObject {
+    func saveProfileButtonTapped()
+}
 
 final class ProfileSettingView: UIView {
+    private lazy var birthday = ""
+    private lazy var gender = 0
+    private lazy var name = ""
     private let profileImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = ImageLiteral.testProfileImage
+        imageView.image = ImageLiteral.profileDefault
+        imageView.tintColor = .CLDGray
         imageView.layer.cornerRadius = 105/2
         imageView.clipsToBounds = true
 
         return imageView
     }()
+    let imagePicker = UIImagePickerController()
     private let editProfileButton: UIButton = {
         let button = UIButton()
         button.setImage(ImageLiteral.editProfileImage, for: .normal)
@@ -132,6 +148,37 @@ final class ProfileSettingView: UIView {
         return button
     }()
 
+    weak var delegatePush: PushProfileViewDelegate?
+    weak var delegateUpdate: UpdateProfileDelegate?
+    private var bag = DisposeBag()
+
+    func setProfileInfo(birthday: String, gender: Int, name: String, imageUrl: String, nickname: String, height: Int, reach: Int) {
+        self.birthday = birthday
+        self.gender = gender
+        self.name = name
+        self.profileImageView.setImage(urlString: imageUrl, defaultImage: ImageLiteral.profileDefault)
+        self.nicknameTextField.text = nickname
+        self.heightTextField.text = String(height)
+        self.armReachTextField.text = String(reach)
+    }
+
+    func setProfileImage(image: UIImage) {
+        self.profileImageView.image = image
+    }
+
+    func getProfileInfo() -> Dictionary<String, Any> {
+        let nickname: String = String(nicknameTextField.text ?? "")
+        let height: Int = Int(String(heightTextField.text ?? "")) ?? 0
+        let armReach: Int = Int(String(armReachTextField.text ?? "")) ?? 0
+        return ["birthday": birthday, "gender": gender, "name":name, "nickname": nickname, "height": height, "armReach": armReach]
+    }
+
+    func closeKeyBoard() {
+        nicknameTextField.resignFirstResponder()
+        heightTextField.resignFirstResponder()
+        armReachTextField.resignFirstResponder()
+    }
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         nicknameTextField.addLeftPadding()
@@ -143,6 +190,7 @@ final class ProfileSettingView: UIView {
 
         setHierarchy()
         setConstraints()
+        bind()
     }
 
     required init?(coder: NSCoder) {
@@ -211,5 +259,19 @@ final class ProfileSettingView: UIView {
             $0.height.equalTo(25)
         }
     }
-}
 
+    private func bind() {
+        editProfileButton.rx.tap
+            .withUnretained(self)
+            .bind(onNext: { owner, event in
+                owner.delegatePush?.editProfileButtonTapped()
+            })
+            .disposed(by: bag)
+        saveButton.rx.tap
+            .withUnretained(self)
+            .bind(onNext: { owner, event in
+                owner.delegateUpdate?.saveProfileButtonTapped()
+            })
+            .disposed(by: bag)
+    }
+}

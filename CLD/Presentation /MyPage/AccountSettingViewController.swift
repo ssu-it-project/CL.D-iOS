@@ -13,6 +13,12 @@ class AccountSettingViewController: BaseViewController {
     let accountArr = ["로그아웃", "탈퇴하기"]
     let accountSettingView = AccountSettingView()
 
+    private func resetUserDefaultValues() {
+        UserDefaultHandler.accessToken = ""
+        UserDefaultHandler.refreshToken = ""
+        UserDefaultHandler.loginStatus = false
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.isNavigationBarHidden = false
@@ -23,6 +29,9 @@ class AccountSettingViewController: BaseViewController {
 
     override func setupNavigationBar() {
         super.setupNavigationBar()
+        if #available(iOS 16.0, *) {
+            self.navigationItem.leftBarButtonItem?.isHidden = false
+        }
         navigationItem.title = "계정 설정"
     }
 
@@ -51,5 +60,65 @@ extension AccountSettingViewController: UITableViewDataSource, UITableViewDelega
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let index: Int = indexPath.row
         tableView.deselectRow(at: indexPath, animated: true)
+        if (index == 0){
+            let alert = createBasicAlert("로그아웃", TextLiteral.logoutMessage, "로그아웃") { [weak self] in
+                guard let self = self else { return }
+                self.postLogoutUser(device: DeviceUUID.getDeviceUUID(), refresh_token: UserDefaultHandler.refreshToken)
+                self.resetUserDefaultValues()
+                let sceneDelegate = UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate
+                let rootViewController = AuthViewController(viewModel: SignInViewModel(useCase: DefaultSignInUseCase(repository: DefaultSignInRepository())))
+                sceneDelegate?.window?.rootViewController = rootViewController
+            }
+            present(alert, animated: true)
+        } else {
+            let alert = createBasicAlert("탈퇴하기", TextLiteral.withdrawMessage, "탈퇴하기") { [weak self] in
+                guard let self = self else { return }
+                self.deleteUser()
+                let sceneDelegate = UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate
+                let rootViewController = AuthViewController(viewModel: SignInViewModel(useCase: DefaultSignInUseCase(repository: DefaultSignInRepository())))
+                sceneDelegate?.window?.rootViewController = rootViewController
+            }
+            present(alert, animated: true)
+        }
+    }
+}
+
+extension AccountSettingViewController {
+    private func deleteUser() {
+        NetworkService.shared.myPage.deleteUser() { [weak self] result in
+            switch result {
+            case .success(let response):
+                guard response is BlankDataResponse else { return }
+            case .requestErr(let errorResponse):
+                dump(errorResponse)
+                guard let data = errorResponse as? ErrorResponse else { return }
+                print(data.message ?? "requestErr")
+            case .pathErr:
+                print("pathErr")
+            case .serverErr:
+                print("serverErr")
+            case .networkFail:
+                print("networkFail")
+            }
+        }
+    }
+
+    private func postLogoutUser(device: String, refresh_token: String) {
+        NetworkService.shared.myPage.postLogoutUser(device: device, refresh_token: refresh_token) { [weak self] result in
+            switch result {
+            case .success(let response):
+                guard response is BlankDataResponse else { return }
+            case .requestErr(let errorResponse):
+                dump(errorResponse)
+                guard let data = errorResponse as? ErrorResponse else { return }
+                print(data.message ?? "requestErr")
+            case .pathErr:
+                print("pathErr")
+            case .serverErr:
+                print("serverErr")
+            case .networkFail:
+                print("networkFail")
+            }
+        }
     }
 }

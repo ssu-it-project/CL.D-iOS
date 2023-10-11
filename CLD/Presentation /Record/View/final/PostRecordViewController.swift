@@ -36,6 +36,7 @@ final class PostRecordViewController: BaseViewController {
     }()
     
     @objc private func postRecordButton () {
+        postRecordView.startLoadingIndicator()
         let place = postRecordDic["place"] as! String
         let climbing_gym_id = postRecordDic["climbing_gym_id"] as! String
         let content = postRecordView.getTextView()
@@ -139,6 +140,7 @@ extension PostRecordViewController {
             case .success(let response):
                 self.postRecordView.isHidden = true
                 self.recordButton.isHidden = true
+                self.postRecordView.stopLoadingIndicator()
                 self.successRecordView.isHidden = false
                 try? FileManager.default.removeItem(at: self.destinationPath)
                 guard let data = response as? BlankDataResponse else { return }

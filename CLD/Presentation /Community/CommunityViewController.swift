@@ -7,23 +7,32 @@
 
 import UIKit
 
-class CommunityViewController: UIViewController {
+import SnapKit
+
+class CommunityViewController: BaseViewController {
+    private let CommunityLabel: UILabel = {
+        let UILabel = UILabel()
+        UILabel.sizeToFit()
+        UILabel.font = RobotoFont.Regular.of(size: 16)
+        UILabel.textColor = .CLDDarkGray
+        UILabel.numberOfLines = 0
+        UILabel.textAlignment = .center
+        UILabel.text = "커뮤니티 페이지는 10월 23일에 공개됩니다."
+        return UILabel
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
     }
-    
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    override func setHierarchy() {
+        self.view.addSubview(CommunityLabel)
     }
-    */
 
+    override func setConstraints() {
+        CommunityLabel.snp.makeConstraints {
+            $0.top.equalToSuperview().inset(200)
+            $0.centerX.equalToSuperview()
+        }
+    }
 }

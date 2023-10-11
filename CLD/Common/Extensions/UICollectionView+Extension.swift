@@ -49,6 +49,18 @@ extension UICollectionView {
         }
         return view
     }
+    func setEmptyMessage(_ message: String) {
+        let messageLabel: UILabel = {
+            let label = UILabel()
+            label.text = message
+            label.font = RobotoFont.Regular.of(size: 14)
+            label.textColor = .lightGray
+            label.numberOfLines = 0;
+            label.textAlignment = .center;
+            return label
+        }()
+        self.backgroundView = messageLabel
+    }
 
     func restore() {
         backgroundView = nil

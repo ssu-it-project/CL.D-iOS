@@ -141,11 +141,39 @@ final class PostRecordView: UIView {
         return label
     }()
 
+    private let loadingView: UIView = {
+        let view = UIView()
+        view.layer.backgroundColor = UIColor.white.cgColor
+        view.layer.opacity = 0.7
+        view.layer.isHidden = true
+        return view
+    }()
+    private lazy var loadingIndicator: UIActivityIndicatorView = {
+        let loadingIndicator = UIActivityIndicatorView()
+        loadingIndicator.frame = CGRect(x: 0, y: 0, width: 50, height: 50)
+        loadingIndicator.color = .CLDGold
+        loadingIndicator.hidesWhenStopped = true
+        loadingIndicator.style = .medium
+        loadingIndicator.stopAnimating()
+
+        return loadingIndicator
+
+    }()
+
+    func startLoadingIndicator() {
+        loadingIndicator.startAnimating()
+        loadingView.isHidden = false
+    }
+    func stopLoadingIndicator() {
+        loadingIndicator.stopAnimating()
+        loadingView.isHidden = true
+    }
+
     func setPostRecord(_ thumbnailImage: UIImage, _ place: String, _ sector: String, _ color: ColorChipName, _ colorText: String) {
         thumbnailView.image = thumbnailImage
         placeLabel.text = place
         sectorLabel.text = sector
-        colorLabel.text = color.colorName()
+        colorLabel.text = colorText
         colorCircle.layer.backgroundColor = color.colorChip()
     }
     func getTextView() -> String {
@@ -167,7 +195,7 @@ final class PostRecordView: UIView {
     }
     
     func setHierarchy() {
-        addSubviews(backButton,titleLabel,thumbnailView,textView,placeRectView,sectorRectView,colorRectView)
+        addSubviews(backButton,titleLabel,thumbnailView,textView,placeRectView,sectorRectView,colorRectView,loadingView,loadingIndicator)
         thumbnailView.addSubviews(playIcon,labelBackground)
         labelBackground.addSubview(timeLabel)
         placeRectView.addSubviews(placeIconView,placeLabel)
@@ -269,6 +297,13 @@ final class PostRecordView: UIView {
             $0.leading.equalTo(colorCircle.snp.trailing).offset(10)
             $0.height.equalTo(18)
             $0.centerY.equalToSuperview()
+        }
+
+        loadingView.snp.makeConstraints {
+            $0.edges.equalToSuperview()
+        }
+        loadingIndicator.snp.makeConstraints {
+            $0.center.equalToSuperview()
         }
     }
 }
