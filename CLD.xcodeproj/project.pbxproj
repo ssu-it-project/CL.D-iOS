@@ -536,15 +536,16 @@
 			path = Splash;
 			sourceTree = "<group>";
 		};
-		0286A8E92AA06B1A00D0BAD6 /* forService */ = {
+		0286A8E92AA06B1A00D0BAD6 /* LegacyNetwork */ = {
 			isa = PBXGroup;
 			children = (
+				02CCDD652A9F2C6100301ABF /* Service */,
 				02CCDD6E2A9F623A00301ABF /* NetworkService.swift */,
 				02CCDD682A9F614B00301ABF /* NetworkResult.swift */,
 				02CCDD6A2A9F617F00301ABF /* BlankDataResponse.swift */,
 				02CCDD6C2A9F61A500301ABF /* ErrorResponse.swift */,
 			);
-			path = forService;
+			path = LegacyNetwork;
 			sourceTree = "<group>";
 		};
 		0289815F2A93174800B928E5 /* final */ = {
@@ -690,7 +691,7 @@
 		5A21C6582A98FA2700E7CC95 /* _Foundation */ = {
 			isa = PBXGroup;
 			children = (
-				0286A8E92AA06B1A00D0BAD6 /* forService */,
+				0286A8E92AA06B1A00D0BAD6 /* LegacyNetwork */,
 				5A21C6592A98FAEC00E7CC95 /* BaseTargetType.swift */,
 				5A21C65B2A98FC4800E7CC95 /* URLConst.swift */,
 				5A21C67D2A9A047800E7CC95 /* NetworkPluginType.swift */,
@@ -1150,7 +1151,6 @@
 			children = (
 				5ACADD532A658B3A00B92C07 /* API */,
 				5A21C6582A98FA2700E7CC95 /* _Foundation */,
-				02CCDD652A9F2C6100301ABF /* Service */,
 			);
 			path = Network;
 			sourceTree = "<group>";
