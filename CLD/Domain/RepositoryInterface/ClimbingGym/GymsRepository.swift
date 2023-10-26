@@ -13,4 +13,5 @@ protocol GymsRepository: AnyObject {
     func getDetailGymRecord(id: String, keyword: String, limit: Int, skip: Int) -> Single<RecordListVO>
     func getBookmarkGym(keyword: String, limit: Int, skip: Int) -> Single<BookmarkGymsVO>
     func postBookmark(id: String) -> Single<Void>
+    func deleteBookmark(id: String) -> Single<Void>
 }

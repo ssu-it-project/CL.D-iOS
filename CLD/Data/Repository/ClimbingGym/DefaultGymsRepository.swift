@@ -54,7 +54,7 @@ final class DefaultGymsRepository: GymsRepository {
                             observer(.failure(error))
                         }
                     } else {
-                        observer(.failure(ClimbingGymError.detailGymError))
+                        observer(.failure(ClimbingGymDetailError.getDetailGymError))
                     }
                     return Disposables.create()
                 }
@@ -75,7 +75,7 @@ final class DefaultGymsRepository: GymsRepository {
                             observer(.failure(error))
                         }
                     } else {
-                        observer(.failure(ClimbingGymError.detailGymError))
+                        observer(.failure(ClimbingGymDetailError.getDetailGymError))
                     }
                     return Disposables.create()
                 }
@@ -96,7 +96,7 @@ final class DefaultGymsRepository: GymsRepository {
                             observer(.failure(error))
                         }
                     } else {
-                        observer(.failure(ClimbingGymError.detailGymError))
+                        observer(.failure(ClimbingGymError.getBookmarkGymError))
                     }
                     return Disposables.create()
                 }
@@ -110,7 +110,22 @@ final class DefaultGymsRepository: GymsRepository {
                     if (200..<300).contains(response.statusCode) {
                         observer(.success(Void()))
                     } else {
-                        observer(.failure(ClimbingGymError.GymSearchError))
+                        observer(.failure(ClimbingGymDetailError.postBookmarkError))
+                    }
+                    
+                    return Disposables.create()
+                }
+            }
+    }
+    
+    func deleteBookmark(id: String) -> Single<Void> {
+        return gymsService.rx.request(.deleteBookmark(id: id))
+            .flatMap { response in
+                return Single<Void>.create { observer in
+                    if (200..<300).contains(response.statusCode) {
+                        observer(.success(Void()))
+                    } else {
+                        observer(.failure(ClimbingGymDetailError.deleteBookmarkError))
                     }
                     
                     return Disposables.create()

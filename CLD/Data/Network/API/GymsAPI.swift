@@ -16,6 +16,7 @@ enum GymsAPI {
     case getDetailGymRecord(id: String, keyword: String, limit: Int, skip: Int)
     case getBookmarkGym(keyword: String, limit: Int, skip: Int)
     case postBookmark(id: String)
+    case deleteBookmark(id: String)
 }
 
 extension GymsAPI: BaseTargetType {
@@ -31,7 +32,7 @@ extension GymsAPI: BaseTargetType {
             return baseDetailGymRoutePath + "/\(id)" + "/records"
         case .getBookmarkGym:
             return baseDetailGymRoutePath + "/bookmark"
-        case .postBookmark(id: let id):
+        case .postBookmark(id: let id), .deleteBookmark(id: let id):
             return baseDetailGymRoutePath + "/\(id)" + "/bookmark"
         }
     }
@@ -42,6 +43,8 @@ extension GymsAPI: BaseTargetType {
             return .get
         case .postBookmark:
             return .post
+        case .deleteBookmark:
+            return .delete
         }
     }
 
@@ -69,7 +72,7 @@ extension GymsAPI: BaseTargetType {
                 "limit": limit,
                 "skip": skip
             ], encoding: URLEncoding.default)
-        case .postBookmark(id: _):
+        case .postBookmark(id: _), .deleteBookmark(id: _):
             return .requestPlain
         }
     }
