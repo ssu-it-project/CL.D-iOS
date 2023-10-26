@@ -80,5 +80,26 @@ final class DefaultGymsRepository: GymsRepository {
                     return Disposables.create()
                 }
             }
+        
+        func getBookmarkGym(keyword: String, limit: Int, skip: Int) -> Single<BookmarkGymsVO> {
+            return gymsService.rx.request(.getBookmarkGym(keyword: keyword, limit: limit, skip: skip))
+                .flatMap { response in
+                    return Single<BookmarkGymsVO>.create { observer in
+                        if (200..<300).contains(response.statusCode) {
+                            do {
+                                let BookmarkGymsDTO = try response.map(BookmarkGymsDTO.self)
+                                let BookmarkGymsVO = BookmarkGymsDTO.toDomain()
+                                observer(.success(BookmarkGymsVO))
+                            } catch {
+                                print("====", error)
+                                observer(.failure(error))
+                            }
+                        } else {
+                            observer(.failure(ClimbingGymError.detailGymError))
+                        }
+                        return Disposables.create()
+                    }
+                }
+        }
     }
 }

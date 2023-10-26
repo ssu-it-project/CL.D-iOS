@@ -14,6 +14,7 @@ enum GymsAPI {
     case getLocationGyms(x: Double, y: Double, keyword: String, limit: Int, skip: Int)
     case getDetailGym(id: String)
     case getDetailGymRecord(id: String, keyword: String, limit: Int, skip: Int)
+    case getBookmarkGym(keyword: String, limit: Int, skip: Int)
 }
 
 extension GymsAPI: BaseTargetType {
@@ -27,19 +28,21 @@ extension GymsAPI: BaseTargetType {
             return baseDetailGymRoutePath + "/\(id)"
         case .getDetailGymRecord(let id, _, _, _):
             return baseDetailGymRoutePath + "/\(id)" + "/records"
+        case .getBookmarkGym:
+            return baseDetailGymRoutePath + "/bookmark"
         }
     }
 
     var method: Moya.Method {
         switch self {
-        case .getGyms, .getLocationGyms, .getDetailGym, .getDetailGymRecord:
+        case .getGyms, .getLocationGyms, .getDetailGym, .getDetailGymRecord, .getBookmarkGym:
             return .get
         }
     }
 
     var task: Task {
         switch self {
-        case .getGyms(let keyword, let limit, let skip):
+        case .getGyms(let keyword, let limit, let skip), .getBookmarkGym(let keyword, let limit, let skip):
             return .requestParameters(parameters: [
                 "keyword": keyword,
                 "limit": limit,
