@@ -12,7 +12,7 @@ import RxSwift
 
 enum ClimbingGymError: Error {
     case GymSearchError
-    case detailGymError
+    case getBookmarkGymError
 }
 
 protocol ClimbingGymUseCase {

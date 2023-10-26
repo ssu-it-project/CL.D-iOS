@@ -9,10 +9,17 @@ import Foundation
 
 import RxSwift
 
+enum ClimbingGymDetailError: Error {
+    case getDetailGymError
+    case postBookmarkError
+    case deleteBookmarkError
+}
+
 protocol ClimbingGymDetailUseCase {
     func getDetailGym(id: String) -> Single<DetailGymVO>
     func getDetailGymRecord(id: String, keyword: String, limit: Int, skip: Int) -> Single<RecordListVO>
     func postBookmark(id: String) -> Single<Void>
+    func deleteBookmark(id: String) -> Single<Void>
 }
 
 final class DefaultClimbingGymDetailUseCase: ClimbingGymDetailUseCase {
@@ -35,5 +42,9 @@ final class DefaultClimbingGymDetailUseCase: ClimbingGymDetailUseCase {
     
     func postBookmark(id: String) -> Single<Void> {
         gymsRepository.postBookmark(id: id)
+    }
+    
+    func deleteBookmark(id: String) -> Single<Void> {
+        gymsRepository.deleteBookmark(id: id)
     }
 }
