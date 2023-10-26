@@ -10,6 +10,7 @@ import Foundation
 struct DetailGymVO {
     let date: DateClassVO
     let id: String
+    let isBookmarked: Bool
     let location: LocationVO
     let place: DetailPlaceVO
     let type: String

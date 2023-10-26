@@ -10,9 +10,16 @@ import Foundation
 struct DetailGymDTO: Decodable {
     let date: DateClassDTO
     let id: String
+    let isBookmarked: Bool
     let location: Location
     let place: DetailPlaceDTO
     let type: String
+    
+    enum CodingKeys: String, CodingKey {
+         case date, id
+         case isBookmarked = "is_bookmarked"
+         case location, place, type
+     }
 }
 
 struct DetailPlaceDTO: Decodable {
@@ -34,7 +41,7 @@ struct DetailPlaceDTO: Decodable {
 
 extension DetailGymDTO {
     func toDomain() -> DetailGymVO {
-        return DetailGymVO(date: date.toDomain(), id: id, location: location.toDomain(), place: place.toDomain(), type: type)
+        return DetailGymVO(date: date.toDomain(), id: id, location: location.toDomain(), place: place.toDomain(), type: type, isBookmarked: isBookmarked)
     }
 }
 
