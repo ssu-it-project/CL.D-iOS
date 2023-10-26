@@ -27,6 +27,7 @@ final class ClimbingGymDetailViewModel: ViewModelType {
     
     struct Input {
         let viewDidLoadEvent: Observable<Void>
+        let tapBookmark: Observable<Bool>
     }
     
     struct Output {
