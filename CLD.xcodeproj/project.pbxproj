@@ -116,6 +116,8 @@
 		5A3210222AA88A6A003A40BD /* RxViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A3210212AA88A6A003A40BD /* RxViewController+Extension.swift */; };
 		5A35E56D2AEA792A0074C8EC /* BookmarkGymsVO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A35E56C2AEA792A0074C8EC /* BookmarkGymsVO.swift */; };
 		5A35E56F2AEA7A080074C8EC /* BookmarkGymsDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A35E56E2AEA7A080074C8EC /* BookmarkGymsDTO.swift */; };
+		5A35E5722AEA80780074C8EC /* Differentiator in Frameworks */ = {isa = PBXBuildFile; productRef = 5A35E5712AEA80780074C8EC /* Differentiator */; };
+		5A35E5742AEA80780074C8EC /* RxDataSources in Frameworks */ = {isa = PBXBuildFile; productRef = 5A35E5732AEA80780074C8EC /* RxDataSources */; };
 		5A70B8B42AB43AD100506846 /* UIImageView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A70B8B32AB43AD100506846 /* UIImageView+.swift */; };
 		5A70B8B52AB4431000506846 /* PhotoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E2532E2A8A17DB00D3E9E1 /* PhotoCollectionViewCell.swift */; };
 		5A70B8B72AB4536700506846 /* LevelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A70B8B62AB4536700506846 /* LevelType.swift */; };
@@ -441,6 +443,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5A35E5722AEA80780074C8EC /* Differentiator in Frameworks */,
 				5A70B9652AB61BC200506846 /* libsqlite3.tbd in Frameworks */,
 				5A70B9632AB61BB000506846 /* libxml2.tbd in Frameworks */,
 				5A70B9612AB61B9B00506846 /* libc++.tbd in Frameworks */,
@@ -467,6 +470,7 @@
 				5A08711B2A65A85700947794 /* Kingfisher in Frameworks */,
 				0241775A2A6E5DA7006C3C4D /* KakaoSDKAuth in Frameworks */,
 				024509F52A6E6D7600F0DC76 /* RxRelay in Frameworks */,
+				5A35E5742AEA80780074C8EC /* RxDataSources in Frameworks */,
 				023C71512AACC52500CA095D /* LightCompressor in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1414,6 +1418,8 @@
 				5A21C68F2A9A7DBC00E7CC95 /* RxKakaoSDKCommon */,
 				5A21C6912A9A7DBC00E7CC95 /* RxKakaoSDKUser */,
 				023C71502AACC52500CA095D /* LightCompressor */,
+				5A35E5712AEA80780074C8EC /* Differentiator */,
+				5A35E5732AEA80780074C8EC /* RxDataSources */,
 			);
 			productName = CLD;
 			productReference = 5ACADCF62A5D988F00B92C07 /* CLD.app */;
@@ -1498,6 +1504,7 @@
 				02EB6E792A874E5100C749A6 /* XCRemoteSwiftPackageReference "Tabman" */,
 				5A21C68C2A9A7DBC00E7CC95 /* XCRemoteSwiftPackageReference "kakao-ios-sdk-rx" */,
 				023C714F2AACC52500CA095D /* XCRemoteSwiftPackageReference "LightCompressor_iOS" */,
+				5A35E5702AEA80780074C8EC /* XCRemoteSwiftPackageReference "RxDataSources" */,
 			);
 			productRefGroup = 5ACADCF72A5D988F00B92C07 /* Products */;
 			projectDirPath = "";
@@ -2156,6 +2163,14 @@
 				minimumVersion = 2.0.0;
 			};
 		};
+		5A35E5702AEA80780074C8EC /* XCRemoteSwiftPackageReference "RxDataSources" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/RxSwiftCommunity/RxDataSources";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
 		5A97A1212A91229F00264AB5 /* XCRemoteSwiftPackageReference "RxGesture" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/RxSwiftCommunity/RxGesture";
@@ -2256,6 +2271,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 5A21C68C2A9A7DBC00E7CC95 /* XCRemoteSwiftPackageReference "kakao-ios-sdk-rx" */;
 			productName = RxKakaoSDKUser;
+		};
+		5A35E5712AEA80780074C8EC /* Differentiator */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5A35E5702AEA80780074C8EC /* XCRemoteSwiftPackageReference "RxDataSources" */;
+			productName = Differentiator;
+		};
+		5A35E5732AEA80780074C8EC /* RxDataSources */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5A35E5702AEA80780074C8EC /* XCRemoteSwiftPackageReference "RxDataSources" */;
+			productName = RxDataSources;
 		};
 		5A97A1222A91229F00264AB5 /* RxGesture */ = {
 			isa = XCSwiftPackageProductDependency;
