@@ -33,6 +33,7 @@ final class ClimbingGymSearchViewModel: ViewModelType {
         let authorizationAlertShouldShow = BehaviorRelay<Bool>(value: false)
         let gyms = PublishRelay<GymsVO?>()
         let climbingGymData = PublishRelay<[ClimbingGymVO]>()
+        let bookmarkGym = PublishRelay<[BookmarkGymVO]>()
     }
     
     func transform(input: Input) -> Output {
@@ -46,7 +47,14 @@ final class ClimbingGymSearchViewModel: ViewModelType {
                 owner.useCase.checkAuthorization()
             })
             .disposed(by: disposeBag)
-                
+        
+        input.viewWillAppearEvent
+            .withUnretained(self)
+            .subscribe(onNext: { owner, _ in
+                owner.getBookmarkGym(keyword: "", limit: 20, skip: 0, output: output)
+            })
+            .disposed(by: disposeBag)
+        
         self.useCase.authorizationDeniedStatus
             .bind(to: output.authorizationAlertShouldShow)
             .disposed(by: disposeBag)
@@ -70,6 +78,19 @@ extension ClimbingGymSearchViewModel {
                 case .success(let value):
                     output.gyms.accept(value)
                     output.climbingGymData.accept(value.climbingGyms)
+                case .failure(let error):
+                    print(error.localizedDescription)
+                }
+            }
+            .disposed(by: disposeBag)
+    }
+    
+    private func getBookmarkGym(keyword: String, limit: Int, skip: Int, output: Output) {
+        useCase.getBookmarkGym(keyword: keyword, limit: limit, skip: skip)
+            .subscribe { response in
+                switch response {
+                case .success(let value):
+                    output.bookmarkGym.accept(value.climbingGyms)
                 case .failure(let error):
                     print(error.localizedDescription)
                 }
