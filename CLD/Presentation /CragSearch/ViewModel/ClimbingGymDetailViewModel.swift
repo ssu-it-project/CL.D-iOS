@@ -39,6 +39,7 @@ final class ClimbingGymDetailViewModel: ViewModelType {
         var latitude = PublishRelay<Double>()
         var longitude = PublishRelay<Double>()
         var kakaoMapPoint = PublishRelay<(Double, Double, String)>()
+        let bookmark = PublishRelay<Bool>()
     }
     
     var placeID = PublishRelay<String>()
@@ -52,6 +53,13 @@ final class ClimbingGymDetailViewModel: ViewModelType {
             .subscribe(onNext: { owner, _ in
                 owner.getDetailGym(id: owner.id, output: output)
                 owner.getDetailGymRecord(output: output)
+            })
+            .disposed(by: disposeBag)
+        
+        input.tapBookmark
+            .withUnretained(self)
+            .bind(onNext: { owner, bool in
+                print(bool)
             })
             .disposed(by: disposeBag)
         
@@ -84,6 +92,7 @@ extension ClimbingGymDetailViewModel {
                     output.gymTitle.accept(value.place.name)
                     output.latitude.accept(value.location.x)
                     output.longitude.accept(value.location.y)
+                    output.bookmark.accept(value.isBookmarked)
                     self?.placeID.accept(value.place.placeID)
                 case .failure(let error):
                     print(error.localizedDescription)
