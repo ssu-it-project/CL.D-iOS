@@ -15,7 +15,7 @@ enum ClimbingGymDetailError: Error {
     case deleteBookmarkError
 }
 
-protocol ClimbingGymDetailUseCase {
+protocol ClimbingGymDetailUseCase: AnyObject {
     func getDetailGym(id: String) -> Single<DetailGymVO>
     func getDetailGymRecord(id: String, keyword: String, limit: Int, skip: Int) -> Single<RecordListVO>
     func postBookmark(id: String) -> Single<Void>

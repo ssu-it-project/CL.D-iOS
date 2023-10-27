@@ -9,7 +9,7 @@ import Foundation
 
 import RxSwift
 
-protocol ClimbingGymVideoUseCase {
+protocol ClimbingGymVideoUseCase: AnyObject  {
     func getDetailGymRecord(id: String, keyword: String, limit: Int, skip: Int) -> Single<RecordListVO>
 }
 

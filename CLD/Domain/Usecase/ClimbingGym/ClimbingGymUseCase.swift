@@ -15,7 +15,7 @@ enum ClimbingGymError: Error {
     case getBookmarkGymError
 }
 
-protocol ClimbingGymUseCase {
+protocol ClimbingGymUseCase: AnyObject  {
     var authorizationDeniedStatus: PublishSubject<Bool> { get }
     var coodinate:  BehaviorSubject<CLLocationCoordinate2D> { get }
     
