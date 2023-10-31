@@ -11,8 +11,6 @@ import CoreLocation
 import RxRelay
 import RxSwift
 
-import Moya
-
 class HomeViewModel: ViewModelType {
     var disposeBag = DisposeBag()
     
