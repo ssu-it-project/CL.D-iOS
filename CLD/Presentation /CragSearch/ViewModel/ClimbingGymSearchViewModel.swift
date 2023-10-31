@@ -52,6 +52,7 @@ final class ClimbingGymSearchViewModel: ViewModelType {
             .disposed(by: disposeBag)
         
         input.viewWillAppearEvent
+            .observe(on: MainScheduler.asyncInstance)
             .withUnretained(self)
             .subscribe(onNext: { owner, _ in
                 owner.getBookmarkGym(keyword: "", limit: 20, skip: 0, output: output)
