@@ -63,7 +63,7 @@ final class ClimbingGymSearchViewModel: ViewModelType {
             .withUnretained(self)
             .subscribe(onNext: { owner, coodinate in
                 output.currentUserLocation.accept(coodinate)
-                owner.getLocationGyms(longitude: coodinate.latitude, latitude: coodinate.longitude, keyword: "", limit: 10, skip: 10, output: output)
+                owner.getLocationGyms(longitude: coodinate.latitude, latitude: coodinate.longitude, keyword: "", limit: 50, skip: 50, output: output)
             })
             .disposed(by: disposeBag)
         return output
