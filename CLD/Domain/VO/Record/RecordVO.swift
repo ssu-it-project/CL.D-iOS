@@ -20,7 +20,7 @@ struct RecordVO {
     let id, image, level: String
     let likeCount: Int
     let sector: String
-    let video: String
+    let video: VideoVO
     let viewCount: Int
 }
 
@@ -34,6 +34,10 @@ struct ClimbingGymInfoVO {
 
 struct DateClassVO {
     let created, modified: String
+}
+
+struct VideoVO: Decodable {
+    let original, resolution, video480: String
 }
 
 extension RecordVO: Equatable, Hashable {
