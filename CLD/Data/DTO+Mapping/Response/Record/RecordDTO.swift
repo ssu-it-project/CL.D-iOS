@@ -3,11 +3,6 @@ import Foundation
 struct RecordListDTO: Decodable {
     let pagination: Pagination
     let records: [RecordDTO]
-    
-    enum CodingKeys: String, CodingKey {
-         case pagination
-         case records = "Records"
-     }
 }
 
 struct RecordDTO: Decodable {
