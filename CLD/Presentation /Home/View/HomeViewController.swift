@@ -157,7 +157,7 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
         case .videoBanner:
             let cell: VideoCollectionViewCell = collectionView.dequeueReusableCell(forIndexPath: indexPath)
             let recordVO = viewModel.cellArrayInfo(index: indexPath.item)
-                cell.configureVideo(with: recordVO.video)
+            cell.configureVideo(with: recordVO.video.video480)
                 cell.configureCell(row: recordVO)
             
             return cell

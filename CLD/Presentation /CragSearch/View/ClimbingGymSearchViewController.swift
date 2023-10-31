@@ -49,7 +49,9 @@ final class ClimbingGymSearchViewController: BaseViewController {
     }
     
     override func Bind() {
-        let input = ClimbingGymSearchViewModel.Input(viewDidLoadEvent: Observable.just(()).asObservable(), viewWillAppearEvent: rx.viewWillAppear.map { _ in } )
+        let input = ClimbingGymSearchViewModel.Input(
+            viewDidLoadEvent: Observable.just(()).asObservable(),
+            viewWillAppearEvent: rx.viewWillAppear.map { _ in } )
         let output = viewModel.transform(input: input)
         
         output.authorizationAlertShouldShow
@@ -80,6 +82,13 @@ final class ClimbingGymSearchViewController: BaseViewController {
                 let detailViewController = ClimbingGymDetailViewController(viewModel: ClimbingGymDetailViewModel(id: item.id, useCase: DefaultClimbingGymDetailUseCase(gymsRepository: DefaultGymsRepository())))
                 self?.navigationController?.pushViewController(detailViewController, animated: true)
             }
+            .disposed(by: disposeBag)
+        
+        output.bookmarkGym
+            .withUnretained(self)
+            .bind(onNext: { owner , bookmarkGym in
+                print(bookmarkGym)
+            })
             .disposed(by: disposeBag)
     }
     

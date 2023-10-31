@@ -49,7 +49,7 @@ final class ClimbingGymVideoViewController: BaseViewController {
             .withUnretained(self)
             .subscribe(onNext: { owner, indexPath in
                 let data = owner.contentView.itemIdentifier(for: indexPath)
-                let playerViewController = PlayerViewController(url: data?.video ?? "")
+                let playerViewController = PlayerViewController(url: data?.video.video480 ?? "")
                 owner.navigationController?.pushViewController(playerViewController, animated: true)
             })
             .disposed(by: disposeBag)

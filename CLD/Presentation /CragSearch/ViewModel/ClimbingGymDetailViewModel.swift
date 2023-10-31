@@ -62,7 +62,6 @@ final class ClimbingGymDetailViewModel: ViewModelType {
             .withLatestFrom(output.bookmark)
             .withUnretained(self)
             .flatMap { owner, bookmark in
-                print(bookmark)
                 if bookmark {
                     return owner.useCase.postBookmark(id: owner.id)
                 } else {
@@ -128,7 +127,7 @@ extension ClimbingGymDetailViewModel {
                         output.recordVideoIsEmpty.accept(false)
                     }
                     let record = value.records
-                    output.recordVideoURL.accept(record[safe: 0]?.video ?? "")
+                    output.recordVideoURL.accept(record[safe: 0]?.video.original ?? "")
                     output.recordLevel.accept((record[safe: 0]?.level ?? "회색", record[safe: 0]?.sector ?? "CLD"))
                 case .failure(let error):
                     print(error.localizedDescription)
