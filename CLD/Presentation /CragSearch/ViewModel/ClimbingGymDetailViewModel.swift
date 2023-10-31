@@ -27,6 +27,7 @@ final class ClimbingGymDetailViewModel: ViewModelType {
     
     struct Input {
         let viewDidLoadEvent: Observable<Void>
+        let viewWillDisappearEvent: Observable<Void>
         let tapBookmark: Observable<Bool>
     }
     
@@ -39,10 +40,11 @@ final class ClimbingGymDetailViewModel: ViewModelType {
         var latitude = PublishRelay<Double>()
         var longitude = PublishRelay<Double>()
         var kakaoMapPoint = PublishRelay<(Double, Double, String)>()
-        let bookmark = PublishRelay<Bool>()
+        var bookmark = PublishRelay<Bool>()
     }
     
-    var placeID = PublishRelay<String>()
+    private var isBookmarked = false
+    private var placeIDRelay = PublishRelay<String>()
     var placeIDURL: String = ""
     
     func transform(input: Input) -> Output {
@@ -56,18 +58,35 @@ final class ClimbingGymDetailViewModel: ViewModelType {
             })
             .disposed(by: disposeBag)
         
-        input.tapBookmark
+        input.viewWillDisappearEvent
+            .withLatestFrom(output.bookmark)
             .withUnretained(self)
-            .bind(onNext: { owner, bool in
-                print(bool)
-            })
+            .flatMap { owner, bookmark in
+                print(bookmark)
+                if bookmark {
+                    return owner.useCase.postBookmark(id: owner.id)
+                } else {
+                    return owner.useCase.deleteBookmark(id: owner.id)
+                }
+            }
+            .subscribe()
+            .disposed(by: disposeBag)
+                
+        input.tapBookmark
+            .skip(1)
+            .withUnretained(self)
+            .map { owner, _ in
+                owner.isBookmarked.toggle()
+                return owner.isBookmarked
+            }
+            .bind(to: output.bookmark)
             .disposed(by: disposeBag)
         
         Observable.zip(output.latitude, output.longitude, output.gymTitle)
             .bind(to: output.kakaoMapPoint)
             .disposed(by: disposeBag)
-        
-        placeID
+                
+        placeIDRelay
             .map { placeID in
                 return URLConst.kakaoMap + placeID
             }
@@ -76,7 +95,6 @@ final class ClimbingGymDetailViewModel: ViewModelType {
                 owner.placeIDURL = placeURL
             })
             .disposed(by: disposeBag)
-                
         
         return output
     }
@@ -93,7 +111,7 @@ extension ClimbingGymDetailViewModel {
                     output.latitude.accept(value.location.x)
                     output.longitude.accept(value.location.y)
                     output.bookmark.accept(value.isBookmarked)
-                    self?.placeID.accept(value.place.placeID)
+                    self?.placeIDRelay.accept(value.place.placeID)
                 case .failure(let error):
                     print(error.localizedDescription)
                 }

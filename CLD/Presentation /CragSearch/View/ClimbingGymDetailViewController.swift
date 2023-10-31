@@ -14,8 +14,6 @@ final class ClimbingGymDetailViewController: BaseViewController {
     
     private let bookmarkButton: UIButton = {
         let button = UIButton()
-        button.setImage(ImageLiteral.bookMarkIcon, for: .normal)
-        button.setImage(ImageLiteral.fillBookMarkIcon, for: .selected)
         button.tintColor = .black
         return button
     }()
@@ -53,6 +51,7 @@ final class ClimbingGymDetailViewController: BaseViewController {
     override func Bind() {
         let input = ClimbingGymDetailViewModel.Input(
             viewDidLoadEvent: Observable.just(()).asObservable(),
+            viewWillDisappearEvent: rx.viewWillDisappear.map { _ in },
             tapBookmark: bookmarkButton.rx.isSelected.asObservable())
         let output = viewModel.transform(input: input)
         
@@ -99,9 +98,22 @@ final class ClimbingGymDetailViewController: BaseViewController {
                 owner.morevideoView.setLevelLabel(level: level, section: sector)
             }
             .disposed(by: disposeBag)
+        
+        output.bookmark
+            .withUnretained(self)
+            .bind(onNext: { owner, bool in
+                bool ? owner.bookmarkButton.setImage(ImageLiteral.fillBookMarkIcon, for: .normal) : owner.bookmarkButton.setImage(ImageLiteral.bookMarkIcon, for: .normal)
+            })
+            .disposed(by: disposeBag)
     }
     
     private func bindAction() {
+        bookmarkButton.rx.tap
+            .withUnretained(self)
+            .map { !$0.0.bookmarkButton.isSelected }
+            .bind(to: bookmarkButton.rx.isSelected)
+            .disposed(by: disposeBag)
+        
         morevideoView.videoButton.rx.tap
             .withUnretained(self)
             .bind { owner, _ in
