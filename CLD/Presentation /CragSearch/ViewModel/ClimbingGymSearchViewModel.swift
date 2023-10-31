@@ -26,6 +26,7 @@ final class ClimbingGymSearchViewModel: ViewModelType {
     struct Input {
         let viewDidLoadEvent: Observable<Void>
         let viewWillAppearEvent: Observable<Void>
+        let selectedSegmentIndex: Observable<Int>
     }
     
     struct Output {
@@ -34,6 +35,8 @@ final class ClimbingGymSearchViewModel: ViewModelType {
         let gyms = PublishRelay<GymsVO?>()
         let climbingGymData = PublishRelay<[ClimbingGymVO]>()
         let bookmarkGym = PublishRelay<[BookmarkGymVO]>()
+        let bookmarkTableViewIsHidden = BehaviorRelay<Bool>(value: true)
+        let climbingGymTableViewIsHidden = BehaviorRelay<Bool>(value: false)
     }
     
     func transform(input: Input) -> Output {
@@ -52,6 +55,19 @@ final class ClimbingGymSearchViewModel: ViewModelType {
             .withUnretained(self)
             .subscribe(onNext: { owner, _ in
                 owner.getBookmarkGym(keyword: "", limit: 20, skip: 0, output: output)
+            })
+            .disposed(by: disposeBag)
+        
+        input.selectedSegmentIndex
+            .withUnretained(self)
+            .bind(onNext: { owner, selectedSegmentIndex in
+                if selectedSegmentIndex == 0 {
+                    output.bookmarkTableViewIsHidden.accept(true)
+                    output.climbingGymTableViewIsHidden.accept(false)
+                } else {
+                    output.bookmarkTableViewIsHidden.accept(false)
+                    output.climbingGymTableViewIsHidden.accept(true)
+                }
             })
             .disposed(by: disposeBag)
         

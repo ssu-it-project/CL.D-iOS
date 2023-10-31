@@ -145,4 +145,12 @@ extension ClimbingGymTableViewCell {
         parkingAvailableBadge.isHidden = row.place.parking ? false : true
         locationLabel.text = row.location.distance
     }
+    
+    func configCell(row: BookmarkGymVO) {
+        titleLabel.text = row.place.name
+        addressLabel.text = row.place.addressName
+        gymImageView.setImage(urlString: row.place.imageURL, defaultImage: ImageLiteral.DefaultGymImage)
+        showerAvailableBadge.isHidden = row.place.shower ? false : true
+        parkingAvailableBadge.isHidden = row.place.parking ? false : true
+    }
 }
