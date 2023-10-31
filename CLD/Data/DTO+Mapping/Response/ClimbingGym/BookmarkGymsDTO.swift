@@ -10,6 +10,11 @@ import Foundation
 struct BookmarkGymsDTO: Decodable {
     let pagination: Pagination
     let climbingGyms: [BookmarkGymDTO]
+    
+    enum CodingKeys: String, CodingKey {
+        case climbingGyms = "climbing_gyms"
+        case pagination
+    }
 }
 
 struct BookmarkGymDTO: Decodable {
