@@ -164,6 +164,12 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
         }
     }
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let recordVO = viewModel.cellArrayInfo(index: indexPath.item)
+        let playerViewController = PlayerViewController(url: recordVO.video.video480)
+        self.navigationController?.pushViewController(playerViewController, animated: true)
+    }
+    
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let cells = collectionView.visibleCells
          let videoCells = cells.compactMap({ $0 as? VideoCollectionViewCell })
