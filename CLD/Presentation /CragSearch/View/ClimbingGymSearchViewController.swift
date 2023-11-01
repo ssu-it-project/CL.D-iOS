@@ -17,6 +17,7 @@ final class ClimbingGymSearchViewController: BaseViewController {
         let view = UISearchBar()
         view.placeholder = "검색"
         view.searchBarStyle = .minimal
+        view.showsCancelButton = true
         return view
     }()
     private let climbingGymSegmentControl: UISegmentedControl = {
@@ -53,13 +54,16 @@ final class ClimbingGymSearchViewController: BaseViewController {
         if #available(iOS 16.0, *) {
             self.navigationItem.leftBarButtonItem?.isHidden = true
         }
+        
+        bindAction()
     }
     
     override func Bind() {
         let input = ClimbingGymSearchViewModel.Input(
             viewDidLoadEvent: Observable.just(()).asObservable(),
             viewWillAppearEvent: rx.viewWillAppear.map { _ in },
-            selectedSegmentIndex: climbingGymSegmentControl.rx.selectedSegmentIndex.asObservable() )
+            selectedSegmentIndex: climbingGymSegmentControl.rx.selectedSegmentIndex.asObservable(),
+            searchText: searchBar.rx.text.orEmpty.asObservable().throttle(.milliseconds(300), scheduler: MainScheduler.instance).distinctUntilChanged())
         let output = viewModel.transform(input: input)
         
         output.authorizationAlertShouldShow
@@ -117,6 +121,19 @@ final class ClimbingGymSearchViewController: BaseViewController {
             }
             .disposed(by: disposeBag)
     }
+    
+    private func bindAction() {
+        Observable.merge(searchBar.rx.cancelButtonClicked.asObservable(), searchBar.rx.cancelButtonClicked.asObservable())
+            .withUnretained(self)
+            .bind(onNext: { owner, _ in
+                owner.searchBar.resignFirstResponder()
+            })
+            .disposed(by: disposeBag)
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?){
+         self.view.endEditing(true)
+   }
     
     override func setHierarchy() {
         [searchBar, climbingGymSegmentControl, climbingGymTableView, bookmarkTableView].forEach { view in
