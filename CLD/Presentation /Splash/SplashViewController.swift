@@ -20,6 +20,11 @@ final class SplashViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if #available(iOS 16.0, *) {
+            self.navigationItem.leftBarButtonItem?.isHidden = true
+        }
+        
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1) {
             let sceneDelegate = UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate
             guard let delegate = sceneDelegate else {
