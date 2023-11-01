@@ -59,7 +59,7 @@ final class HomeViewController: BaseViewController {
         
         output.homeRecordList
             .withUnretained(self)
-            .subscribe { owner, recordList in
+            .subscribe { owner, _ in
                 owner.collectionView.reloadData()
             }
             .disposed(by: disposeBag)
@@ -153,15 +153,22 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
         switch section {
         case .badgeSection:
             let cell: BadgeCollectionViewCell = collectionView.dequeueReusableCell(forIndexPath: indexPath)
+            cell.delegate = self
             return cell
         case .videoBanner:
             let cell: VideoCollectionViewCell = collectionView.dequeueReusableCell(forIndexPath: indexPath)
             let recordVO = viewModel.cellArrayInfo(index: indexPath.item)
-                cell.configureVideo(with: recordVO.video)
+            cell.configureVideo(with: recordVO.video.original)
                 cell.configureCell(row: recordVO)
             
             return cell
         }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let recordVO = viewModel.cellArrayInfo(index: indexPath.item)
+        let playerViewController = PlayerViewController(url: recordVO.video.original)
+        self.navigationController?.pushViewController(playerViewController, animated: true)
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
@@ -192,5 +199,11 @@ extension HomeViewController {
         for videoCell in videoCells {
             videoCell.playerView.pause()
         }
+    }
+}
+
+extension HomeViewController: TapBadgeButtonDelegate {
+    func badgeButtonTapped() {
+        self.presentAlert(title: "업데이트", message: "업데이트 이후 뱃지 정보를 제공 예정입니다. 양해부탁드립니다!", okButtonTitle: "확인")
     }
 }

@@ -67,6 +67,8 @@
 		02EB6E7B2A874E5100C749A6 /* Tabman in Frameworks */ = {isa = PBXBuildFile; productRef = 02EB6E7A2A874E5100C749A6 /* Tabman */; };
 		02EB6E7D2A88BC9B00C749A6 /* SuccessRecordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02EB6E7C2A88BC9B00C749A6 /* SuccessRecordView.swift */; };
 		02EB6E862A88C45A00C749A6 /* CALayer+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02EB6E852A88C45A00C749A6 /* CALayer+Extension.swift */; };
+		5A0406D52AF2582900A4BA84 /* UserAlgorithmRecordDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A0406D42AF2582900A4BA84 /* UserAlgorithmRecordDTO.swift */; };
+		5A0406D72AF258F000A4BA84 /* UserAlgorithmRecordVO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A0406D62AF258F000A4BA84 /* UserAlgorithmRecordVO.swift */; };
 		5A05DEED2AA8DE2E0050AD55 /* DefaultGymsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A05DEEC2AA8DE2E0050AD55 /* DefaultGymsRepository.swift */; };
 		5A05DEF12AA8E0560050AD55 /* GymsVO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A05DEF02AA8E0560050AD55 /* GymsVO.swift */; };
 		5A05DF432AAB038C0050AD55 /* DefaultHomeRecordRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A05DF422AAB038B0050AD55 /* DefaultHomeRecordRepository.swift */; };
@@ -114,6 +116,10 @@
 		5A32101E2AA87EE4003A40BD /* ClimbingGymUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A32101D2AA87EE4003A40BD /* ClimbingGymUseCase.swift */; };
 		5A3210202AA88218003A40BD /* ClimbingGymSearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A32101F2AA88218003A40BD /* ClimbingGymSearchViewModel.swift */; };
 		5A3210222AA88A6A003A40BD /* RxViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A3210212AA88A6A003A40BD /* RxViewController+Extension.swift */; };
+		5A35E56D2AEA792A0074C8EC /* BookmarkGymsVO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A35E56C2AEA792A0074C8EC /* BookmarkGymsVO.swift */; };
+		5A35E56F2AEA7A080074C8EC /* BookmarkGymsDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A35E56E2AEA7A080074C8EC /* BookmarkGymsDTO.swift */; };
+		5A35E5722AEA80780074C8EC /* Differentiator in Frameworks */ = {isa = PBXBuildFile; productRef = 5A35E5712AEA80780074C8EC /* Differentiator */; };
+		5A35E5742AEA80780074C8EC /* RxDataSources in Frameworks */ = {isa = PBXBuildFile; productRef = 5A35E5732AEA80780074C8EC /* RxDataSources */; };
 		5A70B8B42AB43AD100506846 /* UIImageView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A70B8B32AB43AD100506846 /* UIImageView+.swift */; };
 		5A70B8B52AB4431000506846 /* PhotoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E2532E2A8A17DB00D3E9E1 /* PhotoCollectionViewCell.swift */; };
 		5A70B8B72AB4536700506846 /* LevelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A70B8B62AB4536700506846 /* LevelType.swift */; };
@@ -279,6 +285,8 @@
 		02EB6E772A874D4D00C749A6 /* SelectPlaceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectPlaceViewController.swift; sourceTree = "<group>"; };
 		02EB6E7C2A88BC9B00C749A6 /* SuccessRecordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuccessRecordView.swift; sourceTree = "<group>"; };
 		02EB6E852A88C45A00C749A6 /* CALayer+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CALayer+Extension.swift"; sourceTree = "<group>"; };
+		5A0406D42AF2582900A4BA84 /* UserAlgorithmRecordDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAlgorithmRecordDTO.swift; sourceTree = "<group>"; };
+		5A0406D62AF258F000A4BA84 /* UserAlgorithmRecordVO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAlgorithmRecordVO.swift; sourceTree = "<group>"; };
 		5A05DEEC2AA8DE2E0050AD55 /* DefaultGymsRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultGymsRepository.swift; sourceTree = "<group>"; };
 		5A05DEF02AA8E0560050AD55 /* GymsVO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GymsVO.swift; sourceTree = "<group>"; };
 		5A05DF422AAB038B0050AD55 /* DefaultHomeRecordRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultHomeRecordRepository.swift; sourceTree = "<group>"; };
@@ -319,6 +327,8 @@
 		5A32101D2AA87EE4003A40BD /* ClimbingGymUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClimbingGymUseCase.swift; sourceTree = "<group>"; };
 		5A32101F2AA88218003A40BD /* ClimbingGymSearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClimbingGymSearchViewModel.swift; sourceTree = "<group>"; };
 		5A3210212AA88A6A003A40BD /* RxViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RxViewController+Extension.swift"; sourceTree = "<group>"; };
+		5A35E56C2AEA792A0074C8EC /* BookmarkGymsVO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkGymsVO.swift; sourceTree = "<group>"; };
+		5A35E56E2AEA7A080074C8EC /* BookmarkGymsDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkGymsDTO.swift; sourceTree = "<group>"; };
 		5A70B8B32AB43AD100506846 /* UIImageView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+.swift"; sourceTree = "<group>"; };
 		5A70B8B62AB4536700506846 /* LevelType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelType.swift; sourceTree = "<group>"; };
 		5A70B8B82AB459BC00506846 /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
@@ -437,6 +447,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5A35E5722AEA80780074C8EC /* Differentiator in Frameworks */,
 				5A70B9652AB61BC200506846 /* libsqlite3.tbd in Frameworks */,
 				5A70B9632AB61BB000506846 /* libxml2.tbd in Frameworks */,
 				5A70B9612AB61B9B00506846 /* libc++.tbd in Frameworks */,
@@ -463,6 +474,7 @@
 				5A08711B2A65A85700947794 /* Kingfisher in Frameworks */,
 				0241775A2A6E5DA7006C3C4D /* KakaoSDKAuth in Frameworks */,
 				024509F52A6E6D7600F0DC76 /* RxRelay in Frameworks */,
+				5A35E5742AEA80780074C8EC /* RxDataSources in Frameworks */,
 				023C71512AACC52500CA095D /* LightCompressor in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -653,6 +665,7 @@
 			children = (
 				5A05DEF02AA8E0560050AD55 /* GymsVO.swift */,
 				5A7E39B02AB21A9600143175 /* DetailGymVO.swift */,
+				5A35E56C2AEA792A0074C8EC /* BookmarkGymsVO.swift */,
 			);
 			path = ClimbingGym;
 			sourceTree = "<group>";
@@ -862,6 +875,7 @@
 			isa = PBXGroup;
 			children = (
 				5A7E398C2AB0DCAC00143175 /* RecordVO.swift */,
+				5A0406D62AF258F000A4BA84 /* UserAlgorithmRecordVO.swift */,
 			);
 			path = Record;
 			sourceTree = "<group>";
@@ -887,6 +901,7 @@
 			children = (
 				5A7E39AB2AB2188600143175 /* DetailGymDTO.swift */,
 				02B655362AA5D66600E4AC4F /* GetGymsDTO.swift */,
+				5A35E56E2AEA7A080074C8EC /* BookmarkGymsDTO.swift */,
 			);
 			path = ClimbingGym;
 			sourceTree = "<group>";
@@ -903,6 +918,7 @@
 			isa = PBXGroup;
 			children = (
 				5A05DF442AAB04C40050AD55 /* RecordDTO.swift */,
+				5A0406D42AF2582900A4BA84 /* UserAlgorithmRecordDTO.swift */,
 			);
 			path = Record;
 			sourceTree = "<group>";
@@ -1408,6 +1424,8 @@
 				5A21C68F2A9A7DBC00E7CC95 /* RxKakaoSDKCommon */,
 				5A21C6912A9A7DBC00E7CC95 /* RxKakaoSDKUser */,
 				023C71502AACC52500CA095D /* LightCompressor */,
+				5A35E5712AEA80780074C8EC /* Differentiator */,
+				5A35E5732AEA80780074C8EC /* RxDataSources */,
 			);
 			productName = CLD;
 			productReference = 5ACADCF62A5D988F00B92C07 /* CLD.app */;
@@ -1492,6 +1510,7 @@
 				02EB6E792A874E5100C749A6 /* XCRemoteSwiftPackageReference "Tabman" */,
 				5A21C68C2A9A7DBC00E7CC95 /* XCRemoteSwiftPackageReference "kakao-ios-sdk-rx" */,
 				023C714F2AACC52500CA095D /* XCRemoteSwiftPackageReference "LightCompressor_iOS" */,
+				5A35E5702AEA80780074C8EC /* XCRemoteSwiftPackageReference "RxDataSources" */,
 			);
 			productRefGroup = 5ACADCF72A5D988F00B92C07 /* Products */;
 			projectDirPath = "";
@@ -1616,12 +1635,14 @@
 				5ADED1D22A6838C400C0CBF4 /* CommunityViewController.swift in Sources */,
 				02CCDD6D2A9F61A500301ABF /* ErrorResponse.swift in Sources */,
 				5AEFAAE92A8E3E5E00A67C43 /* CLDButton.swift in Sources */,
+				5A0406D72AF258F000A4BA84 /* UserAlgorithmRecordVO.swift in Sources */,
 				5ADED1BF2A679FB100C0CBF4 /* UIImage+Extension.swift in Sources */,
 				5A7E39992AB1467600143175 /* HomeRecordUseCase.swift in Sources */,
 				5AEFAAA02A8B966900A67C43 /* TermsViewController.swift in Sources */,
 				5A70B8C52AB57D5600506846 /* BaseView.swift in Sources */,
 				5A7E39B82AB22DBF00143175 /* ClimbingGymDetailUseCase.swift in Sources */,
 				5A21C6942A9B6D4E00E7CC95 /* SignInRequest.swift in Sources */,
+				5A35E56D2AEA792A0074C8EC /* BookmarkGymsVO.swift in Sources */,
 				5A21C6792A9A009000E7CC95 /* AuthAPI.swift in Sources */,
 				5A70B96D2AB6F11100506846 /* PlayerViewController.swift in Sources */,
 				5A21C65A2A98FAEC00E7CC95 /* BaseTargetType.swift in Sources */,
@@ -1670,6 +1691,7 @@
 				5A70B8B92AB459BC00506846 /* String+Extension.swift in Sources */,
 				020D986E2AB730AB00318C3E /* RobotoFont.swift in Sources */,
 				5A1C488D2A76C49200CC345A /* BadgeCollectionViewCell.swift in Sources */,
+				5A0406D52AF2582900A4BA84 /* UserAlgorithmRecordDTO.swift in Sources */,
 				02CCDD692A9F614B00301ABF /* NetworkResult.swift in Sources */,
 				5A97A1652A93848F00264AB5 /* TermsCheckListView.swift in Sources */,
 				5ADED1BB2A67929500C0CBF4 /* BaseViewController.swift in Sources */,
@@ -1691,6 +1713,7 @@
 				5A21C6552A98F7B900E7CC95 /* UserDefault.swift in Sources */,
 				5A3210072AA649D6003A40BD /* LevelBadge.swift in Sources */,
 				5A21C69C2A9B8C2200E7CC95 /* RootHandler.swift in Sources */,
+				5A35E56F2AEA7A080074C8EC /* BookmarkGymsDTO.swift in Sources */,
 				5A21C69A2A9B758700E7CC95 /* SignInViewModel.swift in Sources */,
 				5A21C6832A9A3E8B00E7CC95 /* CommonMoyaProvider.swift in Sources */,
 				5A70B8BF2AB4BFC300506846 /* Collection+.swift in Sources */,
@@ -1878,7 +1901,7 @@
 				CLANG_ENABLE_OBJC_ARC = NO;
 				CODE_SIGN_ENTITLEMENTS = CLD/CLD.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 1.0.1;
 				DEVELOPMENT_TEAM = 8LJ2P85FNV;
 				ENABLE_TESTING_SEARCH_PATHS = NO;
 				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = arm64;
@@ -1888,6 +1911,7 @@
 				);
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = CLD/App/Support/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "클디";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "사용자의 위치는 현재 사용자의 위치를 바탕으로 가까운 클라이밍장을 찾는데 사용됩니다.";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "동영상 업로드를 위해 사진첩 접근이 필요합니다. 허용해주세요.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -1901,14 +1925,14 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ios.CLD;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_OBJC_BRIDGING_HEADER = "/Users/joeun/Desktop/CLD/cl-d-iOS/CLD/KakaoBridgeHeader.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "/Users/kimkyuchul/Desktop/cl-d-iOS/CLD/KakaoBridgeHeader.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -1922,7 +1946,7 @@
 				CLANG_ENABLE_OBJC_ARC = NO;
 				CODE_SIGN_ENTITLEMENTS = CLD/CLD.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 1.0.1;
 				DEVELOPMENT_TEAM = 8LJ2P85FNV;
 				ENABLE_TESTING_SEARCH_PATHS = NO;
 				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = arm64;
@@ -1932,6 +1956,7 @@
 				);
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = CLD/App/Support/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "클디";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "사용자의 위치는 현재 사용자의 위치를 바탕으로 가까운 클라이밍장을 찾는데 사용됩니다.";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "동영상 업로드를 위해 사진첩 접근이 필요합니다. 허용해주세요.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -1945,14 +1970,14 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ios.CLD;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_OBJC_BRIDGING_HEADER = "/Users/joeun/Desktop/CLD/cl-d-iOS/CLD/KakaoBridgeHeader.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "/Users/kimkyuchul/Desktop/cl-d-iOS/CLD/KakaoBridgeHeader.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -2148,6 +2173,14 @@
 				minimumVersion = 2.0.0;
 			};
 		};
+		5A35E5702AEA80780074C8EC /* XCRemoteSwiftPackageReference "RxDataSources" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/RxSwiftCommunity/RxDataSources";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
 		5A97A1212A91229F00264AB5 /* XCRemoteSwiftPackageReference "RxGesture" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/RxSwiftCommunity/RxGesture";
@@ -2248,6 +2281,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 5A21C68C2A9A7DBC00E7CC95 /* XCRemoteSwiftPackageReference "kakao-ios-sdk-rx" */;
 			productName = RxKakaoSDKUser;
+		};
+		5A35E5712AEA80780074C8EC /* Differentiator */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5A35E5702AEA80780074C8EC /* XCRemoteSwiftPackageReference "RxDataSources" */;
+			productName = Differentiator;
+		};
+		5A35E5732AEA80780074C8EC /* RxDataSources */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5A35E5702AEA80780074C8EC /* XCRemoteSwiftPackageReference "RxDataSources" */;
+			productName = RxDataSources;
 		};
 		5A97A1222A91229F00264AB5 /* RxGesture */ = {
 			isa = XCSwiftPackageProductDependency;

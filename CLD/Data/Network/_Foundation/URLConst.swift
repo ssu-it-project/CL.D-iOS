@@ -6,7 +6,7 @@
 //
 
 enum URLConst {
-    static let base = "https://cl-d.com"
+    static let base = "https://cl-d.com/api"
     static let kakaoMap = "kakaomap://place?id="
 
     static let auth = "/auth"

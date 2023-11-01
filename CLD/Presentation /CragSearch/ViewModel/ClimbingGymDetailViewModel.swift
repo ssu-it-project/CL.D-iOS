@@ -27,6 +27,8 @@ final class ClimbingGymDetailViewModel: ViewModelType {
     
     struct Input {
         let viewDidLoadEvent: Observable<Void>
+        let viewWillDisappearEvent: Observable<Void>
+        let tapBookmark: Observable<Bool>
     }
     
     struct Output {
@@ -38,9 +40,11 @@ final class ClimbingGymDetailViewModel: ViewModelType {
         var latitude = PublishRelay<Double>()
         var longitude = PublishRelay<Double>()
         var kakaoMapPoint = PublishRelay<(Double, Double, String)>()
+        var bookmark = PublishRelay<Bool>()
     }
     
-    var placeID = PublishRelay<String>()
+    private var isBookmarked = false
+    private var placeIDRelay = PublishRelay<String>()
     var placeIDURL: String = ""
     
     func transform(input: Input) -> Output {
@@ -54,11 +58,34 @@ final class ClimbingGymDetailViewModel: ViewModelType {
             })
             .disposed(by: disposeBag)
         
+        input.viewWillDisappearEvent
+            .withLatestFrom(output.bookmark)
+            .withUnretained(self)
+            .flatMap { owner, bookmark in
+                if bookmark {
+                    return owner.useCase.postBookmark(id: owner.id)
+                } else {
+                    return owner.useCase.deleteBookmark(id: owner.id)
+                }
+            }
+            .subscribe()
+            .disposed(by: disposeBag)
+                
+        input.tapBookmark
+            .skip(1)
+            .withUnretained(self)
+            .map { owner, _ in
+                owner.isBookmarked.toggle()
+                return owner.isBookmarked
+            }
+            .bind(to: output.bookmark)
+            .disposed(by: disposeBag)
+        
         Observable.zip(output.latitude, output.longitude, output.gymTitle)
             .bind(to: output.kakaoMapPoint)
             .disposed(by: disposeBag)
-        
-        placeID
+                
+        placeIDRelay
             .map { placeID in
                 return URLConst.kakaoMap + placeID
             }
@@ -67,7 +94,6 @@ final class ClimbingGymDetailViewModel: ViewModelType {
                 owner.placeIDURL = placeURL
             })
             .disposed(by: disposeBag)
-                
         
         return output
     }
@@ -83,7 +109,8 @@ extension ClimbingGymDetailViewModel {
                     output.gymTitle.accept(value.place.name)
                     output.latitude.accept(value.location.x)
                     output.longitude.accept(value.location.y)
-                    self?.placeID.accept(value.place.placeID)
+                    output.bookmark.accept(value.isBookmarked)
+                    self?.placeIDRelay.accept(value.place.placeID)
                 case .failure(let error):
                     print(error.localizedDescription)
                 }
@@ -100,7 +127,7 @@ extension ClimbingGymDetailViewModel {
                         output.recordVideoIsEmpty.accept(false)
                     }
                     let record = value.records
-                    output.recordVideoURL.accept(record[safe: 0]?.video ?? "")
+                    output.recordVideoURL.accept(record[safe: 0]?.video.original ?? "")
                     output.recordLevel.accept((record[safe: 0]?.level ?? "회색", record[safe: 0]?.sector ?? "CLD"))
                 case .failure(let error):
                     print(error.localizedDescription)

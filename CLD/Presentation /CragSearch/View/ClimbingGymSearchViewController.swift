@@ -9,6 +9,7 @@ import UIKit
 
 import RxSwift
 import RxCocoa
+import RxDataSources
 
 final class ClimbingGymSearchViewController: BaseViewController {
     
@@ -16,6 +17,7 @@ final class ClimbingGymSearchViewController: BaseViewController {
         let view = UISearchBar()
         view.placeholder = "검색"
         view.searchBarStyle = .minimal
+        view.showsCancelButton = true
         return view
     }()
     private let climbingGymSegmentControl: UISegmentedControl = {
@@ -24,6 +26,13 @@ final class ClimbingGymSearchViewController: BaseViewController {
         return segment
     }()
     private lazy var climbingGymTableView: UITableView = {
+        let view = UITableView()
+        view.rowHeight = 120
+        view.showsVerticalScrollIndicator = false
+        view.register(ClimbingGymTableViewCell.self, forCellReuseIdentifier: "ClimbingGymTableViewCell")
+        return view
+    }()
+    private lazy var bookmarkTableView: UITableView = {
         let view = UITableView()
         view.rowHeight = 120
         view.showsVerticalScrollIndicator = false
@@ -45,10 +54,16 @@ final class ClimbingGymSearchViewController: BaseViewController {
         if #available(iOS 16.0, *) {
             self.navigationItem.leftBarButtonItem?.isHidden = true
         }
+        
+        bindAction()
     }
     
     override func Bind() {
-        let input = ClimbingGymSearchViewModel.Input(viewDidLoadEvent: Observable.just(()).asObservable(), viewWillAppearEvent: rx.viewWillAppear.map { _ in } )
+        let input = ClimbingGymSearchViewModel.Input(
+            viewDidLoadEvent: Observable.just(()).asObservable(),
+            viewWillAppearEvent: rx.viewWillAppear.map { _ in },
+            selectedSegmentIndex: climbingGymSegmentControl.rx.selectedSegmentIndex.asObservable(),
+            searchText: searchBar.rx.text.orEmpty.asObservable().throttle(.milliseconds(300), scheduler: MainScheduler.instance).distinctUntilChanged())
         let output = viewModel.transform(input: input)
         
         output.authorizationAlertShouldShow
@@ -74,7 +89,32 @@ final class ClimbingGymSearchViewController: BaseViewController {
             }
             .disposed(by: disposeBag)
         
+        let bookmarkGym = output.bookmarkGym.asDriver(onErrorJustReturn: [])
+        
+        bookmarkGym
+            .drive(bookmarkTableView.rx.items) { tableView, index, gym in
+                guard let cell = tableView.dequeueReusableCell(withIdentifier: "ClimbingGymTableViewCell", for: IndexPath(row: index, section: 0)) as? ClimbingGymTableViewCell else { return UITableViewCell() }
+                cell.configCell(row: gym)
+                return cell
+            }
+            .disposed(by: disposeBag)
+        
+        output.bookmarkTableViewIsHidden
+            .bind(to: bookmarkTableView.rx.isHidden)
+            .disposed(by: disposeBag)
+        
+        output.climbingGymTableViewIsHidden
+            .bind(to: climbingGymTableView.rx.isHidden)
+            .disposed(by: disposeBag)
+        
         Observable.zip(climbingGymTableView.rx.modelSelected(ClimbingGymVO.self), climbingGymTableView.rx.itemSelected)
+            .bind { [weak self] ( item, indexPath) in
+                let detailViewController = ClimbingGymDetailViewController(viewModel: ClimbingGymDetailViewModel(id: item.id, useCase: DefaultClimbingGymDetailUseCase(gymsRepository: DefaultGymsRepository())))
+                self?.navigationController?.pushViewController(detailViewController, animated: true)
+            }
+            .disposed(by: disposeBag)
+        
+        Observable.zip(bookmarkTableView.rx.modelSelected(BookmarkGymVO.self), bookmarkTableView.rx.itemSelected)
             .bind { [weak self] ( item, indexPath) in
                 let detailViewController = ClimbingGymDetailViewController(viewModel: ClimbingGymDetailViewModel(id: item.id, useCase: DefaultClimbingGymDetailUseCase(gymsRepository: DefaultGymsRepository())))
                 self?.navigationController?.pushViewController(detailViewController, animated: true)
@@ -82,8 +122,21 @@ final class ClimbingGymSearchViewController: BaseViewController {
             .disposed(by: disposeBag)
     }
     
+    private func bindAction() {
+        Observable.merge(searchBar.rx.cancelButtonClicked.asObservable(), searchBar.rx.cancelButtonClicked.asObservable())
+            .withUnretained(self)
+            .bind(onNext: { owner, _ in
+                owner.searchBar.resignFirstResponder()
+            })
+            .disposed(by: disposeBag)
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?){
+         self.view.endEditing(true)
+   }
+    
     override func setHierarchy() {
-        [searchBar, climbingGymSegmentControl, climbingGymTableView].forEach { view in
+        [searchBar, climbingGymSegmentControl, climbingGymTableView, bookmarkTableView].forEach { view in
             self.view.addSubview(view)
         }
     }
@@ -102,6 +155,12 @@ final class ClimbingGymSearchViewController: BaseViewController {
         }
         
         climbingGymTableView.snp.makeConstraints { make in
+            make.top.equalTo(climbingGymSegmentControl.snp.bottom).offset(16)
+            make.leading.trailing.equalToSuperview().inset(20)
+            make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom)
+        }
+        
+        bookmarkTableView.snp.makeConstraints { make in
             make.top.equalTo(climbingGymSegmentControl.snp.bottom).offset(16)
             make.leading.trailing.equalToSuperview().inset(20)
             make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom)

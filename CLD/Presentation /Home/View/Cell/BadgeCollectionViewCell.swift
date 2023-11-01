@@ -7,9 +7,13 @@
 
 import UIKit
 
-import SnapKit
 import RxSwift
 import RxCocoa
+
+
+protocol TapBadgeButtonDelegate: AnyObject {
+    func badgeButtonTapped()
+}
 
 final class BadgeCollectionViewCell: UICollectionViewCell {
     
@@ -44,7 +48,7 @@ final class BadgeCollectionViewCell: UICollectionViewCell {
         let UILabel = UILabel()
         UILabel.font = .systemFont(ofSize: 11)
         UILabel.textColor = .CLDDarkGray
-        UILabel.text = "돌잡이 중 10% 획득"
+        UILabel.text = "돌잡이 중 0% 획득"
         return UILabel
     }()
     private let titleStackView: UIStackView = {
@@ -71,7 +75,7 @@ final class BadgeCollectionViewCell: UICollectionViewCell {
     private lazy var badgeInfoButton: UIButton = {
         var configuration = UIButton.Configuration.plain()
         configuration.buttonSize = .mini
-        configuration.title = "12"
+        configuration.title = "0"
         configuration.image = ImageLiteral.badgeInfoIcon.withRenderingMode(.alwaysTemplate)
         configuration.baseForegroundColor = .CLDGold
         configuration.imagePadding = 3
@@ -90,15 +94,28 @@ final class BadgeCollectionViewCell: UICollectionViewCell {
         return UILabel
     }()
     
+    weak var delegate: TapBadgeButtonDelegate?
+    private var disposeBag = DisposeBag()
+    
     override init(frame: CGRect) {
         super.init(frame: .zero)
         setHierarchy()
         setConstraints()
         setViewProperty()
+        bind()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    private func bind() {
+        badgeInfoButton.rx.tap
+            .withUnretained(self)
+            .bind(onNext: { owner, _ in
+                owner.delegate?.badgeButtonTapped()
+            })
+            .disposed(by: disposeBag)
     }
     
     private func setHierarchy() {

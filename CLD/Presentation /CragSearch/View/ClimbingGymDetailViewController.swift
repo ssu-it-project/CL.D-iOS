@@ -12,6 +12,11 @@ import RxCocoa
 
 final class ClimbingGymDetailViewController: BaseViewController {
     
+    private let bookmarkButton: UIButton = {
+        let button = UIButton()
+        button.tintColor = .black
+        return button
+    }()
     private let scrollView: UIScrollView = {
         let scrollView = UIScrollView()
         scrollView.showsVerticalScrollIndicator = false
@@ -44,7 +49,10 @@ final class ClimbingGymDetailViewController: BaseViewController {
     }
     
     override func Bind() {
-        let input = ClimbingGymDetailViewModel.Input(viewDidLoadEvent: Observable.just(()).asObservable())
+        let input = ClimbingGymDetailViewModel.Input(
+            viewDidLoadEvent: Observable.just(()).asObservable(),
+            viewWillDisappearEvent: rx.viewWillDisappear.map { _ in },
+            tapBookmark: bookmarkButton.rx.isSelected.asObservable())
         let output = viewModel.transform(input: input)
         
         output.placeVO
@@ -90,9 +98,22 @@ final class ClimbingGymDetailViewController: BaseViewController {
                 owner.morevideoView.setLevelLabel(level: level, section: sector)
             }
             .disposed(by: disposeBag)
+        
+        output.bookmark
+            .withUnretained(self)
+            .bind(onNext: { owner, bool in
+                bool ? owner.bookmarkButton.setImage(ImageLiteral.fillBookMarkIcon, for: .normal) : owner.bookmarkButton.setImage(ImageLiteral.bookMarkIcon, for: .normal)
+            })
+            .disposed(by: disposeBag)
     }
     
     private func bindAction() {
+        bookmarkButton.rx.tap
+            .withUnretained(self)
+            .map { !$0.0.bookmarkButton.isSelected }
+            .bind(to: bookmarkButton.rx.isSelected)
+            .disposed(by: disposeBag)
+        
         morevideoView.videoButton.rx.tap
             .withUnretained(self)
             .bind { owner, _ in
@@ -105,9 +126,8 @@ final class ClimbingGymDetailViewController: BaseViewController {
     
     override func setupNavigationBar() {
         super.setupNavigationBar()
-        let bookMarkBarButtonItem = UIBarButtonItem(image: ImageLiteral.bookMarkIcon, style: .plain, target: self, action: nil)
-        bookMarkBarButtonItem.tintColor = .CLDBlack
-        self.navigationItem.rightBarButtonItem = bookMarkBarButtonItem
+        let customBarButton = UIBarButtonItem(customView: bookmarkButton)
+        self.navigationItem.rightBarButtonItem = customBarButton
     }
     
     override func setHierarchy() {
@@ -156,3 +176,4 @@ extension ClimbingGymDetailViewController: MTMapViewDelegate {
         }
     }
 }
+

@@ -11,6 +11,7 @@ import Moya
 
 enum RecordAPI {
     case getRecord(limit: Int, skip: Int)
+    case getUserAlgorithmRecord(limit: Int)
 }
 
 extension RecordAPI: BaseTargetType {
@@ -19,12 +20,13 @@ extension RecordAPI: BaseTargetType {
         
         switch self {
         case .getRecord: return baseRecordRoutePath + "/records"
+        case .getUserAlgorithmRecord: return baseRecordRoutePath + "/record/next"
         }
     }
     
     var method: Moya.Method {
         switch self {
-        case .getRecord: return .get
+        case .getRecord, .getUserAlgorithmRecord: return .get
         }
     }
     
@@ -34,6 +36,10 @@ extension RecordAPI: BaseTargetType {
             return .requestParameters(parameters: [
                 "limit": limit,
                 "skip": skip
+            ], encoding: URLEncoding.default)
+        case .getUserAlgorithmRecord(limit: let limit):
+            return .requestParameters(parameters: [
+                "limit": limit
             ], encoding: URLEncoding.default)
         }
     }

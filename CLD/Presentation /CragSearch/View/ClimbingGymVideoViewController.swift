@@ -38,7 +38,6 @@ final class ClimbingGymVideoViewController: BaseViewController {
         output.recordListVO
             .withUnretained(self)
             .bind { owner, recordListVO in
-                print("==========", recordListVO)
                 owner.contentView.applyCollectionViewDataSource(by: recordListVO)
             }
             .disposed(by: disposeBag)
@@ -49,7 +48,7 @@ final class ClimbingGymVideoViewController: BaseViewController {
             .withUnretained(self)
             .subscribe(onNext: { owner, indexPath in
                 let data = owner.contentView.itemIdentifier(for: indexPath)
-                let playerViewController = PlayerViewController(url: data?.video ?? "")
+                let playerViewController = PlayerViewController(url: data?.video.video480 ?? "")
                 owner.navigationController?.pushViewController(playerViewController, animated: true)
             })
             .disposed(by: disposeBag)

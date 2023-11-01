@@ -15,6 +15,7 @@ enum RecordError: Error {
 
 protocol HomeRecordUseCase {
     func getHomeRecords(limit: Int, skip: Int) -> Single<RecordListVO>
+    func getUserAlgorithmRecord(limit: Int) -> Single<UserAlgorithmRecordVO>
 }
 
 
@@ -30,5 +31,9 @@ final class DefaultHomeRecordUseCase: HomeRecordUseCase {
     
     func getHomeRecords(limit: Int, skip: Int) -> Single<RecordListVO> {
         homeRecordRepository.getRecords(limit: limit, skip: skip)
+    }
+    
+    func getUserAlgorithmRecord(limit: Int) -> Single<UserAlgorithmRecordVO> {
+        homeRecordRepository.getUserAlgorithmRecord(limit: limit)
     }
 }
