@@ -97,7 +97,7 @@ final class SuccessRecordView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     func setHierarchy() {
-        addSubviews(titleLabel,thumbnailView,successLabel,gotoButton)
+        addSubviews(titleLabel,thumbnailView,successLabel)
         thumbnailView.addSubviews(playIcon,labelBackground)
         labelBackground.addSubview(timeLabel)
     }
@@ -137,11 +137,11 @@ final class SuccessRecordView: UIView {
 //            $0.height.equalTo(40)
 //            $0.centerX.equalToSuperview()
 //        }
-        gotoButton.snp.makeConstraints {
-            $0.top.equalTo(successLabel.snp.bottom).offset(132)
-            $0.width.equalTo(340)
-            $0.height.equalTo(40)
-            $0.centerX.equalToSuperview()
-        }
+//        gotoButton.snp.makeConstraints {
+//            $0.top.equalTo(successLabel.snp.bottom).offset(132)
+//            $0.width.equalTo(340)
+//            $0.height.equalTo(40)
+//            $0.centerX.equalToSuperview()
+//        }
     }
 }

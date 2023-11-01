@@ -187,7 +187,13 @@ extension SelectVideoViewController : UICollectionViewDelegate, UICollectionView
                                       UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if (self.fetchResult?.count == nil) {
+        print("====: \(self.fetchResult!.count)")
+        print("====video: \(videos.count)")
+        if (self.fetchResult!.count == 0) {
+            selectCollectionView.setEmptyMessage("""
+                                                갤러리에 동영상이 없습니다.
+                                                동영상을 찍고 다시 등반을 기록해주세요.
+                                                """)
             return 0
         } else {
             if (videos.count >= 12) {

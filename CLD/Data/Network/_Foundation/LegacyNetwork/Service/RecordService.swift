@@ -16,8 +16,9 @@ struct PostRecordService {
                     sector: String,
                     level: String,
                     video: URL,
+                    resolution: String,
                     completion: @escaping (NetworkResult<Any>) -> Void) {
-        let url = URL(string: "https://cl-d.com/clime/record")! // 실제 서버 URL로 교체해야 합니다.
+        let url = URL(string: "https://cl-d.com/api/clime/record")!
         let header: HTTPHeaders = [ "Content-Type": "multipart/form-data",
                                     "Authorization": "Bearer \(UserDefaultHandler.accessToken)"]
         let parameters: [String: Any] = [
@@ -25,7 +26,8 @@ struct PostRecordService {
             "content": content,
             "sector": sector,
             "level": level,
-            "video": video
+            "video": video,
+            "resolution": resolution
         ]
 
         print("===video: \(video)")

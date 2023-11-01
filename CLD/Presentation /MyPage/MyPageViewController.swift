@@ -84,7 +84,7 @@ extension MyPageViewController : UICollectionViewDelegate, UICollectionViewDeleg
             cell.delegatePushVideo = self
             let date = data_All[indexPath.row].historyDate.split(separator: "T")
             if (data_All[indexPath.row].type == "record"){
-                cell.badgeImageView.image = ImageLiteral.holderBlue
+                cell.badgeImageView.setImage(urlString: data_All[indexPath.row].record.holdIcon, defaultImage: ImageLiteral.holderBlue)
                 cell.titleLabel.text = data_All[indexPath.row].record.gymName
                 cell.titleLabel.textColor = .CLDBlack
                 cell.dateLabel.text = "\(date[0]) | 섹터 \(data_All[indexPath.row].record.sector) | \(data_All[indexPath.row].record.level)"

@@ -26,13 +26,8 @@ class CommunityViewController: BaseViewController {
     }
 
     override func setHierarchy() {
-        self.view.addSubview(CommunityLabel)
     }
 
     override func setConstraints() {
-        CommunityLabel.snp.makeConstraints {
-            $0.top.equalToSuperview().inset(200)
-            $0.centerX.equalToSuperview()
-        }
     }
 }
