@@ -59,7 +59,7 @@ final class HomeViewController: BaseViewController {
         
         output.homeRecordList
             .withUnretained(self)
-            .subscribe { owner, recordList in
+            .subscribe { owner, _ in
                 owner.collectionView.reloadData()
             }
             .disposed(by: disposeBag)
@@ -158,7 +158,7 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
         case .videoBanner:
             let cell: VideoCollectionViewCell = collectionView.dequeueReusableCell(forIndexPath: indexPath)
             let recordVO = viewModel.cellArrayInfo(index: indexPath.item)
-            cell.configureVideo(with: recordVO.video.video480)
+            cell.configureVideo(with: recordVO.video.original)
                 cell.configureCell(row: recordVO)
             
             return cell
@@ -167,7 +167,7 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let recordVO = viewModel.cellArrayInfo(index: indexPath.item)
-        let playerViewController = PlayerViewController(url: recordVO.video.video480)
+        let playerViewController = PlayerViewController(url: recordVO.video.original)
         self.navigationController?.pushViewController(playerViewController, animated: true)
     }
     
