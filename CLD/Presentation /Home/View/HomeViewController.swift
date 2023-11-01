@@ -153,6 +153,7 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
         switch section {
         case .badgeSection:
             let cell: BadgeCollectionViewCell = collectionView.dequeueReusableCell(forIndexPath: indexPath)
+            cell.delegate = self
             return cell
         case .videoBanner:
             let cell: VideoCollectionViewCell = collectionView.dequeueReusableCell(forIndexPath: indexPath)
@@ -198,5 +199,11 @@ extension HomeViewController {
         for videoCell in videoCells {
             videoCell.playerView.pause()
         }
+    }
+}
+
+extension HomeViewController: TapBadgeButtonDelegate {
+    func badgeButtonTapped() {
+        self.presentAlert(title: "업데이트", message: "업데이트 이후 뱃지 정보를 제공 예정입니다. 양해부탁드립니다!", okButtonTitle: "확인")
     }
 }
