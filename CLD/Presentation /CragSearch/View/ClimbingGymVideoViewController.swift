@@ -38,7 +38,6 @@ final class ClimbingGymVideoViewController: BaseViewController {
         output.recordListVO
             .withUnretained(self)
             .bind { owner, recordListVO in
-                print("==========", recordListVO)
                 owner.contentView.applyCollectionViewDataSource(by: recordListVO)
             }
             .disposed(by: disposeBag)
