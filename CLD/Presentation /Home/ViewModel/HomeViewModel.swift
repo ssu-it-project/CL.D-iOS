@@ -11,7 +11,7 @@ import CoreLocation
 import RxRelay
 import RxSwift
 
-class HomeViewModel: ViewModelType {
+final class HomeViewModel: ViewModelType {
     var disposeBag = DisposeBag()
     
     private let useCase: HomeRecordUseCase
@@ -29,7 +29,7 @@ class HomeViewModel: ViewModelType {
     }
     
     struct Output {
-        let homeRecordList = PublishRelay<RecordListVO>()
+        let homeRecordList = PublishRelay<Void>()
     }
     
     let recordList = BehaviorSubject<[RecordVO]>(value: [])
@@ -38,7 +38,6 @@ class HomeViewModel: ViewModelType {
           return count
       }
     var recordListArray: [RecordVO] = []
-    
     var total = 0
     var skip = 4
     
@@ -58,6 +57,7 @@ class HomeViewModel: ViewModelType {
                 owner.recordListArray.removeAll()
                 owner.skip = 4
                 owner.getHomeRecords(limit: 4, skip: 0, output: output)
+                owner.getUserAlgorithmRecord(limit: 4, output: output)
             })
             .disposed(by: disposeBag)
         
@@ -66,6 +66,7 @@ class HomeViewModel: ViewModelType {
             .subscribe(onNext: { owner, _ in
                 if owner.collectionViewCount < owner.total {
                     owner.getHomeRecords(limit: 4, skip: owner.skip, output: output)
+                    owner.getUserAlgorithmRecord(limit: 4, output: output)
                     owner.skip += 4
                 }
             })
@@ -76,14 +77,28 @@ class HomeViewModel: ViewModelType {
 }
 
 extension HomeViewModel {
-    func getHomeRecords(limit: Int, skip: Int, output: Output) {
+    private func getHomeRecords(limit: Int, skip: Int, output: Output) {
         useCase.getHomeRecords(limit: limit, skip: skip)
             .subscribe { [weak self] response in
                 switch response {
                 case .success(let value):
                     self?.recordListArray.append(contentsOf: value.records)
                     self?.total = value.pagination.total
-                    output.homeRecordList.accept(value)
+                    output.homeRecordList.accept(Void())
+                case .failure(let error):
+                    print(error)
+                }
+            }
+            .disposed(by: disposeBag)
+    }
+    
+    private func getUserAlgorithmRecord(limit: Int, output: Output) {
+        useCase.getUserAlgorithmRecord(limit: limit)
+            .subscribe { [weak self] response in
+                switch response {
+                case .success(let value):
+                    self?.recordListArray.append(contentsOf: value.records)
+                    output.homeRecordList.accept(Void())
                 case .failure(let error):
                     print(error)
                 }
