@@ -71,7 +71,7 @@ final class PostRecordViewController: BaseViewController {
             }
         })
         // print("==== place: \(place), climbing_gym_id: \(climbing_gym_id), content: \(content), sector: \(sector), color: \(level), video: \(asset), videoURL: \(video)")
-        postRecord(climbing_gym_id, content, sector, level, video)
+        postRecord(climbing_gym_id, content, sector, level, video, "480")
     }
     
     @objc func backPage() {
@@ -134,8 +134,8 @@ final class PostRecordViewController: BaseViewController {
 }
 
 extension PostRecordViewController {
-    func postRecord(_ climbing_gym_id: String,_ content: String,_ sector: String,_ level: String,_ video: URL) {
-        PostRecordService.shared.postRecord(climbing_gym_id: climbing_gym_id, content: content, sector: sector, level: level, video: video) { result in
+    func postRecord(_ climbing_gym_id: String,_ content: String,_ sector: String,_ level: String,_ video: URL, _ resolution: String) {
+        PostRecordService.shared.postRecord(climbing_gym_id: climbing_gym_id, content: content, sector: sector, level: level, video: video, resolution: resolution) { result in
             switch result {
             case .success(let response):
                 self.postRecordView.isHidden = true

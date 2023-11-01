@@ -51,6 +51,7 @@ final class MyPageView: UIView {
         collectionView.backgroundColor = .CLDLightGray
         collectionView.layer.cornerRadius = 10
         collectionView.isScrollEnabled = false
+        collectionView.isUserInteractionEnabled = false
         collectionView.register(CountCollectionViewCell.self,
                                 forCellWithReuseIdentifier: CountCollectionViewCell.identifier)
         

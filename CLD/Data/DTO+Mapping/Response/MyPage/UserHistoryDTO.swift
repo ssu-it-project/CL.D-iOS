@@ -28,12 +28,14 @@ struct History: Decodable {
 }
 
 // MARK: - Record
-struct Record: Decodable {
-    let gymName, level, recordID, sector: String
+struct Record: Codable {
+    let gymName, holdIcon, level, recordID: String
+    let sector: String
     let videoExist: Bool
 
     enum CodingKeys: String, CodingKey {
         case gymName = "gym_name"
+        case holdIcon = "hold_icon"
         case level
         case recordID = "record_id"
         case sector
