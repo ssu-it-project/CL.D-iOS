@@ -27,6 +27,7 @@ final class ClimbingGymSearchViewModel: ViewModelType {
         let viewDidLoadEvent: Observable<Void>
         let viewWillAppearEvent: Observable<Void>
         let selectedSegmentIndex: Observable<Int>
+        let searchText: Observable<String>
     }
     
     struct Output {
@@ -38,6 +39,8 @@ final class ClimbingGymSearchViewModel: ViewModelType {
         let bookmarkTableViewIsHidden = BehaviorRelay<Bool>(value: true)
         let climbingGymTableViewIsHidden = BehaviorRelay<Bool>(value: false)
     }
+    
+    private var userLocation = CLLocationCoordinate2D(latitude: 0, longitude: 0)
     
     func transform(input: Input) -> Output {
         let output = Output()
@@ -72,19 +75,39 @@ final class ClimbingGymSearchViewModel: ViewModelType {
             })
             .disposed(by: disposeBag)
         
-        self.useCase.authorizationDeniedStatus
-            .bind(to: output.authorizationAlertShouldShow)
+        input.searchText
+            .withLatestFrom(input.selectedSegmentIndex) { searchText, searchObservable in
+                return (searchText, searchObservable)
+            }
+            .observe(on: MainScheduler.instance)
+            .subscribe(with: self) { owner, searchData in
+                let (searchText, selectedSegmentIndex) = searchData
+                if selectedSegmentIndex == 0 {
+                    owner.getLocationGyms(longitude: owner.userLocation.latitude, latitude: owner.userLocation.longitude, keyword: searchText, limit: 50, skip: 0, output: output)
+                } else {
+                    owner.getBookmarkGym(keyword: searchText, limit: 20, skip: 0, output: output)
+                }
+            
+            } onError: { owner, error in
+                print(error)
+            }
             .disposed(by: disposeBag)
-        
-        self.useCase.coodinate
-            .withUnretained(self)
-            .subscribe(onNext: { owner, coodinate in
-                output.currentUserLocation.accept(coodinate)
-                owner.getLocationGyms(longitude: coodinate.latitude, latitude: coodinate.longitude, keyword: "", limit: 50, skip: 50, output: output)
-            })
-            .disposed(by: disposeBag)
-        return output
-    }
+
+    
+    self.useCase.authorizationDeniedStatus
+        .bind(to: output.authorizationAlertShouldShow)
+        .disposed(by: disposeBag)
+    
+    self.useCase.coodinate
+        .withUnretained(self)
+        .subscribe(onNext: { owner, coodinate in
+            output.currentUserLocation.accept(coodinate)
+            owner.userLocation = coodinate
+            owner.getLocationGyms(longitude: coodinate.latitude, latitude: coodinate.longitude, keyword: "", limit: 50, skip: 50, output: output)
+        })
+        .disposed(by: disposeBag)
+    return output
+}
 }
 
 extension ClimbingGymSearchViewModel {
