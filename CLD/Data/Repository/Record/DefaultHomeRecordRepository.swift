@@ -39,4 +39,26 @@ final class DefaultHomeRecordRepository: HomeRecordRepository {
                 }
             }
     }
+    
+    func getUserAlgorithmRecord(limit: Int) -> Single<UserAlgorithmRecordVO> {
+        return recordsService.rx.request(.getUserAlgorithmRecord(limit: limit))
+            .flatMap { response in
+                return Single<UserAlgorithmRecordVO>.create { observer in
+                    if (200..<300).contains(response.statusCode) {
+                        do {
+                            let userAlgorithmRecordDTO = try response.map(UserAlgorithmRecordDTO.self)
+                            let userAlgorithmRecordVO = userAlgorithmRecordDTO.toDomain()
+                            observer(.success(userAlgorithmRecordVO))
+                        } catch {
+                            print("==== 디코딩 에러", error)
+                            observer(.failure(error))
+                        }
+                    } else {
+                        observer(.failure(RecordError.getRecordError))
+                    }
+                    
+                    return Disposables.create()
+                }
+            }
+    }
 }
