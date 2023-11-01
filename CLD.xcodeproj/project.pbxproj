@@ -67,6 +67,8 @@
 		02EB6E7B2A874E5100C749A6 /* Tabman in Frameworks */ = {isa = PBXBuildFile; productRef = 02EB6E7A2A874E5100C749A6 /* Tabman */; };
 		02EB6E7D2A88BC9B00C749A6 /* SuccessRecordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02EB6E7C2A88BC9B00C749A6 /* SuccessRecordView.swift */; };
 		02EB6E862A88C45A00C749A6 /* CALayer+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02EB6E852A88C45A00C749A6 /* CALayer+Extension.swift */; };
+		5A0406D52AF2582900A4BA84 /* UserAlgorithmRecordDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A0406D42AF2582900A4BA84 /* UserAlgorithmRecordDTO.swift */; };
+		5A0406D72AF258F000A4BA84 /* UserAlgorithmRecordVO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A0406D62AF258F000A4BA84 /* UserAlgorithmRecordVO.swift */; };
 		5A05DEED2AA8DE2E0050AD55 /* DefaultGymsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A05DEEC2AA8DE2E0050AD55 /* DefaultGymsRepository.swift */; };
 		5A05DEF12AA8E0560050AD55 /* GymsVO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A05DEF02AA8E0560050AD55 /* GymsVO.swift */; };
 		5A05DF432AAB038C0050AD55 /* DefaultHomeRecordRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A05DF422AAB038B0050AD55 /* DefaultHomeRecordRepository.swift */; };
@@ -283,6 +285,8 @@
 		02EB6E772A874D4D00C749A6 /* SelectPlaceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectPlaceViewController.swift; sourceTree = "<group>"; };
 		02EB6E7C2A88BC9B00C749A6 /* SuccessRecordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuccessRecordView.swift; sourceTree = "<group>"; };
 		02EB6E852A88C45A00C749A6 /* CALayer+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CALayer+Extension.swift"; sourceTree = "<group>"; };
+		5A0406D42AF2582900A4BA84 /* UserAlgorithmRecordDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAlgorithmRecordDTO.swift; sourceTree = "<group>"; };
+		5A0406D62AF258F000A4BA84 /* UserAlgorithmRecordVO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAlgorithmRecordVO.swift; sourceTree = "<group>"; };
 		5A05DEEC2AA8DE2E0050AD55 /* DefaultGymsRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultGymsRepository.swift; sourceTree = "<group>"; };
 		5A05DEF02AA8E0560050AD55 /* GymsVO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GymsVO.swift; sourceTree = "<group>"; };
 		5A05DF422AAB038B0050AD55 /* DefaultHomeRecordRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultHomeRecordRepository.swift; sourceTree = "<group>"; };
@@ -871,6 +875,7 @@
 			isa = PBXGroup;
 			children = (
 				5A7E398C2AB0DCAC00143175 /* RecordVO.swift */,
+				5A0406D62AF258F000A4BA84 /* UserAlgorithmRecordVO.swift */,
 			);
 			path = Record;
 			sourceTree = "<group>";
@@ -913,6 +918,7 @@
 			isa = PBXGroup;
 			children = (
 				5A05DF442AAB04C40050AD55 /* RecordDTO.swift */,
+				5A0406D42AF2582900A4BA84 /* UserAlgorithmRecordDTO.swift */,
 			);
 			path = Record;
 			sourceTree = "<group>";
@@ -1629,6 +1635,7 @@
 				5ADED1D22A6838C400C0CBF4 /* CommunityViewController.swift in Sources */,
 				02CCDD6D2A9F61A500301ABF /* ErrorResponse.swift in Sources */,
 				5AEFAAE92A8E3E5E00A67C43 /* CLDButton.swift in Sources */,
+				5A0406D72AF258F000A4BA84 /* UserAlgorithmRecordVO.swift in Sources */,
 				5ADED1BF2A679FB100C0CBF4 /* UIImage+Extension.swift in Sources */,
 				5A7E39992AB1467600143175 /* HomeRecordUseCase.swift in Sources */,
 				5AEFAAA02A8B966900A67C43 /* TermsViewController.swift in Sources */,
@@ -1684,6 +1691,7 @@
 				5A70B8B92AB459BC00506846 /* String+Extension.swift in Sources */,
 				020D986E2AB730AB00318C3E /* RobotoFont.swift in Sources */,
 				5A1C488D2A76C49200CC345A /* BadgeCollectionViewCell.swift in Sources */,
+				5A0406D52AF2582900A4BA84 /* UserAlgorithmRecordDTO.swift in Sources */,
 				02CCDD692A9F614B00301ABF /* NetworkResult.swift in Sources */,
 				5A97A1652A93848F00264AB5 /* TermsCheckListView.swift in Sources */,
 				5ADED1BB2A67929500C0CBF4 /* BaseViewController.swift in Sources */,
@@ -1923,7 +1931,7 @@
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_OBJC_BRIDGING_HEADER = "/Users/joeun/Desktop/CLD/cl-d-iOS/CLD/KakaoBridgeHeader.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "/Users/kimkyuchul/Desktop/cl-d-iOS/CLD/KakaoBridgeHeader.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -1967,7 +1975,7 @@
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_OBJC_BRIDGING_HEADER = "/Users/joeun/Desktop/CLD/cl-d-iOS/CLD/KakaoBridgeHeader.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "/Users/kimkyuchul/Desktop/cl-d-iOS/CLD/KakaoBridgeHeader.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
