@@ -13,10 +13,10 @@ import Photos
 final class SelectVideoViewController: BaseViewController {
     var finalRecordDic: Dictionary<String, Any> = [:]
     var videoUrls: [URL] = []
-    var videoURL: URL!
-    var assetInfo: PHAsset!
+    var videoURL: URL?
+    var assetInfo: PHAsset?
 
-    var fetchResult: PHFetchResult<PHAsset>!
+    var fetchResult: PHFetchResult<PHAsset>?
     let imageManager: PHCachingImageManager = PHCachingImageManager()
     var videos: [PHAsset] = []
     let cellIdentifier: String = "PhotoCollectionViewCell"
@@ -76,17 +76,6 @@ final class SelectVideoViewController: BaseViewController {
         }
     }
 
-    func photoLibraryDidChange(_ changeInstance: PHChange) {
-        guard let changes = changeInstance.changeDetails(for: fetchResult)
-        else { return }
-
-        fetchResult = changes.fetchResultAfterChanges
-
-        OperationQueue.main.addOperation {
-            self.selectCollectionView.reloadData()
-        }
-    }
-
     func fetchVideos() {
         let fetchOptions = PHFetchOptions()
         fetchOptions.predicate = NSPredicate(format: "mediaType = %d", PHAssetMediaType.video.rawValue)
@@ -94,8 +83,12 @@ final class SelectVideoViewController: BaseViewController {
 
         fetchResult = PHAsset.fetchAssets(with: fetchOptions)
 
-        for index in 0..<fetchResult.count {
-            videos.append(fetchResult.object(at: index))
+        for index in 0..<(fetchResult?.count ?? 0) {
+            if let uploadPHAsset = fetchResult?.object(at: index) {
+                videos.append(uploadPHAsset)
+            } else {
+                print("fetchVideos 함수에서 PHAsset이 유효하지 않은 값이 들어옴.")
+            }
         }
 
         OperationQueue.main.addOperation {
@@ -138,7 +131,11 @@ final class SelectVideoViewController: BaseViewController {
                                           권한을 추가하세요.
                                           """, preferredStyle: .alert)
             let okAction = UIAlertAction(title: "설정", style: .default) { _ in
-                UIApplication.shared.open(URL(string: UIApplication.openSettingsURLString)!)
+                if let settingURL = URL(string: UIApplication.openSettingsURLString) {
+                    UIApplication.shared.open(settingURL)
+                } else {
+                    print("설정 URL이 유효하지 않음")
+                }
                 return
             }
             let cancelAction = UIAlertAction(title: "취소", style: .default) { _ in
@@ -187,9 +184,9 @@ extension SelectVideoViewController : UICollectionViewDelegate, UICollectionView
                                       UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        print("====: \(self.fetchResult!.count)")
+        print("====: \(self.fetchResult?.count)")
         print("====video: \(videos.count)")
-        if (self.fetchResult!.count == 0) {
+        if (self.fetchResult?.count == 0) {
             selectCollectionView.setEmptyMessage("""
                                                 갤러리에 동영상이 없습니다.
                                                 동영상을 찍고 다시 등반을 기록해주세요.
@@ -260,6 +257,16 @@ extension SelectVideoViewController : UICollectionViewDelegate, UICollectionView
 }
 
 extension SelectVideoViewController: PHPhotoLibraryChangeObserver {
+    func photoLibraryDidChange(_ changeInstance: PHChange) {
+        guard let asset = fetchResult, let changes = changeInstance.changeDetails(for: asset) else { return }
+
+        fetchResult = changes.fetchResultAfterChanges
+
+        OperationQueue.main.addOperation {
+            self.selectCollectionView.reloadData()
+        }
+    }
+
     func setPhoto() {
         PHPhotoLibrary.shared().register(self)
     }
