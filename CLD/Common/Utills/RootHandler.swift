@@ -13,6 +13,7 @@ final class RootHandler {
     enum Destination {
         case Main
         case Terms
+        case login
     }
     
     private init() {}
@@ -29,6 +30,11 @@ final class RootHandler {
         case .Terms:
             let termsViewController = TermsViewController(viewModel: SignUpViewModel(useCase: DefaultSignUpUseCase(repository: DefaultSignUpRepository())))
             let nav = UINavigationController(rootViewController: termsViewController)
+            delegate.window?.rootViewController = nav
+            delegate.window?.makeKeyAndVisible()
+        case .login:
+            let loginViewController = AuthViewController(viewModel: SignInViewModel(useCase: DefaultSignInUseCase(repository: DefaultSignInRepository())))
+            let nav = UINavigationController(rootViewController: loginViewController)
             delegate.window?.rootViewController = nav
             delegate.window?.makeKeyAndVisible()
         }

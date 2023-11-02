@@ -32,6 +32,9 @@ final class DefaultHomeRecordRepository: HomeRecordRepository {
                             observer(.failure(error))
                         }
                     } else {
+                        if response.statusCode == 401 {
+                            RootHandler.shard.update(.login)
+                        }
                         observer(.failure(RecordError.getRecordError))
                     }
                     
