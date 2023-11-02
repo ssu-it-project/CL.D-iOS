@@ -24,8 +24,14 @@ final class PlayerViewController: AVPlayerViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.player = AVPlayer(url: URL(string: url)!)
-        self.player?.play()
+        setPlayer()
+    }
+    
+    func setPlayer() {
+        if let url = URL(string: url) {
+            self.player = AVPlayer(url: url)
+            self.player?.play()
+        }
     }
     
     deinit {
