@@ -7,9 +7,7 @@
 
 import UIKit
 
-import SnapKit
-
-class CommunityViewController: BaseViewController {
+final class CommunityViewController: BaseViewController {
     private let CommunityLabel: UILabel = {
         let UILabel = UILabel()
         UILabel.sizeToFit()
@@ -17,12 +15,15 @@ class CommunityViewController: BaseViewController {
         UILabel.textColor = .CLDDarkGray
         UILabel.numberOfLines = 0
         UILabel.textAlignment = .center
-        UILabel.text = "커뮤니티 페이지는 10월 23일에 공개됩니다."
+        UILabel.text = "커뮤니티 페이지는 11월 11일에 공개됩니다."
         return UILabel
     }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        if #available(iOS 16.0, *) {
+            self.navigationItem.leftBarButtonItem?.isHidden = true
+        }
     }
 
     override func setHierarchy() {

@@ -7,14 +7,12 @@
 
 import UIKit
 
-import SnapKit
 import RxSwift
 import RxCocoa
 import AuthenticationServices
 
 final class AuthViewController: BaseViewController {
-    let signView = SignView()
-    private var loginManager: SNSLoginManager = CLD.SNSLoginManager()
+    private let signView = SignView()
     private let viewModel: SignInViewModel
     private let appleSignInSubject: PublishSubject<String> = .init()
     
