@@ -11,7 +11,6 @@
 		020F65532A7D09450036CFB1 /* SelectVideoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020F65522A7D09450036CFB1 /* SelectVideoViewController.swift */; };
 		02177C8C2A99126100A4EF2C /* ColorChipName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02177C8B2A99126100A4EF2C /* ColorChipName.swift */; };
 		02177C8E2A99ABDB00A4EF2C /* RecordTabItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02177C8D2A99ABDB00A4EF2C /* RecordTabItem.swift */; };
-		023868C32A70009B0006C762 /* LoginManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 023868C22A70009B0006C762 /* LoginManager.swift */; };
 		023C71512AACC52500CA095D /* LightCompressor in Frameworks */ = {isa = PBXBuildFile; productRef = 023C71502AACC52500CA095D /* LightCompressor */; };
 		023C71532AACC69D00CA095D /* URL+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 023C71522AACC69D00CA095D /* URL+Extension.swift */; };
 		023F37822A783C1F007B0511 /* SelectSectorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 023F37812A783C1F007B0511 /* SelectSectorViewController.swift */; };
@@ -238,7 +237,6 @@
 		020F65522A7D09450036CFB1 /* SelectVideoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectVideoViewController.swift; sourceTree = "<group>"; };
 		02177C8B2A99126100A4EF2C /* ColorChipName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorChipName.swift; sourceTree = "<group>"; };
 		02177C8D2A99ABDB00A4EF2C /* RecordTabItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordTabItem.swift; sourceTree = "<group>"; };
-		023868C22A70009B0006C762 /* LoginManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginManager.swift; sourceTree = "<group>"; };
 		023C71522AACC69D00CA095D /* URL+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+Extension.swift"; sourceTree = "<group>"; };
 		023F37812A783C1F007B0511 /* SelectSectorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectSectorViewController.swift; sourceTree = "<group>"; };
 		026BC4752A680FC000F49B87 /* AuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewController.swift; sourceTree = "<group>"; };
@@ -414,7 +412,6 @@
 		5ACADD5C2A65919400B92C07 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		5ACADD6A2A6592BE00B92C07 /* keep.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = keep.txt; sourceTree = "<group>"; };
 		5ACADD8C2A6593CB00B92C07 /* keep.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = keep.txt; sourceTree = "<group>"; };
-		5ACADD8E2A6593D100B92C07 /* keep.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = keep.txt; sourceTree = "<group>"; };
 		5ACADD902A6593D600B92C07 /* keep.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = keep.txt; sourceTree = "<group>"; };
 		5ACADD922A6593DC00B92C07 /* keep.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = keep.txt; sourceTree = "<group>"; };
 		5ACADD942A6593E000B92C07 /* keep.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = keep.txt; sourceTree = "<group>"; };
@@ -502,7 +499,6 @@
 				5AEFAAC12A8D177000A67C43 /* ViewModel */,
 				026BC4722A680DC000F49B87 /* View */,
 				026BC4742A680EDC00F49B87 /* ViewController */,
-				023868C22A70009B0006C762 /* LoginManager.swift */,
 			);
 			path = Auth;
 			sourceTree = "<group>";
@@ -1258,7 +1254,6 @@
 			children = (
 				5ACADD652A65925900B92C07 /* View */,
 				5ACADD642A65925300B92C07 /* ViewModel */,
-				5ADED1D12A6838C400C0CBF4 /* CommunityViewController.swift */,
 			);
 			path = Community;
 			sourceTree = "<group>";
@@ -1344,7 +1339,7 @@
 		5ACADD652A65925900B92C07 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				5ACADD8E2A6593D100B92C07 /* keep.txt */,
+				5ADED1D12A6838C400C0CBF4 /* CommunityViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1649,7 +1644,6 @@
 				02BB31F52ABC0F0E0074152E /* UserDTO.swift in Sources */,
 				5A7E399F2AB158A800143175 /* HomeViewModel.swift in Sources */,
 				5A3210222AA88A6A003A40BD /* RxViewController+Extension.swift in Sources */,
-				023868C32A70009B0006C762 /* LoginManager.swift in Sources */,
 				5ADED1BD2A679B6A00C0CBF4 /* UIColor+Extension.swift in Sources */,
 				5A1C488A2A7687FB00CC345A /* CGSize+Extension.swift in Sources */,
 				0294D0212AB202ED00F4244A /* HistoryCollectionViewCell.swift in Sources */,
