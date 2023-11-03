@@ -64,4 +64,19 @@ final class DefaultHomeRecordRepository: HomeRecordRepository {
                 }
             }
     }
+    
+    func postReport(id: String, message: String) -> Single<Void> {
+        return recordsService.rx.request(.postReport(id: id, message: message))
+            .flatMap { response in
+                return Single<Void>.create { observer in
+                    if (200..<300).contains(response.statusCode) {
+                        observer(.success(Void()))
+                    } else {
+                        observer(.failure(RecordError.postReportError))
+                    }
+                    
+                    return Disposables.create()
+                }
+            }
+    }
 }
