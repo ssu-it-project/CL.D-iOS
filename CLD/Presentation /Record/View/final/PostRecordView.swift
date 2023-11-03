@@ -73,6 +73,13 @@ final class PostRecordView: UIView {
         border.backgroundColor = UIColor.CLDGold.cgColor
         return border
     }()
+    private let reportLabel: UILabel = {
+        let label = UILabel()
+        label.text = "부적절하거나 불쾌감을 줄 수 있는 컨텐츠는 제재를 받을 수 있습니다"
+        label.font = RobotoFont.Light.of(size: 11)
+        label.textColor = .CLDDarkGray
+        return label
+    }()
     
     // 장소
     private let placeRectView: UIView = {
@@ -195,7 +202,7 @@ final class PostRecordView: UIView {
     }
     
     func setHierarchy() {
-        addSubviews(backButton,titleLabel,thumbnailView,textView,placeRectView,sectorRectView,colorRectView,loadingView,loadingIndicator)
+        addSubviews(backButton,titleLabel,thumbnailView,textView,placeRectView,sectorRectView,colorRectView,loadingView,loadingIndicator, reportLabel)
         thumbnailView.addSubviews(playIcon,labelBackground)
         labelBackground.addSubview(timeLabel)
         placeRectView.addSubviews(placeIconView,placeLabel)
@@ -240,8 +247,14 @@ final class PostRecordView: UIView {
             $0.height.equalTo(81)
             $0.centerX.equalToSuperview()
         }
+        
+        reportLabel.snp.makeConstraints {
+            $0.top.equalTo(textView.snp.bottom).offset(5)
+            $0.centerX.equalToSuperview()
+        }
+        
         placeRectView.snp.makeConstraints {
-            $0.top.equalTo(textView.snp.bottom).offset(36)
+            $0.top.equalTo(reportLabel.snp.bottom).offset(30)
             $0.width.equalTo(338)
             $0.height.equalTo(31)
             $0.centerX.equalToSuperview()
