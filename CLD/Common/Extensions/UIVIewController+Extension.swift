@@ -20,4 +20,11 @@ extension UIViewController {
         alert.addAction(okAction)
         present(alert, animated: true, completion: nil)
     }
+    
+    func presentOkAlert(title: String, message: String, ButtonTitle: String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let cancelAction = UIAlertAction(title: ButtonTitle, style: .default, handler: nil)
+        alert.addAction(cancelAction)
+        present(alert, animated: true, completion: nil)
+    }
 }
