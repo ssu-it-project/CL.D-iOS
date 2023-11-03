@@ -11,11 +11,13 @@ import RxSwift
 
 enum RecordError: Error {
     case getRecordError
+    case postReportError
 }
 
 protocol HomeRecordUseCase {
     func getHomeRecords(limit: Int, skip: Int) -> Single<RecordListVO>
     func getUserAlgorithmRecord(limit: Int) -> Single<UserAlgorithmRecordVO>
+    func postReport(id: String, message: String) -> Single<Void>
 }
 
 
@@ -35,5 +37,9 @@ final class DefaultHomeRecordUseCase: HomeRecordUseCase {
     
     func getUserAlgorithmRecord(limit: Int) -> Single<UserAlgorithmRecordVO> {
         homeRecordRepository.getUserAlgorithmRecord(limit: limit)
+    }
+    
+    func postReport(id: String, message: String) -> Single<Void> {
+        homeRecordRepository.postReport(id: id, message: message)
     }
 }
