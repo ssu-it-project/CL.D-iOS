@@ -12,9 +12,9 @@ import RxRelay
 import RxSwift
 
 final class HomeViewModel: ViewModelType {
-    var disposeBag = DisposeBag()
     
     private let useCase: HomeRecordUseCase
+    var disposeBag = DisposeBag()
     
     // MARK: - Initializer
     init(
@@ -25,7 +25,8 @@ final class HomeViewModel: ViewModelType {
     
     struct Input {
         let viewWillAppearEvent: Observable<Void>
-        let prefetchItems: PublishSubject<Void>
+        let prefetchItems: Observable<Void>
+        let didSelectReportAction: Observable<ReportType>
     }
     
     struct Output {
@@ -70,6 +71,12 @@ final class HomeViewModel: ViewModelType {
                     owner.skip += 4
                 }
             })
+            .disposed(by: disposeBag)
+        
+        input.didSelectReportAction
+            .subscribe(with: self) { owner, report in
+                print(report)
+            }
             .disposed(by: disposeBag)
         
         return output

@@ -28,7 +28,8 @@ final class HomeViewController: BaseViewController {
     }()
     
     var url: [String] = []
-    private var prefetchItems = PublishSubject<Void>()
+    private let prefetchItems = PublishSubject<Void>()
+    private let didSelectReportAction = PublishSubject<ReportType>()
     
     private var viewModel: HomeViewModel
     
@@ -54,7 +55,9 @@ final class HomeViewController: BaseViewController {
     }
     
     override func Bind() {
-        let input = HomeViewModel.Input(viewWillAppearEvent: rx.viewWillAppear.map { _ in }, prefetchItems: prefetchItems)
+        let input = HomeViewModel.Input(viewWillAppearEvent: rx.viewWillAppear.map { _ in },
+                                        prefetchItems: prefetchItems.asObserver(),
+                                        didSelectReportAction: didSelectReportAction.asObserver())
         let output = viewModel.transform(input: input)
         
         output.homeRecordList
@@ -67,15 +70,15 @@ final class HomeViewController: BaseViewController {
     
     private func bindAction() {
         self.collectionView.rx.prefetchItems
-          .compactMap(\.last?.row)
-          .withUnretained(self)
-          .bind { owner, row in
-              guard row == owner.viewModel.recordListArray.count - 1 else { return }
-              owner.prefetchItems.onNext(())
-          }
-          .disposed(by: self.disposeBag)
+            .compactMap(\.last?.row)
+            .withUnretained(self)
+            .bind { owner, row in
+                guard row == owner.viewModel.recordListArray.count - 1 else { return }
+                owner.prefetchItems.onNext(())
+            }
+            .disposed(by: self.disposeBag)
     }
-
+    
     private func createLayout() -> UICollectionViewCompositionalLayout {
         let config = UICollectionViewCompositionalLayoutConfiguration()
         config.scrollDirection = .vertical
@@ -121,6 +124,19 @@ final class HomeViewController: BaseViewController {
         return section
     }
     
+    private func menuActionSheet() {
+        let alert = UIAlertController(title: "신고 사유 선택", message: nil, preferredStyle: .actionSheet)
+         for report in ReportType.allCases {
+             let alertAction = UIAlertAction(title: report.title, style: .default) { [weak self] _ in
+                 self?.didSelectReportAction.onNext(report)
+             }
+             alert.addAction(alertAction)
+         }
+         let cancel = UIAlertAction(title: "취소", style: .cancel)
+         alert.addAction(cancel)
+         present(alert, animated: true)
+     }
+    
     override func setHierarchy() {
         view.addSubview(collectionView)
     }
@@ -159,36 +175,42 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
             let cell: VideoCollectionViewCell = collectionView.dequeueReusableCell(forIndexPath: indexPath)
             let recordVO = viewModel.cellArrayInfo(index: indexPath.item)
             cell.configureVideo(with: recordVO.video.original)
-                cell.configureCell(row: recordVO)
+            cell.configureCell(row: recordVO)
+            
+            cell.rx.menuButtonTapped
+                .drive(with: self) { owner, _ in
+                    owner.menuActionSheet()
+                }
+                .disposed(by: cell.disposeBag)
+            
+            cell.rx.playerViewTapped
+                .drive(with: self) { owner, _ in
+                    owner.navigationController?.pushViewController(PlayerViewController(url: recordVO.video.original), animated: true)
+                }
+                .disposed(by: cell.disposeBag)
             
             return cell
         }
     }
-    
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let recordVO = viewModel.cellArrayInfo(index: indexPath.item)
-        let playerViewController = PlayerViewController(url: recordVO.video.original)
-        self.navigationController?.pushViewController(playerViewController, animated: true)
-    }
-    
+        
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let cells = collectionView.visibleCells
-         let videoCells = cells.compactMap({ $0 as? VideoCollectionViewCell })
-         
-         let yOffset = scrollView.contentOffset.y
-         let frameHeight = scrollView.frame.size.height
-         
-         for videoCell in videoCells {
-             if let indexPath = collectionView.indexPath(for: videoCell) {
-                 let cellRect = collectionView.layoutAttributesForItem(at: indexPath)?.frame
-                 if let rect = cellRect, rect.origin.y < yOffset + frameHeight * 0.6 {
-                     videoCell.playerView.play()
-                 } else {
-                     videoCell.playerView.pause()
-                 }
-             }
-         }
-     }
+        let videoCells = cells.compactMap({ $0 as? VideoCollectionViewCell })
+        
+        let yOffset = scrollView.contentOffset.y
+        let frameHeight = scrollView.frame.size.height
+        
+        for videoCell in videoCells {
+            if let indexPath = collectionView.indexPath(for: videoCell) {
+                let cellRect = collectionView.layoutAttributesForItem(at: indexPath)?.frame
+                if let rect = cellRect, rect.origin.y < yOffset + frameHeight * 0.6 {
+                    videoCell.playerView.play()
+                } else {
+                    videoCell.playerView.pause()
+                }
+            }
+        }
+    }
 }
 
 extension HomeViewController {
