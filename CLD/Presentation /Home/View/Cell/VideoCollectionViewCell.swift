@@ -6,10 +6,11 @@
 //
 
 import UIKit
-
-import SnapKit
 import AVFoundation
 
+import SnapKit
+import RxSwift
+import RxCocoa
 
 final class VideoCollectionViewCell: UICollectionViewCell {
     
@@ -31,7 +32,7 @@ final class VideoCollectionViewCell: UICollectionViewCell {
         UILabel.textColor = .black
         return UILabel
     }()
-    private lazy var menuButton: UIButton = {
+    fileprivate lazy var menuButton: UIButton = {
         let button = UIButton()
         button.setImage(ImageLiteral.videoCellMenuIcon, for: .normal)
         button.imageView?.contentMode = .scaleAspectFill
@@ -95,7 +96,7 @@ final class VideoCollectionViewCell: UICollectionViewCell {
         return stackView
     }()
     
-    
+    var disposeBag = DisposeBag()
     
     override init(frame: CGRect) {
         super.init(frame: .zero)
@@ -104,22 +105,23 @@ final class VideoCollectionViewCell: UICollectionViewCell {
         setViewProperty()
     }
     
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func prepareForReuse() {
         super.prepareForReuse()
         playerView.player = nil
+        disposeBag = DisposeBag()
     }
     
     override func layoutSubviews() {
         super.layoutSubviews()
         profileImageView.layer.cornerRadius = profileImageView.frame.height / 2
     }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
+            
     private func setHierarchy() {
-        addSubviews(topLineView, profileImageView, titleLabel, menuButton, playerView, viedoTitleLabel, videoSubTitleStackView, buttonStackView)
+        contentView.addSubviews(topLineView, profileImageView, titleLabel, menuButton, playerView, viedoTitleLabel, videoSubTitleStackView, buttonStackView)
     }
     
     private func setConstraints() {
@@ -142,6 +144,7 @@ final class VideoCollectionViewCell: UICollectionViewCell {
         
         menuButton.snp.makeConstraints { make in
             make.trailing.equalToSuperview().inset(10)
+            make.width.equalTo(30)
             make.centerY.equalTo(profileImageView.snp.centerY)
         }
         
@@ -202,5 +205,16 @@ extension VideoCollectionViewCell {
         viedoTitleLabel.text = row.content
         viedoDetailLabel.text = "\(row.climbingGymInfo.name) | \(row.sector) | \(row.level)"
         viedoDateLabel.text = row.date.created.convertToKoreanDateFormat()
+    }
+}
+
+extension Reactive where Base: VideoCollectionViewCell {
+    var menuButtonTapped: Driver<Void> { base.menuButton.rx.tap.asDriver() }
+    
+    var playerViewTapped: Driver<Void> {
+        return base.playerView.rx.tapGesture()
+            .when(.recognized)
+            .map { _ in }
+            .asDriver(onErrorJustReturn: ())
     }
 }
