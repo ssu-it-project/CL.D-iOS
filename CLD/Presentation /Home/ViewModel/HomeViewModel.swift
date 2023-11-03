@@ -26,11 +26,12 @@ final class HomeViewModel: ViewModelType {
     struct Input {
         let viewWillAppearEvent: Observable<Void>
         let prefetchItems: Observable<Void>
-        let didSelectReportAction: Observable<ReportType>
+        let didSelectReportAction: Observable<(ReportType, String)>
     }
     
     struct Output {
         let homeRecordList = PublishRelay<Void>()
+        let showReportAlert = PublishRelay<Void>()
     }
     
     let recordList = BehaviorSubject<[RecordVO]>(value: [])
@@ -74,9 +75,11 @@ final class HomeViewModel: ViewModelType {
             .disposed(by: disposeBag)
         
         input.didSelectReportAction
-            .subscribe(with: self) { owner, report in
-                print(report)
+            .flatMap { [unowned self] report, id in
+                self.useCase.postReport(id: id, message: report.title)
+                    .catchAndReturn(output.showReportAlert.accept(()))
             }
+            .bind(to: output.showReportAlert)
             .disposed(by: disposeBag)
         
         return output

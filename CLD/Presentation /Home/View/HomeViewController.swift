@@ -29,7 +29,7 @@ final class HomeViewController: BaseViewController {
     
     var url: [String] = []
     private let prefetchItems = PublishSubject<Void>()
-    private let didSelectReportAction = PublishSubject<ReportType>()
+    private let didSelectReportAction = PublishSubject<(ReportType, String)>()
     
     private var viewModel: HomeViewModel
     
@@ -65,6 +65,13 @@ final class HomeViewController: BaseViewController {
             .subscribe { owner, _ in
                 owner.collectionView.reloadData()
             }
+            .disposed(by: disposeBag)
+        
+        output.showReportAlert
+            .withUnretained(self)
+            .bind(onNext: { owner, _ in
+                owner.presentOkAlert(title: "신고가 접수되었습니다.", message: "검토까지는 최대 24시간 소요됩니다.", ButtonTitle: "확인")
+            })
             .disposed(by: disposeBag)
     }
     
@@ -124,11 +131,11 @@ final class HomeViewController: BaseViewController {
         return section
     }
     
-    private func menuActionSheet() {
+    private func menuActionSheet(id: String) {
         let alert = UIAlertController(title: "신고 사유 선택", message: nil, preferredStyle: .actionSheet)
          for report in ReportType.allCases {
              let alertAction = UIAlertAction(title: report.title, style: .default) { [weak self] _ in
-                 self?.didSelectReportAction.onNext(report)
+                 self?.didSelectReportAction.onNext((report, id))
              }
              alert.addAction(alertAction)
          }
@@ -179,7 +186,7 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
             
             cell.rx.menuButtonTapped
                 .drive(with: self) { owner, _ in
-                    owner.menuActionSheet()
+                    owner.menuActionSheet(id: recordVO.id)
                 }
                 .disposed(by: cell.disposeBag)
             
