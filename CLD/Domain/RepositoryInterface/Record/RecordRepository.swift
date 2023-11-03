@@ -10,4 +10,5 @@ import RxSwift
 protocol HomeRecordRepository: AnyObject {
     func getRecords(limit: Int, skip: Int) -> Single<RecordListVO>
     func getUserAlgorithmRecord(limit: Int) -> Single<UserAlgorithmRecordVO>
+    func postReport(id: String, message: String) -> Single<Void>
 }
