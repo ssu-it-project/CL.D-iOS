@@ -26,7 +26,7 @@ final class BadgeCollectionViewCell: UICollectionViewCell {
     private let badgeImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFit
-        imageView.image = UIImage(named: "badge")
+        imageView.image = ImageLiteral.noBadgeIcon
         return imageView
     }()
     private let badgeTitleLabel: UILabel = {

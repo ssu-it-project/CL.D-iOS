@@ -201,7 +201,8 @@ extension VideoCollectionViewCell {
 
 extension VideoCollectionViewCell {
     func configureCell(row: RecordVO) {
-        profileImageView.setImage(urlString: row.author.profileImage, defaultImage: ImageLiteral.myPageIcon)
+        print(URLConst.base + "/\(row.author.profileImage)")
+        profileImageView.setImage(urlString: URLConst.base + "/\(row.author.profileImage)", defaultImage: ImageLiteral.myPageIcon)
         titleLabel.text = row.author.nickname
         viedoTitleLabel.text = row.content
         viedoDetailLabel.text = "\(row.climbingGymInfo.name) | \(row.sector) | \(row.level)"

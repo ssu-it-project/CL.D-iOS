@@ -28,7 +28,8 @@ enum ImageLiteral {
     static var likeIcon: UIImage { .load(named: "likeIcon") }
     static var videoCellMenuIcon: UIImage { .load(named: "videoCellMenuIcon") }
     static var badgeInfoIcon: UIImage { .load(named: "badgeInfoIcon") }
-    
+    static var noBadgeIcon: UIImage { .load(named: "noHaveBadge") }
+
     //MARK: - Gym
     static var DefaultGymImage: UIImage { .load(named: "DefaultGym") }
     static var DefaultDetailGymVideoImage: UIImage { .load(named: "DefaultDetailGymVideo").resize(newWidth: 250) }
