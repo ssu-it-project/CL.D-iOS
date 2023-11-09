@@ -69,6 +69,7 @@
 		5A0406D52AF2582900A4BA84 /* UserAlgorithmRecordDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A0406D42AF2582900A4BA84 /* UserAlgorithmRecordDTO.swift */; };
 		5A0406D72AF258F000A4BA84 /* UserAlgorithmRecordVO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A0406D62AF258F000A4BA84 /* UserAlgorithmRecordVO.swift */; };
 		5A0406E42AF4E4BD00A4BA84 /* ReportType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A0406E32AF4E4BD00A4BA84 /* ReportType.swift */; };
+		5A0407382AFC0D1F00A4BA84 /* Interceptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A0407372AFC0D1F00A4BA84 /* Interceptor.swift */; };
 		5A05DEED2AA8DE2E0050AD55 /* DefaultGymsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A05DEEC2AA8DE2E0050AD55 /* DefaultGymsRepository.swift */; };
 		5A05DEF12AA8E0560050AD55 /* GymsVO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A05DEF02AA8E0560050AD55 /* GymsVO.swift */; };
 		5A05DF432AAB038C0050AD55 /* DefaultHomeRecordRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A05DF422AAB038B0050AD55 /* DefaultHomeRecordRepository.swift */; };
@@ -287,6 +288,7 @@
 		5A0406D42AF2582900A4BA84 /* UserAlgorithmRecordDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAlgorithmRecordDTO.swift; sourceTree = "<group>"; };
 		5A0406D62AF258F000A4BA84 /* UserAlgorithmRecordVO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAlgorithmRecordVO.swift; sourceTree = "<group>"; };
 		5A0406E32AF4E4BD00A4BA84 /* ReportType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportType.swift; sourceTree = "<group>"; };
+		5A0407372AFC0D1F00A4BA84 /* Interceptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Interceptor.swift; sourceTree = "<group>"; };
 		5A05DEEC2AA8DE2E0050AD55 /* DefaultGymsRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultGymsRepository.swift; sourceTree = "<group>"; };
 		5A05DEF02AA8E0560050AD55 /* GymsVO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GymsVO.swift; sourceTree = "<group>"; };
 		5A05DF422AAB038B0050AD55 /* DefaultHomeRecordRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultHomeRecordRepository.swift; sourceTree = "<group>"; };
@@ -709,6 +711,7 @@
 				5A21C67D2A9A047800E7CC95 /* NetworkPluginType.swift */,
 				5A21C6822A9A3E8B00E7CC95 /* CommonMoyaProvider.swift */,
 				5A21C6882A9A46B400E7CC95 /* NetworkError.swift */,
+				5A0407372AFC0D1F00A4BA84 /* Interceptor.swift */,
 			);
 			path = _Foundation;
 			sourceTree = "<group>";
@@ -1668,6 +1671,7 @@
 				5A21C6982A9B749800E7CC95 /* SignInUseCase.swift in Sources */,
 				5ACADCFA2A5D988F00B92C07 /* AppDelegate.swift in Sources */,
 				5ADED1C32A67A1B300C0CBF4 /* ViewModelType.swift in Sources */,
+				5A0407382AFC0D1F00A4BA84 /* Interceptor.swift in Sources */,
 				0294D01F2AB1F88500F4244A /* CountCollectionViewCell.swift in Sources */,
 				0294D0312AB3632600F4244A /* CategoryCollectionViewCell.swift in Sources */,
 				026BC4762A680FC000F49B87 /* AuthViewController.swift in Sources */,
