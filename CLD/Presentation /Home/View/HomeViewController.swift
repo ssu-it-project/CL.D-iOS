@@ -27,10 +27,8 @@ final class HomeViewController: BaseViewController {
         return collectionView
     }()
     
-    var url: [String] = []
     private let prefetchItems = PublishSubject<Void>()
     private let didSelectReportAction = PublishSubject<(ReportType, String)>()
-    
     private var viewModel: HomeViewModel
     
     init(viewModel: HomeViewModel) {

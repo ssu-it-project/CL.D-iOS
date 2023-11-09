@@ -20,7 +20,6 @@ protocol HomeRecordUseCase {
     func postReport(id: String, message: String) -> Single<Void>
 }
 
-
 final class DefaultHomeRecordUseCase: HomeRecordUseCase {
     
     private let disposeBag = DisposeBag()
