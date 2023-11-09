@@ -10,6 +10,6 @@ import Moya
 
 class CommonMoyaProvider<T: TargetType>: MoyaProvider<T> {
     init() {
-        super.init(session: Moya.Session(), plugins: [NetworkPlugin()])
+        super.init(session: Moya.Session(interceptor: Interceptor()), plugins: [NetworkPlugin()])
     }
 }
