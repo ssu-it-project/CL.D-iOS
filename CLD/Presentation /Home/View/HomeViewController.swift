@@ -55,7 +55,9 @@ final class HomeViewController: BaseViewController {
     }
     
     override func Bind() {
-        let input = HomeViewModel.Input(viewWillAppearEvent: rx.viewWillAppear.map { _ in },
+        let input = HomeViewModel
+            .Input(viewDidLoadEvent: Observable.just(()).asObservable(),
+                                        viewWillAppearEvent: rx.viewWillAppear.map { _ in },
                                         prefetchItems: prefetchItems.asObserver(),
                                         didSelectReportAction: didSelectReportAction.asObserver())
         let output = viewModel.transform(input: input)
@@ -80,7 +82,7 @@ final class HomeViewController: BaseViewController {
             .compactMap(\.last?.row)
             .withUnretained(self)
             .bind { owner, row in
-                guard row == owner.viewModel.recordListArray.count - 1 else { return }
+                guard row == owner.viewModel.collectionViewCount - 1 else { return }
                 owner.prefetchItems.onNext(())
             }
             .disposed(by: self.disposeBag)
@@ -166,7 +168,7 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
         case .badgeSection:
             return 1
         case .videoBanner:
-            return viewModel.recordListArray.count
+            return viewModel.collectionViewCount
         }
     }
     
@@ -180,7 +182,7 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
             return cell
         case .videoBanner:
             let cell: VideoCollectionViewCell = collectionView.dequeueReusableCell(forIndexPath: indexPath)
-            let recordVO = viewModel.cellArrayInfo(index: indexPath.item)
+            let recordVO = viewModel.cellForItemAt(index: indexPath.item)
             cell.configureVideo(with: recordVO.video.original)
             cell.configureCell(row: recordVO)
             

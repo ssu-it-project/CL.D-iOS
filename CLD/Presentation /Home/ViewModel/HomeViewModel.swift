@@ -15,6 +15,10 @@ final class HomeViewModel: ViewModelType {
     
     private let useCase: HomeRecordUseCase
     var disposeBag = DisposeBag()
+    private let recordList = BehaviorRelay<[RecordVO]>(value: [])
+    private var recordListArray: [RecordVO] = []
+    private var total = 0
+    private var skip = 0
     
     // MARK: - Initializer
     init(
@@ -24,6 +28,7 @@ final class HomeViewModel: ViewModelType {
     }
     
     struct Input {
+        let viewDidLoadEvent: Observable<Void>
         let viewWillAppearEvent: Observable<Void>
         let prefetchItems: Observable<Void>
         let didSelectReportAction: Observable<(ReportType, String)>
@@ -34,32 +39,32 @@ final class HomeViewModel: ViewModelType {
         let showReportAlert = PublishRelay<Void>()
     }
     
-    let recordList = BehaviorSubject<[RecordVO]>(value: [])
     var collectionViewCount: Int {
-          guard let count = try? recordList.value().count else { return 0 }
-          return count
+        return recordList.value.count
       }
-    var recordListArray: [RecordVO] = []
-    var total = 0
-    var skip = 4
-    
-    func cellInfo(index: Int) -> RecordVO? {
-        return try? recordList.value()[index]
+   
+    func cellForItemAt(index: Int) -> RecordVO {
+        return recordList.value[index]
     }
-    
-    func cellArrayInfo(index: Int) -> RecordVO {
-        return recordListArray[index]
-    }
-    
+            
     func transform(input: Input) -> Output {
         let output = Output()
-        input.viewWillAppearEvent
+        
+        input.viewDidLoadEvent
             .withUnretained(self)
             .subscribe(onNext: { owner, _ in
-                owner.recordListArray.removeAll()
-                owner.skip = 4
                 owner.getHomeRecords(limit: 4, skip: 0, output: output)
-                owner.getUserAlgorithmRecord(limit: 4, output: output)
+                owner.skip += 4
+            })
+            .disposed(by: disposeBag)
+        
+        input.viewWillAppearEvent
+            .skip(1)
+            .withUnretained(self)
+            .subscribe(onNext: { owner, _ in
+                owner.getHomeRecords(limit: owner.collectionViewCount, skip: owner.skip, output: output)
+                owner.skip += 4
+//                owner.getUserAlgorithmRecord(limit: 10, output: output)
             })
             .disposed(by: disposeBag)
         
@@ -67,8 +72,8 @@ final class HomeViewModel: ViewModelType {
             .withUnretained(self)
             .subscribe(onNext: { owner, _ in
                 if owner.collectionViewCount < owner.total {
-                    owner.getHomeRecords(limit: 4, skip: owner.skip, output: output)
-                    owner.getUserAlgorithmRecord(limit: 4, output: output)
+                    owner.getHomeRecords(limit: owner.collectionViewCount, skip: owner.skip, output: output)
+//                    owner.getUserAlgorithmRecord(limit: 4, output: output)
                     owner.skip += 4
                 }
             })
@@ -93,6 +98,7 @@ extension HomeViewModel {
                 switch response {
                 case .success(let value):
                     self?.recordListArray.append(contentsOf: value.records)
+                    self?.recordList.accept(self?.recordListArray ?? [])
                     self?.total = value.pagination.total
                     output.homeRecordList.accept(Void())
                 case .failure(let error):
@@ -108,6 +114,7 @@ extension HomeViewModel {
                 switch response {
                 case .success(let value):
                     self?.recordListArray.append(contentsOf: value.records)
+                    self?.recordList.accept(self?.recordListArray ?? [])
                     output.homeRecordList.accept(Void())
                 case .failure(let error):
                     print(error)
