@@ -57,4 +57,12 @@ extension PlayerView {
     func pause() {
         player?.pause()
     }
+    
+    func resetPlayer() {
+        // Pause the player if it's playing
+        player?.pause()
+
+        // Remove the player's current item
+        player?.replaceCurrentItem(with: nil)
+    }
 }
