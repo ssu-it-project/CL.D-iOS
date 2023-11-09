@@ -72,6 +72,7 @@ final class PostRecordViewController: BaseViewController {
         })
         // print("==== place: \(place), climbing_gym_id: \(climbing_gym_id), content: \(content), sector: \(sector), color: \(level), video: \(asset), videoURL: \(video)")
         postRecord(climbing_gym_id, content, sector, level, video, "480")
+        NotificationCenterManager.refreshVideoCell.post()
     }
     
     @objc func backPage() {
