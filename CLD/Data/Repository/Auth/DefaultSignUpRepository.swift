@@ -10,14 +10,10 @@ import Foundation
 import Moya
 import RxSwift
 
-final class DefaultSignUpRepository {
+final class DefaultSignUpRepository: SignUpRepository {
     
-    private let signUpService: CommonMoyaProvider<AuthAPI>
-    
-    init() {
-        self.signUpService = .init()
-    }
-    
+    private let signUpService = MoyaProvider<AuthAPI>(session: Moya.Session(), plugins: [NetworkPlugin()])
+        
     func trySignUp(requestDTO: SignUpRequest) -> Single<UserToken> {
         return signUpService.rx.request(.postSignUp(requestDTO))
             .flatMap { response in

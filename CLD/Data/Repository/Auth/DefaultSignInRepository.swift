@@ -14,11 +14,7 @@ import KakaoSDKUser
 
 final class DefaultSignInRepository: SignInRepository {
     
-    private let signInService: CommonMoyaProvider<AuthAPI>
-    
-    init() {
-        self.signInService = .init()
-    }
+    private let signInService = MoyaProvider<AuthAPI>(session: Moya.Session(), plugins: [NetworkPlugin()])
     
     func tryAppleLogin(requestDTO: SignInRequest) -> Single<UserToken> {
         return signInService.rx.request(.postSignIn(requestDTO))
