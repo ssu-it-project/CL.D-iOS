@@ -19,10 +19,10 @@ protocol SignUpUseCase {
 
 final class DefaultSignUpUseCase: SignUpUseCase {
     
-    private let signUpRepository: DefaultSignUpRepository
+    private let signUpRepository: SignUpRepository
     
     // MARK: - Initializer
-    init(repository: DefaultSignUpRepository) {
+    init(repository: SignUpRepository) {
         signUpRepository = repository
     }
     
