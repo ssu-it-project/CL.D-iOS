@@ -71,6 +71,7 @@
 		5A0406E42AF4E4BD00A4BA84 /* ReportType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A0406E32AF4E4BD00A4BA84 /* ReportType.swift */; };
 		5A0407382AFC0D1F00A4BA84 /* Interceptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A0407372AFC0D1F00A4BA84 /* Interceptor.swift */; };
 		5A0407452AFC996100A4BA84 /* SignUpRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A0407442AFC996100A4BA84 /* SignUpRepository.swift */; };
+		5A04074C2AFCD9BB00A4BA84 /* NotificationCenterHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A04074B2AFCD9BB00A4BA84 /* NotificationCenterHandler.swift */; };
 		5A05DEED2AA8DE2E0050AD55 /* DefaultGymsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A05DEEC2AA8DE2E0050AD55 /* DefaultGymsRepository.swift */; };
 		5A05DEF12AA8E0560050AD55 /* GymsVO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A05DEF02AA8E0560050AD55 /* GymsVO.swift */; };
 		5A05DF432AAB038C0050AD55 /* DefaultHomeRecordRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A05DF422AAB038B0050AD55 /* DefaultHomeRecordRepository.swift */; };
@@ -291,6 +292,7 @@
 		5A0406E32AF4E4BD00A4BA84 /* ReportType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportType.swift; sourceTree = "<group>"; };
 		5A0407372AFC0D1F00A4BA84 /* Interceptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Interceptor.swift; sourceTree = "<group>"; };
 		5A0407442AFC996100A4BA84 /* SignUpRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpRepository.swift; sourceTree = "<group>"; };
+		5A04074B2AFCD9BB00A4BA84 /* NotificationCenterHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationCenterHandler.swift; sourceTree = "<group>"; };
 		5A05DEEC2AA8DE2E0050AD55 /* DefaultGymsRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultGymsRepository.swift; sourceTree = "<group>"; };
 		5A05DEF02AA8E0560050AD55 /* GymsVO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GymsVO.swift; sourceTree = "<group>"; };
 		5A05DF422AAB038B0050AD55 /* DefaultHomeRecordRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultHomeRecordRepository.swift; sourceTree = "<group>"; };
@@ -1107,6 +1109,7 @@
 				5A70B8BE2AB4BFC300506846 /* Collection+.swift */,
 				5A70B9692AB6E5D400506846 /* UIVIewController+Extension.swift */,
 				02BD9AA12AC85DCA0063326A /* UIAlert+Extension.swift */,
+				5A04074B2AFCD9BB00A4BA84 /* NotificationCenterHandler.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1671,6 +1674,7 @@
 				5A7E399D2AB148C300143175 /* RecordRepository.swift in Sources */,
 				02B655392AA5D97700E4AC4F /* GymsAPI.swift in Sources */,
 				02CCDD672A9F2C8A00301ABF /* RecordService.swift in Sources */,
+				5A04074C2AFCD9BB00A4BA84 /* NotificationCenterHandler.swift in Sources */,
 				5A7E398F2AB0E1D600143175 /* RecordAPI.swift in Sources */,
 				5A21C6982A9B749800E7CC95 /* SignInUseCase.swift in Sources */,
 				5ACADCFA2A5D988F00B92C07 /* AppDelegate.swift in Sources */,

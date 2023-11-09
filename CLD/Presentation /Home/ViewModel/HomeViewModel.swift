@@ -62,9 +62,9 @@ final class HomeViewModel: ViewModelType {
             .skip(1)
             .withUnretained(self)
             .subscribe(onNext: { owner, _ in
-                owner.getHomeRecords(limit: owner.collectionViewCount, skip: owner.skip, output: output)
+//                owner.getUserAlgorithmRecord(limit: 3, output: output)
+                owner.getHomeRecords(limit: 4, skip: owner.skip, output: output)
                 owner.skip += 4
-//                owner.getUserAlgorithmRecord(limit: 10, output: output)
             })
             .disposed(by: disposeBag)
         
@@ -72,7 +72,7 @@ final class HomeViewModel: ViewModelType {
             .withUnretained(self)
             .subscribe(onNext: { owner, _ in
                 if owner.collectionViewCount < owner.total {
-                    owner.getHomeRecords(limit: owner.collectionViewCount, skip: owner.skip, output: output)
+                    owner.getHomeRecords(limit: 4, skip: owner.skip, output: output)
 //                    owner.getUserAlgorithmRecord(limit: 4, output: output)
                     owner.skip += 4
                 }
@@ -87,8 +87,20 @@ final class HomeViewModel: ViewModelType {
             .bind(to: output.showReportAlert)
             .disposed(by: disposeBag)
         
+        createOutput(output: output)
+        
         return output
     }
+    
+    private func createOutput(output: Output) {
+        NotificationCenterManager.refreshVideoCell.addObserver()
+            .bind(with: self) { owner, _ in
+                owner.recordListArray.removeAll()
+                owner.skip = 0
+            }
+            .disposed(by: disposeBag)
+    }
+    
 }
 
 extension HomeViewModel {
