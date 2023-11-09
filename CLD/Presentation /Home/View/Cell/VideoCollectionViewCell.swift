@@ -111,7 +111,8 @@ final class VideoCollectionViewCell: UICollectionViewCell {
     
     override func prepareForReuse() {
         super.prepareForReuse()
-        playerView.player = nil
+//        playerView.player = nil
+        playerView.resetPlayer()
         disposeBag = DisposeBag()
     }
     
