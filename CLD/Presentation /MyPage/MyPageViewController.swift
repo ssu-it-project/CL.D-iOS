@@ -152,10 +152,19 @@ extension MyPageViewController : UICollectionViewDelegate, UICollectionViewDeleg
         } else if collectionView == mypageView.categoryCollectionView {
             if (index == 0) {
                 getUserHistory(type: "" , start_date: "" , end_date: "", limit: 10, skip: 0)
+                if (dataCount > 10) {
+                    getUserHistory(type: "" , start_date: "" , end_date: "", limit: dataCount, skip: 0)
+                }
             } else if (index == 1) {
                 getUserHistory(type: "clime_record" , start_date: "" , end_date: "", limit: 10, skip: 0)
+                if (dataCount > 10) {
+                    getUserHistory(type: "clime_record" , start_date: "" , end_date: "", limit: dataCount, skip: 0)
+                }
             } else {
                 getUserHistory(type: "badge" , start_date: "" , end_date: "", limit: 10, skip: 0)
+                if (dataCount > 10) {
+                    getUserHistory(type: "badge" , start_date: "" , end_date: "", limit: dataCount, skip: 0)
+                }
             }
         }
     }
