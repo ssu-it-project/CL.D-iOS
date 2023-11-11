@@ -30,6 +30,7 @@
 - `UIKit` `MVVM` `RxSwift` `RxCocoa`
 - `Codebase UI` `SnapKit`
 - `DiffableDataSource` `CompositionalLayout` `Tabman` `RxGesture`
+- `AVFoundation` `AVPlayerLayer` `AVPlayerViewController`
 - `PHImageManager` `LightCompressor` `Kingfisher`
 - `CoreLocation` `KakaoMap`
 - `RxKakaoOpenSDK` `AppleLogin`
