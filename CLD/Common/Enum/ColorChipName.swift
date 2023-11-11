@@ -26,7 +26,7 @@ enum ColorChipName {
     func colorName() -> String {
         switch self {
         case .white:
-                return "흰색"
+                return "하양"
         case .gray:
                 return "회색"
         case .black:
@@ -38,7 +38,7 @@ enum ColorChipName {
         case .brown:
                 return "갈색"
         case .pink:
-                return "핑크"
+                return "분홍"
         case .green:
                 return "초록"
         case .purple:
