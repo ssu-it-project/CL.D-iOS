@@ -17,7 +17,9 @@ class MyPageViewController: BaseViewController {
             self.mypageView.badgeCollectionView.reloadData()
         }
     }
+    lazy var typeOfHistory: String = ""
     lazy var dataCount: Int = 0
+    lazy var skip: Int = 0
     let lableInfo: [String] = ["등반 기록", "방문한 암장", "좋아요", "게시글"]
     lazy var countInfo: [Int] = [0, 0, 0, 0] {
         didSet {
@@ -25,12 +27,12 @@ class MyPageViewController: BaseViewController {
         }
     }
     let categoryLabels: [String] = ["전체", "등반기록", "뱃지"]
-
+    
     let mypageView = MyPageView()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         mypageView.delegatePushSetting = self
         mypageView.countCollectionView.delegate = self
         mypageView.countCollectionView.dataSource = self
@@ -42,12 +44,13 @@ class MyPageViewController: BaseViewController {
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.isNavigationBarHidden = true
         getUser()
-        getUserHistory(type: "" , start_date: "" , end_date: "", limit: 10, skip: 0)
+        skip = 0
+        getUserHistory(type: "" , start_date: "" , end_date: "", limit: 10, skip: skip)
     }
     override func setHierarchy() {
         self.view.addSubview(mypageView)
     }
-
+    
     override func setConstraints() {
         mypageView.snp.makeConstraints {
             $0.edges.equalToSuperview()
@@ -66,13 +69,14 @@ extension MyPageViewController : UICollectionViewDelegate, UICollectionViewDeleg
                 return 0
             }
             mypageView.badgeCollectionView.restore()
-            return self.dataCount
+            print("==== data_All.count: \(data_All.count)")
+            return data_All.count
         } else if collectionView == mypageView.categoryCollectionView {
             return categoryLabels.count
         }
         return 0
     }
-
+    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if collectionView == mypageView.countCollectionView {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CountCollectionViewCell.identifier, for: indexPath) as! CountCollectionViewCell
@@ -110,7 +114,7 @@ extension MyPageViewController : UICollectionViewDelegate, UICollectionViewDeleg
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HistoryCollectionViewCell.identifier, for: indexPath) as! HistoryCollectionViewCell
         return cell
     }
-
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         if collectionView == mypageView.countCollectionView {
             return CGSize(width: 90, height: 72)
@@ -124,7 +128,7 @@ extension MyPageViewController : UICollectionViewDelegate, UICollectionViewDeleg
                 label.font = RobotoFont.Bold.of(size: 14)
                 label.textAlignment = .center
                 label.sizeToFit()
-
+                
                 return label
             }()
             let size = categoryLabel.frame.size
@@ -132,7 +136,7 @@ extension MyPageViewController : UICollectionViewDelegate, UICollectionViewDeleg
         }
         return CGSize(width: 0, height: 0)
     }
-
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         if collectionView == mypageView.countCollectionView {
             return 0
@@ -151,20 +155,23 @@ extension MyPageViewController : UICollectionViewDelegate, UICollectionViewDeleg
         } else if collectionView == mypageView.badgeCollectionView {
         } else if collectionView == mypageView.categoryCollectionView {
             if (index == 0) {
-                getUserHistory(type: "" , start_date: "" , end_date: "", limit: 10, skip: 0)
-                if (dataCount > 10) {
-                    getUserHistory(type: "" , start_date: "" , end_date: "", limit: dataCount, skip: 0)
-                }
+                typeOfHistory = ""
             } else if (index == 1) {
-                getUserHistory(type: "clime_record" , start_date: "" , end_date: "", limit: 10, skip: 0)
-                if (dataCount > 10) {
-                    getUserHistory(type: "clime_record" , start_date: "" , end_date: "", limit: dataCount, skip: 0)
-                }
+                typeOfHistory = "clime_record"
             } else {
-                getUserHistory(type: "badge" , start_date: "" , end_date: "", limit: 10, skip: 0)
-                if (dataCount > 10) {
-                    getUserHistory(type: "badge" , start_date: "" , end_date: "", limit: dataCount, skip: 0)
-                }
+                typeOfHistory = "badge"
+            }
+            skip = 0
+            getUserHistory(type: typeOfHistory , start_date: "" , end_date: "", limit: 10, skip: skip)
+        }
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if scrollView == self.mypageView.badgeCollectionView
+        {
+            if ( dataCount-skip > 10) {
+                skip = skip + 10
+                getUserHistory(type: typeOfHistory , start_date: "" , end_date: "", limit: 10, skip: skip)
             }
         }
     }
@@ -217,8 +224,12 @@ extension MyPageViewController {
                     self?.data_All = []
                     return
                 }
-                self?.data_All = data.histories
                 self?.dataCount = data.pagination.total
+                if (skip != 0) {
+                    self?.data_All.append(contentsOf: data.histories)
+                } else {
+                    self?.data_All = data.histories
+                }
             case .requestErr(let errorResponse):
                 dump(errorResponse)
                 guard let data = errorResponse as? ErrorResponse else { return }
