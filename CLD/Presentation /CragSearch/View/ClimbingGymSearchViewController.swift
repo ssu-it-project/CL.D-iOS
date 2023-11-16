@@ -63,7 +63,7 @@ final class ClimbingGymSearchViewController: BaseViewController {
             viewDidLoadEvent: Observable.just(()).asObservable(),
             viewWillAppearEvent: rx.viewWillAppear.map { _ in },
             selectedSegmentIndex: climbingGymSegmentControl.rx.selectedSegmentIndex.asObservable(),
-            searchText: searchBar.rx.text.orEmpty.asObservable().throttle(.milliseconds(300), scheduler: MainScheduler.instance).distinctUntilChanged())
+            searchText: searchBar.rx.text.orEmpty.asObservable().debounce(.seconds(1), scheduler: MainScheduler.instance).distinctUntilChanged())
         let output = viewModel.transform(input: input)
         
         output.authorizationAlertShouldShow
