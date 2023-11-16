@@ -27,19 +27,25 @@ final class ClimbingGymVideoViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = viewModel.title
         bindAction()
     }
     
     override func Bind() {
-        let input = ClimbingGymVideoViewModel.Input(viewWillAppearEvent: rx.viewWillAppear.map { _ in })
+        let input = ClimbingGymVideoViewModel.Input(
+            viewWillAppearEvent: rx.viewWillAppear.map { _ in },
+            searchText: contentView.searchBar.rx.text.orEmpty.asObservable().debounce(.seconds(1), scheduler: MainScheduler.instance).distinctUntilChanged())
         let output = viewModel.transform(input: input)
         
         output.recordListVO
-            .withUnretained(self)
-            .bind { owner, recordListVO in
+            .asDriver(onErrorJustReturn: [])
+            .drive(with: self) { owner, recordListVO in
                 owner.contentView.applyCollectionViewDataSource(by: recordListVO)
             }
+            .disposed(by: disposeBag)
+        
+        output.navigationTitle
+            .asDriver(onErrorJustReturn: "")
+            .drive(rx.title)
             .disposed(by: disposeBag)
     }
     
@@ -48,8 +54,15 @@ final class ClimbingGymVideoViewController: BaseViewController {
             .withUnretained(self)
             .subscribe(onNext: { owner, indexPath in
                 let data = owner.contentView.itemIdentifier(for: indexPath)
-                let playerViewController = PlayerViewController(url: data?.video.video480 ?? "")
+                let playerViewController = PlayerViewController(url: data?.video.original ?? "")
                 owner.navigationController?.pushViewController(playerViewController, animated: true)
+            })
+            .disposed(by: disposeBag)
+        
+        Observable.merge(contentView.searchBar.rx.cancelButtonClicked.asObservable(), contentView.searchBar.rx.cancelButtonClicked.asObservable())
+            .withUnretained(self)
+            .bind(onNext: { owner, _ in
+                owner.contentView.searchBar.resignFirstResponder()
             })
             .disposed(by: disposeBag)
     }
