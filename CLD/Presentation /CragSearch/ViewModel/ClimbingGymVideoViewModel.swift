@@ -15,7 +15,7 @@ final class ClimbingGymVideoViewModel: ViewModelType {
     
     private let useCase: ClimbingGymVideoUseCase
     private var id: String
-    var title: String
+    private var title: String
     
     // MARK: - Initializer
     init(
@@ -30,10 +30,14 @@ final class ClimbingGymVideoViewModel: ViewModelType {
     
     struct Input {
         let viewWillAppearEvent: Observable<Void>
+        let searchText: Observable<String>
     }
     
     struct Output {
-        var recordListVO = PublishRelay<[RecordVO]>()
+        let recordListVO = PublishRelay<[RecordVO]>()
+        let showError = PublishRelay<Error>()
+        let navigationTitle = PublishRelay<String>()
+        
     }
     
     func transform(input: Input) -> Output {
@@ -41,28 +45,33 @@ final class ClimbingGymVideoViewModel: ViewModelType {
         
         input.viewWillAppearEvent
             .withUnretained(self)
-            .subscribe(onNext: { owner, _ in
-                owner.getDetailGymRecord(output: output)
-                
-            })
+            .flatMap { owner, query in
+                owner.useCase.getDetailGymRecord(id: owner.id, keyword: "", limit: 20, skip: 0)
+            }
+            .subscribe(with: self) { owner, gym in
+                output.recordListVO.accept(gym.records)
+            } onError: { owner, error in
+                output.showError.accept(error)
+            }
+            .disposed(by: disposeBag)
+        
+        input.searchText
+            .withUnretained(self)
+            .flatMap { owner, query in
+                owner.useCase.getDetailGymRecord(id: owner.id, keyword: query, limit: 20, skip: 0)
+            }
+            .subscribe(with: self) { owner, gym in
+                output.recordListVO.accept(gym.records)
+            } onError: { owner, error in
+                output.showError.accept(error)
+            }
+            .disposed(by: disposeBag)
+        
+        Observable.just(title)
+            .observe(on: MainScheduler.asyncInstance)
+            .bind(to: output.navigationTitle)
             .disposed(by: disposeBag)
         
         return output
-    }
-}
-
-extension ClimbingGymVideoViewModel {
-    private func getDetailGymRecord(output: Output) {
-        useCase.getDetailGymRecord(id: self.id, keyword: "", limit: 10, skip: 0)
-            .subscribe { response in
-                switch response {
-                case .success(let value):
-                    output.recordListVO.accept(value.records)
-                case .failure(let error):
-                    print(error.localizedDescription)
-                    output.recordListVO.accept([])
-                }
-            }
-            .disposed(by: disposeBag)
     }
 }
