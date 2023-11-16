@@ -22,6 +22,7 @@ final class ClimbingGymVideoView: BaseView {
         let view = UISearchBar()
         view.placeholder = "검색"
         view.searchBarStyle = .minimal
+        view.showsCancelButton = true
         return view
     }()
     lazy var collectionView: UICollectionView = {
