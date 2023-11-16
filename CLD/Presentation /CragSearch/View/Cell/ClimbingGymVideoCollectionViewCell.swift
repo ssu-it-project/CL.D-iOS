@@ -53,7 +53,7 @@ final class ClimbingGymVideoCollectionViewCell: UICollectionViewCell {
 
 extension ClimbingGymVideoCollectionViewCell {
     func configureCell(row: RecordVO) {
-        videoView.setupPlayerItem(with: row.video.video480)
+        videoView.setupPlayerItem(with: row.video.original)
         levelLabel.configurationLevelBadge(level: row.level, sector: row.sector)
     }
 }
