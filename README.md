@@ -38,7 +38,7 @@
 
 # 🔥 기술적 도전
 
-### 각 레이어의 관심사 분리
+### MVVM 사용 시 Presentation Layer에 모든 로직이 포커싱 된 구조 분리
 
 ![클디 drawio](https://github.com/ssu-it-project/cl-d-iOS/assets/25146374/1ecc31b2-0b40-4813-9327-e3baccfde52d)
 
