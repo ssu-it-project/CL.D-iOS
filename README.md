@@ -36,7 +36,9 @@
 - `RxKakaoOpenSDK` `AppleLogin`
 - `RxMoya` `Alamofire RequestInterceptor`
 
-# **🔥 아키텍처**
+# 🔥 기술적 도전
+
+### 각 레이어의 관심사 분리
 
 ![클디 drawio](https://github.com/ssu-it-project/cl-d-iOS/assets/25146374/1ecc31b2-0b40-4813-9327-e3baccfde52d)
 
@@ -44,6 +46,8 @@
 - Domain Layer : 앱의 비즈니스 로직을 담당합니다. UseCase, VO (Value Object), Repository Protocol 을 갖습니다.
 - Presentaion Layer : UI 로직 관련 책임을 갖습니다. MVVM 패턴을 활용했습니다.
 
+# 🫡 TroubleShooting
+- [App Store 심사 이슈 Guideline 1.2 Safety User Generated Content](https://medium.com/@kyuchul2/app-store-%EC%8B%AC%EC%82%AC-%EC%9D%B4%EC%8A%88-guideline-1-2-safety-user-generated-content-184de0d97c2a)
 
 ## Contact CL.D-iOS
 
